@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOP</title>
+    <link href="public/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./assets/css/all.min.css"> -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Merriweather:ital,wght@0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./assets/css/animate.css"> -->
+    <script src="./js/wow.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <style>
+        .banner-product img {
+            height: 500px;
+        }
+
+        .instagram img {
+            height: 320px;
+        }
+
+        body {
+            font-family: 'Almarai';
+        }
+
+        #women:hover,
+        #men:hover,
+        #kids:hover,
+        #acces:hover,
+        #cosmetic:hover {
+            height: 230px;
+            color: red;
+        }
+
+        #women ul li a:hover,
+        #men ul li a:hover,
+        #kids ul li a:hover,
+        #acces ul li a:hover,
+        #cosmetic ul li a:hover {
+            color: rgb(34, 233, 34);
+        }
+
+        input[type="checkbox"]+label {
+            display: block;
+            margin: 0.2em;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"]+label:before {
+            content: "\2714";
+            width: 20px;
+            height: 15px;
+            display: inline-block;
+            font-size: 15px;
+            color: rgb(49, 196, 49);
+            border: 1px solid #000;
+            border-radius: 0.2em;
+            padding-left: 2px;
+            padding-bottom: 20px;
+            vertical-align: bottom;
+            color: transparent;
+            transition: 0.5s;
+
+        }
+
+        input[type="checkbox"]:checked+label:before {
+            background-color: aquamarine;
+            border-color: MediumSeaGreen;
+            color: #fff;
+        }
+
+        input[type="checkbox"]+label:active:before {
+
+            transform: scale(6);
+        }
+    </style>
+    <style type="text/css">
+        input {
+            outline: none;
+        }
+
+        input[type=search] {
+            -webkit-appearance: textfield;
+            -webkit-box-sizing: content-box;
+            font-family: inherit;
+            font-size: 100%;
+        }
+
+        /* search input field */
+        input[type=search] {
+            background: url("https://img.icons8.com/material-two-tone/24/000000/search.png") no-repeat 9px center;
+            padding: 9px 10px 9px 0px;
+
+
+            -webkit-border-radius: 10em;
+            -moz-border-radius: 10em;
+            border-radius: 10em;
+
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            transition: all .5s;
+        }
+
+        /* demo B */
+        #demo-search input[type=search] {
+            width: 15px;
+            padding-left: 10px;
+            color: transparent;
+            cursor: pointer;
+        }
+
+        #demo-search input[type=search]:hover {
+            background-color: rgb(215, 102, 102);
+        }
+
+        #demo-search input[type=search]:focus {
+            width: 100px;
+            padding-left: 32px;
+            color: #000;
+            background-color: #fff;
+            cursor: auto;
+        }
+
+        #demo-search input:-moz-placeholder {
+            color: transparent;
+        }
+
+        #demo-search input::-webkit-input-placeholder {
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body style="font-family: 'Lora', serif;
+font-family: 'Merriweather', serif;">
+    <div>
+        <header class="bg-gray-100 position fixed w-screen z-50 top-0  " id="heading">
+            <div>
+                <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0  lg:py-8">
+                    <div class="logo mx-auto md:mx-0">
+                        <a href="./index.html"><img src="./images/logo.png" alt="" class="w-full"></a>
+                        <div class="md:hidden absolute right-0 top-0 ml-6 mt-8 mr-16 ">
+                            <button id="btnMenu" class="border border-gray-700 px-2 py-1 ">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu hidden md:block">
+                        <nav class="pl-3">
+                            <ul class="flex xl:text-lg lg:text-sm md:text-xs">
+                                <li><a href="./index.html" class="group block relative px-3">HOME
+                                        <div class="transition duration-300 ease-in-out bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
+                                            style="height: 2px;">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li><a href="#" class="px-4 group block relative ">WOMEN'S<div
+                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
+                                            style="height: 2px;">
+                                        </div> </a></li>
+                                <li><a href="#" class="px-3 group block relative">MEN'S <div
+                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
+                                            style="height: 2px;">
+                                        </div></a></li>
+                                <li><a href="shop.html" class="px-3 group block relative">SHOP <div
+                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
+                                            style="height: 2px;">
+                                        </div></a></li>
+                                <li><a href="./ProductDetails.html" class="px-3 group block relative uppercase">
+                                        Details <div
+                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
+                                            style="height: 2px;">
+                                        </div></a></li>
+                                <li><a href="blog.html" class="px-4 group block relative  ">BLOG<div
+                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
+                                            style="height: 2px;">
+                                        </div> </a></li>
+                                <li><a href="contact.html" class="px-3 group block relative">CONTACT<div
+                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
+                                            style="height: 2px;">
+                                        </div></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="md:flex hidden ">
+                        <div class=" pt-3 md:mb-4 text-gray-700 text-xs">
+                            <a href="#">Login</a>
+                            <a href="#">/ Register</a>
+                        </div>
+                        <div class="md:hidden lg:block mx-4 ">
+                            <form class="inline " id="demo-search">
+                                <input type="search" placeholder="search">
+                            </form>
+                            <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
+                            <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center hidden md:block lg:hidden mx-4">
+                    <form class="inline " id="demo-search">
+                        <input type="search" placeholder="search">
+                    </form>
+                    <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
+                    <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <div id="menu">
+                    <ul class="bg-gray-3 md:hidden  pb-2  z-auto ml-2">
+                        <li><a href="./index.html"
+                                class="px-3 inline-block py-1 w-full hover:bg-blue-200 hover:underline">HOME
+                            </a>
+                        </li>
+                        <li><a href="#"
+                                class="px-3   inline-block py-1 w-full hover:bg-blue-200 hover:underline">WOMEN'S
+                            </a></li>
+                        <li><a href="#" class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline">MEN'S
+                            </a></li>
+                        <li><a href="./shop.html"
+                                class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline">SHOP </a>
+                        </li>
+                        <li><a href="./ProductDetails.html"
+                                class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline uppercase">Product
+                                Details
+                            </a></li>
+                        <li><a href="blog.html"
+                                class="px-4  inline-block py-1 w-full hover:bg-blue-200 hover:underline">BLOG </a>
+                        </li>
+                        <li><a href="contact.html"
+                                class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline">CONTACT</a>
+                        </li>
+                    </ul>
+                    <div class="md:hidden">
+                        <div class="grid grid-cols-1 md:flex justify-center">
+                            <div class=" pl-6 pr-12 pt-3 text-gray-700 text-xs">
+                                <a href="#">Login</a>
+                                <a href="#">/ Register</a>
+                            </div>
+                            <div class=" mx-4">
+                                <form class="inline " id="demo-search">
+                                    <input type="search" placeholder="search">
+                                </form>
+                                <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
+                                <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- end header -->
+        <div id="banner" class="pt-20">
+            <div class="container mx-auto px-16 pt-4">
+                <div class="my-8">
+                    <a href="./index.html"><span><i class="fas fa-home"></i></span>
+                        <span style="font-family: FontAwesome;">Home > <span class="text-gray-600">Shop</span></span>
+                        </i></a>
+                </div>
+                <div class="grid grid-cols-12">
+                    <aside class="col-span-12 md:col-span-3">
+                        <div class="wow bounceInDown" data-wow-duration="1s">
+                            <div class="font-semibold pb-8">
+                                <h4>CATEGORIES</h4>
+                                <div class="bg-red-600 w-16" style="height: 2px;"></div>
+                            </div>
+                            <div class="py-2 h-10  border-b w-full md:w-2/3 text-lg md:text-base  overflow-hidden"
+                                id="women">
+                                <div style="font-family: FontAwesome;"> <a href=" #">Women</a></div>
+                                <div class="ml-1 font-serif " id="womenF">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="block text-gray-600 text-base py-1"> - Coats</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jackets</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Dresses</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- T-shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jeans</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="py-2 border-b w-full md:w-2/3 text-lg md:text-base h-10 overflow-hidden"
+                                id="men">
+                                <div style="font-family: FontAwesome;"> <a href=" #">Men</a></div>
+                                <div class="ml-1 font-serif ">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Coats</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jackets</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Dresses</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- T-shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jeans</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="py-2 border-b w-full md:w-2/3 text-lg md:text-base h-10 overflow-hidden"
+                                id="kids">
+                                <div style=" font-family: FontAwesome;"> <a href=" #">Kids</a></div>
+                                <div class="ml-1 font-serif ">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Coats</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jackets</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Dresses</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- T-shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jeans</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="py-2 border-b w-full md:w-2/3 text-lg md:text-base h-10 overflow-hidden"
+                                id="cosmetic">
+                                <div style="font-family: FontAwesome;"> <a href=" #">Cosmetic</a></div>
+                                <div class="ml-1 font-serif ">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Coats</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jackets</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Dresses</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- T-shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jeans</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="py-2 border-b w-full md:w-2/3 text-lg md:text-base h-10 overflow-hidden"
+                                id="acces">
+                                <div style="font-family: FontAwesome;"> <a href=" #">Accessories</a></div>
+                                <div class="ml-1 font-serif ">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Coats</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jackets</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Dresses</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- T-shirts</a>
+                                                <a href="#" class="block text-gray-600 text-base py-1">- Jeans</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:mt-40 mt-10 wow bounceInUp" data-wow-duration="1s">
+                            <div class="mb-8 font-semibold">
+                                <h4>SHOP BY SIZE</h4>
+                                <div class="bg-red-600 w-16" style="height: 2px;"></div>
+                            </div>
+                            <div>
+                                <form action="#" class="text-sm md:text-xs">
+                                    <input type="checkbox" name="" value="XXS" id="XXS">
+                                    <label for="XXS" class="block py-1  text-gray-800"> XXS
+                                    </label>
+                                    <input type="checkbox" name="" value="XS" id="XS">
+                                    <label for="XS" class="block py-1  text-gray-800">
+                                        XS </label>
+                                    <input type="checkbox" name="" value="XS-S" id="XS-S">
+                                    <label for="XS-S" class="block py-1  text-gray-800"> XS-S
+                                    </label>
+                                    <input type="checkbox" name="" value="S" id="S">
+                                    <label for="S" class="block py-1  text-gray-800"> S
+                                    </label>
+                                    <input type="checkbox" name="" value="M" id="M">
+                                    <label for="M" class="block py-1  text-gray-800"> M
+                                    </label>
+                                    <input type="checkbox" name="" value="M-L" id="M-L">
+                                    <label for="M-L" class="block py-1  text-gray-800">
+                                        M-L </label>
+                                    <input type="checkbox" name="" value="L" id="L">
+                                    <label for="L" class="block py-1  text-gray-800"> L
+                                    </label>
+                                    <input type="checkbox" name="" value="XL" id="XL">
+                                    <label for="XL" class="block py-1  text-gray-800">
+                                        XL </label>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="mb-8 mt-10 md:mt-20 wow bounceInLeft" data-wow-duration="1s">
+                            <div class="mb-8 font-semibold">
+                                <h4>SHOP BY SIZE</h4>
+                                <div class="bg-red-600 w-16" style="height: 2px;"></div>
+                            </div>
+                            <div>
+                                <form action="#" class="text-sm md:text-xs">
+                                    <input type="checkbox" name="" value="Blacks" id="Blacks">
+                                    <label for="Blacks" class="block py-1  text-gray-800">
+                                        Blacks
+                                    </label>
+                                    <input type="checkbox" name="" value="Whites" id="Whites">
+                                    <label for="Whites" class="block py-1  text-gray-800">
+                                        Whites </label>
+                                    <input type="checkbox" name="" value="Reds" id="Reds">
+                                    <label for="Reds" class="block py-1  text-gray-800"> Reds
+                                    </label>
+                                    <input type="checkbox" name="" value="Greys" id="Greys">
+                                    <label for="Greys" class="block py-1  text-gray-800">
+                                        Greys
+                                    </label>
+                                    <input type="checkbox" name="" value="Blues" id="Blues">
+                                    <label for="Blues" class="block py-1  text-gray-800">
+                                        Blues
+                                    </label>
+                                    <input type="checkbox" name="" value="Beige" id="Beige">
+                                    <label for="Beige" class="block py-1  text-gray-800">
+                                        Beige Tones </label>
+                                    <input type="checkbox" name="" value="Greens" id="Greens">
+                                    <label for="Greens" cGreensass="block py-1  text-gray-800">
+                                        Greens
+                                    </label>
+                                    <input type="checkbox" name="" value="Yellows" id="Yellows">
+                                    <label for="Yellows" class="block py-1  text-gray-800">
+                                        Yellows </label>
+                                </form>
+                            </div>
+                        </div>
+                    </aside>
+                    <!-- end content-left -->
+                    <section class="col-span-12 md:col-span-9 ">
+                        <div class="grid md:grid-cols-3 gap-2 lg:flex justify-between items-center wow bounceInUp "
+                            data-wow-duration="
+                    1s">
+                            <article class="col-span-12 md:col-span-1   group my-4 md:my-0 text-center ">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/shop/shop-1.jpg" alt="" class=" w-full object-cover">
+                                    <div class="absolute top-0 mt-4 ml-4">
+                                        <span class="bg-green-400 px-2 py-1 text-xs lg:text-base text-white">NEW</span>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8 text-xs transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200 p-3  md:p-1 lg:p-2 xl:p-3 rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200  p-3 md:p-1 lg:p-2  xl:p-3 rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200  p-3 md:p-1 lg:p-2 xl:p-3 rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-4 md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block  hover:text-red-500">Buttons tweed </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium">$ 49.0</span>
+                                </div>
+                            </article>
+                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/shop/shop-2.jpg" alt="" class="w-full object-cover">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium">$ 49.0</span>
+                                </div>
+                            </article>
+                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/shop/shop-3.jpg" alt="" class="w-full object-cover">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs pl-12 md:pl-10 lg:pl-12 xl:pl-16    transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium">$ 49.0</span>
+                                </div>
+                            </article>
+                        </div>
+                        <div class=" grid md:grid-cols-3 gap-2 lg:flex justify-between items-center my-16 wow bounceInUp "
+                            data-wow-duration="
+                    1s">
+                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
+                                <div class=" relative overflow-hidden">
+                                    <img src="./images/shop/shop-4.jpg" alt="" class="w-full object-cover">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs     transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block hover:text-red-500">Buttons tweed </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium">$ 59.0</span>
+                                </div>
+                            </article>
+                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/shop/shop-5.jpg" alt="" class="w-full object-cover">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="absolute top-0 mt-4 ml-4">
+                                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium text-red-700">$ 49.0</span>
+                                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
+                                </div>
+                            </article>
+                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/shop/shop-6.jpg" alt="" class="w-full object-cover">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium">$ 49.0</span>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-2 lg:flex justify-between items-center wow bounceInUp "
+                            data-wow-duration="1s">
+                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
+                                <div class=" relative overflow-hidden">
+                                    <img src="./images/shop/shop-7.jpg" alt="" class="w-full object-cover">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block hover:text-red-500">Buttons tweed </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium">$ 59.0</span>
+                                </div>
+                            </article>
+                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/shop/shop-8.jpg" alt="" class="w-full object-cover">
+                                    <div class="absolute top-0 mt-4 ml-4">
+                                        <span class="bg-blue-600 text-white px-2 py-1">OUT OF STOCK</span>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium">$ 49.0</span>
+                                </div>
+                            </article>
+                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
+                                <div class="relative overflow-hidden">
+                                    <img src="./images/shop/shop-9.jpg" alt="" class="w-full object-cover">
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="absolute top-0 mt-4 ml-4">
+                                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
+                                    </div>
+                                </div>
+                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
+                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i></span>
+                                    <span class="font-medium text-red-700">$ 49.0</span>
+                                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
+                                </div>
+                            </article>
+                        </div>
+                        <div>
+                            <nav>
+                                <ul class="flex justify-center mt-12">
+                                    <li
+                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400 hover:bg-gray-700 hover:text-white">
+                                        <a href="#"></a>1
+                                    </li>
+                                    <li
+                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400  hover:bg-gray-700 hover:text-white">
+                                        <a href="#"></a>2
+                                    </li>
+                                    <li
+                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400  hover:bg-gray-700 hover:text-white">
+                                        <a href="#"></a>3
+                                    </li>
+                                    <li
+                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400  hover:bg-gray-700 hover:text-white">
+                                        <a href="#"></a>>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <!-- end content-right -->
+                </div>
+            </div>
+
+            <!-- end content -->
+            <section
+                class="container mx-auto grid grid-cols-1 md:flex justify-between items-center wow slideInRight mt-20  "
+                data-wow-duration=" 1s">
+                <div>
+
+                </div>
+                <div class=" flex mx-auto">
+                    <div class="text-red-500 text-4xl">
+                        <span><i class="fas fa-car-side"></i></span>
+                    </div>
+                    <div style="font-family: Montserrat, sans-serif;" class="pl-4">
+                        <span class="font-medium block">Free Shipping</span>
+                        <span class="text-sm text-gray-600">For all oder over $99</span>
+                    </div>
+                </div>
+                <div class="flex py-2 mx-auto">
+                    <div class="text-red-500 text-4xl">
+                        <span><i class="far fa-money-bill-alt"></i></span>
+                    </div>
+                    <div style="font-family: Montserrat, sans-serif;" class="pl-4">
+                        <span class="font-medium block">Free Shipping</span>
+                        <span class="text-sm text-gray-600">For all oder over $99</span>
+                    </div>
+                </div>
+                <div class="flex mx-auto">
+                    <div class="text-red-500 text-4xl">
+                        <span><i class="far fa-life-ring"></i></span>
+                    </div>
+                    <div style="font-family: Montserrat, sans-serif;" class="pl-4">
+                        <span class="font-medium block">Free Shipping</span>
+                        <span class="text-sm text-gray-600">For all oder over $99</span>
+                    </div>
+                </div>
+                <div class="flex  py-2 mx-auto">
+                    <div class="text-red-500 text-4xl">
+                        <span><i class="fas fa-headphones"></i></span>
+                    </div>
+                    <div style="font-family: Montserrat, sans-serif;" class="pl-4">
+                        <span class="font-medium block">Free Shipping</span>
+                        <span class="text-sm text-gray-600">For all oder over $99</span>
+                    </div>
+                </div>
+            </section>
+            <!-- end section freeship -->
+            <section class="instagram md:flex my-16 ">
+                <div class="relative group overflow-hidden">
+                    <a href="#"><img src="./images/instagram/insta-1.jpg" alt="" class="w-screen object-cover"></a>
+                    <div class="absolute  inset-0 opacity-75 hover:bg-white ">
+                        <div
+                            class=" absolute inset-0 text-white hidden group-hover:block  text-center hover:text-red-800 py-40">
+                            <span><i class="fab fa-instagram block"></i><br>
+                                <a href="#">@ ashion_shop</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                    <a href="#"><img src="./images/instagram/insta-2.jpg" alt="" class="w-screen object-cover"></a>
+                    <div class="absolute  inset-0 opacity-75 hover:bg-white ">
+                        <div
+                            class="absolute inset-0 text-white  text-center hidden group-hover:block hover:text-red-800  py-40">
+                            <span><i class="fab fa-instagram block "></i><br>
+                            </span>
+                            <a href="#">@ ashion_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                    <a href="#"><img src="./images/instagram/insta-3.jpg" alt="" class="w-screen object-cover"></a>
+                    <div class="absolute  inset-0 opacity-75 hover:bg-white ">
+                        <div
+                            class="absolute inset-0 text-white hidden group-hover:block text-center hover:text-red-800 py-40">
+                            <span><i class="fab fa-instagram block "></i><br>
+                            </span>
+                            <a href="#">@ ashion_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                    <a href="#"><img src="./images/instagram/insta-4.jpg" alt="" class="w-screen object-cover"></a>
+                    <div class="absolute  inset-0 opacity-75 hover:bg-white ">
+                        <div
+                            class="absolute inset-0 text-white hidden group-hover:block text-center hover:text-red-800 py-40">
+                            <span><i class="fab fa-instagram block "></i><br>
+                            </span>
+                            <a href="#">@ ashion_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                    <a href="#"><img src="./images/instagram/insta-5.jpg" alt="" class="w-screen object-cover"></a>
+                    <div class="absolute  inset-0 opacity-75 hover:bg-white ">
+                        <div
+                            class="absolute inset-0 hidden group-hover:block text-white  text-center hover:text-red-800 py-40">
+                            <span><i class="fab fa-instagram block "></i><br>
+                            </span>
+                            <a href="#">@ ashion_shop</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden">
+                    <a href="#"><img src="./images/instagram/insta-6.jpg" alt="" class="w-screen object-cover"></a>
+                    <div class="absolute  inset-0 opacity-75 hover:bg-white ">
+                        <div
+                            class="absolute inset-0 text-white hidden group-hover:block  text-center hover:text-red-800 py-40">
+                            <span><i class="fab fa-instagram block "></i><br>
+                            </span>
+                            <a href="#">@ ashion_shop</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- end section instagram -->
+            <footer>
+                <div
+                    class=" ml-4  grid grid-cols-1 md:grid-cols-2 md:pl-0 lg:container  lg:mx-auto lg:flex justify-between items-center ">
+                    <div>
+                        <div>
+                            <a href="#"><img src="./images/logo.png" alt=""></a>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 py-6">Lorem ipsum dolor sit amet, consectetur <br>
+                                adipiscing
+                                elit,
+                                sed
+                                do
+                                eiusmod tempor
+                                incididunt<br>
+                                cilisis.</p>
+                        </div>
+                        <div class="flex">
+                            <a href="#" class="px-2"><img src="./images/payment/payment-1.png" alt=""></a>
+                            <a href="#" class="px-2"><img src="./images/payment/payment-2.png" alt=""></a>
+                            <a href="#" class="px-2"><img src="./images/payment/payment-3.png" alt=""></a>
+                            <a href="#" class="px-2"><img src="./images/payment/payment-4.png" alt=""></a>
+                            <a href="#" class="px-2"><img src="./images/payment/payment-5.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold mb-8 mt-8 md:mt-0">
+                            <h6>QUICK LINKS</h6>
+                        </div>
+                        <div>
+                            <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">About</a>
+                            <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Blogs</a>
+                            <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Contact</a>
+                            <a href="#" class="block text-sm text-gray-700  hover:text-red-500">FAQ</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold mb-8 mt-8 md:mt-0">
+                            <h6>ACCOUNT</h6>
+                        </div>
+                        <div>
+                            <a href="#" class="block text-sm text-gray-700  mb-2  hover:text-red-500">AboMy
+                                Accountut</a>
+                            <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Orders Tracking</a>
+                            <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Checkout</a>
+                            <a href="#" class="block text-sm text-gray-700 hover:text-red-500">Wishlist</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold  mt-8 md:mt-6">
+                            <h6>NEWLETTER</h6>
+                        </div>
+                        <div class="mt-8 mb-8">
+                            <form action=" #" class="relative border border-gray-400 rounded-full outline-none">
+                                <input type="email" name="" id="" placeholder="Email*"
+                                    class=" border-0 py-3 pl-2 pr-32  rounded-full  outline-none" required>
+                                <input type="submit" name="" id="" value="SUBSRCIBE"
+                                    class=" absolute right-0 pt-3   pb-3 border border-gray-400   px-4  bg-red-500 text-white outline-none rounded-full">
+                            </form>
+                        </div>
+                        <div class="flex justify-between md:block items-center text-4xl mt-8 ">
+                            <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
+                                    class="fab fa-facebook"></i> </a>
+                            <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
+                                    class="fab fa-twitter-square"></i> </a>
+                            <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
+                                    class="fab fa-youtube-square"></i> </a>
+                            <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
+                                    class="fab fa-instagram-square"></i> </a>
+                            <a href="#" class="px-1 mr-4 inline-block pt-12 md:pt-0 hover:text-red-500"> <i
+                                    class="fab fa-pinterest-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="container mx-auto my-8">
+                <div>
+                    <span class="text-gray-700 block text-center pb-8"> Copyright © 2020 All rights reserved | This
+                        template
+                        is
+                        made
+                        with <span class="text-red-700"><i class="fas fa-heart"></i></span> by Colorlib</span>
+                </div>
+            </footer>
+            <!-- end footer -->
+        </div>
+        <!-- end container -->
+    </div>
+    <script>
+        new WOW().init();
+    </script>
+    <script>
+        var menu = document.getElementById('menu');
+        var btnMenu = document.getElementById('btnMenu');
+
+        btnMenu.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+        })
+    </script>
+    <script>
+        var heading = document.getElementById('heading');
+        var banner = document.getElementById('banner');
+        window.addEventListener('scroll', function () {
+            heading.style.opacity = 100;
+            banner.style.paddingTop = '80px';
+            banner.style.transition = 'all 1s';
+            setTimeout(function () {
+                heading.style.opacity = 0;
+                heading.style.transition = 'all 1s';
+                banner.style.paddingTop = 0;
+            }, 3000)
+        });
+        heading.addEventListener('mousemove', function () {
+            heading.style.opacity = 100;
+            banner.style.paddingTop = 80;
+        });
+    </script>
+</body>
+
+</html>
