@@ -3,18 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>controldigital</title>
-    <link href=" public/style.css" rel="stylesheet">
+    <title>index</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link href="./public/style.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Merriweather:ital,wght@0,400;1,300;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./OwlCarousel2-2.3.4/dist/assets/owl.carousel.css" type="text/css">
     <link rel="stylesheet" href="./OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-
+    <link rel="stylesheet" href="./css/animate.css">
     <script src="./js/wow.min.js"></script>
     <script src="./js//wow.min 2.js"></script>
+
     <style>
         .banner-product img {
             height: 500px;
@@ -81,1046 +84,194 @@
             color: transparent;
         }
     </style>
+    <style>
+        .banner-product img {
+            height: 500px;
+        }
+
+        .instagram img {
+            height: 320px;
+        }
+
+        body {
+            font-family: 'Almarai';
+        }
+
+        #women:hover,
+        #men:hover,
+        #kids:hover,
+        #acces:hover,
+        #cosmetic:hover {
+            height: 230px;
+            color: red;
+        }
+
+        #women ul li a:hover,
+        #men ul li a:hover,
+        #kids ul li a:hover,
+        #acces ul li a:hover,
+        #cosmetic ul li a:hover {
+            color: rgb(34, 233, 34);
+        }
+
+        input[type="checkbox"]+label {
+            display: block;
+            margin: 0.2em;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"]+label:before {
+            content: "\2714";
+            width: 20px;
+            height: 15px;
+            display: inline-block;
+            font-size: 15px;
+            color: rgb(49, 196, 49);
+            border: 1px solid #000;
+            border-radius: 0.2em;
+            padding-left: 2px;
+            padding-bottom: 20px;
+            vertical-align: bottom;
+            color: transparent;
+            transition: 0.5s;
+
+        }
+
+        input[type="checkbox"]:checked+label:before {
+            background-color: aquamarine;
+            border-color: MediumSeaGreen;
+            color: #fff;
+        }
+
+        input[type="checkbox"]+label:active:before {
+
+            transform: scale(6);
+        }
+    </style>
+    <style type="text/css">
+        input {
+            outline: none;
+        }
+
+        input[type=search] {
+            -webkit-appearance: textfield;
+            -webkit-box-sizing: content-box;
+            font-family: inherit;
+            font-size: 100%;
+        }
+
+        /* search input field */
+        input[type=search] {
+            background: url("https://img.icons8.com/material-two-tone/24/000000/search.png") no-repeat 9px center;
+            padding: 9px 10px 9px 0px;
+
+
+            -webkit-border-radius: 10em;
+            -moz-border-radius: 10em;
+            border-radius: 10em;
+
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            transition: all .5s;
+        }
+
+        /* demo B */
+        #demo-search input[type=search] {
+            width: 15px;
+            padding-left: 10px;
+            color: transparent;
+            cursor: pointer;
+        }
+
+        #demo-search input[type=search]:hover {
+            background-color: rgb(215, 102, 102);
+        }
+
+        #demo-search input[type=search]:focus {
+            width: 100px;
+            padding-left: 32px;
+            color: #000;
+            background-color: #fff;
+            cursor: auto;
+        }
+
+        #demo-search input:-moz-placeholder {
+            color: transparent;
+        }
+
+        #demo-search input::-webkit-input-placeholder {
+            color: transparent;
+        }
+    </style>
 </head>
 
-<body style="font-family: 'Lora', serif;
-font-family: 'Merriweather', serif;">
+<body>
+    <div id="header">
+
+    </div>
     <div id="main-content">
-        <header class="bg-gray-100 position fixed w-screen z-50 top-0  " id="heading">
-            <div>
-                <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0  lg:py-8">
-                    <div class="logo mx-auto md:mx-0">
-                        <a href="./index.html"><img src="./images/logo.png" alt="" class="w-full"></a>
-                        <div class="md:hidden absolute right-0 top-0 ml-6 mt-8 mr-16 ">
-                            <button id="btnMenu" class="border border-gray-700 px-2 py-1 ">
-                                <i class="fas fa-bars"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="menu hidden md:block">
-                        <nav class="pl-3">
-                            <ul class="flex xl:text-lg lg:text-sm md:text-xs">
-                                <li><a href="./index.html" class="group block relative px-3">HOME
-                                        <div class="transition duration-300 ease-in-out bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li><a href="#" class="px-4 group block relative ">WOMEN'S<div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;">
-                                        </div> </a></li>
-                                <li><a href="#" class="px-3 group block relative">MEN'S <div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;">
-                                        </div></a></li>
-                                <li><a href="shop.html" class="px-3 group block relative">SHOP <div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;">
-                                        </div></a></li>
-                                <li><a href="./ProductDetails.html" class="px-3 group block relative uppercase">
-                                        Details <div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;">
-                                        </div></a></li>
-                                <li><a href="blog.html" class="px-4 group block relative  ">BLOG<div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;">
-                                        </div> </a></li>
-                                <li><a href="contact.html" class="px-3 group block relative">CONTACT<div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;">
-                                        </div></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="md:flex hidden ">
-                        <div class=" pt-3 md:mb-4 text-gray-700 text-xs">
-                            <a href="#">Login</a>
-                            <a href="#">/ Register</a>
-                        </div>
-                        <div class="md:hidden lg:block mx-4 ">
-                            <form class="inline " id="demo-search">
-                                <input type="search" placeholder="search">
-                            </form>
-                            <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
-                            <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center hidden md:block lg:hidden mx-4">
-                    <form class="inline " id="demo-search">
-                        <input type="search" placeholder="search">
-                    </form>
-                    <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
-                    <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
-                </div>
-                <div id="menu">
-                    <ul class="bg-gray-3 md:hidden  pb-2  z-auto ml-2">
-                        <li><a href="./index.html"
-                                class="px-3 inline-block py-1 w-full hover:bg-blue-200 hover:underline">HOME
-                            </a>
-                        </li>
-                        <li><a href="#"
-                                class="px-3   inline-block py-1 w-full hover:bg-blue-200 hover:underline">WOMEN'S
-                            </a></li>
-                        <li><a href="#" class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline">MEN'S
-                            </a></li>
-                        <li><a href="./shop.html"
-                                class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline">SHOP </a>
-                        </li>
-                        <li><a href="./ProductDetails.html"
-                                class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline uppercase">Product
-                                Details
-                            </a></li>
-                        <li><a href="blog.html"
-                                class="px-4  inline-block py-1 w-full hover:bg-blue-200 hover:underline">BLOG </a>
-                        </li>
-                        <li><a href="contact.html"
-                                class="px-3  inline-block py-1 w-full hover:bg-blue-200 hover:underline">CONTACT</a>
-                        </li>
-                    </ul>
-                    <div class="md:hidden">
-                        <div class="grid grid-cols-1 md:flex justify-center">
-                            <div class=" pl-6 pr-12 pt-3 text-gray-700 text-xs">
-                                <a href="#">Login</a>
-                                <a href="#">/ Register</a>
-                            </div>
-                            <div class=" mx-4">
-                                <form class="inline " id="demo-search">
-                                    <input type="search" placeholder="search">
-                                </form>
-                                <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
-                                <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- end header -->
-        <div id="banner" class="mt-24">
-            <section class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-                <div class="banner relative wow fadeInLeftBig" data-wow-duration="1s">
-                    <div class="object-cover">
-                        <img src="./images/categories/category-1.jpg" alt="" class="h-full object-cover">
-                        <div class="absolute inset-0 pt-48 pl-4 lg:pl-16 md:hidden ">
-                            <span class="font-bold text-3xl lg:text-5xl block"
-                                style="font-family: Cookie, cursive;">Women’s
-                                fashion</span>
-                            <p style="font-family: Montserrat, sans-serif;"
-                                class="text-gray-600 py-4 text-xs lg:text-base block w-64">
-                                Sitamet,
-                                consectetur
-                                adipiscing elit, sed do eiusmod
-                                tempor<br> incidid-unt labore edolore magna
-                                aliquapendisse ultrices gravida.</p>
-                            <a href="#" class="inline-block uppercase group  font-bold pt-1 " style="left: 40%;">Shop
-                                now<div
-                                    class="transition duration-300 ease-in-out h-1 bg-red-700  w-full transform scale-x-0 group-hover:scale-x-100"
-                                    style="height: 2px;"> </div> </a>
-                        </div>
-                        <div class="absolute inset-0 pt-48 pl-16 pr-64 hidden md:block">
-                            <div class=" owl-carousel ">
-                                <div>
-                                    <span class="font-bold text-5xl block antialiased"
-                                        style="font-family: Cookie, cursive;">Women’s
-                                        fashion</span>
-                                    <p style="font-family: Montserrat, sans-serif;"
-                                        class="text-gray-600 py-4 text-base block">
-                                        Sitamet,
-                                        consectetur
-                                        adipiscing elit, sed do eiusmod
-                                        tempor<br> incidid-unt labore edolore magna
-                                        aliquapendisse ultrices gravida.</p>
-                                    <a href="#" class="inline-block uppercase group  font-bold pt-1 "
-                                        style="left: 40%;">Shop
-                                        now<div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700  w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;"> </div> </a>
-                                </div>
-                                <div>
-                                    <span class="font-bold text-5xl block antialiased"
-                                        style="font-family: Cookie, cursive;">Women’s
-                                        fashion</span>
-                                    <p style="font-family: Montserrat, sans-serif;"
-                                        class="text-gray-600 py-4 text-base block">
-                                        Sitamet,
-                                        consectetur
-                                        adipiscing elit, sed do eiusmod
-                                        tempor<br> incidid-unt labore edolore magna
-                                        aliquapendisse ultrices gravida.</p>
-                                    <a href="#" class="inline-block uppercase group  font-bold pt-1 "
-                                        style="left: 40%;">Shop
-                                        now<div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700  w-full transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;"> </div> </a>
-                                </div>
-                                <div>
-                                    <span class="font-bold text-5xl block antialiased"
-                                        style="font-family: Cookie, cursive;">Women’s
-                                        fashion</span>
-                                    <p style="font-family: Montserrat, sans-serif;"
-                                        class="text-gray-600 py-4 text-base block">
-                                        Sitamet,
-                                        consectetur
-                                        adipiscing elit, sed do eiusmod
-                                        tempor<br> incidid-unt labore edolore magna
-                                        aliquapendisse ultrices gravida.</p>
-                                    <a href="#" class="inline-block uppercase group  font-bold pt-1 "
-                                        style="left: 40%;">Shop
-                                        now<div
-                                            class="transition duration-300 ease-in-out h-1 bg-red-700  transform scale-x-0 group-hover:scale-x-100"
-                                            style="height: 2px;"> </div> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end banner -->
-                <div class="grid md:grid-cols-2 gap-3">
-                    <div>
-                        <div class="relative  wow bounceIn " data-wow-duration="1s">
-                            <div class=" absolute pt-20 pl-12 ">
-                                <span style="font-family: Montserrat, sans-serif;" class="font-semibold text-xl">Men’s
-                                    fashion</span>
-                                <a href="#" class="uppercase group block relative  font-medium pt-1">Shop now<div
-                                        class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                        style="height: 2px; width: 85px;"> </div> </a>
-                            </div>
-                            <div class="">
-                                <img src="./images/categories/category-2.jpg" alt=""
-                                    class="w-full md:w-auto h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="relative mt-3 wow bounceIn" data-wow-duration="1s">
-                            <div class="absolute pt-20 pl-12">
-                                <span style="font-family: Montserrat, sans-serif;"
-                                    class="font-semibold text-xl">Cosmetics</span>
-                                <a href="#" class="uppercase group block relative w-24 font-medium pt-1">Shop now<div
-                                        class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                        style="height: 2px; width: 85px;"> </div> </a>
-                            </div>
-                            <div>
-                                <img src="./images/categories/category-4.jpg" alt=""
-                                    class="w-full md:w-auto h-full object-cover">
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="relative  wow  bounceIn" data-wow-duration="1s">
-                            <div class="absolute pt-20 pl-12">
-                                <span style="font-family: Montserrat, sans-serif;" class="font-semibold text-xl">Kid’s
-                                    fashion</span>
-                                <a href="#" class="uppercase group block relative w-24 font-medium pt-1">Shop now<div
-                                        class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                        style="height: 2px; width: 85px;"> </div> </a>
-                            </div>
-                            <div>
-                                <img src="./images/categories/category-3.jpg" alt=""
-                                    class="w-full md:w-auto h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="relative mt-3 wow bounceIn" data-wow-duration="1s">
-                            <div class="absolute pt-20 pl-12">
-                                <span style="font-family: Montserrat, sans-serif;"
-                                    class="font-semibold text-xl">Accessories</span>
-                                <a href="#" class="uppercase group block relative w-24 font-medium pt-1">Shop now<div
-                                        class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                        style="height: 2px; width: 85px;"> </div> </a>
-                            </div>
-                            <div>
-                                <img src="./images/categories/category-5.jpg" alt=""
-                                    class="w-full md:w-auto h-full object-cover">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- end section banner -->
-            <section class="container mx-auto mt-16 px-16 text-center">
-                <div class="flex justify-between xl:ml-3 mb-8 ld:mb-12 wow bounceIn" data-wow-duration="3s" ">
-                <div>
-                    <h4 class=" font-semibold text-xl text-left lg:text-1xl">NEW PRODUCT</h4>
-                    <div class="bg-red-700 w-12" style="height: 2px;"></div>
-                </div>
-                <nav class="hidden lg:block">
-                    <ul class="flex">
-                        <li><a href="#" class="px-6 hover:bg-green-200 hover:text-red-500 rounded-md py-1">All</a></li>
-                        <li><a href="#" class="px-6 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Women’s</a>
-                        </li>
-                        <li><a href="#" class="px-6 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Men's</a>
-                        </li>
-                        <li><a href="#" class="px-6 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Kid's</a>
-                        </li>
-                        <li><a href="#"
-                                class="px-6 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Accessories</a>
-                        </li>
-                        <li><a href="#" class="px-6 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Cosmetics</a>
-                        </li>
-                    </ul>
-                </nav>
-        </div>
-        <nav class=" hidden md:block lg:hidden pt-3 pb-8 pl-6">
-            <ul class="flex">
-                <li><a href="#" class="px-2   hover:bg-green-200 hover:text-red-500 rounded-md py-1">All</a></li>
-                <li><a href="#" class="px-2 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Women’s</a></li>
-                <li><a href="#" class="px-2 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Men's</a></li>
-                <li><a href="#" class="px-2 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Kid's</a></li>
-                <li><a href="#" class="px-2 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Accessories</a></li>
-                <li><a href="#" class="px-2 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Cosmetics</a></li>
-            </ul>
-        </nav>
-        <div class="grid grid-cols-1 md:grid-cols-2  lg:flex justify-between wow bounceInUp text-center"
-            data-wow-duration=" 2s">
-            <article class="text-center group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
-                <div class=" relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-1.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="absolute top-0 mt-4 ml-4">
-                        <span class="bg-green-400 px-2 py-1 text-white">NEW</span>
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-4">
-                    <a href="#" class="block hover:text-red-500">Buttons tweed blazer</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0  lg:mx-3 xl:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-2.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
 
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 49.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 md:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center"><img src="./images/product/product-3.jpg" alt=""
-                            class="w-full object-cover md:w-auto"></div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Cotton T-Shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 lg:mx-3 xl:mx-auto ">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-4.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Slim striped pocket shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:flex justify-between mt-8 wow bounceInUp" data-wow-duration="
-            3s">
-            <article class=" group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center"><img src="./images/product/product-5.jpg" alt=""
-                            class="w-full object-cover md:w-auto"></div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Buttons tweed blazer</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 lg:mx-3 xl:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-6.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="absolute top-0 mt-4  ml-4 md:ml-12 lg:ml-4">
-                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium text-red-700">$ 49.0</span>
-                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
-                </div>
-            </article>
-            <article class=" group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-7.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Cotton T-Shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 lg:mx-3 xl:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-8.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="absolute top-0 mt-4 ml-4 md:ml-12 lg:ml-4">
-                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Slim striped pocket shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium text-red-700">$ 49.0</span>
-                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
-                </div>
-            </article>
-        </div>
-        </section>
-        <!-- end section content -->
-        <section class="banner-product relative overflow-hidden md:my-24 ">
-            <img src="./images/banner/banner-1.jpg" alt="" class="object-cover">
-            <div class="absolute inset-0 pt-48 ">
-                <div class="md:hidden text-center ">
-                    <span class="text-red-600 text-lg block">THE CHLOE
-                        COLLECTION</span>
-                    <span style="font-family: Cookie, cursive; " class="block font-black text-3xl py-6 ">THE
-                        PRIOJECT
-                        JACKET</span>
-                    <a href="#" class="inline-block uppercase group  w-32 font-bold text-lg">Shop
-                        now<div
-                            class="transition duration-300 ease-in-out h-1 bg-red-700  w-full transform scale-x-0 group-hover:scale-x-100"
-                            style="height: 2px;"> </div> </a>
-                </div>
-                <div class="text-center owl-carousel " style="padding: 0px 250px;">
-                    <div class="hidden md:block">
-                        <span class="text-red-600  xl:text-1xl ">THE CHLOE COLLECTION</span>
-                        <span style="font-family: Cookie, cursive; "
-                            class="block font-black text-2xl xl:text-5xl pt-2 pb-8 ">THE
-                            PRIOJECT
-                            JACKET</span>
-                        <a href="#" class="inline-block uppercase group  w-24 font-bold pt-1 " style="left: 40%;">Shop
-                            now<div
-                                class="transition duration-300 ease-in-out h-1 bg-red-700  w-full transform scale-x-0 group-hover:scale-x-100"
-                                style="height: 2px;"> </div> </a>
-                    </div>
-                    <div class="hidden md:block">
-                        <span class="text-red-600  xl:text-1xl ">THE CHLOE COLLECTION</span>
-                        <span style="font-family: Cookie, cursive; "
-                            class="block font-black text-2xl xl:text-5xl pt-2 pb-8 ">THE
-                            PRIOJECT
-                            JACKET</span>
-                        <a href="#" class="inline-block uppercase group  w-24 font-bold pt-1 " style="left: 40%;">Shop
-                            now<div
-                                class="transition duration-300 ease-in-out h-1 bg-red-700  w-full transform scale-x-0 group-hover:scale-x-100"
-                                style="height: 2px;"> </div> </a>
-                    </div>
-                    <div class="hidden md:block">
-                        <span class="text-red-600  xl:text-1xl ">THE CHLOE COLLECTION</span>
-                        <span style="font-family: Cookie, cursive; "
-                            class="block font-black text-2xl xl:text-5xl pt-2 pb-8 ">THE
-                            PRIOJECT
-                            JACKET</span>
-                        <a href="#" class="inline-block uppercase group  w-24 font-bold pt-1 " style="left: 40%;">Shop
-                            now<div
-                                class="transition duration-300 ease-in-out h-1 bg-red-700  w-full transform scale-x-0 group-hover:scale-x-100"
-                                style="height: 2px;"> </div> </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section banner slideshow -->
-        <section class="container mx-auto md:flex justify-between px-16  xl:ml-auto mt-12 md:mt-0">
-            <div class=" wow rollIn " data-wow-duration=" 1s">
-                <div class=" mb-12">
-                    <h4 class="font-semibold lg:text-xl">HOT TREND</h4>
-                    <div class="bg-red-700 w-12" style="height: 2px;"></div>
-                </div>
-                <div>
-                    <div>
-                        <a href="#" class="flex overflow-hidden">
-                            <img src="./images/trend/ht-1.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Chain bucket bag</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="my-4">
-                        <a href="#" class="flex overflow-hidden">
-                            <img src="./images/trend/ht-2.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Pendant earrings</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class=" flex overflow-hidden">
-                            <img src="./images/trend/ht-3.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Cotton T-Shirt</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                </div>
-            </div>
-            <div class="py-12 md:py-0 xl:px-64 lg:px-32 wow rollIn " data-wow-duration=" 1s">
-                <div class=" mb-12 ">
-                    <h4 class="font-semibold lg:text-xl">BEST SELLER</h4>
-                    <div class="bg-red-700 w-16" style="height: 2px;"></div>
-                </div>
-                <div>
-                    <div>
-                        <a href="#" class="  flex overflow-hidden">
-                            <img src="./images/trend/bs-1.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Chain bucket bag</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="my-4">
-                        <a href="#" class=" flex overflow-hidden">
-                            <img src="./images/trend/bs-2.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Zip-pockets pebbled tote<br>
-                                    briefcase </span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class=" flex overflow-hidden">
-                            <img src="./images/trend/bs-3.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Round leather bag</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                </div>
-            </div>
-            <div class="wow rollIn" data-wow-duration=" 1s">
-                <div class=" mb-12">
-                    <h4 class="font-semibold lg:text-xl">FEATURE</h4>
-                    <div class="bg-red-700 w-16" style="height: 2px;"></div>
-                </div>
-                <div>
-                    <div>
-                        <a href="#" class="flex overflow-hidden">
-                            <img src="./images/trend/f-1.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Bow wrap skirt</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="my-4">
-                        <a href="#" class=" flex overflow-hidden">
-                            <img src="./images/trend/f-2.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Metallic earrings</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="flex overflow-hidden">
-                            <img src="./images/trend/f-3.jpg" alt=""
-                                class="transition delay-150 duration-500 ease-in-out transform  hover:scale-110 object-cover">
-                            <div class="pl-3 pt-1">
-                                <span class="hover:text-red-500">Flap cross-body bag</span>
-                                <span class="block text-yellow-400 text-xs py-2"><i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i></span>
-                                <span class="font-medium">$ 59.0</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                </div>
-            </div>
-            <div>
-            </div>
-            <div>
-            </div>
-        </section>
-        <!-- end section contenttwo -->
-        <section class="my-16 md:px-16 container md:mx-auto grid lg:grid-cols-4 ">
-            <div class="w-screen md:w-auto col-span-2 wow slideInLeft" data-wow-duration=" 1s">
-                <img src=" ./images/discount.jpg" alt="" class="w-full object-cover">
-            </div>
-            <div class="col-span-2 relative bg-gray-200  wow swing " data-wow-duration=" 1s">
-                <div>
-                    <div class=" absolute inline-block bg-yellow-300 opacity-25 border-dotted border-red-600 rounded-full"
-                        style="width: 45%;;height: 50%;margin-left: 27%;margin-top: 2%;">
-                    </div>
-                    <div class="pt-12 text-center">
-                        <span style="font-family: Montserrat, sans-serif;" class="block ">DISCOUNT</span>
-                        <span style="font-family: Cookie, cursive;"
-                            class="text-red-600 text-5xl font-semibold block">Summer
-                            2019</span>
-                        <span>SALE <span class="text-red-600 font-bold">50%</span></span>
-                    </div>
-                    <div class="px-32 pt-16 lg:pt-0 xl:pt-16 flex justify-between items-center">
-                        <div>
-                            <span class="md:text-3xl font-bold" id="dayF"></span>
-                            <span class="text-xs">Day</span>
-                        </div>
-                        <div>
-                            <span class="md:text-3xl font-bold" id="hours"></span>
-                            <span class="text-xs">Hour</span>
-                        </div>
-                        <div>
-                            <span class="md:text-3xl font-bold" id="minute"></span>
-                            <span class="text-xs">Min</span>
-                        </div>
-                        <div>
-                            <span class="md:text-3xl font-bold" id="seconds"></span>
-                            <span class="text-xs">Sec</span>
-                        </div>
-                    </div>
-                    <div class="pt-4 pb-10 lg:pb-0 flex justify-center ">
-                        <a href="#" class="uppercase group block relative  font-bold pt-1" style="width: 90px;">Shop now
-                            <div class="transition duration-300 ease-in-out bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
-                                style="height: 2px;"> </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section sale -->
-        <section
-            class="container mx-auto grid grid-cols-1 md:flex justify-between items-center wow slideInRight mt-20  "
-            data-wow-duration=" 1s">
-            <div>
-
-            </div>
-            <div class=" flex mx-auto">
-                <div class="text-red-500 text-4xl">
-                    <span><i class="fas fa-car-side"></i></span>
-                </div>
-                <div style="font-family: Montserrat, sans-serif;" class="pl-4">
-                    <span class="font-medium block">Free Shipping</span>
-                    <span class="text-sm text-gray-600">For all oder over $99</span>
-                </div>
-            </div>
-            <div class="flex py-2 mx-auto">
-                <div class="text-red-500 text-4xl">
-                    <span><i class="far fa-money-bill-alt"></i></span>
-                </div>
-                <div style="font-family: Montserrat, sans-serif;" class="pl-4">
-                    <span class="font-medium block">Free Shipping</span>
-                    <span class="text-sm text-gray-600">For all oder over $99</span>
-                </div>
-            </div>
-            <div class="flex mx-auto">
-                <div class="text-red-500 text-4xl">
-                    <span><i class="far fa-life-ring"></i></span>
-                </div>
-                <div style="font-family: Montserrat, sans-serif;" class="pl-4">
-                    <span class="font-medium block">Free Shipping</span>
-                    <span class="text-sm text-gray-600">For all oder over $99</span>
-                </div>
-            </div>
-            <div class="flex  py-2 mx-auto">
-                <div class="text-red-500 text-4xl">
-                    <span><i class="fas fa-headphones"></i></span>
-                </div>
-                <div style="font-family: Montserrat, sans-serif;" class="pl-4">
-                    <span class="font-medium block">Free Shipping</span>
-                    <span class="text-sm text-gray-600">For all oder over $99</span>
-                </div>
-            </div>
-        </section>
-        <!-- end section freeship -->
-        <section class="instagram md:flex my-16 ">
-            <div class="relative group overflow-hidden">
-                <a href="#"><img src="./images/instagram/insta-1.jpg" alt="" class="w-screen object-cover"></a>
-                <div class="absolute  inset-0 opacity-75 hover:bg-white ">
-                    <div
-                        class=" absolute inset-0 text-white hidden group-hover:block  text-center hover:text-red-800 py-40">
-                        <span><i class="fab fa-instagram block "></i>
-                            <a href="#">@ ashion_shop</a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="relative group overflow-hidden">
-                <a href="#"><img src="./images/instagram/insta-2.jpg" alt="" class="w-screen object-cover"></a>
-                <div class="absolute  inset-0 opacity-75 hover:bg-white ">
-                    <div
-                        class="absolute inset-0 text-white  text-center hidden group-hover:block hover:text-red-800  py-40">
-                        <span><i class="fab fa-instagram block "></i>
-                        </span>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="relative group overflow-hidden">
-                <a href="#"><img src="./images/instagram/insta-3.jpg" alt="" class="w-screen object-cover"></a>
-                <div class="absolute  inset-0 opacity-75 hover:bg-white ">
-                    <div
-                        class="absolute inset-0 text-white hidden group-hover:block text-center hover:text-red-800 py-40">
-                        <span><i class="fab fa-instagram block "></i>
-                        </span>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="relative group overflow-hidden">
-                <a href="#"><img src="./images/instagram/insta-4.jpg" alt="" class="w-screen object-cover"></a>
-                <div class="absolute  inset-0 opacity-75 hover:bg-white ">
-                    <div
-                        class="absolute inset-0 text-white hidden group-hover:block text-center hover:text-red-800 py-40">
-                        <span><i class="fab fa-instagram block "></i>
-                        </span>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="relative group overflow-hidden">
-                <a href="#"><img src="./images/instagram/insta-5.jpg" alt="" class="w-screen object-cover"></a>
-                <div class="absolute  inset-0 opacity-75 hover:bg-white ">
-                    <div
-                        class="absolute inset-0 hidden group-hover:block text-white  text-center hover:text-red-800 py-40">
-                        <span><i class="fab fa-instagram block "></i>
-                        </span>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="relative group overflow-hidden">
-                <a href="#"><img src="./images/instagram/insta-6.jpg" alt="" class="w-screen object-cover"></a>
-                <div class="absolute  inset-0 opacity-75 hover:bg-white ">
-                    <div
-                        class="absolute inset-0 text-white hidden group-hover:block  text-center hover:text-red-800 py-40">
-                        <span><i class="fab fa-instagram block "></i>
-                        </span>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section instagram -->
-        <footer>
-            <div
-                class=" ml-4  grid grid-cols-1 md:grid-cols-2 md:pl-0 lg:container  lg:mx-auto lg:flex justify-between items-center ">
-                <div>
-                    <div>
-                        <a href="#"><img src="./images/logo.png" alt=""></a>
-                    </div>
-                    <div>
-                        <p class="text-sm text-gray-600 py-6">Lorem ipsum dolor sit amet, consectetur <br> adipiscing
-                            elit,
-                            sed
-                            do
-                            eiusmod tempor
-                            incididunt<br>
-                            cilisis.</p>
-                    </div>
-                    <div class="flex">
-                        <a href="#" class="px-2"><img src="./images/payment/payment-1.png" alt=""></a>
-                        <a href="#" class="px-2"><img src="./images/payment/payment-2.png" alt=""></a>
-                        <a href="#" class="px-2"><img src="./images/payment/payment-3.png" alt=""></a>
-                        <a href="#" class="px-2"><img src="./images/payment/payment-4.png" alt=""></a>
-                        <a href="#" class="px-2"><img src="./images/payment/payment-5.png" alt=""></a>
-                    </div>
-                </div>
-                <div>
-                    <div class="font-semibold mb-8 mt-8 md:mt-0">
-                        <h6>QUICK LINKS</h6>
-                    </div>
-                    <div>
-                        <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">About</a>
-                        <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Blogs</a>
-                        <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Contact</a>
-                        <a href="#" class="block text-sm text-gray-700  hover:text-red-500">FAQ</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="font-semibold mb-8 mt-8 md:mt-0">
-                        <h6>ACCOUNT</h6>
-                    </div>
-                    <div>
-                        <a href="#" class="block text-sm text-gray-700  mb-2  hover:text-red-500">AboMy Accountut</a>
-                        <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Orders Tracking</a>
-                        <a href="#" class="block text-sm text-gray-700 mb-2 hover:text-red-500">Checkout</a>
-                        <a href="#" class="block text-sm text-gray-700 hover:text-red-500">Wishlist</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="font-semibold  mt-8 md:mt-6">
-                        <h6>NEWLETTER</h6>
-                    </div>
-                    <div class="mt-8 mb-8">
-                        <form action=" #" class="relative border border-gray-400 rounded-full outline-none">
-                            <input type="email" name="" id="" placeholder="Email*"
-                                class=" border-0 py-3 pl-2 pr-32  rounded-full  outline-none" required>
-                            <input type="submit" name="" id="" value="SUBSRCIBE"
-                                class=" absolute right-0 pt-3   pb-3 border border-gray-400   px-4  bg-red-500 text-white outline-none rounded-full">
-                        </form>
-                    </div>
-                    <div class="flex justify-between md:block items-center text-4xl mt-8 ">
-                        <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
-                                class="fab fa-facebook"></i> </a>
-                        <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
-                                class="fab fa-twitter-square"></i> </a>
-                        <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
-                                class="fab fa-youtube-square"></i> </a>
-                        <a href="#" class="px-1 inline-block pt-12 md:pt-0 hover:text-red-500"><i
-                                class="fab fa-instagram-square"></i> </a>
-                        <a href="#" class="px-1 mr-4 inline-block pt-12 md:pt-0 hover:text-red-500"> <i
-                                class="fab fa-pinterest-square"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="container mx-auto my-8">
-            <div>
-                <span class="text-gray-700 block text-center pb-8"> Copyright © 2020 All rights reserved | This template
-                    is
-                    made
-                    with <span class="text-red-700"><i class="fas fa-heart"></i></span> by Colorlib</span>
-            </div>
-        </footer>
-        <!-- end footer -->
     </div>
-    <!-- end container -->
-    </div>
+    <div id="footer"></div>
+    <script src="main.js"></script>
+    <script src="./js/wow.min.js"></script>
     <script>
-        new WOW().init();
-    </script>
-
-    <script>
-        var menu = document.getElementById('menu');
-        var btnMenu = document.getElementById('btnMenu');
-
-        btnMenu.addEventListener('click', function () {
-            menu.classList.toggle('hidden');
-        })
+        function wow() {
+            new WOW().init();
+        }
+        window.addEventListener('DOMContentLoaded', wow);
     </script>
     <script src="./OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js"></script>
     <script src="./OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
     <script>
-        var owl = $('.owl-carousel');
-        owl.owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 2000,
-            autoplayHoverPause: true
-        });
+        function owl() {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true
+            });
+        }
+        //  chạy khi mà html load xong hết
+        window.addEventListener('DOMContentLoaded', owl);
     </script>
     <script>
-        var heading = document.getElementById('heading');
-        var banner = document.getElementById('banner');
-        window.addEventListener('scroll', function () {
-            heading.style.opacity = 100;
-            banner.style.marginTop = '96px';
-            banner.style.transition = 'all 1s';
-            setTimeout(function () {
-                heading.style.opacity = 0;
-                heading.style.transition = 'all 1s';
-                banner.style.marginTop = 0;
-            }, 3000)
-        });
-        heading.addEventListener('mousemove', function () {
-            heading.style.opacity = 100;
-            banner.style.marginTop = 96;
-        });
+        function btn() {
+            var menu = document.getElementById('menu');
+            var btnMenu = document.getElementById('btnMenu');
+            btnMenu.addEventListener('click', function () {
+                menu.classList.toggle('hidden');
+            })
+        }
+        window.addEventListener('DOMContentLoaded', btn);
+    </script>
+    <script>
+        function scol() {
+            var heading = document.getElementById('heading');
+            var banner = document.getElementById('banner');
+            window.addEventListener('scroll', function () {
+                heading.style.opacity = 100;
+                banner.style.marginTop = '96px';
+                banner.style.transition = 'all 1s';
+                setTimeout(function () {
+                    heading.style.opacity = 0;
+                    heading.style.transition = 'all 1s';
+                    banner.style.marginTop = 0;
+                }, 3000)
+            });
+            heading.addEventListener('mousemove', function () {
+                heading.style.opacity = 100;
+                banner.style.marginTop = 96;
+            });
+        }
+        window.addEventListener('DOMContentLoaded', scol);
     </script>
     <script>
         // Set the date we're counting down to
@@ -1152,13 +303,15 @@ font-family: 'Merriweather', serif;">
 
 
 
-            // If the count down is over, write some text 
-            // if (distance < 0) {
-            //     clearInterval(x);
-            //     document.getElementById("demo").innerHTML = "EXPIRED";
-            // }
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+            }
         }, 1000);
     </script>
+
+
 </body>
 
 </html>

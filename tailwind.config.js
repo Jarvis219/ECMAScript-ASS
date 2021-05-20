@@ -3,10 +3,8 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
   },
-  purge: {
-    enabled: false,
-    content: ['*.html', './public/style.css', './src/style.css'],
-  },
+  purge: ['*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
+  mode: 'jit',
   theme: {
     rotate: {
       '-180': '-180deg',
@@ -43,21 +41,6 @@ module.exports = {
       }
     },
   },
-  variants: {
-    translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    backgroundSize: ['responsive', 'hover', 'focus'],
-    objectFit: ['responsive', 'hover', 'focus'],
-    rotate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    backgroundAttachment: ['responsive', 'hover', 'focus'],
-    margin: ['responsive', 'hover', 'focus'],
-    display: ['responsive', 'hover', 'focus', 'group-hover'],
-    flexGrow: ['responsive', 'hover', 'focus'],
-    boxShadow: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    fontFamily: ['responsive', 'hover', 'focus'],
-    zIndex: ['responsive', 'hover', 'focus', 'group-hover'],
-    width: ['responsive', 'hover', 'focus', 'group-hover'],
-    height: ['responsive', 'hover', 'focus', 'group-hover'],
-  },
+
   plugins: [],
 }
