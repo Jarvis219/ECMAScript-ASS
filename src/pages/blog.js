@@ -1,10 +1,13 @@
+import Header from '../components/header';
+import Footer from '../components/footer';
 const Blog = {
     render() {
         return /*html */`
+        ${Header.render()}
         <div>
         <div class="container mx-auto px-16 pt-24">
             <div class="my-8 ">
-                <a href="./index.html"><span><i class="fas fa-home"></i></span>
+                <a href="#/"><span><i class="fas fa-home"></i></span>
                     <span style="font-family: FontAwesome;">Home > <span
                             class="text-gray-600">Blog</span></span>
                     </i></a>
@@ -282,7 +285,7 @@ const Blog = {
         </div>
     </section>
     <!-- end section instagram -->
-
+        ${Footer.render()}
         `;
 
     }

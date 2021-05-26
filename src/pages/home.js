@@ -1,7 +1,54 @@
-
+import Header from '../components/header';
+import Footer from '../components/footer';
+// import CountDown from '../functions/countDown';
+// console.log(CountDown.render());
 const Home = {
-    render() {
+    async render() {
+        var result = '';
+        try {
+            const response = await fetch("http://localhost:3001/products");
+            const data = await response.json();
+            result = data.map(element => {
+                return /*html*/`
+                <article class="text-center group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
+                    <div class=" relative  overflow-hidden">
+                        <div class="flex justify-center">
+                            <img src="https://picsum.photos/200/300" style="Width:270px; height:360px" alt="" class="w-full object-cover md:w-auto">
+                        </div>
+                        <div class="absolute top-0 mt-4 ml-4">
+                            <span class="bg-green-400 px-2 py-1 text-white">NEW</span>
+                        </div>
+                        <div class="flex justify-center">
+                            <div
+                                class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                        class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                <a href="#"
+                                    class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
+                                        class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                        class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <a href="#/products/${element.id}" class="block hover:text-red-500">${element.name}</a>
+                        <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i></span>
+                        <span class="font-medium">$ ${element.price}</span>
+                    </div>
+                </article>
+                `;
+            }).join('');
+        } catch (error) {
+            console.log(error);
+        }
+
         return  /*html*/`
+        ${Header.render()}
         <div id="banner" class="">
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-3">
                 <div class="banner relative wow fadeInLeftBig" data-wow-duration="1s">
@@ -174,245 +221,9 @@ const Home = {
                 <li><a href="#" class="px-2 hover:bg-green-200 hover:text-red-500 rounded-md py-1">Cosmetics</a></li>
             </ul>
         </nav>
-        <div class="grid grid-cols-1 md:grid-cols-2  lg:flex justify-between wow bounceInUp text-center"
+        <div class="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-2 wow bounceInUp text-center"
             data-wow-duration=" 2s">
-            <article class="text-center group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
-                <div class=" relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-1.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="absolute top-0 mt-4 ml-4">
-                        <span class="bg-green-400 px-2 py-1 text-white">NEW</span>
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-4">
-                    <a href="#/products" class="block hover:text-red-500">Buttons tweed blazer</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0  lg:mx-3 xl:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-2.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 49.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 md:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center"><img src="./images/product/product-3.jpg" alt=""
-                            class="w-full object-cover md:w-auto"></div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Cotton T-Shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 lg:mx-3 xl:mx-auto ">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-4.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Slim striped pocket shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:flex justify-between mt-8 wow bounceInUp" data-wow-duration="
-            3s">
-            <article class=" group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center"><img src="./images/product/product-5.jpg" alt=""
-                            class="w-full object-cover md:w-auto"></div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Buttons tweed blazer</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 lg:mx-3 xl:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-6.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="absolute top-0 mt-4  ml-4 md:ml-12 lg:ml-4">
-                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium text-red-700">$ 49.0</span>
-                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
-                </div>
-            </article>
-            <article class=" group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-7.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Cotton T-Shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium">$ 59.0</span>
-                </div>
-            </article>
-            <article class="group py-8 md:py-0 lg:mx-3 xl:mx-auto">
-                <div class="relative  overflow-hidden">
-                    <div class="flex justify-center">
-                        <img src="./images/product/product-8.jpg" alt="" class="w-full object-cover md:w-auto">
-                    </div>
-                    <div class="absolute top-0 mt-4 ml-4 md:ml-12 lg:ml-4">
-                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
-                    </div>
-                    <div class="flex justify-center">
-                        <div
-                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#"
-                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
-                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" pt-4">
-                    <a href="#" class="block hover:text-red-500">Slim striped pocket shirt</a>
-                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i></span>
-                    <span class="font-medium text-red-700">$ 49.0</span>
-                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
-                </div>
-            </article>
+         ${result}
         </div>
         </section>
         <!-- end section content -->
@@ -797,6 +608,7 @@ const Home = {
                 </div>
             </div>
         </section>
+        ${Footer.render()}
      `;
     }
 }

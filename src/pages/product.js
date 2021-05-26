@@ -1,6 +1,57 @@
+import Header from '../components/header';
+import Footer from '../components/footer';
+
+
 const Product = {
-    render() {
+
+    async render() {
+        // fetch("http://localhost:3001/products")
+        //     .then(response => response.json())
+        //     .then(data => console.log(data))
+        var result = '';
+        try {
+            const response = await fetch("http://localhost:3001/products");
+            const data = await response.json();
+
+            result = data.map(element => {
+                console.log(element);
+                return /*html*/`
+                <article class="col-span-12 gap-3 md:col-span-1 group my-4 md:my-0 text-center">
+                                    <div class="relative overflow-hidden">
+                                        <img src="https://picsum.photos/200/300" alt=""  style="Width:270px; height:360px" class="w-full object-cover">
+                                        <div class="flex justify-center">
+                                            <div
+                                                class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                                <a href="#/products/${element.id}"
+                                                    class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                        class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                                <a href="#/products/${element.id}"
+                                                    class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
+                                                        class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                                <a href="#/products/${element.id}"
+                                                    class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                        class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
+                                        <a href="#/products/${element.id}" class="block  hover:text-red-500">${element.name}</a>
+                                        <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i></span>
+                                        <span class="font-medium">$ ${element.price}</span>
+                                    </div>
+                                </article>
+            `;
+            }).join('');
+        } catch (error) {
+            console.log(error);
+        }
+
         return /*html */`
+        ${Header.render()}
         <div class="container mx-auto px-16 pt-24">
                 <div class="my-8">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
@@ -180,282 +231,11 @@ const Product = {
                     </aside>
                     <!-- end content-left -->
                     <section class="col-span-12 md:col-span-9 ">
-                        <div class="grid md:grid-cols-3 gap-2 lg:flex justify-between items-center wow bounceInUp "
+                        <div class="grid md:grid-cols-3 gap-3 lg:grid-cols-3  wow bounceInUp "
                             data-wow-duration="
-                    1s">
-                            <article class="col-span-12 md:col-span-1   group my-4 md:my-0 text-center ">
-                                <div class="relative overflow-hidden">
-                                    <img src="./images/shop/shop-1.jpg" alt="" class=" w-full object-cover">
-                                    <div class="absolute top-0 mt-4 ml-4">
-                                        <span class="bg-green-400 px-2 py-1 text-xs lg:text-base text-white">NEW</span>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8 text-xs transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200 p-3  md:p-1 lg:p-2 xl:p-3 rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  p-3 md:p-1 lg:p-2  xl:p-3 rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  p-3 md:p-1 lg:p-2 xl:p-3 rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" pt-4 md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block  hover:text-red-500">Buttons tweed </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 49.0</span>
-                                </div>
-                            </article>
-                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
-                                <div class="relative overflow-hidden">
-                                    <img src="./images/shop/shop-2.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 49.0</span>
-                                </div>
-                            </article>
-                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
-                                <div class="relative overflow-hidden">
-                                    <img src="./images/shop/shop-3.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs pl-12 md:pl-10 lg:pl-12 xl:pl-16    transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 49.0</span>
-                                </div>
-                            </article>
-                        </div>
-                        <div class=" grid md:grid-cols-3 gap-2 lg:flex justify-between items-center my-16 wow bounceInUp "
-                            data-wow-duration="
-                    1s">
-                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
-                                <div class=" relative overflow-hidden">
-                                    <img src="./images/shop/shop-4.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs     transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block hover:text-red-500">Buttons tweed </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 59.0</span>
-                                </div>
-                            </article>
-                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
-                                <div class="relative overflow-hidden">
-                                    <img src="./images/shop/shop-5.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="absolute top-0 mt-4 ml-4">
-                                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium text-red-700">$ 49.0</span>
-                                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
-                                </div>
-                            </article>
-                            <article class="col-span-12 md:col-span-1 group my-4 md:my-0 text-center">
-                                <div class="relative overflow-hidden">
-                                    <img src="./images/shop/shop-6.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 49.0</span>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-2 lg:flex justify-between items-center wow bounceInUp "
-                            data-wow-duration="1s">
-                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
-                                <div class=" relative overflow-hidden">
-                                    <img src="./images/shop/shop-7.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block hover:text-red-500">Buttons tweed </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 59.0</span>
-                                </div>
-                            </article>
-                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
-                                <div class="relative overflow-hidden">
-                                    <img src="./images/shop/shop-8.jpg" alt="" class="w-full object-cover">
-                                    <div class="absolute top-0 mt-4 ml-4">
-                                        <span class="bg-blue-600 text-white px-2 py-1">OUT OF STOCK</span>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 49.0</span>
-                                </div>
-                            </article>
-                            <article class="col-span-12 md:col-span-1  group my-4 md:my-0 text-center">
-                                <div class="relative overflow-hidden">
-                                    <img src="./images/shop/shop-9.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   p-3  md:p-1 lg:p-2 xl:p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="absolute top-0 mt-4 ml-4">
-                                        <span class="bg-red-600 text-white px-2 py-1">SALE</span>
-                                    </div>
-                                </div>
-                                <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
-                                    <a href="#" class="block  hover:text-red-500">Flowy striped skirt </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium text-red-700">$ 49.0</span>
-                                    <span class="font-medium line-through text-gray-500"> $ 59.0</span>
-                                </div>
-                            </article>
+                    1s">     
+                                ${result}
+                       
                         </div>
                         <div>
                             <nav>
@@ -597,7 +377,7 @@ const Product = {
                 </div>
             </section>
             <!-- end section instagram -->
-        
+        ${Footer.render()}
         `;
     }
 }

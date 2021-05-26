@@ -1,8 +1,8 @@
 export const parseRequestUrl = () => {
     const url = window.location.hash.toLocaleLowerCase();
-    console.log(url);
+    // console.log(url);
     const request = url.split('/');
-    console.log(request);
+    // console.log(request);
     return {
         resource: request[1],
         id: request[2],
@@ -10,8 +10,4 @@ export const parseRequestUrl = () => {
     }
 }
 
-export const $ = selector => {
-    let elements = document.querySelectorAll(selector);
-    return elements.length == 1 ? elements[0] : elements
-}
 

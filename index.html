@@ -6,17 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
-    <link rel="stylesheet" href="css/all.min.css">
     <link href="./public/style.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Merriweather:ital,wght@0,400;1,300;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/dist/assets/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/animate.css">
-    <script src="./js/wow.min.js"></script>
-    <script src="./js//wow.min 2.js"></script>
+    <link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
 
     <style>
         .banner-product img {
@@ -210,38 +205,14 @@
 </head>
 
 <body>
-    <div id="header">
 
-    </div>
     <div id="main-content">
 
     </div>
-    <div id="footer"></div>
     <script src="main.js"></script>
-    <script src="./js/wow.min.js"></script>
-    <script>
-        function wow() {
-            new WOW().init();
-        }
-        window.addEventListener('DOMContentLoaded', wow);
-    </script>
-    <script src="./OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js"></script>
-    <script src="./OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
-    <script>
-        function owl() {
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
-                items: 1,
-                loop: true,
-                margin: 10,
-                autoplay: true,
-                autoplayTimeout: 2000,
-                autoplayHoverPause: true
-            });
-        }
-        //  chạy khi mà html load xong hết
-        window.addEventListener('DOMContentLoaded', owl);
-    </script>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+
     <script>
         function btn() {
             var menu = document.getElementById('menu');

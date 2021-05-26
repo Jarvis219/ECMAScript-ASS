@@ -1,6 +1,9 @@
+import Header from '../components/header';
+import Footer from '../components/footer';
 const Contact = {
     render() {
         return /*html*/`
+        ${Header.render()}
         <div class="container mx-auto md:px-16 pt-24">
                 <div>
                     <div class="my-8 ml-2 md:ml-0">
@@ -146,7 +149,7 @@ const Contact = {
             </div>
         </section>
             <!-- end section instagram -->
-        
+        ${Footer.render()}
         `;
     }
 }
