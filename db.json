@@ -51,8 +51,8 @@
                 "M",
                 "L"
             ],
-            "commentID": 1,
-            "imageID": 1,
+            "commentId": 1,
+            
             "classify": "nam"
         },
         {
@@ -72,8 +72,8 @@
                 "M",
                 "L"
             ],
-            "commentID": 2,
-            "imageID": 2,
+            "commentId": 2,
+    
             "classify": "nam"
         },
         {
@@ -93,8 +93,8 @@
                 "M",
                 "L"
             ],
-            "commentID": 3,
-            "imageID": 3,
+            "commentId": 3,
+  
             "classify": "nam"
         },
         {
@@ -114,8 +114,8 @@
                 "M",
                 "L"
             ],
-            "commentID": 4,
-            "imageID": 4,
+            "commentId": 4,
+         
             "classify": "nam"
         },
         {
@@ -135,8 +135,8 @@
                 "M",
                 "L"
             ],
-            "commentID": 5,
-            "imageID": 5,
+            "commentId": 5,
+
             "classify": "nữ"
         },
         {
@@ -156,8 +156,8 @@
                 "M",
                 "L"
             ],
-            "commentID": 6,
-            "imageID": 6,
+            "commentId": 6,
+        
             "classify": "nữ"
         },
         {
@@ -177,12 +177,12 @@
                 "M",
                 "L"
             ],
-            "commentID": 7,
-            "imageID": 7,
+            "commentId": 7,
+       
             "classify": "nữ"
         },
         {
-            "productID": 8,
+            "id": 8,
             "name": "macbook",
             "categoryId": 8,
             "content": "macbook 2021",
@@ -198,15 +198,23 @@
                 "M",
                 "L"
             ],
-            "commentID": 8,
-            "imageID": 8,
+            "commentId": 8,
             "classify": "nữ"
         }
     ],
     "images": [
         {
-            "imageID": 1,
-            "productID": 1,
+            "id": 1,
+            "productId": 1,
+            "imageIntro": "https://i.pinimg.com/originals/26/15/32/261532160de8dd3c2846abd445b25d0e.jpg",
+            "image1": "",
+            "image2": "",
+            "image3": "",
+            "image4": ""
+        },
+        {
+            "id": 2,
+            "productId": 2,
             "imageIntro": "",
             "image1": "",
             "image2": "",
@@ -214,8 +222,8 @@
             "image4": ""
         },
         {
-            "imageID": 2,
-            "productID": 2,
+            "id": 3,
+            "productId": 3,
             "imageIntro": "",
             "image1": "",
             "image2": "",
@@ -223,8 +231,8 @@
             "image4": ""
         },
         {
-            "imageID": 3,
-            "productID": 3,
+            "id": 4,
+            "productId": 4,
             "imageIntro": "",
             "image1": "",
             "image2": "",
@@ -232,8 +240,8 @@
             "image4": ""
         },
         {
-            "imageID": 4,
-            "productID": 4,
+            "id": 5,
+            "productId": 5,
             "imageIntro": "",
             "image1": "",
             "image2": "",
@@ -241,8 +249,8 @@
             "image4": ""
         },
         {
-            "imageID": 5,
-            "productID": 5,
+            "id": 6,
+            "productId": 6,
             "imageIntro": "",
             "image1": "",
             "image2": "",
@@ -250,8 +258,8 @@
             "image4": ""
         },
         {
-            "imageID": 6,
-            "productID": 6,
+            "id": 7,
+            "productId": 7,
             "imageIntro": "",
             "image1": "",
             "image2": "",
@@ -259,17 +267,8 @@
             "image4": ""
         },
         {
-            "imageID": 7,
-            "productID": 7,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "imageID": 8,
-            "productID": 8,
+            "id": 8,
+            "productId": 8,
             "imageIntro": "",
             "image1": "",
             "image2": "",
@@ -279,33 +278,33 @@
     ],
     "comments": [
         {
-            "commentID": 1,
-            "productID": 1,
+            "id": 1,
+            "productId": 1,
             "star": 5,
-            "userID": 1
+            "userId": 1
         },
         {
-            "commentID": 2,
-            "productID": 2,
+            "id": 2,
+            "productId": 2,
             "star": 5,
-            "userID": 2
+            "userId": 2
         },
         {
-            "commentID": 3,
-            "productID": 3,
+            "id": 3,
+            "productId": 3,
             "star": 5,
-            "userID": 3
+            "userId": 3
         },
         {
-            "commentID": 4,
-            "productID": 4,
+            "id": 4,
+            "productId": 4,
             "star": 5,
-            "userID": 4
+            "userId": 4
         }
     ],
     "contacts": [
         {
-            "contactID": 1,
+            "id": 1,
             "contactName": "kaio",
             "contactEmail": "quangtaph12673@fpt.edu.vn",
             "contactPhone": "09892828282",
@@ -314,7 +313,7 @@
             "contactStatus": 0
         },
         {
-            "contactID": 2,
+            "id": 2,
             "contactName": "rin",
             "contactEmail": "rin@fpt.edu.vn",
             "contactPhone": "09898765432",
@@ -325,7 +324,7 @@
     ],
     "information": [
         {
-            "informationID": 1,
+            "id": 1,
             "informationPhone": "09686868686",
             "informationEmail": "ahsion@gmail.com",
             "informationAddress": "HN",
@@ -333,29 +332,29 @@
             "informationMap": "google map"
         }
     ],
-    "slide": [
+    "slIde": [
         {
-            "slideID": 1,
-            "slideName": "slide1",
-            "slideLink": " ",
-            "slideImage": "img1"
+            "id": 1,
+            "slIdeName": "slIde1",
+            "slIdeLink": " ",
+            "slIdeImage": "img1"
         },
         {
-            "slideID": 2,
-            "slideName": "slide2",
-            "slideLink": " ",
-            "slideImage": "img1"
+            "id": 2,
+            "slIdeName": "slIde2",
+            "slIdeLink": " ",
+            "slIdeImage": "img1"
         },
         {
-            "slideID": 3,
-            "slideName": "slide3",
-            "slideLink": " ",
-            "slideImage": "img1"
+            "id": 3,
+            "slIdeName": "slIde3",
+            "slIdeLink": " ",
+            "slIdeImage": "img1"
         }
     ],
     "users": [
         {
-            "userID": 1,
+            "id": 1,
             "username": "user1",
             "password": "pass1",
             "fullName": "kaio-shin",
@@ -365,7 +364,7 @@
             "permission": 0
         },
         {
-            "userID": 2,
+            "id": 2,
             "username": "user2",
             "password": "pass2",
             "fullName": "kudo",
@@ -377,27 +376,27 @@
     ],
     "carts": [
         {
-            "cartID": 1,
-            "productID": 1,
-            "userID": 1,
+            "id": 1,
+            "productId": 1,
+            "userId": 1,
             "cartFavorite": 1
         },
         {
-            "cartID": 2,
-            "productID": 2,
-            "userID": 2,
+            "id": 2,
+            "productId": 2,
+            "userId": 2,
             "cartFavorite": 2
         },
         {
-            "cartID": 3,
-            "productID": 3,
-            "userID": 3,
+            "id": 3,
+            "productId": 3,
+            "userId": 3,
             "cartFavorite": 3
         },
         {
-            "cartID": 4,
-            "productID": 4,
-            "userID": 4,
+            "id": 4,
+            "productId": 4,
+            "userId": 4,
             "cartFavorite": 4
         }
     ]

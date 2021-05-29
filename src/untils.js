@@ -1,4 +1,4 @@
-export const parseRequestUrl = () => {
+export const useParams = () => {
     const url = window.location.hash.toLocaleLowerCase();
     // console.log(url);
     const request = url.split('/');

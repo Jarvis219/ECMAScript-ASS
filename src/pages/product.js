@@ -1,6 +1,6 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-
+import productAPI from '../api/productAPI';
 
 const Product = {
 
@@ -8,13 +8,11 @@ const Product = {
         // fetch("http://localhost:3001/products")
         //     .then(response => response.json())
         //     .then(data => console.log(data))
-        var result = '';
+       
         try {
-            const response = await fetch("http://localhost:3001/products");
-            const data = await response.json();
-
-            result = data.map(element => {
-                console.log(element);
+            const {data:products} = await productAPI.list();
+            var result = products.map(element => {
+                // console.log(element);
                 return /*html*/`
                 <article class="col-span-12 gap-3 md:col-span-1 group my-4 md:my-0 text-center">
                                     <div class="relative overflow-hidden">

@@ -1,19 +1,22 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { parseRequestUrl } from '../untils';
-
+import { useParams } from '../untils';
+import productAPI from '../api/productAPI';
 
 const ProductDetail = {
     async render() {
-        const { id } = parseRequestUrl();
-        const response = await fetch("http://localhost:3001/products");
-        const data = await response.json();
+        // console.log(useParams());
+        const { id } = useParams();
+        // const response = await fetch("http://localhost:3001/products");
+        // const data = await response.json();
         // console.log(data);
-        const result = data.find(element => {
-            return element.id == id;
-        })
+        // const result = data.find(element => {
+        //     return element.id == id;
+        // })
         // console.log(result.name);
-
+        
+        const {data:result} = await productAPI.read(id);
+        // console.log(result);
         return /*html*/`
         ${Header.render()}
             <div class="container mx-auto px-16 pt-24">

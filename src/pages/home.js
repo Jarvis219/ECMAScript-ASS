@@ -9,6 +9,7 @@ const Home = {
             const response = await fetch("http://localhost:3001/products");
             const data = await response.json();
             result = data.map(element => {
+                // console.log(element);
                 return /*html*/`
                 <article class="text-center group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
                     <div class=" relative  overflow-hidden">
@@ -50,7 +51,7 @@ const Home = {
         return  /*html*/`
         ${Header.render()}
         <div id="banner" class="">
-            <section class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-3 mt-24">
                 <div class="banner relative wow fadeInLeftBig" data-wow-duration="1s">
                     <div class="object-cover">
                         <img src="./images/categories/category-1.jpg" alt="" class="h-full object-cover">

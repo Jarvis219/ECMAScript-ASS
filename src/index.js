@@ -7,7 +7,7 @@ import ShopCart from './pages/shopCart';
 import CheckOut from './pages/checkout';
 import BlogDetail from './pages/blogdetail';
 import Error404 from './pages/error404';
-import { parseRequestUrl } from './untils';
+import { useParams } from './untils';
 import 'owl.carousel';
 
 const $$ = selector => {
@@ -26,7 +26,7 @@ const routes = {
     '/blogdetail': BlogDetail
 }
 const router = async () => {
-    const { resource, id } = parseRequestUrl();
+    const { resource, id } = useParams();
     const parseUrl = (resource ? `/${resource}` : '/') + (id ? `/:id` : '');
     // console.log("par :" + parseUrl);
     const page = routes[parseUrl] ? routes[parseUrl] : Error404;
