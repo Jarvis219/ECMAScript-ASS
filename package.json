@@ -13,15 +13,18 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "firebase": "^8.6.3",
     "json-server": "^0.16.3",
     "owl.carousel": "^2.3.4",
     "postcss-cli": "^8.3.1",
+    "uuid": "^8.3.2",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
+    "babel-plugin-root-import": "^6.6.0",
     "cross-env": "^7.0.3",
     "postcss": "^8.2.15",
     "tailwindcss": "^2.1.2"

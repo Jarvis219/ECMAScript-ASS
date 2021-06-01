@@ -16,7 +16,7 @@ const Product = {
                 return /*html*/`
                 <article class="col-span-12 gap-3 md:col-span-1 group my-4 md:my-0 text-center">
                                     <div class="relative overflow-hidden">
-                                        <img src="https://picsum.photos/200/300" alt=""  style="Width:270px; height:360px" class="w-full object-cover">
+                                        <img src="${element.images[0]}" alt=""  style="Width:270px; height:360px" class="w-full object-cover">
                                         <div class="flex justify-center">
                                             <div
                                                 class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">

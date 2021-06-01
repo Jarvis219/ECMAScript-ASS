@@ -7,13 +7,13 @@ import ShopCart from './pages/shopCart';
 import CheckOut from './pages/checkout';
 import BlogDetail from './pages/blogdetail';
 import Error404 from './pages/error404';
-import { useParams } from './untils';
+import { useParams, $$ } from './untils';
+import Adminproducts from './pages/admin/Product/listproducts';
+import EitProduct from './pages/admin/Product/editproduct';
+import AddProduct from './pages/admin/Product/addproduct';
 import 'owl.carousel';
 
-const $$ = selector => {
-    let elements = document.querySelectorAll(selector);
-    return elements.length == 1 ? elements[0] : elements
-}
+
 
 const routes = {
     '/': Home,
@@ -23,7 +23,10 @@ const routes = {
     '/products/:id': ProductDetail,
     '/shopcart': ShopCart,
     '/checkout': CheckOut,
-    '/blogdetail': BlogDetail
+    '/blogdetail': BlogDetail,
+    '/listproducts': Adminproducts,
+    '/editproduct/:id': EitProduct,
+    '/addproduct': AddProduct
 }
 const router = async () => {
     const { resource, id } = useParams();
@@ -32,16 +35,21 @@ const router = async () => {
     const page = routes[parseUrl] ? routes[parseUrl] : Error404;
     // console.log("page: " + page);
     $$('#main-content').innerHTML = await page.render();
-    $(document).ready(function () {
-        $('.owl-carousel').owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 2000,
-            autoplayHoverPause: true
+    if(page.afterRender){
+    await page.afterRender();
+    }else{
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true
+            });
         });
-    });
+    }
+  
 }
 window.addEventListener('DOMContentLoaded', router);
 window.addEventListener('hashchange', router);

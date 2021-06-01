@@ -3,7 +3,7 @@ const Header = {
         return /*html*/`
         <header class="bg-gray-100 position fixed w-screen z-50 top-0  " id="heading">
             <div>
-                <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0  lg:py-8">
+                <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0 lg:gap-20 lg:py-8">
                     <div class="logo mx-auto md:mx-0">
                         <a href="./index.html"><img src="./images/logo.png" alt="" class="w-full"></a>
                         <div class="md:hidden absolute right-0 top-0 ml-6 mt-8 mr-16 ">
@@ -12,7 +12,7 @@ const Header = {
                             </button>
                         </div>
                     </div>
-                    <div class="menu hidden md:block">
+                    <div class="menu hidden md:block pt-3">
                         <nav class="pl-3">
                             <ul class="flex xl:text-lg lg:text-sm md:text-xs">
                                 <li><a href="#/" class="group block relative px-3">HOME

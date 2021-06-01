@@ -9,12 +9,12 @@ const Home = {
             const response = await fetch("http://localhost:3001/products");
             const data = await response.json();
             result = data.map(element => {
-                // console.log(element);
+                    // console.log(element.images[0]);
                 return /*html*/`
                 <article class="text-center group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
                     <div class=" relative  overflow-hidden">
                         <div class="flex justify-center">
-                            <img src="https://picsum.photos/200/300" style="Width:270px; height:360px" alt="" class="w-full object-cover md:w-auto">
+                            <img src="${element.images[0]}" style="Width:270px; height:360px" alt="" class="w-full object-cover md:w-auto">
                         </div>
                         <div class="absolute top-0 mt-4 ml-4">
                             <span class="bg-green-400 px-2 py-1 text-white">NEW</span>

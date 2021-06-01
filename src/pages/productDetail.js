@@ -6,7 +6,7 @@ import productAPI from '../api/productAPI';
 const ProductDetail = {
     async render() {
         // console.log(useParams());
-        const { id } = useParams();
+        const { id } =  useParams();
         // const response = await fetch("http://localhost:3001/products");
         // const data = await response.json();
         // console.log(data);
@@ -16,35 +16,41 @@ const ProductDetail = {
         // console.log(result.name);
         
         const {data:result} = await productAPI.read(id);
-        // console.log(result);
+        const size = result.size.map((element)=>{
+            return /*html */`
+            
+            <option  value="${element}">${element}</option>
+            `;
+        }).join("");
+        console.log(size);
         return /*html*/`
         ${Header.render()}
-            <div class="container mx-auto px-16 pt-24">
-                <div class="my-8">
+            <div class="container mx-auto px-16 pt-[120px]">
+                <div class="my-3">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
-                        <span style="font-family: FontAwesome;">Home > Women's > <span class="text-gray-600"></span></span>
+                        <span style="font-family: FontAwesome;">Home > ${result.classify} >${result.name} <span class="text-gray-600"></span></span>
                         </i></a>
                 </div>
-                <div class="grid md:grid-cols-2 gap-2 mt-12 md:mt-0 wow fadeInDown " data-wow-duration=" 1s">
+                <div class="grid md:grid-cols-2 gap-2 mt-10 md:mt-0 wow fadeInDown " data-wow-duration=" 1s">
                     <div class=" grid grid-cols-4">
                         <div class="pr-1 md:pr-0">
                             <span><img onclick="showDetails(this)" data-src="./images/product/details/product-3.jpg"
-                                    src="./images/product/details/thumb-1.jpg" alt="" id="imgOne"
-                                    class="object-cover"></span>
+                                    src="${result.images[1]}" alt="" id="imgOne"
+                                    class="object-cover w-36 h-36 shadow" ></span>
                             <span class="block py-1 md:py-5"><img onclick="showDetails(this)"
                                     data-src="./images/product/details/product-1.jpg"
-                                    src="./images/product/details/thumb-2.jpg" id="imgTwo" alt=""
-                                    class="object-cover"></span>
+                                    src="${result.images[2]}" id="imgTwo" alt=""
+                                    class="object-cover w-36 h-36 shadow" ></span>
                             <span><img onclick="showDetails(this)" data-src="./images/product/details/product-2.jpg"
-                                    src="./images/product/details/thumb-3.jpg" id="imgThree" alt=""
-                                    class="object-cover"></span>
+                                    src="${result.images[3]}" id="imgThree" alt=""
+                                    class="object-cover w-36 h-36 shadow" ></span>
                             <span class="block py-1 md:py-5"><img onclick="showDetails(this)"
                                     data-src="./images/product/details/product-4.jpg"
-                                    src="./images/product/details/thumb-4.jpg" id="imgFore" alt=""
-                                    class="object-cover"></span>
+                                    src="${result.images[4]}" id="imgFore" alt=""
+                                    class="object-cover w-36 h-36 shadow" ></span>
                         </div>
                         <div class="col-span-3">
-                            <img src="https://picsum.photos/200/300"  style="Width:430px; height:550px" alt="" id="imgAll" class="object-cover">
+                            <img src="${result.images[0]}"  style="Width:430px; height:588px" alt="" id="imgAll" class="object-cover shadow">
                         </div>
                     </div>
                     <!-- end content-img -->
@@ -54,7 +60,7 @@ const ProductDetail = {
                                 <h3 class=" font-semibold text-xl md:text-3xl uppercase">
                                 ${result.name}
                                 </h3>
-                                <span class="text-sm text-gray-600">Brand: SKMEIMore Men Watches from SKMEI</span>
+                                <span class="text-sm text-gray-600">Brand: ${result.category.name}</span>
                             </div>
                             <div>
                                 <span class="inline-block py-2 text-xs text-yellow-500"><i class="fas fa-star"></i>
@@ -65,8 +71,8 @@ const ProductDetail = {
                                 <span class="inline text-xs text-gray-700">( 138 reviews )</span>
                             </div>
                             <div class="pb-6">
-                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2">$  </span>
-                                <span class="text-gray-500 text-lg line-through font-medium">$ 83.0</span>
+                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2">$ ${result.price} </span>
+                                <span class="text-gray-500 text-lg line-through font-medium">$ ${result.sale}</span>
                             </div>
                             <p class="text-sm text-gray-700 pb-8">Nemo enim ipsam
                                 voluptatem quia aspernatur aut odit aut loret
@@ -75,11 +81,13 @@ const ProductDetail = {
                                 lores eos qui ratione voluptatem sequi nesciunt.</p>
                             <div>
                                 <span>Quantity:</span>
-                                <div class="inline-block border border-gray-500 rounded-full py-3 text-gray-700">
-                                    <a href="#" class="pl-3" id="minus">-</a>
-                                    <input type="text" name="" id="number" value="1" min="0"
-                                        class=" outline-none text-center w-24">
-                                    <a href="#" class="pr-5" id="plus">+</a>
+                                <div class="inline-block border border-gray-500 rounded-full py-3 text-gray-700">  
+                                <div class="flex justify-between items-center gap-5">
+                                <span  class=" cursor-pointer pl-3" id="minus">-</span>
+                                <input type="text" name="" id="number" value="1" min="0"
+                                    class=" outline-none text-center  w-12 bg-[#eeeeee]">
+                                 <span  class="cursor-pointer pr-3" id="plus">+</span>
+                                </div>
                                 </div>
                                 <a href=""
                                     class="bg-red-700 text-white py-4 px-6 rounded-full inline-block my-8 "><span>
@@ -103,45 +111,16 @@ const ProductDetail = {
                                             Stock</label>
                                     </div>
                                 </div>
-                                <div class="flex py-2 relative">
-                                    <span>Available color:</span>
-                                    <div class="pl-6">
-                                        <input type="radio" name="color" id="red">
-                                        <input type="radio" name="color" id="blue" class="mx-4">
-                                        <input type="radio" name="color" id="yellow">
-                                    </div>
-                                    <div class="absolute  inset-0 pt-1 " style="padding-left: 144px;">
-                                        <span class="text-red-600 text-xl  rounded-full "><i
-                                                class="fas fa-circle"></i></span>
-                                        <span class="text-blue-600 text-xl  rounded-full pl-2"><i
-                                                class="fas fa-circle"></i></span>
-                                        <span class="text-yellow-600 text-xl  rounded-full pl-2"><i
-                                                class="fas fa-circle"></i></span>
-                                    </div>
-                                </div>
                                 <div class=" flex relative">
                                     <span>Available size:</span>
-                                    <div class="pl-6 hidden">
-                                        <label class="pl-2 text-sm text-gray-700" for=""><input type="radio" name="size"
-                                                id=""></label>
-                                        <label class="pl-2 text-sm text-gray-700" for=""><input type="radio" name="size"
-                                                id=""></label>
-                                        <label class="pl-2 text-sm text-gray-700" for=""><input type="radio" name="size"
-                                                id=""></label>
-                                        <label class="pl-2 text-sm text-gray-700" for=""><input type="radio" name="size"
-                                                id=""></label>
+                                    <div class="pl-6 ">
+                                    <select name="" id="size" class="px-3 w-[45px] bg-[#eeeeee] shadow ml-1">
+                                         ${size}
+                                    </select>
                                     </div>
-                                    <div class="absolute inset-0 pl-24">
-                                        <div class="pl-4">
-                                            <span class="pl-8 text-red-500">XL</span>
-                                            <span class="pl-1">S</span>
-                                            <span class="pl-2">M</span>
-                                            <span class="pl-2">L</span>
-                                        </div>
-
-                                    </div>
+                                   
                                 </div>
-                                <div class="py-2">
+                                <div class="">
                                     <span>Promotions:</span>
                                     <span class="pl-10  text-sm text-gray-700">Free shipping</span>
                                 </div>
@@ -190,13 +169,13 @@ const ProductDetail = {
                                         <div
                                             class="absolute bottom-0 mb-8   text-xs  xl:text-xl transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
                                             <a href="#"
-                                                class="bg-gray-200  p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200 text-sm  p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200  p-3 md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200 text-sm  p-3 md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
                                                     class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200  p-3  md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200 text-sm  p-3  md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                         </div>
                                     </div>
@@ -218,13 +197,13 @@ const ProductDetail = {
                                         <div
                                             class="absolute bottom-0 mb-8   text-xs xl:text-xl  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
                                             <a href="#"
-                                                class="bg-gray-200    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200  text-sm     p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200  text-sm     p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
                                                     class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200   text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                         </div>
                                     </div>
@@ -249,13 +228,13 @@ const ProductDetail = {
                                         <div
                                             class="absolute bottom-0 mb-8  text-xs xl:text-xl  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
                                             <a href="#"
-                                                class="bg-gray-200    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200 text-sm      p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200  text-sm     p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
                                                     class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200   text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                         </div>
                                     </div>
@@ -277,13 +256,13 @@ const ProductDetail = {
                                         <div
                                             class="absolute bottom-0 mb-8  text-xs xl:text-xl   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
                                             <a href="#"
-                                                class="bg-gray-200   p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200  text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200   p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200  text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
                                                     class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                             <a href="#"
-                                                class="bg-gray-200    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                class="bg-gray-200   text-sm      p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
                                                     class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                         </div>
                                     </div>

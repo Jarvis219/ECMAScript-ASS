@@ -1,403 +1,258 @@
 {
-    "categories": [
-        {
-            "id": 1,
-            "name": "Áo phông nam"
-        },
-        {
-            "id": 2,
-            "name": "Quần shorh nam"
-        },
-        {
-            "name": "Áo sơ mi nam",
-            "id": 3
-        },
-        {
-            "name": "Áo vest nam",
-            "id": 4
-        },
-        {
-            "name": "Áo phông nữ",
-            "id": 5
-        },
-        {
-            "name": "váy nữ",
-            "id": 6
-        },
-        {
-            "name": "Áo sơ mi nữ",
-            "id": 7
-        },
-        {
-            "name": "Chân váy",
-            "id": 8
-        }
-    ],
-    "products": [
-        {
-            "id": 1,
-            "name": "Áo Thun Nam Thể Thao Body In Ngực",
-            "categoryId": 1,
-            "content": "Sản phẩm áo thun nam TSM4221 được làm từ vải Filagen. Đây là loại vải sở hữu một hiệu suất vượt trội trong việc khử mùi ngoài da, giữ ẩm, chống tia cực tím. Người dùng sẽ luôn cảm nhận được sự mát mẻ đồng thời giúp da luôn khỏe mạnh, hạn chế những ảnh hưởng tiêu cực từ môi trường, đặc biệt là tia cực tím.Theo đó, vải Filagen được sản xuất hoàn toàn từ cá nguyên liệu tái tạo tự nhiên nên có khả năng phân hủy sinh học, thân thiện với môi trường. Đây cũng là kết quả của quá trình kết hợp công nghệ sinh học và công nghệ nano để cho ra đời loại vải nhiều tính năng ưu việt. ",
-            "price": 180000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 1,
-            
-            "classify": "nam"
-        },
-        {
-            "id": 2,
-            "name": "macbook",
-            "categoryId": 2,
-            "content": "macbook 2021",
-            "price": 50000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 2,
-    
-            "classify": "nam"
-        },
-        {
-            "id": 3,
-            "name": "macbook",
-            "categoryId": 3,
-            "content": "macbook 2021",
-            "price": 50000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 3,
-  
-            "classify": "nam"
-        },
-        {
-            "id": 4,
-            "name": "macbook",
-            "categoryId": 4,
-            "content": "macbook 2021",
-            "price": 50000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 4,
-         
-            "classify": "nam"
-        },
-        {
-            "id": 5,
-            "name": "macbook",
-            "categoryId": 5,
-            "content": "macbook 2021",
-            "price": 50000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 5,
-
-            "classify": "nữ"
-        },
-        {
-            "id": 6,
-            "name": "macbook",
-            "categoryId": 6,
-            "content": "macbook 2021",
-            "price": 50000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 6,
-        
-            "classify": "nữ"
-        },
-        {
-            "id": 7,
-            "name": "macbook",
-            "categoryId": 7,
-            "content": "macbook 2021",
-            "price": 50000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 7,
-       
-            "classify": "nữ"
-        },
-        {
-            "id": 8,
-            "name": "macbook",
-            "categoryId": 8,
-            "content": "macbook 2021",
-            "price": 50000,
-            "sale": 0,
-            "introduce": "gt",
-            "color": [
-                "blue",
-                "red"
-            ],
-            "size": [
-                "X",
-                "M",
-                "L"
-            ],
-            "commentId": 8,
-            "classify": "nữ"
-        }
-    ],
-    "images": [
-        {
-            "id": 1,
-            "productId": 1,
-            "imageIntro": "https://i.pinimg.com/originals/26/15/32/261532160de8dd3c2846abd445b25d0e.jpg",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "id": 2,
-            "productId": 2,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "id": 3,
-            "productId": 3,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "id": 4,
-            "productId": 4,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "id": 5,
-            "productId": 5,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "id": 6,
-            "productId": 6,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "id": 7,
-            "productId": 7,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        },
-        {
-            "id": 8,
-            "productId": 8,
-            "imageIntro": "",
-            "image1": "",
-            "image2": "",
-            "image3": "",
-            "image4": ""
-        }
-    ],
-    "comments": [
-        {
-            "id": 1,
-            "productId": 1,
-            "star": 5,
-            "userId": 1
-        },
-        {
-            "id": 2,
-            "productId": 2,
-            "star": 5,
-            "userId": 2
-        },
-        {
-            "id": 3,
-            "productId": 3,
-            "star": 5,
-            "userId": 3
-        },
-        {
-            "id": 4,
-            "productId": 4,
-            "star": 5,
-            "userId": 4
-        }
-    ],
-    "contacts": [
-        {
-            "id": 1,
-            "contactName": "kaio",
-            "contactEmail": "quangtaph12673@fpt.edu.vn",
-            "contactPhone": "09892828282",
-            "contactAddress": "HN",
-            "contactContent": "content1",
-            "contactStatus": 0
-        },
-        {
-            "id": 2,
-            "contactName": "rin",
-            "contactEmail": "rin@fpt.edu.vn",
-            "contactPhone": "09898765432",
-            "contactAddress": "HCM",
-            "contactContent": "content2",
-            "contactStatus": 1
-        }
-    ],
-    "information": [
-        {
-            "id": 1,
-            "informationPhone": "09686868686",
-            "informationEmail": "ahsion@gmail.com",
-            "informationAddress": "HN",
-            "informationSlogan": " ",
-            "informationMap": "google map"
-        }
-    ],
-    "slIde": [
-        {
-            "id": 1,
-            "slIdeName": "slIde1",
-            "slIdeLink": " ",
-            "slIdeImage": "img1"
-        },
-        {
-            "id": 2,
-            "slIdeName": "slIde2",
-            "slIdeLink": " ",
-            "slIdeImage": "img1"
-        },
-        {
-            "id": 3,
-            "slIdeName": "slIde3",
-            "slIdeLink": " ",
-            "slIdeImage": "img1"
-        }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "username": "user1",
-            "password": "pass1",
-            "fullName": "kaio-shin",
-            "email": "kaioShin@gmail.com",
-            "address": "Tuyên Quang",
-            "numberPhone": "0987654321",
-            "permission": 0
-        },
-        {
-            "id": 2,
-            "username": "user2",
-            "password": "pass2",
-            "fullName": "kudo",
-            "email": "kudo@gmail.com",
-            "address": "Sơn Dương",
-            "numberPhone": "0987655521",
-            "permission": 1
-        }
-    ],
-    "carts": [
-        {
-            "id": 1,
-            "productId": 1,
-            "userId": 1,
-            "cartFavorite": 1
-        },
-        {
-            "id": 2,
-            "productId": 2,
-            "userId": 2,
-            "cartFavorite": 2
-        },
-        {
-            "id": 3,
-            "productId": 3,
-            "userId": 3,
-            "cartFavorite": 3
-        },
-        {
-            "id": 4,
-            "productId": 4,
-            "userId": 4,
-            "cartFavorite": 4
-        }
-    ]
+  "categories": [
+    {
+      "id": 1,
+      "name": "Áo phông nam"
+    },
+    {
+      "id": 2,
+      "name": "Quần shorh nam"
+    },
+    {
+      "name": "Áo sơ mi nam",
+      "id": 3
+    },
+    {
+      "name": "Áo vest nam",
+      "id": 4
+    },
+    {
+      "name": "Áo phông nữ",
+      "id": 5
+    },
+    {
+      "name": "váy nữ",
+      "id": 6
+    },
+    {
+      "name": "Áo sơ mi nữ",
+      "id": 7
+    },
+    {
+      "name": "Chân váy",
+      "id": 8
+    }
+  ],
+  "products": [
+    {
+      "id": 2,
+      "name": "macbook1",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "images": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
+        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 4,
+      "name": "macbook4",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "images": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
+        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 5,
+      "name": "macbook5",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "images": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
+        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 6,
+      "name": "macbook6",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "images": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
+        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 7,
+      "name": "macbook7",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "images": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
+        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 8,
+      "name": "macbook8",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "images": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
+        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    }
+  ],
+  "comments": [
+    {
+      "id": 2,
+      "productId": 2,
+      "star": 5,
+      "userId": 2
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "contactName": "kaio",
+      "contactEmail": "quangtaph12673@fpt.edu.vn",
+      "contactPhone": "09892828282",
+      "contactAddress": "HN",
+      "contactContent": "content1",
+      "contactStatus": 0
+    },
+    {
+      "id": 2,
+      "contactName": "rin",
+      "contactEmail": "rin@fpt.edu.vn",
+      "contactPhone": "09898765432",
+      "contactAddress": "HCM",
+      "contactContent": "content2",
+      "contactStatus": 1
+    }
+  ],
+  "information": [
+    {
+      "id": 1,
+      "informationPhone": "09686868686",
+      "informationEmail": "ahsion@gmail.com",
+      "informationAddress": "HN",
+      "informationSlogan": " ",
+      "informationMap": "google map"
+    }
+  ],
+  "slIde": [
+    {
+      "id": 1,
+      "slIdeName": "slIde1",
+      "slIdeLink": " ",
+      "slIdeImage": "img1"
+    },
+    {
+      "id": 2,
+      "slIdeName": "slIde2",
+      "slIdeLink": " ",
+      "slIdeImage": "img1"
+    },
+    {
+      "id": 3,
+      "slIdeName": "slIde3",
+      "slIdeLink": " ",
+      "slIdeImage": "img1"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "password": "pass1",
+      "fullName": "kaio-shin",
+      "email": "kaioShin@gmail.com",
+      "address": "Tuyên Quang",
+      "numberPhone": "0987654321",
+      "permission": 0
+    },
+    {
+      "id": 2,
+      "username": "user2",
+      "password": "pass2",
+      "fullName": "kudo",
+      "email": "kudo@gmail.com",
+      "address": "Sơn Dương",
+      "numberPhone": "0987655521",
+      "permission": 1
+    }
+  ],
+  "carts": [
+    {
+      "id": 2,
+      "productId": 2,
+      "userId": 2,
+      "cartFavorite": 2
+    }
+  ]
 }
