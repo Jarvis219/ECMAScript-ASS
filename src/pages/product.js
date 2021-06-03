@@ -1,6 +1,9 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
 import productAPI from '../api/productAPI';
+import {
+    prices
+} from '../untils';
 
 const Product = {
 
@@ -8,15 +11,17 @@ const Product = {
         // fetch("http://localhost:3001/products")
         //     .then(response => response.json())
         //     .then(data => console.log(data))
-       
+
         try {
-            const {data:products} = await productAPI.list();
+            const {
+                data: products
+            } = await productAPI.list();
             var result = products.map(element => {
                 // console.log(element);
-                return /*html*/`
+                return /*html*/ `
                 <article class="col-span-12 gap-3 md:col-span-1 group my-4 md:my-0 text-center">
                                     <div class="relative overflow-hidden">
-                                        <img src="${element.images[0]}" alt=""  style="Width:270px; height:360px" class="w-full object-cover">
+                                        <img src="${element.imageIntro}" alt=""  style="Width:270px; height:360px" class="w-full object-cover">
                                         <div class="flex justify-center">
                                             <div
                                                 class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
@@ -39,7 +44,7 @@ const Product = {
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i></span>
-                                        <span class="font-medium">$ ${element.price}</span>
+                                        <span class="font-medium"> ${prices(Number(element.price))}</span>
                                     </div>
                                 </article>
             `;
@@ -48,7 +53,7 @@ const Product = {
             console.log(error);
         }
 
-        return /*html */`
+        return /*html */ `
         ${Header.render()}
         <div class="container mx-auto px-16 pt-24">
                 <div class="my-8">

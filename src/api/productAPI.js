@@ -1,22 +1,28 @@
-import{axiosClient} from './axiosClient';
+import {
+    axiosClient
+} from './axiosClient';
 
-export const productAPI={
-    
-    list(){
-        const url = `/products`;
+export const productAPI = {
+
+    list() {
+        const url = `/products?_expand=category`;
         return axiosClient.get(url);
     },
-    read(id){
+    read(id) {
         const url = `products/${id}?_expand=category`;
         return axiosClient.get(url);
     },
-    remove(id){
+    remove(id) {
         const url = `products/${id}`;
         return axiosClient.delete(url);
     },
-    add(product){
+    add(product) {
         const url = `/products`;
         return axiosClient.post(url, product);
+    },
+    update(id, data) {
+        const url = `/products/${id}`;
+        return axiosClient.put(url, data);
     }
 }
 export default productAPI;

@@ -1,6 +1,6 @@
-const NavBarAdmin ={
-    render(){
-        return /*html*/`
+const NavBarAdmin = {
+    render() {
+        return /*html*/ `
         <div class="sidebar" data-color="purple" data-background-color="white" >
         <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -24,14 +24,14 @@ const NavBarAdmin ={
                         <p>USER</p>
                     </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="./tour.html">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/#/listproducts">
                         <i class="material-icons">content_paste</i>
                         <p>PRODUCT</p>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./category.html">
+                    <a class="nav-link" href="#/listcategory">
                         <i class="material-icons">library_books</i>
                         <p>CATEGORY</p>
                     </a>

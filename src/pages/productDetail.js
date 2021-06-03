@@ -1,12 +1,22 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { useParams } from '../untils';
+import categoryAPI from '../api/categoryAPI';
+import 'owl.carousel';
+import {
+    $$,
+    prices
+} from '../untils';
+import {
+    useParams
+} from '../untils';
 import productAPI from '../api/productAPI';
 
 const ProductDetail = {
     async render() {
         // console.log(useParams());
-        const { id } =  useParams();
+        const {
+            id
+        } = useParams();
         // const response = await fetch("http://localhost:3001/products");
         // const data = await response.json();
         // console.log(data);
@@ -14,16 +24,62 @@ const ProductDetail = {
         //     return element.id == id;
         // })
         // console.log(result.name);
-        
-        const {data:result} = await productAPI.read(id);
-        const size = result.size.map((element)=>{
-            return /*html */`
-            
+
+        const {
+            data: result
+        } = await productAPI.read(id);
+        // console.log(await result.categoryId);
+        const {
+            data: cate
+        } = await categoryAPI.read(result.categoryId, id);
+        const productCate = cate.map(element => {
+            return /*html */ `
+            <article class="group my-8 md:my-0 md:mx-2 xl:mx-0 ">
+            <div class="relative  overflow-hidden">
+                <img src="${element.imageIntro}" alt="" class="w-full object-cover">
+                <div class="absolute top-0 mt-4 ml-4">
+                    <span class="bg-green-400 text-sm px-2 py-1 text-white">NEW</span>
+                </div>
+                <div class="flex justify-center">
+                    <div
+                        class="absolute bottom-0 mb-8   text-xs  xl:text-xl transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                        <a href="#"
+                            class="bg-gray-200 text-sm  p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
+                                class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                        <a href="#"
+                            class="bg-gray-200 text-sm  p-3 md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
+                                class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                        <a href="#"
+                            class="bg-gray-200 text-sm  p-3  md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
+                                class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4">
+                <a href="#/products/${element.id}" class="block hover:text-red-500">${element.name}</a>
+                <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i></span>
+                <span class="font-medium">${prices(Number(element.price))}</span>
+            </div>
+        </article>
+            `;
+        }).join("");
+        const size = result.size.map((element) => {
+            return /*html */ `
             <option  value="${element}">${element}</option>
             `;
         }).join("");
-        console.log(size);
-        return /*html*/`
+        const imgChild = result.album.map((element) => {
+            return /*html*/ `
+            <div>
+            <img src="${element}"  style="Width:500px; height:588px" alt="" id="imgAll" class="object-cover shadow">
+        </div>
+            `;
+        }).join("");
+        return /*html*/ `
         ${Header.render()}
             <div class="container mx-auto px-16 pt-[120px]">
                 <div class="my-3">
@@ -31,26 +87,15 @@ const ProductDetail = {
                         <span style="font-family: FontAwesome;">Home > ${result.classify} >${result.name} <span class="text-gray-600"></span></span>
                         </i></a>
                 </div>
-                <div class="grid md:grid-cols-2 gap-2 mt-10 md:mt-0 wow fadeInDown " data-wow-duration=" 1s">
-                    <div class=" grid grid-cols-4">
-                        <div class="pr-1 md:pr-0">
-                            <span><img onclick="showDetails(this)" data-src="./images/product/details/product-3.jpg"
-                                    src="${result.images[1]}" alt="" id="imgOne"
-                                    class="object-cover w-36 h-36 shadow" ></span>
-                            <span class="block py-1 md:py-5"><img onclick="showDetails(this)"
-                                    data-src="./images/product/details/product-1.jpg"
-                                    src="${result.images[2]}" id="imgTwo" alt=""
-                                    class="object-cover w-36 h-36 shadow" ></span>
-                            <span><img onclick="showDetails(this)" data-src="./images/product/details/product-2.jpg"
-                                    src="${result.images[3]}" id="imgThree" alt=""
-                                    class="object-cover w-36 h-36 shadow" ></span>
-                            <span class="block py-1 md:py-5"><img onclick="showDetails(this)"
-                                    data-src="./images/product/details/product-4.jpg"
-                                    src="${result.images[4]}" id="imgFore" alt=""
-                                    class="object-cover w-36 h-36 shadow" ></span>
+                <div class="grid md:grid-cols-2  mt-10 md:mt-0 wow fadeInDown " >
+                    <div class=" ">
+                        <div class="">
+                        <div  class="owl-carousel">
+                        <div>
+                        <img src="${result.imageIntro}"  style="Width:500px; height:588px" alt="" id="imgAll" class="object-cover shadow">
+                    </div>
+                    ${imgChild}
                         </div>
-                        <div class="col-span-3">
-                            <img src="${result.images[0]}"  style="Width:430px; height:588px" alt="" id="imgAll" class="object-cover shadow">
                         </div>
                     </div>
                     <!-- end content-img -->
@@ -71,8 +116,8 @@ const ProductDetail = {
                                 <span class="inline text-xs text-gray-700">( 138 reviews )</span>
                             </div>
                             <div class="pb-6">
-                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2">$ ${result.price} </span>
-                                <span class="text-gray-500 text-lg line-through font-medium">$ ${result.sale}</span>
+                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2"> ${prices(Number(result.price))} </span>
+                                <span class="text-gray-500 text-lg line-through font-medium"> ${prices(Number(result.sale))}</span>
                             </div>
                             <p class="text-sm text-gray-700 pb-8">Nemo enim ipsam
                                 voluptatem quia aspernatur aut odit aut loret
@@ -89,10 +134,10 @@ const ProductDetail = {
                                  <span  class="cursor-pointer pr-3" id="plus">+</span>
                                 </div>
                                 </div>
-                                <a href=""
-                                    class="bg-red-700 text-white py-4 px-6 rounded-full inline-block my-8 "><span>
+                                <a href="/#/shopcart"
+                                    class="bg-red-700 text-white py-3 px-6 rounded-full inline-block my-8 outline-none "><span>
                                         <i class="fas fa-cart-plus"> </i> ADD TO CART
-                                    </span></a>
+                                    </span> </a>
                                 <div class="inline-block">
                                     <span class="border boder-gray-700 rounded-full p-4 mx-2"><i
                                             class="far fa-heart"></i></span>
@@ -158,125 +203,8 @@ const ProductDetail = {
                         <h5 class="pb-8 font-semibold text-xl text-center">
                             RELATED PRODUCTS
                         </h5>
-                        <div class="md:flex justify-between  wow bounceInUp" data-wow-duration=" 1s">
-                            <article class="group my-8 md:my-0 md:mx-2 xl:mx-0">
-                                <div class="relative  overflow-hidden">
-                                    <img src="./images/product/related/rp-1.jpg" alt="" class="w-full object-cover">
-                                    <div class="absolute top-0 mt-4 ml-4">
-                                        <span class="bg-green-400 text-sm px-2 py-1 text-white">NEW</span>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8   text-xs  xl:text-xl transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200 text-sm  p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200 text-sm  p-3 md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200 text-sm  p-3  md:m-1  md:p-1 lg:p-3 xl:p-2 xl:px-3 rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center pt-4">
-                                    <a href="#" class="block hover:text-red-500">Buttons tweed blazer</a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 59.0</span>
-                                </div>
-                            </article>
-                            <article class="group my-8 md:my-0 md:mx-2 xl:mx-0">
-                                <div class="relative  overflow-hidden">
-                                    <img src="./images/product/related/rp-2.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8   text-xs xl:text-xl  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200  text-sm     p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  text-sm     p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center pt-4">
-                                    <a href="#" class="block hover:text-red-500">Flowy striped skirt </a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 49.0</span>
-                                </div>
-                            </article>
-                            <article class="group my-8 md:my-0 md:mx-2 xl:mx-0">
-                                <div class="relative  overflow-hidden">
-                                    <img src="./images/product/related/rp-3.jpg" alt="" class="w-full object-cover">
-                                    <div class="absolute top-0 mt-3 ml-3">
-                                        <span class="bg-black text-white text-sm px-2 py-1">OUT OF STOCK</span>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs xl:text-xl  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200 text-sm      p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  text-sm     p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center pt-4">
-                                    <a href="#" class="block hover:text-red-500">Cotton T-Shirt</a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 59.0</span>
-                                </div>
-                            </article>
-                            <article class="group my-8 md:my-0 md:mx-2 xl:mx-0">
-                                <div class="relative  overflow-hidden">
-                                    <img src="./images/product/related/rp-4.jpg" alt="" class="w-full object-cover">
-                                    <div class="flex justify-center">
-                                        <div
-                                            class="absolute bottom-0 mb-8  text-xs xl:text-xl   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                            <a href="#"
-                                                class="bg-gray-200  text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200  text-sm    p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full mx-4 hover:bg-red-600 hover:text-white"><i
-                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            <a href="#"
-                                                class="bg-gray-200   text-sm      p-3 md:m-1 md:p-1 lg:p-3 xl:p-2 xl:px-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center pt-4">
-                                    <a href="#" class="block hover:text-red-500">Slim striped pocket shirt</a>
-                                    <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i></span>
-                                    <span class="font-medium">$ 59.0</span>
-                                </div>
-                            </article>
+                        <div class="md:flex justify-between  gap-3 wow bounceInUp" data-wow-duration=" 1s">
+                            ${productCate}
                         </div>
                     </section>
                 </div>
@@ -353,6 +281,31 @@ const ProductDetail = {
             <!-- end section instagram -->
             ${Footer.render()}
             `;
+    },
+    async afterRender() {
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true
+            });
+        });
+        var minus = $$('#minus');
+        var number = $$('#number');
+        var plus = $$('#plus');
+        minus.onclick = () => {
+            number.value = Number(number.value) - 1;
+            if (number.value <= 1) {
+                number.value = 1;
+            }
+        }
+        plus.onclick = () => {
+            number.value = Number(number.value) + 1;
+        }
+
     }
 }
 export default ProductDetail;

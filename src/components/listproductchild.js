@@ -11,16 +11,20 @@ const ListProductchild = {
         const result = product.map((element, index) => {
             return /*html */ `
             <tr>
-            <td>${element.id}</td>
+            <td>${index+1}</td>
             <td>${element.name}</td>
-            <td>${element.categoryId}</td>
-            <td>${element.content}</td>
+            <td>${element.category.name}</td>
             <td>${element.price}</td>
             <td>${element.sale}</td>
-            <td>${element.introduce}</td>
-            <td class="w-[200px] overflow-auto">${element.images}</td>
             <td>${element.size}</td>
             <td>${element.classify}</td>
+            <td ><img width="100" height="100" src="${element.imageIntro}"></td>
+            <td ><img width="70" height="70" src="${element.album[0]}"></td>
+            <td ><img width="70" height="70" src="${element.album[1]}"></td>
+            <td ><img width="70" height="70" src="${element.album[2]}"></td>
+            <td ><img width="70" height="70" src="${element.album[3]}"></td>
+            <td>${element.introduce}</td>   
+            <td>${element.content}</td>
             <td class="w-20"><button
             class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
                 href="#/editproduct/${element.id}"
@@ -37,14 +41,11 @@ const ListProductchild = {
         <table class="table text-center" id="table-product">
         <thead class=" text-primary">
                                         <th>
-                                            Id
+                                            stt
                                         </th>
                                         <th>Name</th>
                                         <th>
-                                           CategoryId
-                                        </th>
-                                        <th>
-                                            Content
+                                           Category
                                         </th>
                                         <th>
                                         Price
@@ -52,18 +53,24 @@ const ListProductchild = {
                                         <th>
                                         Sale
                                          </th>
+                                         <th>
+                                         size
+                                         </th>
+                                         <th>
+                                         classify
+                                         </th>
+                                         <th >
+                                         imagesIntro
+                                       </th>
+                                       <th  colspan="4">image album </th>
                                         <th>
                                         introduce
                                         </th>
-                                          <th >
-                                           images
-                                         </th>
                                         <th>
-                                        size
-                                        </th>
-                                        <th>
-                                        classify
-                                        </th>
+                                        Content
+                                    </th>
+                                         
+                                     
                                     
                                         <td colspan="2" class="w-32">Tùy chỉnh</td>
                                     </thead>

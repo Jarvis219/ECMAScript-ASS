@@ -31,6 +31,10 @@
     {
       "name": "Chân váy",
       "id": 8
+    },
+    {
+      "id": 86232,
+      "name": "Quần áo len "
     }
   ],
   "products": [
@@ -39,15 +43,15 @@
       "name": "macbook1",
       "categoryId": 2,
       "content": "macbook 2021",
-      "price": 50000,
+      "price": 5000000,
       "sale": 0,
       "introduce": "gt",
-      "images": [
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
         "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
         "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
         "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
-        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
-        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
       ],
       "size": [
         "X",
@@ -64,12 +68,12 @@
       "price": 50000,
       "sale": 0,
       "introduce": "gt",
-      "images": [
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
         "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
         "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
         "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
-        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
-        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
       ],
       "size": [
         "X",
@@ -86,12 +90,12 @@
       "price": 50000,
       "sale": 0,
       "introduce": "gt",
-      "images": [
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
         "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
         "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
         "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
-        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
-        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
       ],
       "size": [
         "X",
@@ -108,12 +112,12 @@
       "price": 50000,
       "sale": 0,
       "introduce": "gt",
-      "images": [
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
         "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
         "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
         "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
-        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
-        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
       ],
       "size": [
         "X",
@@ -130,12 +134,12 @@
       "price": 50000,
       "sale": 0,
       "introduce": "gt",
-      "images": [
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
         "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
         "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
         "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
-        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
-        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
       ],
       "size": [
         "X",
@@ -152,12 +156,12 @@
       "price": 50000,
       "sale": 0,
       "introduce": "gt",
-      "images": [
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
         "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
         "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
         "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
-        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png",
-        "https://pbs.twimg.com/media/Ea0wX9zXsAERPs2.jpg"
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
       ],
       "size": [
         "X",
@@ -165,6 +169,75 @@
         "L"
       ],
       "classify": "nam"
+    },
+    {
+      "id": 359373,
+      "name": "Áo vest nam YODY 06",
+      "categoryId": "3",
+      "content": "dasd",
+      "price": "22222",
+      "sale": "23",
+      "introduce": "sadasd",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=08e53cd5-02c2-4106-9e35-bf4e050fcb9e",
+      "album": [
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=dc52fb6f-d8d9-41e8-b5cd-eae7e3b61ac4",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=8c3cccad-0283-4267-88ed-6a843e9848db",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=4aa1c1ba-9dfc-4bfc-b47d-77152b15abe7",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=c0dc57e2-4f08-43f4-91b4-cac59bbf3320"
+      ],
+      "size": [
+        "XXS",
+        "XS-S",
+        "S",
+        "M-L"
+      ],
+      "classify": "female"
+    },
+    {
+      "id": 367003,
+      "name": "Áo vest nam YODY 06sadsa",
+      "categoryId": "3",
+      "content": "dasd",
+      "price": "22222",
+      "sale": "23",
+      "introduce": "sadasd",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=c83e5700-780a-4512-a511-fefcc136635b",
+      "album": [
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=d4bcb01c-fa38-4ac1-91f4-3c0e5d33648a",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=b54b370f-2ab0-4195-8a63-c378665ea9a0",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=6ef8eeb0-7f36-428c-8158-6b14a46a6b34",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=e2f2165a-38f6-4ebb-ade1-c5b4f758a883"
+      ],
+      "size": [
+        "XXS",
+        "XS-S",
+        "S",
+        "M-L"
+      ],
+      "classify": "female"
+    },
+    {
+      "id": 678865,
+      "name": "Áo vest nam YODY 06sadsa",
+      "categoryId": "8",
+      "content": "dasd",
+      "price": "22222",
+      "sale": "23",
+      "introduce": "sadasd",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=df6a1fa6-4750-4baa-aa7f-d46104c6bdb5",
+      "album": [
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=6e32cdfe-5799-46ef-8a74-2f48cbc099cc",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=8a3c9cf4-abdc-4754-9c46-866f2a5874d4",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=fa125605-1c38-4b91-bdc1-3c3e4c1171eb",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=2b4479ba-c6a9-496f-beb9-6aeda17b5df3"
+      ],
+      "size": [
+        "XXS",
+        "XS-S",
+        "S",
+        "M-L"
+      ],
+      "classify": "female"
     }
   ],
   "comments": [

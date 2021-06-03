@@ -1,9 +1,11 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-
+import {
+    $$
+} from '../untils';
 const ShopCart = {
-    render() {
-        return /*html */`
+    async render() {
+        return /*html */ `
         ${Header.render()}
         <div>
         <main class="pt-24">
@@ -22,7 +24,7 @@ const ShopCart = {
                                     <th class="">PRODUCT</th>
                                     <th class=" ">PRICE</th>
                                     <th class=" ">QUANTITY</th>
-                                    <th class=" ">TOTAL</th>
+                                    <th class=" " >TOTAL</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -41,16 +43,43 @@ const ShopCart = {
                                     </td>
                                     <td class="mx-28 w-56">
                                         <div class="flex justify-center">
-                                            <span class="cursor-pointer" id="minus">-</span>
-                                            <input type="text" value="1" name="value" min="0" minlength="0" id=""
-                                                disabled class="w-6 mx-4">
-                                            <span class="cursor-pointer" id="plus">+</span>
+                                            <span class="cursor-pointer minus" >-</span>
+                                            <input type="text" value="1" name="value" min="0" minlength="0" 
+                                                disabled class="w-6 mx-4 number">
+                                            <span class="cursor-pointer plus" >+</span>
                                         </div>
                                     </td>
                                     <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
                                             id="quantityProduct">300</span> </td>
                                     <td>
-                                        <button class=" text-xs md:text-lg">Xóa</button>
+                                        <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b-2 my-4 box-border">
+                                    <td class="md:flex md:justify-between items-center w-64">
+                                        <div class="flex justify-center">
+                                            <img src="https://picsum.photos/640/480"
+                                                style="width: 90px;height: 90px; object-fit: cover;" alt="">
+                                        </div>
+                                        <div class="text-xs md:text-base mr-2">
+                                            <h6>Chain bucket bag</h6>
+                                        </div>
+                                    </td>
+                                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
+                                        <span id="priceProduct">150</span>
+                                    </td>
+                                    <td class="mx-28 w-56">
+                                        <div class="flex justify-center">
+                                            <span class="cursor-pointer minus" >-</span>
+                                            <input type="text" value="1" name="value" min="0" minlength="0" 
+                                                disabled class="w-6 mx-4 number">
+                                            <span class="cursor-pointer plus" >+</span>
+                                        </div>
+                                    </td>
+                                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
+                                            id="quantityProduct">300</span> </td>
+                                    <td>
+                                        <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -168,6 +197,28 @@ const ShopCart = {
     </div>
     <!-- end container -->
         `;
+    },
+    async afterRender() {
+        var minus = $$('.minus');
+        var number = $$('.number');
+        var plus = $$('.plus');
+        var priceProduct = $$('.priceProduct');
+        var quantityProduct = $$('.quantityProduct');
+        // console.log(minus);
+
+        // quantityProduct.innerHTML = Number(priceProduct.innerHTML) * Number(number.value);
+        // minus.onclick = () => {
+        //     number.value = Number(number.value) - 1;
+        //     if (number.value <= 1) {
+        //         number.value = 1;
+        //     }
+        //     quantityProduct.innerHTML = Number(priceProduct.innerHTML) * Number(number.value);
+        // }
+        // plus.onclick = () => {
+        //     number.value = Number(number.value) + 1;
+        //     quantityProduct.innerHTML = Number(priceProduct.innerHTML) * Number(number.value);
+        // }
+
     }
 }
 export default ShopCart;

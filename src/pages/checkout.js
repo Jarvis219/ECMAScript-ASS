@@ -3,10 +3,10 @@ import Footer from '../components/footer';
 
 const CheckOut = {
     render() {
-        return /* html*/`
+        return /* html*/ `
             ${Header.render()}
             <div>
-        <main class="container mx-2 lg:mx-auto lg:px-16 lg:pt-24 lg:mb-12">
+        <main class="container lg:mx-auto lg:px-16 lg:pt-24 lg:mb-12">
             <div>
                 <div class="my-8 ">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
@@ -125,7 +125,6 @@ const CheckOut = {
             </div>
         </main>
     </div>
-            
             ${Footer.render()}
         `;
     }
