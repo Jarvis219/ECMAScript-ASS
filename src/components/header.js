@@ -1,6 +1,6 @@
 const Header = {
     render() {
-        return /*html*/`
+        return /*html*/ `
         <header class="bg-gray-100 position fixed w-screen z-50 top-0  " id="heading">
             <div>
                 <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0 lg:gap-20 lg:py-8">
@@ -47,8 +47,8 @@ const Header = {
                     </div>
                     <div class="md:flex hidden ">
                         <div class=" pt-3 md:mb-4 text-gray-700 text-xs">
-                            <a href="#">Login</a>
-                            <a href="#">/ Register</a>
+                            <a href="#/signin">Login</a>
+                            <a href="#/signup">/ Register</a>
                         </div>
                         <div class="md:hidden lg:block mx-4 ">
                             <form class="inline " id="demo-search">

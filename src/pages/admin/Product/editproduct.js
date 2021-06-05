@@ -14,12 +14,13 @@ const EitProduct = {
         const {
             data: result
         } = await productAPI.read(id);
+        // console.log(result.categoryId);
         const {
             data: cate
         } = await categoryAPI.editProduct(result.categoryId);
         // console.log(cate);
         const categories = cate.map(element => {
-            return /*hrml*/ `
+            return /*html*/ `
             <option value="${element.id}">${element.name}</option>
             `;
         }).join("");
@@ -228,64 +229,183 @@ const EitProduct = {
         $$('#form-update-product').addEventListener('submit', (e) => {
             e.preventDefault();
             const albums = $$('.album');
-            const gAlnums = [];
-            // albums.forEach(element => {
-            //     if (element.files[0]) {
-            //         gAlnums.push(element.files[0].name);
-            //     }
-            // });
-            // console.log(gAlnums);
             var imgIntro = '';
             var album = [];
 
-            async function checkImgIntro() {
-                if ($$('#image-new').value == ' ') {
-                    imgIntro = $$('#image-old').src
-                } else {
-                    imgIntro = ($$('#image-new').files[0]);
-                    let storageRef = firebase.storage().ref(`images/${imgIntro.name}`)
-                    storageRef.put(imgIntro).then(() => {
-                        storageRef.getDownloadURL().then((url) => {
-                            imgIntro = url;
-                        })
+            if ($$('#image-new').value == '') {
+                imgIntro = $$('#image-old').src
+
+                const promise = new Promise(resolve => {
+                    resolve();
+                });
+                promise
+                    .then(() => {
+                        if ($$('#album1').value == '') {
+                            album.push($$('#album1-old').src)
+                            return album;
+                        } else {
+                            const album1 = $$('#album1').files[0];
+                            let storageRef = firebase.storage().ref(`images/${album1.name}`)
+                            storageRef.put(album1).then(() => {
+                                storageRef.getDownloadURL().then(url => {
+                                    return album.push(url);
+                                })
+                            })
+                        }
+
                     })
-                }
+                    // .then(data => {
+                    //     if ($$('#album2').value == '') {
+                    //         album.push($$('#album2-old').src)
+                    //     } else {
+                    //         const album2 = $$('#album2').files[0];
+                    //         let storageRef = firebase.storage().ref(`images/${album2.name}`)
+                    //         storageRef.put(album2).then(() => {
+                    //             storageRef.getDownloadURL().then(url => {
+                    //                 album.push(url)
+                    //             })
+                    //         })
+                    //     }
+                    //     return data;
+                    // })
+                    // .then(data => {
+                    //     if ($$('#album3').value == '') {
+                    //         album.push($$('#album3-old').src)
+                    //     } else {
+                    //         const album3 = $$('#album3').files[0];
+                    //         let storageRef = firebase.storage().ref(`images/${album3.name}`)
+                    //         storageRef.put(album3).then(() => {
+                    //             storageRef.getDownloadURL().then(url => {
+                    //                 album.push(url)
+                    //             })
+                    //         })
+                    //     }
+                    //     return data;
+                    // })
+                    // .then(data => {
+                    //     if ($$('#album4').value == '') {
+                    //         album.push($$('#album4-old').src)
+                    //     } else {
+                    //         const album4 = $$('#album4').files[0];
+                    //         let storageRef = firebase.storage().ref(`images/${album4.name}`)
+                    //         storageRef.put(album4).then(() => {
+                    //             storageRef.getDownloadURL().then(url => {
+                    //                 album.push(url)
+                    //             })
+                    //         })
+                    //     }
+                    //     return data;
+                    // })
+                    .then((data) => {
+                        console.log(data);
+                        // const newProduct = {
+                        //     ...result,
+                        //     name: $$('#name').value,
+                        //     categoryId: $$('#category').value,
+                        //     content: $$('#content').value,
+                        //     price: $$('#price').value,
+                        //     sale: $$('#promotional').value,
+                        //     introduce: $$('#introduction').value,
+                        //     imageIntro: [imgIntro],
+                        //     album: data,
+                        //     size: $$('#size').value,
+                        //     classify: $$('#classify').value
+                        // }
+                        // console.log(newProduct);
+                    })
+
+            } else {
+                imgIntro = ($$('#image-new').files[0]);
+                let storageRef = firebase.storage().ref(`images/${imgIntro.name}`)
+                storageRef.put(imgIntro).then(() => {
+                    storageRef.getDownloadURL().then((url) => {
+                        imgIntro = url;
+                        const promise = new Promise(resolve => {
+                            resolve();
+                        });
+                        promise
+                            .then(() => {
+                                if ($$('#album1').value == '') {
+                                    album.push($$('#album1-old').src)
+                                    return album;
+                                } else {
+                                    const album1 = $$('#album1').files[0];
+                                    let storageRef = firebase.storage().ref(`images/${album1.name}`)
+                                    storageRef.put(album1).then(() => {
+                                        storageRef.getDownloadURL().then(url => {
+                                            album.push(url)
+                                            return album;
+                                        })
+                                    })
+                                }
+
+                            })
+                            .then(data => {
+                                if ($$('#album2').value == '') {
+                                    album.push($$('#album2-old').src)
+                                } else {
+                                    const album2 = $$('#album2').files[0];
+                                    let storageRef = firebase.storage().ref(`images/${album2.name}`)
+                                    storageRef.put(album2).then(() => {
+                                        storageRef.getDownloadURL().then(url => {
+                                            album.push(url)
+                                        })
+                                    })
+                                }
+                                console.log(2);
+                                return data;
+                            })
+                            .then(data => {
+                                if ($$('#album3').value == '') {
+                                    album.push($$('#album3-old').src)
+                                } else {
+                                    const album3 = $$('#album3').files[0];
+                                    let storageRef = firebase.storage().ref(`images/${album3.name}`)
+                                    storageRef.put(album3).then(() => {
+                                        storageRef.getDownloadURL().then(url => {
+                                            album.push(url)
+                                        })
+                                    })
+                                }
+                                return data;
+                            })
+                            .then(data => {
+                                if ($$('#album4').value == '') {
+                                    album.push($$('#album4-old').src)
+                                } else {
+                                    const album4 = $$('#album4').files[0];
+                                    let storageRef = firebase.storage().ref(`images/${album4.name}`)
+                                    storageRef.put(album4).then(() => {
+                                        storageRef.getDownloadURL().then(url => {
+                                            album.push(url)
+                                        })
+                                    })
+                                }
+                                return data;
+                            })
+                            .then((data) => {
+                                console.log(data);
+                                // const newProduct = {
+                                //     ...result,
+                                //     name: $$('#name').value,
+                                //     categoryId: $$('#category').value,
+                                //     content: $$('#content').value,
+                                //     price: $$('#price').value,
+                                //     sale: $$('#promotional').value,
+                                //     introduce: $$('#introduction').value,
+                                //     imageIntro: [imgIntro],
+                                //     album: data,
+                                //     size: $$('#size').value,
+                                //     classify: $$('#classify').value
+                                // }
+                                // console.log(newProduct);
+                                // productAPI.update(id, newProduct);
+                                // alert("Update product success");
+                                // window.location.hash = `/listproducts`;
+                            })
+                    })
+                })
             }
-            checkImgIntro();
-
-
-
-
-
-            // if ($$('#album1').value == ' ') {
-            //     album.push($$('#album1-old').src)
-            // } else {
-            //     const album1 = $$('#album1').files[0];
-            //     let storageRef = firebase.storage().ref(`images/${album1.name}`)
-            //     storageRef.put(album1).then(() => {
-            //         storageRef.getDownloadURL().then(url => {
-            //             album.push(url)
-            //         })
-            //     })
-            // }
-            // console.log($$('#album2').value);
-            // if ($$('#album2').value == ' ') {
-            //     album.push($$('#album2-old').src)
-            //     console.log(0);
-            // } else {
-            //     const album2 = $$('#album2').files[0];
-
-            //     let storageRef = firebase.storage().ref(`images/${album2.name}`)
-            //     console.log(album2);
-            //     storageRef.put(album2).then(() => {
-            //         console.log('update');
-            //         // storageRef.getDownloadURL().then(url => {
-            //         //     console.log(url);
-            //         //     album.push(url)
-            //         //     console.log(album);
-            //         // })
-            //     })
-            // }
 
             // console.log(album);
             // console.log(imgIntro);

@@ -1,8 +1,10 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import categoryAPI from "../../../api/categoryAPI";
+import ListCategory from '../../../pages/admin/category/listcategory';
 import {
     $$,
-    useParams
+    useParams,
+    reRender
 } from "../../../untils";
 const EditCategory = {
 
@@ -81,9 +83,7 @@ const EditCategory = {
         const {
             id
         } = useParams();
-        const {
-            data: result
-        } = await categoryAPI.edit(id);
+
         $$('#edit-category').addEventListener('submit', (e) => {
             e.preventDefault();
             const category = {
@@ -92,6 +92,9 @@ const EditCategory = {
             }
             if (categoryAPI.update(id, category)) {
                 alert("Update category success")
+                reRender(ListCategory, '#table-category');
+                window.location.hash = `/listcategory`;
+
             } else {
                 alert('Update category failures')
             }

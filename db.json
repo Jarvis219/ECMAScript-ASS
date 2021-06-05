@@ -35,9 +35,135 @@
     {
       "id": 86232,
       "name": "Quần áo len "
+    },
+    {
+      "id": 459444,
+      "name": "sda"
+    },
+    {
+      "id": 505738,
+      "name": "Quần áo len"
+    },
+    {
+      "id": 64735,
+      "name": "tin"
+    },
+    {
+      "id": 248777,
+      "name": "Quần áo len"
     }
   ],
   "products": [
+    {
+      "id": 2,
+      "name": "macbook1",
+      "categoryId": 1,
+      "content": "macbook 2021",
+      "price": 5000000,
+      "sale": 0,
+      "introduce": "gt",
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 4,
+      "name": "macbook4",
+      "categoryId": 3,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 5,
+      "name": "macbook5",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 6,
+      "name": "macbook6",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
+    {
+      "id": 7,
+      "name": "macbook7",
+      "categoryId": 2,
+      "content": "macbook 2021",
+      "price": 50000,
+      "sale": 0,
+      "introduce": "gt",
+      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "album": [
+        "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
+        "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+        "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
+        "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
+      ],
+      "size": [
+        "X",
+        "M",
+        "L"
+      ],
+      "classify": "nam"
+    },
     {
       "id": 2,
       "name": "macbook1",
@@ -151,91 +277,106 @@
     {
       "id": 8,
       "name": "macbook8",
-      "categoryId": 2,
-      "content": "macbook 2021",
-      "price": 50000,
-      "sale": 0,
-      "introduce": "gt",
-      "imageIntro": "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
+      "categoryId": "2",
+      "content": "     macbook 2021",
+      "price": "50000",
+      "sale": "0",
+      "introduce": "     gt     ",
+      "imageIntro": [
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2FScreen%20Shot%202021-05-25%20at%2014.26.37.png?alt=media&token=4aa94c9c-32a3-45e2-87cd-8ef882951b93"
+      ],
       "album": [
         "https://i.pinimg.com/originals/39/be/3d/39be3dc5685b84e2d8f9dadea52d93d5.png",
         "https://i.pinimg.com/originals/cc/de/fc/ccdefc6140b95a79d3f27735bc14c3db.jpg",
         "https://gamek.mediacdn.vn/thumb_w/640/133514250583805952/2020/5/16/photo-1-15896063932441235893957.jpg",
         "https://i.pinimg.com/originals/90/c4/ea/90c4eac6ebcf0c9b12615450bdc79304.png"
       ],
-      "size": [
-        "X",
-        "M",
-        "L"
-      ],
-      "classify": "nam"
+      "category": {
+        "id": 2,
+        "name": "Quần shorh nam"
+      }
     },
     {
-      "id": 359373,
-      "name": "Áo vest nam YODY 06",
-      "categoryId": "3",
-      "content": "dasd",
-      "price": "22222",
-      "sale": "23",
-      "introduce": "sadasd",
-      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=08e53cd5-02c2-4106-9e35-bf4e050fcb9e",
+      "id": 155319,
+      "name": "rin ",
+      "categoryId": "2",
+      "content": "aloha",
+      "price": "200000",
+      "sale": "10000",
+      "introduce": "product",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=871c9f0c-00bb-4a2e-bdd9-b1147cd8c2e4",
       "album": [
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=dc52fb6f-d8d9-41e8-b5cd-eae7e3b61ac4",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=8c3cccad-0283-4267-88ed-6a843e9848db",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=4aa1c1ba-9dfc-4bfc-b47d-77152b15abe7",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=c0dc57e2-4f08-43f4-91b4-cac59bbf3320"
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cartoon%20baby%20panda_4830499.png?alt=media&token=1cdbb11d-f421-4ff0-b48f-54cce0e6b32f",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=fa0b361c-f430-4a16-96f3-50cd10ad8603",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=dc71ad51-e39f-4ebd-88e1-c658e7ce0b9e",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F118801858_308868083752599_241551395955404619_o.jpg?alt=media&token=23b725ed-ffde-4799-b762-bee7d2a9503b",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=c42741f8-41a7-41dd-a2a6-666901336bd9"
       ],
       "size": [
         "XXS",
         "XS-S",
-        "S",
-        "M-L"
+        "S"
+      ],
+      "classify": "male"
+    },
+    {
+      "id": 314435,
+      "name": "product12",
+      "categoryId": "5",
+      "content": "gg",
+      "price": "2000000",
+      "sale": "2",
+      "introduce": "ff",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cartoon%20baby%20panda_4830499.png?alt=media&token=1a778d13-7cd1-41d6-93cf-3976825caa96",
+      "album": [
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fcategory-1.jpg?alt=media&token=c198bb2d-d23d-4161-ba7d-ccadcee30dc7",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=053eda1b-9524-436e-b03b-ae532d8868d1",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F118801858_308868083752599_241551395955404619_o.jpg?alt=media&token=9ec38c9b-3082-43e8-9db2-3b108e625e4b",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=b983c8ae-15ea-4148-92b1-b165cc81788e"
+      ],
+      "size": [
+        "XXS",
+        "XS-S",
+        "S"
+      ],
+      "classify": "male"
+    },
+    {
+      "id": 220511,
+      "name": "product2n",
+      "categoryId": "1",
+      "content": "wn",
+      "price": "425",
+      "sale": "6",
+      "introduce": "wn",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cartoon%20baby%20panda_4830499.png?alt=media&token=28a3179b-6aa4-47ce-890e-4e48116268f6",
+      "album": [
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fstock-photo-awesome-positive-red-haired-girl-with-many-packages-posing-to-the-camera-free-time-spare-time-1451587334.jpg?alt=media&token=91f62739-8be3-4bf2-91d2-047190f71f7c",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fsencute.jpg?alt=media&token=84909e15-1b5c-43ab-932c-f51ebab1acf0",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fstock-photo-beautiful-woman-and-cash-back-text-1124945717.jpg?alt=media&token=cf67e278-c51c-4f31-8f2d-2379ee487639",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fstory.jpg?alt=media&token=bd90c445-c6a1-4735-9233-1ba924c7aa39"
+      ],
+      "size": [
+        "XXS",
+        "XS-S",
+        "S"
       ],
       "classify": "female"
     },
     {
-      "id": 367003,
-      "name": "Áo vest nam YODY 06sadsa",
-      "categoryId": "3",
-      "content": "dasd",
-      "price": "22222",
-      "sale": "23",
-      "introduce": "sadasd",
-      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=c83e5700-780a-4512-a511-fefcc136635b",
+      "id": 256142,
+      "name": "",
+      "categoryId": "1",
+      "content": "",
+      "price": "",
+      "sale": "",
+      "introduce": "",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=ec5cfd9c-599b-45fe-86bd-9437c7b5f291",
       "album": [
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=d4bcb01c-fa38-4ac1-91f4-3c0e5d33648a",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=b54b370f-2ab0-4195-8a63-c378665ea9a0",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=6ef8eeb0-7f36-428c-8158-6b14a46a6b34",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=e2f2165a-38f6-4ebb-ade1-c5b4f758a883"
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=9c5de0fe-f29c-48e7-9849-ef35686c8a19"
       ],
       "size": [
-        "XXS",
-        "XS-S",
-        "S",
-        "M-L"
-      ],
-      "classify": "female"
-    },
-    {
-      "id": 678865,
-      "name": "Áo vest nam YODY 06sadsa",
-      "categoryId": "8",
-      "content": "dasd",
-      "price": "22222",
-      "sale": "23",
-      "introduce": "sadasd",
-      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=df6a1fa6-4750-4baa-aa7f-d46104c6bdb5",
-      "album": [
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=6e32cdfe-5799-46ef-8a74-2f48cbc099cc",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=8a3c9cf4-abdc-4754-9c46-866f2a5874d4",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=fa125605-1c38-4b91-bdc1-3c3e4c1171eb",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F120032309_697508060869795_281631040763582875_n.jpg?alt=media&token=2b4479ba-c6a9-496f-beb9-6aeda17b5df3"
-      ],
-      "size": [
-        "XXS",
-        "XS-S",
-        "S",
-        "M-L"
+        "XXS"
       ],
       "classify": "female"
     }
@@ -300,24 +441,29 @@
   ],
   "users": [
     {
-      "id": 1,
-      "username": "user1",
-      "password": "pass1",
-      "fullName": "kaio-shin",
-      "email": "kaioShin@gmail.com",
-      "address": "Tuyên Quang",
-      "numberPhone": "0987654321",
-      "permission": 0
+      "email": "quangtaph12673@gmail.com",
+      "password": "$2a$10$LUvSVuPuZkFbe1zds.bQ7uSb6tKY5O8O/riWNLVpw5YXx4ZPHQi6e",
+      "id": 1
     },
     {
-      "id": 2,
-      "username": "user2",
-      "password": "pass2",
-      "fullName": "kudo",
-      "email": "kudo@gmail.com",
-      "address": "Sơn Dương",
-      "numberPhone": "0987655521",
-      "permission": 1
+      "email": "quangtaph1267@gmail.com",
+      "password": "$2a$10$J88OvMG/..r3YAc0gc2Sr.hJBm8idwoeO4vUnV3G/0ol27eem9Hre",
+      "id": 2
+    },
+    {
+      "email": "quangtaph126@gmail.com",
+      "password": "$2a$10$j6eUR3ZZqEN1uEWumjS.Ney2d8Neef73olK0RJYSuPoZl.9KQDY0C",
+      "id": 3
+    },
+    {
+      "email": "rin@gmail.com",
+      "password": "$2a$10$UEghSqSWWwj/xUryG1INAOXYgX7ooUrAF/grrfAl5SP3njwf9MYbS",
+      "id": 4
+    },
+    {
+      "email": "quangtaph1267sss3@gmail.com",
+      "password": "$2a$10$4xo.SBYWrivzUUsycsBIZ.YvZDP77sU9Q7lecFnfNHe7QEZk9wT5W",
+      "id": 5
     }
   ],
   "carts": [

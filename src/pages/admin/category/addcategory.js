@@ -1,8 +1,10 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import {
-    $$
+    $$,
+    reRender
 } from "../../../untils";
 import categoryAPI from "../../../api/categoryAPI";
+import ListCategory from '../../../pages/admin/category/listcategory';
 const AddCategory = {
     render() {
         return /*html*/ `
@@ -79,6 +81,10 @@ const AddCategory = {
             }
             if (categoryAPI.add(category)) {
                 alert('Add category success');
+                window.location.hash = `/listcategory`;
+                reRender(ListCategory, '#table-category');
+
+
             } else {
                 alert('Add category failures')
             }

@@ -19,10 +19,7 @@ const ListProductchild = {
             <td>${element.size}</td>
             <td>${element.classify}</td>
             <td ><img width="100" height="100" src="${element.imageIntro}"></td>
-            <td ><img width="70" height="70" src="${element.album[0]}"></td>
-            <td ><img width="70" height="70" src="${element.album[1]}"></td>
-            <td ><img width="70" height="70" src="${element.album[2]}"></td>
-            <td ><img width="70" height="70" src="${element.album[3]}"></td>
+            ${ element.album.map(img=>`<td ><img width="70" height="70" src="${img}"></td>`).join("")}
             <td>${element.introduce}</td>   
             <td>${element.content}</td>
             <td class="w-20"><button
