@@ -362,23 +362,6 @@
         "S"
       ],
       "classify": "female"
-    },
-    {
-      "id": 256142,
-      "name": "",
-      "categoryId": "1",
-      "content": "",
-      "price": "",
-      "sale": "",
-      "introduce": "",
-      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=ec5cfd9c-599b-45fe-86bd-9437c7b5f291",
-      "album": [
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=9c5de0fe-f29c-48e7-9849-ef35686c8a19"
-      ],
-      "size": [
-        "XXS"
-      ],
-      "classify": "female"
     }
   ],
   "comments": [

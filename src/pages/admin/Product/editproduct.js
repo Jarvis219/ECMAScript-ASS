@@ -14,7 +14,13 @@ const EitProduct = {
         const {
             data: result
         } = await productAPI.read(id);
-        // console.log(result.categoryId);
+        console.log(result.album);
+        const imageAlbums = result.album.map((img) => {
+            return /*html*/ `
+            <img src="${img}" class="w-32 h-32 object-contain albums">
+            `;
+        }).join("");
+        console.log(imageAlbums);
         const {
             data: cate
         } = await categoryAPI.editProduct(result.categoryId);
@@ -110,29 +116,16 @@ const EitProduct = {
                                             </div>
                                          </div>
                                          <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <div class="">
                                                     <label class="bmd-label-floating">Album</label>
-                                                    <img src="${result.album[0]}" class="w-32 h-32 object-contain" id="album1-old">
+                                                    <div class= "flex justify-between items-center">
+                                                    ${imageAlbums}
+                                                    </div>
                                                     <input type="file" class="form-control album" name="promotional"
                                                     id="album1" >
-                                                    <img src="${result.album[1]}" class="w-32 h-32 object-contain"  id="album2-old">
-                                                    <input type="file" class="form-control album" name="promotional"
-                                                    id="album2" >
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class=" mt-[5px]">
-                                                <label class="bmd-label-floating"> </label>
-                                                <img src="${result.album[2]}" class="w-32 h-32 object-contain"  id="album3-old">
-                                                    <input type="file" class="form-control album" name="promotional"
-                                                    id="album3" >
-                                                    <img src="${result.album[3]}" class="w-32 h-32 object-contain"  id="album4-old">
-                                                    <input type="file" class="form-control album" name="promotional"
-                                                    id="album4" >
-                                                </div>
-                                            </div>
-                                        
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -235,84 +228,6 @@ const EitProduct = {
             if ($$('#image-new').value == '') {
                 imgIntro = $$('#image-old').src
 
-                const promise = new Promise(resolve => {
-                    resolve();
-                });
-                promise
-                    .then(() => {
-                        if ($$('#album1').value == '') {
-                            album.push($$('#album1-old').src)
-                            return album;
-                        } else {
-                            const album1 = $$('#album1').files[0];
-                            let storageRef = firebase.storage().ref(`images/${album1.name}`)
-                            storageRef.put(album1).then(() => {
-                                storageRef.getDownloadURL().then(url => {
-                                    return album.push(url);
-                                })
-                            })
-                        }
-
-                    })
-                    // .then(data => {
-                    //     if ($$('#album2').value == '') {
-                    //         album.push($$('#album2-old').src)
-                    //     } else {
-                    //         const album2 = $$('#album2').files[0];
-                    //         let storageRef = firebase.storage().ref(`images/${album2.name}`)
-                    //         storageRef.put(album2).then(() => {
-                    //             storageRef.getDownloadURL().then(url => {
-                    //                 album.push(url)
-                    //             })
-                    //         })
-                    //     }
-                    //     return data;
-                    // })
-                    // .then(data => {
-                    //     if ($$('#album3').value == '') {
-                    //         album.push($$('#album3-old').src)
-                    //     } else {
-                    //         const album3 = $$('#album3').files[0];
-                    //         let storageRef = firebase.storage().ref(`images/${album3.name}`)
-                    //         storageRef.put(album3).then(() => {
-                    //             storageRef.getDownloadURL().then(url => {
-                    //                 album.push(url)
-                    //             })
-                    //         })
-                    //     }
-                    //     return data;
-                    // })
-                    // .then(data => {
-                    //     if ($$('#album4').value == '') {
-                    //         album.push($$('#album4-old').src)
-                    //     } else {
-                    //         const album4 = $$('#album4').files[0];
-                    //         let storageRef = firebase.storage().ref(`images/${album4.name}`)
-                    //         storageRef.put(album4).then(() => {
-                    //             storageRef.getDownloadURL().then(url => {
-                    //                 album.push(url)
-                    //             })
-                    //         })
-                    //     }
-                    //     return data;
-                    // })
-                    .then((data) => {
-                        console.log(data);
-                        // const newProduct = {
-                        //     ...result,
-                        //     name: $$('#name').value,
-                        //     categoryId: $$('#category').value,
-                        //     content: $$('#content').value,
-                        //     price: $$('#price').value,
-                        //     sale: $$('#promotional').value,
-                        //     introduce: $$('#introduction').value,
-                        //     imageIntro: [imgIntro],
-                        //     album: data,
-                        //     size: $$('#size').value,
-                        //     classify: $$('#classify').value
-                        // }
-                        // console.log(newProduct);
-                    })
 
             } else {
                 imgIntro = ($$('#image-new').files[0]);
@@ -320,89 +235,7 @@ const EitProduct = {
                 storageRef.put(imgIntro).then(() => {
                     storageRef.getDownloadURL().then((url) => {
                         imgIntro = url;
-                        const promise = new Promise(resolve => {
-                            resolve();
-                        });
-                        promise
-                            .then(() => {
-                                if ($$('#album1').value == '') {
-                                    album.push($$('#album1-old').src)
-                                    return album;
-                                } else {
-                                    const album1 = $$('#album1').files[0];
-                                    let storageRef = firebase.storage().ref(`images/${album1.name}`)
-                                    storageRef.put(album1).then(() => {
-                                        storageRef.getDownloadURL().then(url => {
-                                            album.push(url)
-                                            return album;
-                                        })
-                                    })
-                                }
 
-                            })
-                            .then(data => {
-                                if ($$('#album2').value == '') {
-                                    album.push($$('#album2-old').src)
-                                } else {
-                                    const album2 = $$('#album2').files[0];
-                                    let storageRef = firebase.storage().ref(`images/${album2.name}`)
-                                    storageRef.put(album2).then(() => {
-                                        storageRef.getDownloadURL().then(url => {
-                                            album.push(url)
-                                        })
-                                    })
-                                }
-                                console.log(2);
-                                return data;
-                            })
-                            .then(data => {
-                                if ($$('#album3').value == '') {
-                                    album.push($$('#album3-old').src)
-                                } else {
-                                    const album3 = $$('#album3').files[0];
-                                    let storageRef = firebase.storage().ref(`images/${album3.name}`)
-                                    storageRef.put(album3).then(() => {
-                                        storageRef.getDownloadURL().then(url => {
-                                            album.push(url)
-                                        })
-                                    })
-                                }
-                                return data;
-                            })
-                            .then(data => {
-                                if ($$('#album4').value == '') {
-                                    album.push($$('#album4-old').src)
-                                } else {
-                                    const album4 = $$('#album4').files[0];
-                                    let storageRef = firebase.storage().ref(`images/${album4.name}`)
-                                    storageRef.put(album4).then(() => {
-                                        storageRef.getDownloadURL().then(url => {
-                                            album.push(url)
-                                        })
-                                    })
-                                }
-                                return data;
-                            })
-                            .then((data) => {
-                                console.log(data);
-                                // const newProduct = {
-                                //     ...result,
-                                //     name: $$('#name').value,
-                                //     categoryId: $$('#category').value,
-                                //     content: $$('#content').value,
-                                //     price: $$('#price').value,
-                                //     sale: $$('#promotional').value,
-                                //     introduce: $$('#introduction').value,
-                                //     imageIntro: [imgIntro],
-                                //     album: data,
-                                //     size: $$('#size').value,
-                                //     classify: $$('#classify').value
-                                // }
-                                // console.log(newProduct);
-                                // productAPI.update(id, newProduct);
-                                // alert("Update product success");
-                                // window.location.hash = `/listproducts`;
-                            })
                     })
                 })
             }
