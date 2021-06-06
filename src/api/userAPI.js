@@ -10,5 +10,9 @@ export const UserAPI = {
     signin(data) {
         const url = `signin`;
         return axiosClient.post(url, data);
+    },
+    list() {
+        const url = `users`;
+        return axiosClient.get(url)
     }
 }

@@ -17,17 +17,17 @@ const ShopCart = {
                                     cart</span></span>
                             </i></a>
                     </div>
-                    <div class=" flex justify-center">
+                    <div class="text-center flex justify-center">
                         <table class="border-collapse w-full">
                             <thead class=" border-b-2 ">
                                 <tr class="box-border text-xs md:text-lg">
                                     <th class="">PRODUCT</th>
                                     <th class=" ">PRICE</th>
                                     <th class=" ">QUANTITY</th>
-                                    <th class=" " >TOTAL</th>
+                                    <th  >TOTAL</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-center">
+                            <tbody class="">
                                 <tr class="border-b-2 my-4 box-border">
                                     <td class="md:flex md:justify-between items-center w-64">
                                         <div class="flex justify-center">
@@ -39,18 +39,15 @@ const ShopCart = {
                                         </div>
                                     </td>
                                     <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
-                                        <span id="priceProduct">150</span>
+                                        <span class="priceProduct">150</span>
                                     </td>
                                     <td class="mx-28 w-56">
                                         <div class="flex justify-center">
-                                            <span class="cursor-pointer minus" >-</span>
-                                            <input type="text" value="1" name="value" min="0" minlength="0" 
-                                                disabled class="w-6 mx-4 number">
-                                            <span class="cursor-pointer plus" >+</span>
+                                            <span class="cursor-pointer ">1</span>
                                         </div>
                                     </td>
                                     <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
-                                            id="quantityProduct">300</span> </td>
+                                            class="quantityProduct">300</span> </td>
                                     <td>
                                         <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
                                     </td>
@@ -66,18 +63,15 @@ const ShopCart = {
                                         </div>
                                     </td>
                                     <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
-                                        <span id="priceProduct">150</span>
+                                        <span class="priceProduct">150</span>
                                     </td>
                                     <td class="mx-28 w-56">
                                         <div class="flex justify-center">
-                                            <span class="cursor-pointer minus" >-</span>
-                                            <input type="text" value="1" name="value" min="0" minlength="0" 
-                                                disabled class="w-6 mx-4 number">
-                                            <span class="cursor-pointer plus" >+</span>
+                                            <span class="cursor-pointer ">1</span>
                                         </div>
                                     </td>
                                     <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
-                                            id="quantityProduct">300</span> </td>
+                                            class="quantityProduct">300</span> </td>
                                     <td>
                                         <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
                                     </td>
@@ -95,7 +89,7 @@ const ShopCart = {
                                             <span>Subtotal</span>
                                         </div>
                                         <div class="text-red-500 font-normal text-xs md:text-base">
-                                            $ <span> 750</span>
+                                            $ <span class="subtotal"> 750</span>
                                         </div>
                                     </div>
                                     <div class="flex justify-between items-center mt-2">
@@ -103,7 +97,7 @@ const ShopCart = {
                                             <span>Total</span>
                                         </div>
                                         <div class="text-red-500 font-normal text-xs md:text-base">
-                                            $<span>750</span>
+                                            $<span class="totals">750</span>
                                         </div>
                                     </div>
                                 </div>
@@ -199,26 +193,16 @@ const ShopCart = {
         `;
     },
     async afterRender() {
-        var minus = $$('.minus');
-        var number = $$('.number');
-        var plus = $$('.plus');
-        var priceProduct = $$('.priceProduct');
-        var quantityProduct = $$('.quantityProduct');
-        // console.log(minus);
-
-        // quantityProduct.innerHTML = Number(priceProduct.innerHTML) * Number(number.value);
-        // minus.onclick = () => {
-        //     number.value = Number(number.value) - 1;
-        //     if (number.value <= 1) {
-        //         number.value = 1;
-        //     }
-        //     quantityProduct.innerHTML = Number(priceProduct.innerHTML) * Number(number.value);
-        // }
-        // plus.onclick = () => {
-        //     number.value = Number(number.value) + 1;
-        //     quantityProduct.innerHTML = Number(priceProduct.innerHTML) * Number(number.value);
-        // }
-
+        function totals() {
+            var quantityProduct = $$('.quantityProduct');
+            var sum = 0;
+            quantityProduct.forEach(element => {
+                // console.log(element.innerHTML);
+                sum += Number(element.innerHTML);
+            });
+            $$('.totals').innerHTML = Number(sum) + Number($$('.subtotal').innerHTML);
+        }
+        totals();
     }
 }
 export default ShopCart;

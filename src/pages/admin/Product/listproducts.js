@@ -1,35 +1,35 @@
 import NavBarAdmin from '../../../components/navbaradmin';
 import ListProductchild from '../../../components/listproductchild';
-const Adminproducts ={
-  async  render(){
-    // const {data:product} = await productAPI.list() ;
-    // const result = product.map((element, index)=>{
-    //         return /*html */`
-    //         <tr>
-    //         <td>${element.id}</td>
-    //         <td>${element.name}</td>
-    //         <td>${element.categoryId}</td>
-    //         <td>${element.content}</td>
-    //         <td>${element.price}</td>
-    //         <td>${element.sale}</td>
-    //         <td>${element.introduce}</td>
-    //         <td>${element.images}</td>
-    //         <td>${element.size}</td>
-    //         <td>${element.classify}</td>
-    //         <td class="w-20"><button
-    //         class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
-    //             href="#/editproduct/${element.id}"
-    //             class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td>
-    // <td class="w-20"><button data-id="${element.id}"
-          
-    //         class="list-product-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
-                
-    //             <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button>
-    // </td>
-    //     </tr>
-    //         `;
-    // }).join("");
-        return /*html*/`
+const Adminproducts = {
+    async render() {
+        // const {data:product} = await productAPI.list() ;
+        // const result = product.map((element, index)=>{
+        //         return /*html */`
+        //         <tr>
+        //         <td>${element.id}</td>
+        //         <td>${element.name}</td>
+        //         <td>${element.categoryId}</td>
+        //         <td>${element.content}</td>
+        //         <td>${element.price}</td>
+        //         <td>${element.sale}</td>
+        //         <td>${element.introduce}</td>
+        //         <td>${element.images}</td>
+        //         <td>${element.size}</td>
+        //         <td>${element.classify}</td>
+        //         <td class="w-20"><button
+        //         class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
+        //             href="#/editproduct/${element.id}"
+        //             class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td>
+        // <td class="w-20"><button data-id="${element.id}"
+
+        //         class="list-product-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
+
+        //             <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button>
+        // </td>
+        //     </tr>
+        //         `;
+        // }).join("");
+        return /*html*/ `
         ${NavBarAdmin.render()}
         <div class="main-panel">
             <!-- Navbar -->
@@ -78,11 +78,11 @@ const Adminproducts ={
         </div>
         `;
     },
-    async afterRender(){
+    async afterRender() {
         return `
         ${await ListProductchild.afterRender()}
         `;
     }
-    
+
 }
 export default Adminproducts;

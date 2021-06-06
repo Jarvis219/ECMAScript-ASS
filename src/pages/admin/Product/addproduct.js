@@ -2,8 +2,10 @@ import NavBarAdmin from "../../../components/navbaradmin";
 import productAPI from "../../../api/productAPI";
 import firebase from "../../../firebase";
 import categoryAPI from "../../../api/categoryAPI";
+import Adminproducts from "./listproducts";
 import {
-    $$
+    $$,
+    reRender
 } from '../../../untils';
 const AddProduct = {
     async render() {
@@ -50,7 +52,7 @@ const AddProduct = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name product</label>
-                                                    <input type="text" class="form-control" id="name" name="name_product"
+                                                    <input type="text" class="form-control" id="name" name="name_product" required
                                                      >
                                                 </div>
                                             </div>
@@ -59,14 +61,14 @@ const AddProduct = {
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Price</label>
-                                                    <input type="number" name="price" class="form-control" id="price"
+                                                    <input type="number" name="price" class="form-control" id="price" required
                                                      >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Promotional</label>
-                                                    <input type="number" class="form-control" name="promotional"
+                                                    <input type="number" class="form-control" name="promotional" required
                                                         id="promotional" >
                                                 </div>
                                             </div>
@@ -77,7 +79,7 @@ const AddProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Introduction</label>
                                                     <textarea name="introduction" cols="30" id="introduction" rows="10"
-                                                        class="form-control border  product" ></textarea>
+                                                        class="form-control border  product"  required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,7 +88,7 @@ const AddProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Content</label>
                                                     <textarea name="content" cols="30" rows="10" id="content"
-                                                        class="form-control border  product" ></textarea>
+                                                        class="form-control border  product"required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,8 +96,8 @@ const AddProduct = {
                                             <div class="col-md-12">
                                                 <div class="">
                                                     <label class="bmd-label-floating">ImageIntro</label>
-                                                    <input type="file" class="form-control" name="promotional"
-                                                    id="image" >
+                                                    <input type="file" class="form-control"  name="promotional"
+                                                    id="image" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,7 +107,7 @@ const AddProduct = {
                                                 <div class="">
                                                     <label class="bmd-label-floating">Album</label>
                                                     <input type="file" class="form-control album" multiple name="promotional"
-                                                    id="" >
+                                                    id="" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -244,18 +246,18 @@ const AddProduct = {
                                 size: sizes,
                                 classify: sex.join(""),
                             }
-                            // console.log(product);
+                            console.log(product);
                             productAPI.add(product);
                             alert("Add product success");
                             window.location.hash = `/listproducts`;
+                            reRender(Adminproducts, '#list-product');
+
                         }
 
                     }
                 }
                 addImg();
                 // console.log(index);
-
-
                 function uploadImageAsPromise(imageFile) {
                     // console.log(imageFile);
                     return new Promise(function (resolve, reject) {

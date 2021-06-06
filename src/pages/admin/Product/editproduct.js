@@ -1,11 +1,13 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import {
     useParams,
-    $$
+    $$,
+    reRender
 } from '../../../untils';
 import productAPI from "../../../api/productAPI";
 import categoryAPI from "../../../api/categoryAPI";
 import firebase from "../../../firebase";
+import Adminproducts from "./listproducts";
 const EitProduct = {
     async render() {
         const {
@@ -14,13 +16,13 @@ const EitProduct = {
         const {
             data: result
         } = await productAPI.read(id);
-        console.log(result.album);
+        // console.log(result.album);
         const imageAlbums = result.album.map((img) => {
             return /*html*/ `
             <img src="${img}" class="w-32 h-32 object-contain albums">
             `;
         }).join("");
-        console.log(imageAlbums);
+        // console.log(imageAlbums);
         const {
             data: cate
         } = await categoryAPI.editProduct(result.categoryId);
@@ -109,8 +111,8 @@ const EitProduct = {
                                             <div class="col-md-12">
                                                 <div class="">
                                                     <label class="bmd-label-floating">Image</label>
-                                                    <img src="${result.imageIntro}" alt="" class=" h-40" id="image-old">
-                                                    <input type="file" class="form-control"  name="promotional"
+                                                    <img src="${result.imageIntro}" alt="" class=" h-40"  id="image-old">
+                                                    <input type="file" class="form-control"   name="promotional"
                                                     id="image-new">
                                                 </div>
                                             </div>
@@ -122,7 +124,7 @@ const EitProduct = {
                                                     <div class= "flex justify-between items-center">
                                                     ${imageAlbums}
                                                     </div>
-                                                    <input type="file" class="form-control album" name="promotional"
+                                                    <input type="file" class="form-control album" multiple name="promotional"
                                                     id="album1" >
                                                 </div>
                                             </div>
@@ -212,6 +214,7 @@ const EitProduct = {
         `;
     },
     async afterRender() {
+
         const {
             id
         } = useParams();
@@ -221,40 +224,137 @@ const EitProduct = {
         // console.log(result);
         $$('#form-update-product').addEventListener('submit', (e) => {
             e.preventDefault();
-            const albums = $$('.album');
+            const album = $$('.album');
+            const size = $$('[name="size"]');
+            const sizes = [];
             var imgIntro = '';
-            var album = [];
-
+            var albums = [];
+            const classify = $$('[name="classify"]');
+            const sex = [];
+            classify.forEach(element => {
+                if (element.checked) {
+                    sex.push(element.value);
+                }
+            });
+            size.forEach(element => {
+                if (element.checked) {
+                    sizes.push(element.value);
+                }
+            });
             if ($$('#image-new').value == '') {
                 imgIntro = $$('#image-old').src
+                if (album.value == '') {
+                    const product = {
+                        id: Math.round(Math.random() * 700000),
+                        name: $$('#name').value,
+                        categoryId: $$('#category').value,
+                        content: $$('#content').value,
+                        price: $$('#price').value,
+                        sale: $$('#promotional').value,
+                        introduce: $$('#introduction').value,
+                        imageIntro: imgIntro,
+                        album: result.album,
+                        size: sizes,
+                        classify: sex.join(""),
+                    }
 
+                    // console.log(product);
+                    productAPI.update(id, product);
+                    alert("Update product success");
+                    window.location.hash = `/listproducts`;
+                    reRender(Adminproducts, '#list-product');
 
+                } else {
+                    addImg();
+                }
             } else {
+                // console.log(2);
                 imgIntro = ($$('#image-new').files[0]);
                 let storageRef = firebase.storage().ref(`images/${imgIntro.name}`)
                 storageRef.put(imgIntro).then(() => {
                     storageRef.getDownloadURL().then((url) => {
                         imgIntro = url;
-
+                        console.log(imgIntro);
+                        if (album.value == '') {
+                            console.log(3);
+                            const product = {
+                                id: Math.round(Math.random() * 700000),
+                                name: $$('#name').value,
+                                categoryId: $$('#category').value,
+                                content: $$('#content').value,
+                                price: $$('#price').value,
+                                sale: $$('#promotional').value,
+                                introduce: $$('#introduction').value,
+                                imageIntro: imgIntro,
+                                album: result.album,
+                                size: sizes,
+                                classify: sex.join(""),
+                            }
+                            // console.log(product);
+                            productAPI.update(id, product);
+                            alert("Update product success");
+                            window.location.hash = `/listproducts`;
+                            reRender(Adminproducts, '#list-product');
+                        } else {
+                            console.log(4);
+                            addImg();
+                        }
                     })
                 })
             }
+            let index = 0;
+            async function addImg() {
+                for (var i = 0; i < album.files.length; i++) {
+                    var imageFile = album.files[i];
+                    await uploadImageAsPromise(imageFile);
+                    index++;
+                    if (index == album.files.length) {
+                        const product = {
+                            id: Math.round(Math.random() * 700000),
+                            name: $$('#name').value,
+                            categoryId: $$('#category').value,
+                            content: $$('#content').value,
+                            price: $$('#price').value,
+                            sale: $$('#promotional').value,
+                            introduce: $$('#introduction').value,
+                            imageIntro: imgIntro,
+                            album: albums,
+                            size: sizes,
+                            classify: sex.join(""),
+                        }
+                        // console.log(id, product);
+                        productAPI.update(id, product);
+                        alert("Update product success");
+                        window.location.hash = `/listproducts`;
+                        reRender(Adminproducts, '#list-product');
+                    }
+                }
+            }
 
-            // console.log(album);
-            // console.log(imgIntro);
-            // const newProduct = {
-            //     ...result,
-            //     name: $$('#name').value,
-            //     categoryId: $$('#category').value,
-            //     content: $$('#content').value,
-            //     price: $$('#price').value,
-            //     sale: $$('#promotional').value,
-            //     introduce: $$('#introduction').value,
-            //     images: [imgIntro],
-            //     size: $$('#size').value,
-            //     classify: $$('#classify').value
-            // }
-            // console.log(newProduct);
+            function uploadImageAsPromise(imageFile) {
+                // console.log(imageFile);
+                return new Promise(function (resolve, reject) {
+                    var storageRef = firebase.storage().ref(`images/${imageFile.name}`);
+                    //Upload file
+                    var task = storageRef.put(imageFile);
+                    //Update progress bar
+                    task.on('state_changed',
+                        function progress(snapshot) {
+                            var percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+                            // uploader.value = percentage;
+                        },
+                        function error(err) {
+
+                        },
+                        async function complete() {
+
+                            const imageURL = await task.snapshot.ref.getDownloadURL();
+                            albums.push(imageURL)
+                            resolve(imageURL)
+                        }
+                    );
+                })
+            }
         });
     }
 
