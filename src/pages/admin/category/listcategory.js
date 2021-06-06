@@ -13,6 +13,13 @@ const AdminCategory = {
                     </div>
                 </div>
             </nav>
+            <div  class="flex justify-center">
+            <div class=" absolute mt-20 lg:mt-15 z-50">
+            <a href="/#/addcategory"><button type="submit"
+                    class="btn btn-primary pull-left ml-4">ADD CATEGORY</button></a>
+        </div>
+            </div>
+             
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
@@ -28,10 +35,7 @@ const AdminCategory = {
                                 </table>
                              </div>
                                 </div>
-                                <div>
-                                    <a href="/#/addcategory"><button type="submit"
-                                            class="btn btn-primary pull-left ml-4">ADD CATEGORY</button></a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

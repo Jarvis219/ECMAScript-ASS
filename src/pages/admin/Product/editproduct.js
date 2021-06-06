@@ -245,7 +245,7 @@ const EitProduct = {
                 imgIntro = $$('#image-old').src
                 if (album.value == '') {
                     const product = {
-                        id: Math.round(Math.random() * 700000),
+                        id: id,
                         name: $$('#name').value,
                         categoryId: $$('#category').value,
                         content: $$('#content').value,
@@ -278,7 +278,7 @@ const EitProduct = {
                         if (album.value == '') {
                             console.log(3);
                             const product = {
-                                id: Math.round(Math.random() * 700000),
+                                id: id,
                                 name: $$('#name').value,
                                 categoryId: $$('#category').value,
                                 content: $$('#content').value,
@@ -310,7 +310,7 @@ const EitProduct = {
                     index++;
                     if (index == album.files.length) {
                         const product = {
-                            id: Math.round(Math.random() * 700000),
+                            id: id,
                             name: $$('#name').value,
                             categoryId: $$('#category').value,
                             content: $$('#content').value,

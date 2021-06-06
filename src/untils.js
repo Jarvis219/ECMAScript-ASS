@@ -16,7 +16,7 @@ export const $$ = selector => {
 }
 
 export const reRender = async (component, position = " ") => {
-    console.log(component);
+    // console.log(component);
     if (position) {
         $$(position).innerHTML = await component.render();
         // console.log(0);

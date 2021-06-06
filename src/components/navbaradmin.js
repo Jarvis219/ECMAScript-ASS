@@ -55,7 +55,7 @@ const NavBarAdmin = {
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./contact.html">
+                    <a class="nav-link" href="#/listcontact">
                         <i class="fas fa-id-card-alt"></i>
                         <p>CONTACT</p>
                     </a>

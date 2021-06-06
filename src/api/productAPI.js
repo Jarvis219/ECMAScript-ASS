@@ -23,6 +23,10 @@ export const productAPI = {
     update(id, data) {
         const url = `/products/${id}`;
         return axiosClient.put(url, data);
+    },
+    listProductCate(id) {
+        const url = `/products?classify=${id}`;
+        return axiosClient.get(url);
     }
 }
 export default productAPI;

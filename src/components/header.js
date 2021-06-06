@@ -21,11 +21,11 @@ const Header = {
                                         </div>
                                     </a>
                                 </li>
-                                <li><a href="#" class="px-4 group block relative ">WOMEN'S<div
+                                <li><a href="#/productcate/female" class="px-4 group block relative ">WOMEN'S<div
                                             class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
                                             style="height: 2px;">
                                         </div> </a></li>
-                                <li><a href="#" class="px-3 group block relative">MEN'S <div
+                                <li><a href="#/productcate/male" class="px-3 group block relative">MEN'S <div
                                             class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
                                             style="height: 2px;">
                                         </div></a></li>

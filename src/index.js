@@ -19,6 +19,8 @@ import AddProduct from './pages/admin/Product/addproduct';
 import EditCategory from './pages/admin/category/editcategory';
 import SignUp from './components/signup';
 import SignIn from './components/signin';
+import ProductCate from './pages/productCate';
+import ListContact from './pages/admin/contact/listcontact';
 // import 'owl.carousel';
 
 
@@ -39,14 +41,19 @@ const routes = {
     '/addproduct': AddProduct,
     '/addcategory': AddCategory,
     '/signup': SignUp,
-    '/signin': SignIn
+    '/signin': SignIn,
+    '/productcate/:id': ProductCate,
+    '/listcontact': ListContact
+
 }
 const router = async () => {
     const {
         resource,
-        id
+        id,
+        action
     } = useParams();
-    const parseUrl = (resource ? `/${resource}` : '/') + (id ? `/:id` : '');
+    // console.log(action);
+    const parseUrl = (resource ? `/${resource}` : '/') + (id ? `/:id` : '') + (action ? `/action` : '');
     // console.log("par :" + parseUrl);
     const page = routes[parseUrl] ? routes[parseUrl] : Error404;
     // console.log(page);

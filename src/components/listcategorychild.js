@@ -19,7 +19,7 @@ const ListCategoryChild = {
                 class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td>
               <td class="w-20"><button data-id="${element.id}"
             class="list-category-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
-                <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button>
+                <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button></td>
             </tr>
             `;
         }).join("");
@@ -30,7 +30,7 @@ const ListCategoryChild = {
                                             stt
                                         </th>
                                         <th>Name Category</th>
-                                        <td colspan="2" class="w-32">Tùy chỉnh</td>
+                                        <td colspan="2" class="w-32">Custom</td>
                                  </thead>
                                     <tbody>
                                         ${result}

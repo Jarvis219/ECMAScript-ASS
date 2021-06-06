@@ -39,9 +39,17 @@ const Adminproducts = {
                         <a class="navbar-brand uppercase" href="javascript:;">PRODUCTS</a>
                     </div>
                 </div>
+                
             </nav>
+            <div class="flex justify-center">
+            <div class=" absolute mt-20 lg:mt-15 z-50">
+            <a href="/#/addproduct"><button type="submit"
+                    class="btn btn-primary pull-left ml-4">ADD PRODUCT</button></a>
+           </div>
+            </div>
+           
             <!-- End Navbar -->
-            <div class="content">
+            <div class="content ">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
@@ -49,16 +57,14 @@ const Adminproducts = {
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title ">PRODUCTS</h4>
                                 </div>
+                               
                                 <div class="card-body" >
                                     <div class="table-responsive" id="list-product">
                                     ${await ListProductchild.render()}
                                 </table>
                              </div>
                                 </div>
-                                <div>
-                                    <a href="/#/addproduct"><button type="submit"
-                                            class="btn btn-primary pull-left ml-4">ADD PRODUCT</button></a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

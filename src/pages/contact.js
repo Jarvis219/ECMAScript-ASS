@@ -1,8 +1,15 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
+import categoryAPI from '../api/categoryAPI';
+import {
+    $$
+} from '../untils';
+import {
+    contactAPI
+} from '../api/contactAPI';
 const Contact = {
     render() {
-        return /*html*/`
+        return /*html*/ `
         ${Header.render()}
         <div class="container mx-auto md:px-16 pt-24">
                 <div>
@@ -46,25 +53,26 @@ const Contact = {
                                     <h5>SEND MESSAGE</h5>
                                 </div>
                                 <div>
-                                    <form action="#">
+                                    <form id="contact-submit">
                                         <input
                                             class="block w-full border border-gray-400 pl-4 rounded-lg h-12 my-4 outline-none"
-                                            type="text" name="" id="" placeholder="Name*" required>
+                                            type="text" name="" id="name" placeholder="Name*" required>
                                         <input
                                             class="block w-full border border-gray-400 pl-4 rounded-lg h-12 my-4 outline-none"
-                                            type="email" name="" id="" placeholder="Email*" required>
+                                            type="email" name="" id="email" placeholder="Email*" required>
                                         <input
                                             class="block w-full border border-gray-400 pl-4 rounded-lg h-12 my-4 outline-none"
-                                            type="url" name="" id="" placeholder="Website*" required>
+                                            type="tel" name="" id="phone" placeholder="Phone number*" required>
                                         <textarea
                                             class="block w-full border border-gray-400 pl-4 pt-2 rounded-lg my-4  outline-none"
-                                            name="" id="" cols="30" rows="10" maxlength="300"
-                                            placeholder="Messange"></textarea>
+                                            name="" id="content" cols="30" rows="10" maxlength="300"
+                                            placeholder="Messange" required></textarea>
                                         <input
                                             class="bg-red-600 text-white px-4 py-2 rounded-full outline-none hover:bg-gray-400 hover:text-red-600"
                                             type="submit" name="" id="" value="SEND MESSAGE">
                                     </form>
                                 </div>
+                                <div class="text-center"id="feedback"></div>
                             </div>
                         </aside>
                         <!-- end contact -->
@@ -151,6 +159,26 @@ const Contact = {
             <!-- end section instagram -->
         ${Footer.render()}
         `;
+    },
+    afterRender() {
+
+        $$('#contact-submit').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const contact = {
+                id: Math.round(Math.random() * 700000),
+                name: $$('#name').value,
+                email: $$('#email').value,
+                phone: $$('#phone').value,
+                content: $$('#content').value,
+                status: "Not approved yet"
+            }
+            if (contactAPI.add(contact)) {
+                $$('#feedback').innerHTML = `<span class="text-green-400"> message sent successfully</span>`
+            } else {
+                $$('#feedback').innerHTML = `<span class="text-red-400"> send message failed</span>`
+            }
+            // feedback
+        })
     }
 }
 export default Contact;

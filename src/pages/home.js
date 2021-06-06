@@ -13,7 +13,7 @@ const Home = {
     async render() {
         var result = '';
         try {
-            const response = await fetch("http://localhost:3001/products");
+            const response = await fetch("http://localhost:3001/products?_limit=12&_sort=id&_order=desc");
             const data = await response.json();
             result = data.map(element => {
                 // console.log(element.images[0]);
