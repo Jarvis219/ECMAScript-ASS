@@ -21,6 +21,8 @@ import SignUp from './components/signup';
 import SignIn from './components/signin';
 import ProductCate from './pages/productCate';
 import ListContact from './pages/admin/contact/listcontact';
+import ListCarts from './pages/admin/carts/listcart';
+import EditCart from './pages/admin/carts/editcart';
 // import 'owl.carousel';
 
 
@@ -43,7 +45,9 @@ const routes = {
     '/signup': SignUp,
     '/signin': SignIn,
     '/productcate/:id': ProductCate,
-    '/listcontact': ListContact
+    '/listcontact': ListContact,
+    '/listcarts': ListCarts,
+    '/editcart/:id': EditCart
 
 }
 const router = async () => {

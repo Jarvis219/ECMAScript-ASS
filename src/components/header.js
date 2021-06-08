@@ -1,11 +1,48 @@
+import {
+    isSetAuthen
+} from "../untils";
 const Header = {
     render() {
+        // console.log(isSetAuthen());
+        const user = () => {
+            let checkAuthor = () => {
+                if (isSetAuthen().sub == 1) {
+                    return `Admin`
+                } else {
+                    return `Customer`
+                }
+            }
+            if (isSetAuthen().sub == 1) {
+                if (isSetAuthen() == false) {
+                    return ` <a href="#/signin">Login</a>
+                <a href="#/signup">/ Register</a>`;
+                } else {
+                    return /*html*/ `
+                <span>
+                Hi ${checkAuthor()}  
+                </span>
+                <a href="/#/listproducts">/ Admin</a>
+               <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                }
+            } else {
+                if (isSetAuthen() == false) {
+                    return ` <a href="#/signin">Login</a>
+                <a href="#/signup">/ Register</a>`;
+                } else {
+                    return /*html*/ `
+                <span>
+                Hi ${checkAuthor()}
+                </span>
+                <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                }
+            }
+        }
         return /*html*/ `
         <header class="bg-gray-100 position fixed w-screen z-50 top-0  " id="heading">
             <div>
                 <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0 lg:gap-20 lg:py-8">
                     <div class="logo mx-auto md:mx-0">
-                        <a href="./index.html"><img src="./images/logo.png" alt="" class="w-full"></a>
+                        <a href="#/"><img src="./images/logo.png" alt="" class="w-full"></a>
                         <div class="md:hidden absolute right-0 top-0 ml-6 mt-8 mr-16 ">
                             <button id="btnMenu" class="border border-gray-700 px-2 py-1 ">
                                 <i class="fas fa-bars"></i>
@@ -47,10 +84,9 @@ const Header = {
                     </div>
                     <div class="md:flex hidden ">
                         <div class=" pt-3 md:mb-4 text-gray-700 text-xs">
-                            <a href="#/signin">Login</a>
-                            <a href="#/signup">/ Register</a>
+                            ${user()}
                         </div>
-                        <div class="md:hidden lg:block mx-4 ">
+                        <div class="md:hidden lg:block mx-2 ">
                             <form class="inline " id="demo-search">
                                 <input type="search" placeholder="search">
                             </form>
@@ -92,6 +128,7 @@ const Header = {
                         <div class="grid grid-cols-1 md:flex justify-center">
                             <div class=" pl-6 pr-12 pt-3 text-gray-700 text-xs">
                                 <a href="#">Login</a>
+                                
                                 <a href="#">/ Register</a>
                             </div>
                             <div class=" mx-4">
@@ -108,6 +145,6 @@ const Header = {
         </header>
         <!-- end header -->
         `;
-    }
+    },
 }
 export default Header

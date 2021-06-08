@@ -1,8 +1,8 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-import categoryAPI from '../api/categoryAPI';
 import {
-    $$
+    $$,
+    checkLogout
 } from '../untils';
 import {
     contactAPI
@@ -161,7 +161,7 @@ const Contact = {
         `;
     },
     afterRender() {
-
+        checkLogout();
         $$('#contact-submit').addEventListener('submit', (e) => {
             e.preventDefault();
             const contact = {

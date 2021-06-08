@@ -1,10 +1,49 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
 import {
-    $$
+    cartAPI
+} from '../api/cartAPI';
+import {
+    $$,
+    checkLogout,
+    isSetAuthen
 } from '../untils';
 const ShopCart = {
     async render() {
+        const {
+            data
+        } = await cartAPI.listUser(isSetAuthen().email);
+        console.log(data);
+        const showShopCarts = data.map(element => {
+            return /*html*/ `
+            <tr class="border-b-2 my-4 box-border">
+            <td class="md:flex md:justify-between items-center w-64">
+                <div class="flex justify-center">
+                    <img src="${element.image}"
+                        style="width: 150px;height: 100px; object-fit: cover;" alt="">
+                </div>
+                <div class="text-xs md:text-base mr-2">
+                    <h6 >${element.name}</h6>
+                </div>
+            </td>
+            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
+                <span class="priceProduct">${element.price}</span>
+            </td>
+            <td class="mx-28 w-56">
+                <div class="flex justify-center">
+                    <span class="cursor-pointer ">${element.amount}</span>
+                </div>
+            </td>
+            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
+                    class="quantityProduct">${element.totalmoney}</span> </td>
+            <td>
+                <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
+            </td>
+        </tr>
+            `;
+        })
+
+
         return /*html */ `
         ${Header.render()}
         <div>
@@ -20,7 +59,7 @@ const ShopCart = {
                     <div class="text-center flex justify-center">
                         <table class="border-collapse w-full">
                             <thead class=" border-b-2 ">
-                                <tr class="box-border text-xs md:text-lg">
+                                <tr class="box-border  text-xs md:text-lg">
                                     <th class="">PRODUCT</th>
                                     <th class=" ">PRICE</th>
                                     <th class=" ">QUANTITY</th>
@@ -28,54 +67,7 @@ const ShopCart = {
                                 </tr>
                             </thead>
                             <tbody class="">
-                                <tr class="border-b-2 my-4 box-border">
-                                    <td class="md:flex md:justify-between items-center w-64">
-                                        <div class="flex justify-center">
-                                            <img src="https://picsum.photos/640/480"
-                                                style="width: 90px;height: 90px; object-fit: cover;" alt="">
-                                        </div>
-                                        <div class="text-xs md:text-base mr-2">
-                                            <h6>Chain bucket bag</h6>
-                                        </div>
-                                    </td>
-                                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
-                                        <span class="priceProduct">150</span>
-                                    </td>
-                                    <td class="mx-28 w-56">
-                                        <div class="flex justify-center">
-                                            <span class="cursor-pointer ">1</span>
-                                        </div>
-                                    </td>
-                                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
-                                            class="quantityProduct">300</span> </td>
-                                    <td>
-                                        <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b-2 my-4 box-border">
-                                    <td class="md:flex md:justify-between items-center w-64">
-                                        <div class="flex justify-center">
-                                            <img src="https://picsum.photos/640/480"
-                                                style="width: 90px;height: 90px; object-fit: cover;" alt="">
-                                        </div>
-                                        <div class="text-xs md:text-base mr-2">
-                                            <h6>Chain bucket bag</h6>
-                                        </div>
-                                    </td>
-                                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
-                                        <span class="priceProduct">150</span>
-                                    </td>
-                                    <td class="mx-28 w-56">
-                                        <div class="flex justify-center">
-                                            <span class="cursor-pointer ">1</span>
-                                        </div>
-                                    </td>
-                                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
-                                            class="quantityProduct">300</span> </td>
-                                    <td>
-                                        <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
-                                    </td>
-                                </tr>
+                                ${showShopCarts}
                             </tbody>
                         </table>
                     </div>
@@ -89,7 +81,7 @@ const ShopCart = {
                                             <span>Subtotal</span>
                                         </div>
                                         <div class="text-red-500 font-normal text-xs md:text-base">
-                                            $ <span class="subtotal"> 750</span>
+                                            $ <span class="subtotal">0</span>
                                         </div>
                                     </div>
                                     <div class="flex justify-between items-center mt-2">
@@ -193,6 +185,8 @@ const ShopCart = {
         `;
     },
     async afterRender() {
+        checkLogout();
+
         function totals() {
             var quantityProduct = $$('.quantityProduct');
             var sum = 0;

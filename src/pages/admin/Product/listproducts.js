@@ -57,7 +57,6 @@ const Adminproducts = {
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title ">PRODUCTS</h4>
                                 </div>
-                               
                                 <div class="card-body" >
                                     <div class="table-responsive" id="list-product">
                                     ${await ListProductchild.render()}

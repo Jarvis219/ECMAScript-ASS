@@ -5,7 +5,7 @@ import {
 export const productAPI = {
 
     list() {
-        const url = `/products?_expand=category`;
+        const url = `/products?_expand=category&_sort=id&_order=desc`;
         return axiosClient.get(url);
     },
     read(id) {

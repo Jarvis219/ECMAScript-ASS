@@ -7,8 +7,8 @@ export const categoryAPI = {
         const url = `categories`;
         return axiosClient.get(url);
     },
-    read(id_cate, id) {
-        const url = `products?categoryID=${id_cate}&id_ne=${id}&_limit=4`;
+    read(id_cate, classify, id) {
+        const url = `products?categoryId=${id_cate}&id_ne=${id}&classify=${classify}&_limit=4`;
         return axiosClient.get(url);
     },
     edit(id_cate) {

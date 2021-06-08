@@ -1,3 +1,5 @@
+import jwt_decode from 'jwt-decode';
+import Header from './components/header';
 export const useParams = () => {
     const url = window.location.hash.toLocaleLowerCase();
     // console.log(url);
@@ -19,13 +21,14 @@ export const reRender = async (component, position = " ") => {
     // console.log(component);
     if (position) {
         $$(position).innerHTML = await component.render();
-        // console.log(0);
+        console.log(0);
     } else {
-        // console.log(1);
+        console.log(1);
         $$('#main-content').innerHTML = await component.render();
     }
     await component.afterRender();
 }
+
 
 export const btnScoll = () => {
     var menu = document.getElementById('menu');
@@ -56,4 +59,42 @@ export const prices = (x) => {
         style: 'currency',
         currency: 'VND'
     });
+}
+
+// set data user
+export const setAuthen = ({
+    accessToken
+}) => {
+    const user = jwt_decode(accessToken);
+    if (typeof window !== 'undefined') {
+        return localStorage.setItem('user', JSON.stringify(user))
+    }
+}
+
+// use user
+export const isSetAuthen = () => {
+    if (typeof window == 'undefined') {
+        return false;
+    }
+    if (localStorage.getItem('user')) {
+        // console.log(localStorage.getItem('user'));
+        return JSON.parse(localStorage.getItem('user'));
+    } else {
+        return false;
+    }
+}
+
+// out user
+export const logout = () => {
+    if (localStorage.getItem('user')) {
+        // Header.render();
+        return localStorage.removeItem('user');
+    }
+}
+export const checkLogout = () => {
+    if ($$('#log-out') != undefined) {
+        $$('#log-out').onclick = () => {
+            logout()
+        };
+    }
 }

@@ -1,8 +1,11 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
+import {
+    checkLogout
+} from '../untils';
 const Blog = {
     render() {
-        return /*html */`
+        return /*html */ `
         ${Header.render()}
         <div>
         <div class="container mx-auto px-16 pt-24">
@@ -288,6 +291,9 @@ const Blog = {
         ${Footer.render()}
         `;
 
+    },
+    afterRender() {
+        checkLogout();
     }
 }
 export default Blog;

@@ -2,13 +2,10 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import 'owl.carousel';
 import {
-
     btnScoll,
-    prices
-
+    prices,
+    checkLogout
 } from '../untils';
-// import CountDown from '../functions/countDown';
-// console.log(CountDown.render());
 const Home = {
     async render() {
         var result = '';
@@ -17,6 +14,28 @@ const Home = {
             const data = await response.json();
             result = data.map(element => {
                 // console.log(element.images[0]);
+                const saleHome = () => {
+                    if (element.sale > 0) {
+                        return /*html*/ `
+                        <span class="text-gray-500 text-sm line-through font-medium ">${'$ '+prices(Number(element.price)).replace('VND',' ')}</span>
+                        `;
+                    } else {
+                        return /*html*/ `
+                        <span></span>
+                        `;
+                    }
+                }
+                const showSale = () => {
+                    if (element.sale > 0) {
+                        return /*html*/ `
+                        <span class="bg-red-300 px-2 py-1 text-white">${Math.round((100-(element.price-element.sale)*100/(element.price)),1)+'%'}</span>
+                        `;
+                    } else {
+                        return /*html*/ `
+                        <span class="bg-green-400 px-2 py-1 text-white">NEW</span>
+                        `;
+                    }
+                }
                 return /*html*/ `
                 <article class="text-center group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
                     <div class=" relative  overflow-hidden">
@@ -24,7 +43,7 @@ const Home = {
                             <img src="${element.imageIntro}" style="Width:270px; height:360px" alt="" class="w-full object-cover md:w-auto">
                         </div>
                         <div class="absolute top-0 mt-4 ml-4">
-                            <span class="bg-green-400 px-2 py-1 text-white">NEW</span>
+                            ${showSale()}
                         </div>
                         <div class="flex justify-center">
                             <div
@@ -46,7 +65,8 @@ const Home = {
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i></span>
-                        <span class="font-medium">$ ${prices(Number(element.price))}</span>
+                        <span class="font-medium text-xl">${'$ '+prices(Number(element.price-element.sale)).replace('VND',' ')}</span>
+                        ${saleHome()}
                     </div>
                 </article>
                 `;
@@ -620,7 +640,8 @@ const Home = {
      `;
     },
     async afterRender() {
-        btnScoll();
+
+
         $(document).ready(function () {
             $('.owl-carousel').owlCarousel({
                 items: 1,
@@ -631,28 +652,32 @@ const Home = {
                 autoplayHoverPause: true
             });
         });
+
+
+        checkLogout();
+        btnScoll();
         // Set the date we're counting down to
         var countDownDate = new Date("november 21, 2021 23:59:00").getTime();
 
         // Update the count down every 1 second
-        var x = setInterval(function () {
+        const x = setInterval(function () {
 
             // Get today's date and time
-            var now = new Date().getTime();
+            let now = new Date().getTime();
 
             // Find the distance between now and the count down date
-            var distance = countDownDate - now;
+            let distance = countDownDate - now;
 
             // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            var hoursF = document.getElementById('hours');
-            var secondsF = document.getElementById('seconds');
-            var minuteF = document.getElementById('minute');
-            var dayF = document.getElementById('dayF');
+            let hoursF = document.getElementById('hours');
+            let secondsF = document.getElementById('seconds');
+            let minuteF = document.getElementById('minute');
+            let dayF = document.getElementById('dayF');
             hoursF.innerHTML = hours;
             minuteF.innerHTML = minutes;
             secondsF.innerHTML = seconds;
@@ -663,7 +688,6 @@ const Home = {
                 document.getElementById("demo").innerHTML = "EXPIRED";
             }
         }, 1000);
-
     }
 }
 

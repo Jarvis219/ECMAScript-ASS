@@ -8,14 +8,15 @@ const ListProductchild = {
         const {
             data: product
         } = await productAPI.list();
+        // console.log(product);
         const result = product.map((element, index) => {
             return /*html */ `
             <tr>
             <td>${index+1}</td>
             <td>${element.name}</td>
             <td>${element.category.name}</td>
-            <td>${element.price}</td>
-            <td>${element.sale}</td>
+            <td>$${element.price+`.00`}</td>
+            <td>$${element.sale+`.00`}</td>
             <td>${element.size}</td>
             <td>${element.classify}</td>
             <td ><img width="100" height="100" src="${element.imageIntro}"></td>
@@ -77,6 +78,7 @@ const ListProductchild = {
 
     async afterRender() {
         const btns = $$('.list-product-btn')
+        // console.log(btns);
         btns.forEach(element => {
             const id = element.dataset.id;
             element.addEventListener('click', async () => {

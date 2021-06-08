@@ -2,7 +2,8 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import productAPI from '../api/productAPI';
 import {
-    prices
+    prices,
+    checkLogout
 } from '../untils';
 
 const Product = {
@@ -18,25 +19,50 @@ const Product = {
             } = await productAPI.list();
             var result = products.map(element => {
                 // console.log(element);
+                const saleProduct = () => {
+                    if (element.sale > 0) {
+                        return /*html*/ `
+                        <span class="text-gray-500 text-sm line-through font-medium ">${'$ '+prices(Number(element.price)).replace('VND',' ')}</span>
+                        `;
+                    } else {
+                        return /*html*/ `
+                        <span></span>
+                        `;
+                    }
+                }
+                const showSalePro = () => {
+                    if (element.sale > 0) {
+                        return /*html*/ `
+                        <span class="bg-red-300 px-2 py-1 text-white">${Math.round((100-(element.price-element.sale)*100/(element.price)),1)+'%'}</span>
+                        `;
+                    } else {
+                        return /*html*/ `
+                        <span class="bg-green-400 px-2 py-1 text-white">NEW</span>
+                        `;
+                    }
+                }
                 return /*html*/ `
                 <article class="col-span-12 gap-3 md:col-span-1 group my-4 md:my-0 text-center">
-                                    <div class="relative overflow-hidden">
-                                        <img src="${element.imageIntro}" alt=""  style="Width:270px; height:360px" class="w-full object-cover">
-                                        <div class="flex justify-center">
-                                            <div
-                                                class="absolute bottom-0 mb-8  text-xs  transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
-                                                <a href="#/products/${element.id}"
-                                                    class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                        class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                                <a href="#/products/${element.id}"
-                                                    class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full mx-4 md:mx-2 lg:mx-4 hover:bg-red-600 hover:text-white"><i
-                                                        class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                                <a href="#/products/${element.id}"
-                                                    class="bg-gray-200  p-3  md:p-1 lg:p-2 xl:p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
-                                                        class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
-                                            </div>
+                         <div class=" relative  overflow-hidden">
+                                    <div class="flex justify-center">
+                                        <img src="${element.imageIntro}" style="Width:270px; height:360px" alt="" class="w-full object-cover md:w-auto">
+                                    </div>
+                                    <div class="absolute top-0 mt-4 ml-4">
+                                        ${showSalePro()}
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <div
+                                            class="absolute bottom-0 mb-8  text-xs   transition duration-500 ease-in-out transform translate-y-40 group-hover:translate-y-0">
+                                            <a href="#" class="bg-gray-200   p-3  rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-expand-arrows-alt transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#"
+                                                class="bg-gray-200   p-3 rounded-full mx-4  hover:bg-red-600 hover:text-white"><i
+                                                    class="far fa-heart transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
+                                            <a href="#" class="bg-gray-200   p-3   rounded-full  hover:bg-red-600 hover:text-white"><i
+                                                    class="fas fa-cart-plus transform hover:rotate-360 transition duration-500 ease-in-out "></i></a>
                                         </div>
                                     </div>
+                             </div>  
                                     <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
                                         <a href="#/products/${element.id}" class="block  hover:text-red-500">${element.name}</a>
                                         <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>
@@ -44,7 +70,8 @@ const Product = {
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i></span>
-                                        <span class="font-medium"> ${prices(Number(element.price))}</span>
+                                        <span class="font-medium text-xl">${'$ '+prices(Number(element.price-element.sale)).replace('VND',' ')}</span>
+                                        ${saleProduct()}
                                     </div>
                                 </article>
             `;
@@ -382,6 +409,9 @@ const Product = {
             <!-- end section instagram -->
         ${Footer.render()}
         `;
+    },
+    afterRender() {
+        checkLogout();
     }
 }
 export default Product;

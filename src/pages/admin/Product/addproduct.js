@@ -36,14 +36,14 @@ const AddProduct = {
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Thêm product</h4>
+                                    <h4 class="card-title">ADD product</h4>
                                 </div>
                                 <div class="card-body">
                                     <form id="add-product">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Mã product (disabled) </label>
+                                                    <label class="bmd-label-floating">ID product (disabled) </label>
                                                     <input type="text" class="form-control" disabled>
                                                 </div>
                                             </div>
@@ -60,14 +60,14 @@ const AddProduct = {
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Price</label>
+                                                    <label class="bmd-label-floating">Price ($)</label>
                                                     <input type="number" name="price" class="form-control" id="price" required
                                                      >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Promotional</label>
+                                                    <label class="bmd-label-floating">Promotional ($)</label>
                                                     <input type="number" class="form-control" name="promotional" required
                                                         id="promotional" >
                                                 </div>

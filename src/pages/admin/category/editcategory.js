@@ -92,8 +92,8 @@ const EditCategory = {
             }
             if (categoryAPI.update(id, category)) {
                 alert("Update category success")
-                reRender(ListCategory, '#table-category');
                 window.location.hash = `/listcategory`;
+                reRender(ListCategory, '#table-category');
 
             } else {
                 alert('Update category failures')

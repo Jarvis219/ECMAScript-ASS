@@ -2,7 +2,8 @@ import {
     UserAPI
 } from "../api/userAPI";
 import {
-    $$
+    $$,
+    setAuthen
 } from "../untils";
 import Header from "./header";
 const SignIn = {
@@ -51,34 +52,27 @@ const SignIn = {
         `;
     },
     afterRender() {
+
         $$('#signip').addEventListener('submit', function (e) {
             e.preventDefault();
             let email = $$('#emails').value;
             let password = $$('#password').value;
-            // console.log(email, password, retypepass);
-
             const data = {
                 email: email,
                 password: password
             }
             UserAPI.signin(data)
-                .then((data) => {
-                    alert('Login success');
+                .then(({
+                    data
+                }) => {
+                    setAuthen(data);
+                })
+                .then(() => {
                     window.location.hash = `/`;
                 })
                 .catch((error) => {
                     $$('#error').innerHTML = `<span>${error.response.data}</span>`;
                 })
-
-            // if (UserAPI.signup(data)) {
-            //     alert('Register success')
-            //     $$('#error').innerHTML = '';
-            // } else {
-            //     alert('Register failure')
-            // }
-            // $$('#error').innerHTML = `<span>Password does not match !!!</span>`;
-
-
         });
 
     }

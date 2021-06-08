@@ -26,6 +26,13 @@ const SignUp = {
                             <hr class="text-gray-500 my-2">
                         </div>
                         <div>
+                            <label for="#"><i class="fas fa-user mx-2 text-2xl"></i><input type="text" name="" id="fullname"
+                                    placeholder="name" required
+                                    class="ml-2 py-1 px-2 scale-95 transform focus:scale-105 transition duration-300 ease-in-out  outline-none">
+                            </label>
+                            <hr class="text-gray-500 my-2">
+                        </div>
+                        <div>
                             <label for="#"><i class="fas fa-lock mx-2 text-2xl"></i> <input type="password" name="" minlength="8"
                                     id="password" placeholder="Password" required
                                     class="ml-1 py-1 px-2 scale-95 transform focus:scale-105 transition duration-300 ease-in-out    outline-none"></label>
@@ -45,7 +52,7 @@ const SignUp = {
                                 <a href="#">Forgot Password?</a>
                             </div>
                             <div class="flex justify-center my-3">
-                                <input type="submit" name="" id="" value="LOGIN"
+                                <input type="submit" name="" id="" value="SIGN UP"
                                     class=" bg-green-400  hover:bg-green-500 text-white px-16 rounded-full py-2 outline-none">
                             </div>
                     </form>
@@ -53,7 +60,6 @@ const SignUp = {
             </div>
         </div>
     </div>
-   
         `;
     },
     afterRender() {
@@ -62,12 +68,14 @@ const SignUp = {
             let email = $$('#emails').value;
             let password = $$('#password').value;
             let retypepass = $$('#retypepass').value;
-            // console.log(email, password, retypepass);
+            let name = $$('#fullname').value;
             if (password == retypepass) {
                 const data = {
                     email: email,
+                    name: name,
                     password: password
                 }
+                console.log(data);
                 if (UserAPI.signup(data)) {
                     alert('Register success')
                     $$('#error').innerHTML = '';

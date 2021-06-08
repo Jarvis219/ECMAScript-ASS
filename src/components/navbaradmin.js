@@ -12,7 +12,7 @@ const NavBarAdmin = {
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="nav-item   ">
+                <li class="nav-item">
                     <a class="nav-link" href="./information.html">
                         <i class="material-icons">dashboard</i>
                         <p>INFORMATION</p>
@@ -43,13 +43,7 @@ const NavBarAdmin = {
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./Slide.html">
-                        <i class="fab fa-slideshare"></i>
-                        <p>SLIDE</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./cart.html">
+                    <a class="nav-link" href="/#/listcarts">
                         <i class="fas fa-shopping-cart"></i>
                         <p>CART</p>
                     </a>

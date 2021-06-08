@@ -75,14 +75,14 @@ const EitProduct = {
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Price</label>
+                                                    <label class="bmd-label-floating">Price ($)</label>
                                                     <input type="number"  value="${result.price}"  name="price" class="form-control" id="price"
                                                         >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Promotional</label>
+                                                    <label class="bmd-label-floating">Promotional ($)</label>
                                                     <input type="number"  value="${result.sale}"  class="form-control" name="promotional"
                                                         id="promotional">
                                                 </div>
@@ -134,7 +134,7 @@ const EitProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Classify product</label>
                                                    <div class="flex justify-start items-center gap-3">
-                                                   <input type="radio" name="classify" value="male" id="male" checked>
+                                                   <input type="radio" name="classify" value="male" id="male" >
                                                    <label for="male" class=" py-1 classify text-gray-800"> Male
                                                    </label>
                                                    <input type="radio" name="classify" value="female" id="famale" >
@@ -149,7 +149,7 @@ const EitProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Size product</label>
                                                     <div class="flex justify-between items-center">
-                                                    <input type="checkbox" name="size" value="XXS" id="XXS" checked>
+                                                    <input type="checkbox" name="size" value="XXS" id="XXS" >
                                                     <label for="XXS" class=" py-1  text-gray-800"> XXS
                                                     </label>
                                                     <input type="checkbox" name="size" value="XS" id="XS" >
@@ -214,14 +214,28 @@ const EitProduct = {
         `;
     },
     async afterRender() {
-
         const {
             id
         } = useParams();
         const {
             data: result
         } = await productAPI.read(id);
-        // console.log(result);
+        // console.log(result.classify);
+        if (result.classify == 'male') {
+            $$('#male').checked = true;
+        } else {
+            $$('#famale').checked = true;
+        }
+        // console.log(result.size);
+        $$('[name="size"]').forEach(element => {
+            result.size.forEach(size => {
+                if (element.value == size) {
+                    element.checked = true;
+                }
+            })
+
+        })
+
         $$('#form-update-product').addEventListener('submit', (e) => {
             e.preventDefault();
             const album = $$('.album');

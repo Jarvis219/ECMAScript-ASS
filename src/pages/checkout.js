@@ -1,5 +1,11 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
+import {
+    cartAPI
+} from '../api/cartAPI';
+import {
+    checkLogout
+} from '../untils';
 
 const CheckOut = {
     render() {
@@ -127,6 +133,9 @@ const CheckOut = {
     </div>
             ${Footer.render()}
         `;
+    },
+    afterRender() {
+        checkLogout();
     }
 }
 export default CheckOut;

@@ -1,10 +1,17 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
 import categoryAPI from '../api/categoryAPI';
+import {
+    cartAPI
+} from '../api/cartAPI';
+import {
+    isSetAuthen
+} from '../untils';
 import 'owl.carousel';
 import {
     $$,
-    prices
+    prices,
+    checkLogout
 } from '../untils';
 import {
     useParams
@@ -23,22 +30,46 @@ const ProductDetail = {
         // const result = data.find(element => {
         //     return element.id == id;
         // })
-        // console.log(result.name);
+        // console.log(result.name); 
 
         const {
             data: result
         } = await productAPI.read(id);
-        // console.log(await result.categoryId);
+        // console.log(await result.classify);
         const {
             data: cate
-        } = await categoryAPI.read(result.categoryId, id);
+        } = await categoryAPI.read(result.categoryId, result.classify, id);
         const productCate = cate.map(element => {
+            const saleCate = () => {
+                if (element.sale > 0) {
+                    return /*html*/ `
+                    <span class="text-gray-500 text-lg line-through font-medium">${'$ '+prices(Number(element.price)).replace('VND',' ')} </span>
+                    `;
+                } else {
+                    return /*html*/ `
+                    <span></span>
+                    `;
+                }
+            }
+            const showSaleCate = () => {
+                if (element.sale > 0) {
+                    return /*html*/ `
+                    <span class="bg-red-300 px-2 py-1 text-white">${Math.round((100-(element.price-element.sale)*100/(element.price)),1)+'%'}</span>
+                    `;
+                } else {
+                    return /*html*/ `
+                    <span class="bg-green-400 px-2 py-1 text-white">NEW</span>
+                    `;
+                }
+            }
+
+
             return /*html */ `
             <article class="group my-8 md:my-0 md:mx-2 xl:mx-0 ">
             <div class="relative  overflow-hidden">
-                <img src="${element.imageIntro}" alt="" class="w-full object-cover">
+                <img src="${element.imageIntro}" alt="" style="width:270px; height:360px" class="w-full object-cover">
                 <div class="absolute top-0 mt-4 ml-4">
-                    <span class="bg-green-400 text-sm px-2 py-1 text-white">NEW</span>
+                    ${showSaleCate()}
                 </div>
                 <div class="flex justify-center">
                     <div
@@ -62,7 +93,8 @@ const ProductDetail = {
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i></span>
-                <span class="font-medium">${prices(Number(element.price))}</span>
+                <span class="font-medium">${'$ '+prices(Number(element.price-element.sale)).replace('VND',' ')}</span>
+                ${saleCate()}
             </div>
         </article>
             `;
@@ -79,12 +111,44 @@ const ProductDetail = {
         </div>
             `;
         }).join("");
+
+        const sales = () => {
+            // console.log(result.sale);
+            if (result.sale > 0) {
+                return /*html*/ `
+                <span class="text-gray-500 text-lg line-through font-medium">${'$ '+prices(Number(result.price)).replace('VND',' ')}</span>
+                `;
+            } else {
+                return /*html*/ `
+                <span class="text-gray-500 text-lg line-through font-medium">${'$ '+prices(Number(result.price-result.sale)).replace('VND',' ')}</span>
+                `;
+            }
+        }
+        const checkUserCarts = () => {
+            // console.log(isSetAuthen());
+            if (isSetAuthen() != false) {
+                return /*html*/ `
+                    <button 
+                                class="bg-red-700 text-white py-3 px-6 rounded-full inline-block my-8 outline-none "  id="btn-to-cart"><span>
+                                    <i class="fas fa-cart-plus"> </i> ADD TO CART
+                                </span> </button>
+                    `;
+            } else {
+                return /*html*/ `
+                    <p
+                                class="bg-red-700 cursor-pointer text-white py-3 px-6 rounded-full inline-block my-8 outline-none " onclick="alert('Sign in to continue')"><span>
+                                    <i class="fas fa-cart-plus"> </i> ADD TO CART
+                                </span> </p>
+                    `;
+            }
+        }
+
         return /*html*/ `
         ${Header.render()}
             <div class="container mx-auto px-16 pt-[120px]">
                 <div class="my-3">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
-                        <span style="font-family: FontAwesome;">Home > ${result.classify} >${result.name} <span class="text-gray-600"></span></span>
+                        <span style="font-family: FontAwesome;">Home <span class="text-gray-500 text-sm">></span> ${result.category.name} <span class="text-gray-500 text-sm">></span> ${result.name} <span class="text-gray-600"></span></span>
                         </i></a>
                 </div>
                 <div class="grid md:grid-cols-2  mt-10 md:mt-0 wow fadeInDown " >
@@ -102,7 +166,7 @@ const ProductDetail = {
                     <div >
                         <div class="mx-8">
                             <div>
-                                <h3 class=" font-semibold text-xl md:text-3xl uppercase">
+                                <h3 class=" font-semibold text-xl md:text-3xl uppercase" id="name-product">
                                 ${result.name}
                                 </h3>
                                 <span class="text-sm text-gray-600">Brand: ${result.category.name}</span>
@@ -116,28 +180,21 @@ const ProductDetail = {
                                 <span class="inline text-xs text-gray-700">( 138 reviews )</span>
                             </div>
                             <div class="pb-6">
-                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2"> ${prices(Number(result.price))} </span>
-                                <span class="text-gray-500 text-lg line-through font-medium"> ${prices(Number(result.sale))}</span>
+                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2">$ ${result.price-result.sale+'.00'} </span>
+                                ${sales()}
                             </div>
-                            <p class="text-sm text-gray-700 pb-8">Nemo enim ipsam
-                                voluptatem quia aspernatur aut odit aut loret
-                                fugit, sed<br> quia
-                                consequuntur magni
-                                lores eos qui ratione voluptatem sequi nesciunt.</p>
+                            <p class="text-sm text-gray-700 pb-8 w-[400px]">${result.introduce }</p>
                             <div>
                                 <span>Quantity:</span>
                                 <div class="inline-block border border-gray-500 rounded-full py-3 text-gray-700">  
                                 <div class="flex justify-between items-center gap-5">
                                 <span  class=" cursor-pointer pl-3" id="minus">-</span>
-                                <input type="text" name="" id="number" value="1" min="0"
+                                <input type="text" name="" id="number-cart" value="1" min="0"
                                     class=" outline-none text-center  w-12 bg-[#eeeeee]">
                                  <span  class="cursor-pointer pr-3" id="plus">+</span>
                                 </div>
                                 </div>
-                                <a href="/#/shopcart"
-                                    class="bg-red-700 text-white py-3 px-6 rounded-full inline-block my-8 outline-none "><span>
-                                        <i class="fas fa-cart-plus"> </i> ADD TO CART
-                                    </span> </a>
+                                ${checkUserCarts()}
                                 <div class="inline-block">
                                     <span class="border boder-gray-700 rounded-full p-4 mx-2"><i
                                             class="far fa-heart"></i></span>
@@ -185,18 +242,8 @@ const ProductDetail = {
                         </nav>
                         <article class="text-gray-600 pt-12">
                             <h6 class="text-gray-800 text-base font-medium">Description</h6>
-                            <p class="pt-6 pb-4">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                loret
-                                fugit, sed quia
-                                consequuntur magni dolores eos qui ratione voluptatem sequi<br> nesciunt loret. Neque
-                                porro
-                                lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam voluptatem quia
-                                voluptas sit aspernatur aut odit aut loret<br> fugit, sed quia ipsu consequuntur magni
-                                dolores eos qui ratione voluptatem sequi nesciunt. Nulla consequat massa quis enim.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                dolor.
-                                Aenean massa. Cum sociis natoque penatibus et magnis dis<br> parturient montes, nascetur
-                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                            <p class="pt-6 pb-4 w-[1000px]">${result.content}</p>
+                           
                         </article>
                     </section>
                     <section class="mt-20">
@@ -283,6 +330,14 @@ const ProductDetail = {
             `;
     },
     async afterRender() {
+        const {
+            id
+        } = useParams();
+        const {
+            data: result
+        } = await productAPI.read(id);
+        // console.log(result);
+        checkLogout();
         $(document).ready(function () {
             $('.owl-carousel').owlCarousel({
                 items: 1,
@@ -293,18 +348,38 @@ const ProductDetail = {
                 autoplayHoverPause: true
             });
         });
-        var minus = $$('#minus');
-        var number = $$('#number');
-        var plus = $$('#plus');
-        minus.onclick = () => {
+        var number = $$('#number-cart');
+        $$('#minus').onclick = () => {
             number.value = Number(number.value) - 1;
             if (number.value <= 1) {
                 number.value = 1;
             }
         }
-        plus.onclick = () => {
+        $$('#plus').onclick = () => {
             number.value = Number(number.value) + 1;
         }
+        var day = moment(new Date()).format('DD-MM-YYYY');
+        if ($$('#btn-to-cart')) {
+            $$('#btn-to-cart').onclick = async (e) => {
+                e.preventDefault();
+                const carts = {
+                    id: Math.round(Math.random() * 700000),
+                    productId: id,
+                    user: isSetAuthen().email,
+                    name: result.name,
+                    image: result.imageIntro,
+                    price: result.price,
+                    sale: result.sale,
+                    size: $$('#size').value,
+                    totalmoney: (Number(result.price) - Number(result.sale)) * $$('#number-cart').value,
+                    amount: $$('#number-cart').value,
+                    days: day
+                }
+                await cartAPI.add(carts);
+                alert(`Add product: ${result.name} success to cart`);
+            }
+        }
+
 
     }
 }
