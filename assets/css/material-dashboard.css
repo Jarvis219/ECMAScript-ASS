@@ -15425,7 +15425,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar[data-background-color="black"] .nav .nav-item .nav-link {
-  color: #fff;
+  color: rgb(71, 134, 42);
 }
 
 .sidebar[data-background-color="black"] .nav .nav-item i {
@@ -15510,6 +15510,10 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 .sidebar[data-background-color="red"] .nav .nav-item i {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.nav .nav-item .nav-link:hover {
+  background-color: rgb(39, 204, 226) !important;
 }
 
 .sidebar[data-background-color="red"] .nav .nav-item.active [data-toggle="collapse"],

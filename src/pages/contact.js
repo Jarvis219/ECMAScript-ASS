@@ -5,10 +5,16 @@ import {
     checkLogout
 } from '../untils';
 import {
+    informationAPI
+} from '../api/informationAPI';
+import {
     contactAPI
 } from '../api/contactAPI';
 const Contact = {
-    render() {
+    async render() {
+        const {
+            data
+        } = await informationAPI.listcontact();
         return /*html*/ `
         ${Header.render()}
         <div class="container mx-auto md:px-16 pt-24">
@@ -29,23 +35,19 @@ const Contact = {
                                     <span>
                                         <i class="fas fa-map-marker-alt text-red-500"></i> Address
                                     </span>
-                                    <p style="font-family: FontAwesome;" class="text-gray-600 pt-1">160 Pennsylvania Ave
-                                        NW,
-                                        Washington, Castle, PA
-                                        16101-5161</p>
+                                    <p style="font-family: FontAwesome;" class="text-gray-600 pt-1">${data[0].address}</p>
                                 </div>
                                 <div class="py-3">
                                     <span>
                                         <i class="fas fa-phone-alt text-red-500"></i> Phone
                                     </span>
-                                    <p style="font-family: FontAwesome;" class="text-gray-600 pt-1">125-711-811 |
-                                        125-668-886
+                                    <p style="font-family: FontAwesome;" class="text-gray-600 pt-1">${data[0].numberPhone}
                                     </p>
                                 </div>
                                 <div>
                                     <span><i class="fas fa-headphones text-red-500"></i> Support</span>
                                     <p style="font-family: FontAwesome;" class="text-gray-600 pt-1">
-                                        Support.photography@gmail.com</p>
+                                        ${data[0].email}</p>
                                 </div>
                             </div>
                             <div>
@@ -77,11 +79,7 @@ const Contact = {
                         </aside>
                         <!-- end contact -->
                         <section class="wow bounceInLeft" data-wow-duration=" 2s">
-                            <iframe
-                                src="
-                https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.3734198500824!2d-77.03871848470268!3d38.897676279570575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7bcdecbb1df%3A0x715969d86d0b76bf!2zTmjDoCBUcuG6r25n!5e1!3m2!1svi!2s!4v1601996159427!5m2!1svi!2s"
-                                width="600" height="780" frameborder="0" style="border:0;" allowfullscreen=""
-                                aria-hidden="false" tabindex="0" class=" w-full  "></iframe>
+                           ${data[0].linkMap}
                         </section>
                         <!-- end ggmap -->
                     </div>

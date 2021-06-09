@@ -11,8 +11,20 @@ export const UserAPI = {
         const url = `signin`;
         return axiosClient.post(url, data);
     },
+    update(id, data) {
+        const url = `users/${id}`;
+        return axiosClient.put(url, data)
+    },
+    listedit(id) {
+        const url = `users/${id}`;
+        return axiosClient.get(url);
+    },
     list() {
         const url = `users`;
-        return axiosClient.get(url)
+        return axiosClient.get(url);
+    },
+    remove(id) {
+        const url = `users/${id}`;
+        return axiosClient.delete(url);
     }
 }

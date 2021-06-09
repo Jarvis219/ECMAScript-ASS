@@ -1,4 +1,5 @@
 import NavBarAdmin from "../../../components/navbaradmin";
+import ListCartChild from "../../../components/listcartsChild";
 import {
     useParams
 } from "../../../untils";
@@ -61,7 +62,7 @@ const EditCart = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">ID Cart (disabled) </label>
-                                                    <input type="text" class="form-control" value="${data.id}" disabled>
+                                                    <input type="text" class="form-control" id="id-cart" value="${data.id}" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,7 +70,7 @@ const EditCart = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name Cart</label>
-                                                    <input type="text" class="form-control" value="${data.name}" id="name" name="name_Cart"
+                                                    <input type="text" class="form-control" value="${data.name}" id="name-cart" name="name_cart"
                                                     required >
                                                 </div>
                                             </div>
@@ -77,8 +78,8 @@ const EditCart = {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Name Cart</label>
-                                                    <input type="text" class="form-control" value="${data.user}" id="name" name="name_Cart"
+                                                    <label class="bmd-label-floating">User</label>
+                                                    <input type="text" class="form-control" value="${data.user}" id="user-cart" name=""
                                                     required >
                                                 </div>
                                             </div>
@@ -87,23 +88,23 @@ const EditCart = {
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Price</label>
-                                                    <input type="number"  min=1 class="form-control" value="${data.price}" id="name" name="name_Cart"
+                                                    <input type="number"  min=1 class="form-control" value="${data.price}" id="price-cart" name=""
                                                     required >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Amount</label>
-                                                    <input type="number"  min=1 class="form-control" value="${data.amount}" id="name" name="name_Cart"
+                                                    <input type="number"  min=1 class="form-control" value="${data.amount}" id="amount-cart" name=""
                                                     required >
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12   ">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Category product</label>
-                                                <select name="category" id="category" class="form-control" required>
+                                                <select name="category" id="size-cart" class="form-control" required>
                                                 <option value="${data.size}">${data.size}</option>
                                                  ${totalSize}
                                                 </select>
@@ -139,6 +140,41 @@ const EditCart = {
 
         `;
 
+    },
+    async afterRender() {
+        const {
+            id
+        } = useParams();
+        const {
+            data
+        } = await cartAPI.read(id);
+        const {
+            data: sizes
+        } = await cartAPI.listCartSize(data.productId);
+        // console.log(data.image);
+        $$('#edit-cart').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const editCart = {
+                id: id,
+                productId: sizes.id,
+                user: $$('#user-cart').value,
+                name: $$('#name-cart').value,
+                image: data.image,
+                price: $$('#price-cart').value,
+                sale: data.sale,
+                size: $$('#size-cart').value,
+                totalmoney: (Number($$('#price-cart').value) - Number(data.sale)) * $$('#amount-cart').value,
+                amount: $$('#amount-cart').value,
+                status: data.status,
+                days: data.days,
+            }
+            // console.log(editCart);
+            await cartAPI.edit(id, editCart);
+            alert('Update cart success')
+            window.location.hash = `/listcarts`;
+            await reRender(ListCartChild, '#list-cart');
+
+        })
     }
 }
 export default EditCart;

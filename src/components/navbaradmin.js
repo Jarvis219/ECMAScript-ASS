@@ -13,13 +13,13 @@ const NavBarAdmin = {
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="./information.html">
+                    <a class="nav-link" href="#/listinformation">
                         <i class="material-icons">dashboard</i>
                         <p>INFORMATION</p>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./user.html">
+                    <a class="nav-link" href="#/listusers"> 
                         <i class="material-icons">person</i>
                         <p>USER</p>
                     </a>

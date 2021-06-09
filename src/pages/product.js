@@ -19,6 +19,9 @@ const Product = {
             } = await productAPI.list();
             var result = products.map(element => {
                 // console.log(element);
+                // const search = element.filter((e) => {
+                //     // return e == 'Cotton Over the Knee Socks Purple';
+                // })
                 const saleProduct = () => {
                     if (element.sale > 0) {
                         return /*html*/ `
@@ -79,7 +82,6 @@ const Product = {
         } catch (error) {
             console.log(error);
         }
-
         return /*html */ `
         ${Header.render()}
         <div class="container mx-auto px-16 pt-24">

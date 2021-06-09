@@ -6,17 +6,27 @@ import {
 import {
     $$,
     checkLogout,
-    isSetAuthen
+    isSetAuthen,
+    reRender
 } from '../untils';
 const ShopCart = {
     async render() {
         const {
             data
         } = await cartAPI.listUser(isSetAuthen().email);
-        console.log(data);
+        // console.log(data);
         const showShopCarts = data.map(element => {
+            const trashCart = () => {
+                if (element.status == 'not approved yet') {
+                    return `<button data-id="${element.id}"
+                    class="list-cart-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
+                        <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button>`;
+                } else {
+                    return '';
+                }
+            }
             return /*html*/ `
-            <tr class="border-b-2 my-4 box-border">
+            <tr class="border-b-2 my-4 box-border cor-${element.id}">
             <td class="md:flex md:justify-between items-center w-64">
                 <div class="flex justify-center">
                     <img src="${element.image}"
@@ -36,17 +46,20 @@ const ShopCart = {
             </td>
             <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
                     class="quantityProduct">${element.totalmoney}</span> </td>
+                    <td  class="mx-28 w-56">
+                    ${element.status}
+                    </td>
             <td>
-                <button class=" text-xs md:text-lg"> <i class="far fa-trash-alt inline-block text-red-500"></i></button>
+            ${trashCart()}
             </td>
         </tr>
             `;
-        })
+        }).join("");
 
 
         return /*html */ `
         ${Header.render()}
-        <div>
+        <div  id="scart">
         <main class="pt-24">
             <div>
                 <div class="container mx-auto px-16 pt-4">
@@ -56,13 +69,14 @@ const ShopCart = {
                                     cart</span></span>
                             </i></a>
                     </div>
-                    <div class="text-center flex justify-center">
-                        <table class="border-collapse w-full">
+                    <div class="text-center flex justify-center" id="list-cart">
+                        <table class="border-collapse w-full" >
                             <thead class=" border-b-2 ">
-                                <tr class="box-border  text-xs md:text-lg">
+                                <tr class="box-border  text-xs md:text-lg ">
                                     <th class="">PRODUCT</th>
                                     <th class=" ">PRICE</th>
                                     <th class=" ">QUANTITY</th>
+                                    <th class=" ">STATUS</th>
                                     <th  >TOTAL</th>
                                 </tr>
                             </thead>
@@ -197,6 +211,25 @@ const ShopCart = {
             $$('.totals').innerHTML = Number(sum) + Number($$('.subtotal').innerHTML);
         }
         totals();
+
+        const btns = $$('.list-cart-btn')
+        // console.log(btns);
+
+        btns.forEach(element => {
+            const id = element.dataset.id
+            element.addEventListener('click', async () => {
+                const question = confirm('Are you want to delete?');
+                if (question) {
+                    // console.log(id);
+                    await cartAPI.remove(id);
+                    var removeItem = $$(`.cor-${id}`);
+                    if (removeItem) {
+                        removeItem.remove();
+                    }
+
+                }
+            })
+        });
     }
 }
 export default ShopCart;

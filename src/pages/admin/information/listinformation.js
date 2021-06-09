@@ -1,26 +1,24 @@
-import ListUsersChild from "../../../components/listusersChild";
-import {
-    UserAPI
-} from "../../../api/userAPI";
 import NavBarAdmin from "../../../components/navbaradmin";
-
-const ListUser = {
+import {
+    ListInformationChild
+} from "../../../components/listinformationsChild";
+const ListInformation = {
     async render() {
         return /*html*/ `
-        ${NavBarAdmin.render()}
-        <div class="main-panel">
+                ${NavBarAdmin.render()}
+                <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand uppercase" href="javascript:;">USER</a>
+                    <a class="navbar-brand uppercase" href="javascript:;">information</a>
                 </div>
             </div>
         </nav>
         <div  class="flex justify-center">
             <div class=" absolute mt-20 lg:mt-15 z-50">
-            <a href="/#/adduser"><button type="submit"
-                    class="btn btn-primary pull-left ml-4 uppercase">ADD user</button></a>
+            <a href="/#/addinformation"><button type="submit"
+                    class="btn btn-primary pull-left ml-4 uppercase">ADD information</button></a>
             </div>
             </div>
          
@@ -35,9 +33,7 @@ const ListUser = {
                             </div>
                             <div class="card-body" >
                                 <div class="table-responsive" id="list-user">
-
-                               ${await ListUsersChild.render()}
-                                
+                                ${await ListInformationChild.render()}
                             </table>
                          </div>
                             </div>
@@ -60,10 +56,10 @@ const ListUser = {
         </footer>
     </div>
         `;
-
     },
     async afterRender() {
-        return `${await ListUsersChild.afterRender()}`;
+        return `${await ListInformationChild.afterRender()}`;
     }
+
 }
-export default ListUser;
+export default ListInformation;

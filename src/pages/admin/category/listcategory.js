@@ -17,7 +17,7 @@ const AdminCategory = {
             <div class=" absolute mt-20 lg:mt-15 z-50">
             <a href="/#/addcategory"><button type="submit"
                     class="btn btn-primary pull-left ml-4">ADD CATEGORY</button></a>
-        </div>
+            </div>
             </div>
              
             <!-- End Navbar -->

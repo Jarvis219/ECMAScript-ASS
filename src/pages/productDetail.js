@@ -120,7 +120,7 @@ const ProductDetail = {
                 `;
             } else {
                 return /*html*/ `
-                <span class="text-gray-500 text-lg line-through font-medium">${'$ '+prices(Number(result.price-result.sale)).replace('VND',' ')}</span>
+                <span class="text-gray-500 text-lg line-through font-medium">$ 0</span>
                 `;
             }
         }
@@ -180,7 +180,7 @@ const ProductDetail = {
                                 <span class="inline text-xs text-gray-700">( 138 reviews )</span>
                             </div>
                             <div class="pb-6">
-                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2">$ ${result.price-result.sale+'.00'} </span>
+                                <span class="text-red-700 text-3xl font-semibold inline-block pt-2 pr-2">${'$ '+prices(Number(result.price-result.sale)).replace('VND',' ')} </span>
                                 ${sales()}
                             </div>
                             <p class="text-sm text-gray-700 pb-8 w-[400px]">${result.introduce }</p>
@@ -216,7 +216,7 @@ const ProductDetail = {
                                 <div class=" flex relative">
                                     <span>Available size:</span>
                                     <div class="pl-6 ">
-                                    <select name="" id="size" class="px-3 w-[45px] bg-[#eeeeee] shadow ml-1">
+                                    <select name="" id="size" class="pl-4 w-[75px] bg-[#eeeeee] shadow ml-1">
                                          ${size}
                                     </select>
                                     </div>
@@ -373,6 +373,7 @@ const ProductDetail = {
                     size: $$('#size').value,
                     totalmoney: (Number(result.price) - Number(result.sale)) * $$('#number-cart').value,
                     amount: $$('#number-cart').value,
+                    status: 'not approved yet',
                     days: day
                 }
                 await cartAPI.add(carts);

@@ -4,11 +4,36 @@ import {
     cartAPI
 } from '../api/cartAPI';
 import {
-    checkLogout
+    $$,
+    checkLogout,
+    isSetAuthen,
+    prices
 } from '../untils';
 
 const CheckOut = {
-    render() {
+    async render() {
+        const {
+            data
+        } = await cartAPI.listUser(isSetAuthen().email);
+        // console.log(data);
+        const sumProduct =
+            data.map((element, index) => {
+                // console.log(element.name);
+                // console.log(index);
+
+                return /*html*/ `
+                <div class="flex justify-between items-center text-base py-2">
+                                    <div class="w-[200px] overflow-hidden">
+                                    ${index+1}   <span>. ${element.name}</span>
+                                    </div>
+                                    <div class="text-red-500">
+                                       $ <span class="priceProduct"> ${prices(element.price).replace('VND','')}</span>
+                                    </div>
+                                </div>
+                `;
+            }).join("");
+
+        // console.log(sumProduct); 
         return /* html*/ `
             ${Header.render()}
             <div>
@@ -28,40 +53,40 @@ const CheckOut = {
                         <hr class="my-4">
                         <div>
                             <div>
-                                <form action="#">
+                                <form id="check-out">
                                     <div class="flex justify-between items-center gap-2 mb-3">
                                         <div>
                                             <label for="#">First Name <span class="text-red-400">*</span> </label><br>
-                                            <input type="text" name="" id=""
+                                            <input type="text" name="" id="firstName"
                                                 class="border w-64 xl:w-80 py-2 rounded-sm pl-4" required>
                                         </div>
                                         <div>
                                             <label for="#">Last Name <span class="text-red-400">*</span> </label><br>
-                                            <input type="text" name="" id=""
+                                            <input type="text" name="" id="lastName"
                                                 class="border w-64 xl:w-80 py-2 rounded-sm  pl-4" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Address <span class="text-red-400">*</span></label><br>
-                                        <input type="text" name="" id="" class="border w-full py-2 rounded-sm  pl-4"
+                                        <input type="text" name="" id="address" class="border w-full py-2 rounded-sm  pl-4"
                                             required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Phone <span class="text-red-400">*</span></label><br>
-                                        <input type="number" class="border w-full py-2 rounded-sm  pl-4" required>
+                                        <input type="number" id="phone" class="border w-full py-2 rounded-sm  pl-4" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Email </label><br>
-                                        <input type="email" class="border w-full py-2 rounded-sm  pl-4">
+                                        <input type="email" id="email" class="border w-full py-2 rounded-sm  pl-4">
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Note </label><br>
-                                        <textarea name="" id="" rows="9"
+                                        <textarea name="" id="note" rows="9"
                                             class="border rounded-sm w-full  p-4 "></textarea>
                                     </div>
                                     <div
                                         class="bg-red-400 text-white hover:text-green-400 rounded-md text-center mt-4 ">
-                                        <button class="my-3 uppercase  font-semibold">PLACE ODER</button>
+                                        <button  class="my-3 uppercase  font-semibold">PLACE ODER</button>
                                     </div>
                                 </form>
                             </div>
@@ -80,30 +105,7 @@ const CheckOut = {
                                         <h4> Total</h4>
                                     </div>
                                 </div>
-                                <div class="flex justify-between items-center text-base py-2">
-                                    <div>
-                                        <span>01. Chain buck bag</span>
-                                    </div>
-                                    <div class="text-red-500">
-                                        <span>$</span><span class="priceProduct"> 300</span>
-                                    </div>
-                                </div>
-                                <div class="flex justify-between items-center text-base py-2">
-                                    <div>
-                                        <span>01. Chain buck bag</span>
-                                    </div>
-                                    <div class="text-red-500">
-                                        <span>$</span><span class="priceProduct"> 300</span>
-                                    </div>
-                                </div>
-                                <div class="flex justify-between items-center text-base py-2">
-                                    <div>
-                                        <span>01. Chain buck bag</span>
-                                    </div>
-                                    <div class="text-red-500">
-                                        <span>$</span><span class="priceProduct"> 300</span>
-                                    </div>
-                                </div>
+                                ${sumProduct}
                             </div>
                             <hr class="my-3">
                             <div>
@@ -112,7 +114,7 @@ const CheckOut = {
                                         <span>Subtotal</span>
                                     </div>
                                     <div class="text-red-500">
-                                        <span>$</span><span id="subTotal"> 800</span>
+                                        <span>$</span><span id="subTotal"> 00</span>
                                     </div>
                                 </div>
                                 <div class="font-medium flex justify-between items-center text-lg my-2">
@@ -136,6 +138,23 @@ const CheckOut = {
     },
     afterRender() {
         checkLogout();
+        var priceProduct = 0;
+        $$('.priceProduct').forEach(element => {
+            priceProduct += Number(element.innerHTML)
+        })
+        // console.log(priceProduct);
+        var total = $$('#total');
+        total.innerHTML = Number($$('#subTotal').innerHTML) + priceProduct;
+
+        $$('#check-out').addEventListener('click', (e) => {
+            e.preventDefault();
+            const checkOut = {
+
+
+            }
+        })
+
+
     }
 }
 export default CheckOut;

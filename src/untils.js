@@ -1,5 +1,6 @@
 import jwt_decode from 'jwt-decode';
 import Header from './components/header';
+import Home from './pages/home';
 export const useParams = () => {
     const url = window.location.hash.toLocaleLowerCase();
     // console.log(url);
@@ -21,7 +22,7 @@ export const reRender = async (component, position = " ") => {
     // console.log(component);
     if (position) {
         $$(position).innerHTML = await component.render();
-        console.log(0);
+        // console.log(0);
     } else {
         console.log(1);
         $$('#main-content').innerHTML = await component.render();
@@ -95,6 +96,7 @@ export const checkLogout = () => {
     if ($$('#log-out') != undefined) {
         $$('#log-out').onclick = () => {
             logout()
+            window.location.hash = `/signin`;
         };
     }
 }

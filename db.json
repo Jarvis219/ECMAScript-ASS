@@ -391,26 +391,6 @@
       "status": "Approved"
     }
   ],
-  "slIde": [
-    {
-      "id": 1,
-      "slIdeName": "slIde1",
-      "slIdeLink": " ",
-      "slIdeImage": "img1"
-    },
-    {
-      "id": 2,
-      "slIdeName": "slIde2",
-      "slIdeLink": " ",
-      "slIdeImage": "img1"
-    },
-    {
-      "id": 3,
-      "slIdeName": "slIde3",
-      "slIdeLink": " ",
-      "slIdeImage": "img1"
-    }
-  ],
   "users": [
     {
       "email": "y@gmail.com",
@@ -423,73 +403,214 @@
       "password": "$2a$10$s4dD6SRq1S3rAedPm3xaYO8t2dy2ElpGT6Ubn8CnIeRJg71RYIoVC",
       "name": "Trần Quang",
       "id": 2
+    },
+    {
+      "id": 3,
+      "email": "y@gmail.com",
+      "password": "$2a$10$C..cUHRYDYTcPkvpcvgskuUkOwA6gVbvSb4pjFcM1wccQxmBE2Oum",
+      "name": "Trần Quang"
+    },
+    {
+      "email": "songoku2192@gmail.com",
+      "password": "$2a$10$nFF952TDS4g2Caysod1W.uluQRiykiVay.rh/h9hR5D0d737UJmNC",
+      "name": "Mr Rin",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "email": "songoku2192sss@gmail.com",
+      "password": "$2a$10$x3kDT.bFAxX11B92djvjl.SQt8OzCzoyqRFsYcxxcgi76t3NVw.7y",
+      "name": "Mr Rin"
     }
   ],
   "carts": [
     {
-      "id": 241059,
+      "id": 6753825,
+      "productId": 488371,
+      "user": "y@gmail.com",
+      "name": "Oversized Stripe MAN Signature",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
+      "price": "60",
+      "sale": "12",
+      "size": "M-L",
+      "totalmoney": 576,
+      "amount": "12",
+      "status": "not approved yet",
+      "days": "08-06-2021"
+    },
+    {
+      "id": 6751825,
+      "productId": 488371,
+      "user": "y@gmail.com",
+      "name": "Oversized Stripe MAN Signature",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
+      "price": "60",
+      "sale": "12",
+      "size": "M-L",
+      "totalmoney": 576,
+      "amount": "12",
+      "status": "delivered",
+      "days": "08-06-2021"
+    },
+    {
+      "id": 6725825,
+      "productId": 488371,
+      "user": "y@gmail.com",
+      "name": "Oversized Stripe MAN Signature",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
+      "price": "60",
+      "sale": "12",
+      "size": "M-L",
+      "totalmoney": 576,
+      "amount": "12",
+      "status": "delivered",
+      "days": "08-06-2021"
+    },
+    {
+      "id": 625771,
+      "productId": 612672,
+      "user": "y@gmail.com",
+      "name": "Cotton Over the Knee Socks Purple",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-red-robe-matchplay-f5-web.jpeg?alt=media&token=32a96296-8e04-459c-9f6d-4889c595f113",
+      "price": "66",
+      "sale": "0",
+      "size": "S",
+      "totalmoney": 198,
+      "amount": "3",
+      "status": "delivered",
+      "days": "09-06-2021"
+    },
+    {
+      "id": 136306,
+      "productId": "625208",
+      "user": "q@gmail.com",
+      "name": " Arabesque Wrap Robe Gown Lagoon silk",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F52S006LL_navy_web_bd.jpeg?alt=media&token=0ee099fb-b12a-49dd-8e83-9c114dd77552",
+      "price": "90",
+      "sale": "0",
+      "size": "XS",
+      "totalmoney": 90,
+      "amount": "1",
+      "status": "not approved yet",
+      "days": "09-06-2021"
+    },
+    {
+      "id": 238182,
+      "productId": 504038,
+      "user": "q@gmail.com",
+      "name": "Venus in Play Sleep Tee Peony",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F44J024BC-lilac-venus-in-play-tee-f-web.jpeg?alt=media&token=f4e2100d-d7ee-4827-a613-f0a9fdd51d3d",
+      "price": "100",
+      "sale": "10",
+      "size": "XXS",
+      "totalmoney": 90,
+      "amount": "1",
+      "status": "approved",
+      "days": "09-06-2021"
+    },
+    {
+      "id": 471191,
+      "productId": "612672",
+      "user": "q@gmail.com",
+      "name": "Cotton Over the Knee Socks Purple",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-red-robe-matchplay-f5-web.jpeg?alt=media&token=32a96296-8e04-459c-9f6d-4889c595f113",
+      "price": "66",
+      "sale": "0",
+      "size": "XS",
+      "totalmoney": 66,
+      "amount": "1",
+      "status": "not approved yet",
+      "days": "09-06-2021"
+    },
+    {
+      "id": 134978,
+      "productId": 529585,
+      "user": "q@gmail.com",
+      "name": "Matchplay Long Robe Heather Grey",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-grey-robe-matchplay-still-life-web.jpeg?alt=media&token=98d8d774-5fc6-4e84-96b8-c11ec8c712a4",
+      "price": "95",
+      "sale": "0",
+      "size": "XS",
+      "totalmoney": 95,
+      "amount": "1",
+      "status": "delivered",
+      "days": "09-06-2021"
+    },
+    {
+      "id": 582687,
       "productId": "612672",
       "user": "y@gmail.com",
       "name": "Cotton Over the Knee Socks Purple",
       "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-red-robe-matchplay-f5-web.jpeg?alt=media&token=32a96296-8e04-459c-9f6d-4889c595f113",
       "price": "66",
       "sale": "0",
-      "size": "M",
+      "size": "XS",
       "totalmoney": 66,
       "amount": "1",
-      "days": "08-06-2021"
+      "status": "not approved yet",
+      "days": "09-06-2021"
     },
     {
-      "id": 330871,
-      "productId": "625208",
+      "id": 521514,
+      "productId": "612672",
       "user": "y@gmail.com",
-      "name": " Arabesque Wrap Robe Gown Lagoon silk",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F52S006LL_navy_web_bd.jpeg?alt=media&token=0ee099fb-b12a-49dd-8e83-9c114dd77552",
-      "price": "90",
+      "name": "Cotton Over the Knee Socks Purple",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-red-robe-matchplay-f5-web.jpeg?alt=media&token=32a96296-8e04-459c-9f6d-4889c595f113",
+      "price": "66",
       "sale": "0",
-      "size": "S",
-      "totalmoney": 90,
+      "size": "XS",
+      "totalmoney": 66,
       "amount": "1",
-      "days": "08-06-2021"
+      "status": "not approved yet",
+      "days": "09-06-2021"
     },
     {
-      "id": 146572,
+      "id": 67814,
+      "productId": "416256",
+      "user": "songoku2192sss@gmail.com",
+      "name": "Official Yarn Dyed Oversized Stripe",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fyellow-official-yarn-dyed-oversized-stripe-t-shirt.jpeg?alt=media&token=3fc5ac87-69f8-4c7c-b0de-c1c37d39fa36",
+      "price": "90",
+      "sale": "6",
+      "size": "XS",
+      "totalmoney": 84,
+      "amount": "1",
+      "status": "not approved yet",
+      "days": "09-06-2021"
+    },
+    {
+      "id": 507216,
       "productId": "488371",
-      "user": "y@gmail.com",
+      "user": "songoku2192sss@gmail.com",
       "name": "Oversized Stripe MAN Signature",
       "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
       "price": "59",
       "sale": "12",
-      "size": "L",
+      "size": "XS",
       "totalmoney": 47,
       "amount": "1",
-      "days": "08-06-2021"
+      "status": "not approved yet",
+      "days": "09-06-2021"
+    }
+  ],
+  "informations": [
+    {
+      "id": 135051,
+      "numberPhone": "125-711-811 | 125-668-886",
+      "address": "160 Pennsylvania Ave NW, Washington, Castle, PA 16101-5161",
+      "linkMap": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.4552460252553!2d-77.01553708487788!3d38.890703654944154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b786fffd5359%3A0x3f23c9930d989ac2!2s160%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC%2020016%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1623267525649!5m2!1svi!2s\" width=\"600\" height=\"780\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>",
+      "slogan": "website Ashion of kaio",
+      "logo": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Flogo.png?alt=media&token=93666645-195a-473f-b45a-ad1699782421",
+      "email": "Quangtaph12673@fpt.edu.vn"
     },
     {
-      "id": 675825,
-      "productId": "488371",
-      "user": "y@gmail.com",
-      "name": "Oversized Stripe MAN Signature",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
-      "price": "59",
-      "sale": "12",
-      "size": "M-L",
-      "totalmoney": 47,
-      "amount": "1",
-      "days": "08-06-2021"
-    },
-    {
-      "id": 338709,
-      "productId": "488371",
-      "user": "y@gmail.com",
-      "name": "Oversized Stripe MAN Signature",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
-      "price": "59",
-      "sale": "12",
-      "size": "S",
-      "totalmoney": 188,
-      "amount": "4",
-      "days": "08-06-2021"
+      "id": 697424,
+      "numberPhone": "0968686686sw",
+      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nộisw",
+      "linkMap": "125-711-811 | 125-668-886w",
+      "slogan": "slogansssw",
+      "logo": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fblog-2.jpg?alt=media&token=4e04a416-1bc5-45ba-b636-b0827f137322",
+      "email": "songoku2192@gmail.comssw"
     }
   ]
 }

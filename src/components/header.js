@@ -1,8 +1,17 @@
 import {
     isSetAuthen
 } from "../untils";
+import {
+    informationAPI
+} from "../api/informationAPI";
 const Header = {
     render() {
+        // const {
+        //     data: logo
+        // } = await informationAPI.listcontact();
+        // const data = fetch("http://localhost:3001/informations?_limit=1")
+        // const logo = data.json();
+
         // console.log(isSetAuthen());
         const user = () => {
             let checkAuthor = () => {
@@ -35,6 +44,15 @@ const Header = {
                 </span>
                 <span class="cursor-pointer"  id="log-out">/ logout</span>`;
                 }
+            }
+        }
+        const cartHeader = () => {
+            if (isSetAuthen() != false) {
+                return /*html*/ `
+                <a href="#/shopcart" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
+                `;
+            } else {
+                return ``;
             }
         }
         return /*html*/ `
@@ -91,7 +109,7 @@ const Header = {
                                 <input type="search" placeholder="search">
                             </form>
                             <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
-                            <a href="#/shopcart" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
+                            ${cartHeader()}
                         </div>
                     </div>
                 </div>
@@ -100,7 +118,7 @@ const Header = {
                         <input type="search" placeholder="search">
                     </form>
                     <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
-                    <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
+                    ${cartHeader()}
                 </div>
                 <div id="menu">
                     <ul class="bg-gray-3 md:hidden  pb-2  z-auto ml-2">

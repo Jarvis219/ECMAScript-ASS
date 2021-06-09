@@ -23,6 +23,12 @@ import ProductCate from './pages/productCate';
 import ListContact from './pages/admin/contact/listcontact';
 import ListCarts from './pages/admin/carts/listcart';
 import EditCart from './pages/admin/carts/editcart';
+import ListUser from './pages/admin/user/listuser';
+import AddUser from './pages/admin/user/adduser';
+import EditUser from './pages/admin/user/edituser';
+import ListInformation from './pages/admin/information/listinformation';
+import AddInformation from './pages/admin/information/addinformation';
+import EditInformation from './pages/admin/information/editinformation';
 // import 'owl.carousel';
 
 
@@ -42,12 +48,18 @@ const routes = {
     '/editcategory/:id': EditCategory,
     '/addproduct': AddProduct,
     '/addcategory': AddCategory,
+    '/listusers': ListUser,
+    '/adduser': AddUser,
+    '/edituser/:id': EditUser,
     '/signup': SignUp,
     '/signin': SignIn,
     '/productcate/:id': ProductCate,
     '/listcontact': ListContact,
     '/listcarts': ListCarts,
-    '/editcart/:id': EditCart
+    '/editcart/:id': EditCart,
+    '/listinformation': ListInformation,
+    '/addinformation': AddInformation,
+    '/editinformation/:id': EditInformation
 
 }
 const router = async () => {
