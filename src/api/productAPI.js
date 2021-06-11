@@ -5,7 +5,7 @@ import {
 export const productAPI = {
 
     list() {
-        const url = `/products?_expand=category&_sort=id&_order=desc`;
+        const url = `/products?_expand=category`;
         return axiosClient.get(url);
     },
     read(id) {
@@ -26,6 +26,10 @@ export const productAPI = {
     },
     listProductCate(id) {
         const url = `/products?classify=${id}`;
+        return axiosClient.get(url);
+    },
+    listSearch(data) {
+        const url = `/products/?name_like=${data}`;
         return axiosClient.get(url);
     }
 }

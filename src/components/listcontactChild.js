@@ -65,7 +65,9 @@ const ListContactChild = {
     },
     async afterRender() {
         const btns = $$('.list-contact-btn');
-        btns.forEach(element => {
+
+        function deleteItem(element) {
+
             const id = element.dataset.id
             // console.log(id);
             element.addEventListener('click', async () => {
@@ -75,7 +77,17 @@ const ListContactChild = {
                     await reRender(ListContactChild, '#list-content');
                 }
             })
-        });
+
+        }
+
+        if (btns.length > 1) {
+            btns.forEach(element => {
+                deleteItem(element)
+            });
+        } else {
+            deleteItem(btns);
+        }
+
         $$('.status').forEach(element => {
             const id = element.dataset.id
             element.addEventListener('change', async () => {

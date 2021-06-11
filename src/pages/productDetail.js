@@ -11,7 +11,8 @@ import 'owl.carousel';
 import {
     $$,
     prices,
-    checkLogout
+    checkLogout,
+    search
 } from '../untils';
 import {
     useParams
@@ -124,27 +125,27 @@ const ProductDetail = {
                 `;
             }
         }
-        const checkUserCarts = () => {
-            // console.log(isSetAuthen());
-            if (isSetAuthen() != false) {
-                return /*html*/ `
-                    <button 
-                                class="bg-red-700 text-white py-3 px-6 rounded-full inline-block my-8 outline-none "  id="btn-to-cart"><span>
-                                    <i class="fas fa-cart-plus"> </i> ADD TO CART
-                                </span> </button>
-                    `;
-            } else {
-                return /*html*/ `
-                    <p
-                                class="bg-red-700 cursor-pointer text-white py-3 px-6 rounded-full inline-block my-8 outline-none " onclick="alert('Sign in to continue')"><span>
-                                    <i class="fas fa-cart-plus"> </i> ADD TO CART
-                                </span> </p>
-                    `;
-            }
-        }
+        // const checkUserCarts = () => {
+        //     // console.log(isSetAuthen());
+        //     if (isSetAuthen() != false) {
+        //         return /*html*/ `
+        //             <button 
+        //                         class="bg-red-700 text-white py-3 px-6 rounded-full inline-block my-8 outline-none "  id="btn-to-cart"><span>
+        //                             <i class="fas fa-cart-plus"> </i> ADD TO CART
+        //                         </span> </button>
+        //             `;
+        //     } else {
+        //         return /*html*/ `
+        //             <p
+        //                         class="bg-red-700 cursor-pointer text-white py-3 px-6 rounded-full inline-block my-8 outline-none " onclick="alert('Sign in to continue')"><span>
+        //                             <i class="fas fa-cart-plus"> </i> ADD TO CART
+        //                         </span> </p>
+        //             `;
+        //     }
+        // }
 
         return /*html*/ `
-        ${Header.render()}
+        ${await Header.render()}
             <div class="container mx-auto px-16 pt-[120px]">
                 <div class="my-3">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
@@ -194,7 +195,10 @@ const ProductDetail = {
                                  <span  class="cursor-pointer pr-3" id="plus">+</span>
                                 </div>
                                 </div>
-                                ${checkUserCarts()}
+                                <button 
+                                class="bg-red-700 text-white py-3 px-6 rounded-full inline-block my-8 outline-none "  id="btn-to-cart"><span>
+                                    <i class="fas fa-cart-plus"> </i> ADD TO CART
+                                </span> </button>
                                 <div class="inline-block">
                                     <span class="border boder-gray-700 rounded-full p-4 mx-2"><i
                                             class="far fa-heart"></i></span>
@@ -338,6 +342,7 @@ const ProductDetail = {
         } = await productAPI.read(id);
         // console.log(result);
         checkLogout();
+        search();
         $(document).ready(function () {
             $('.owl-carousel').owlCarousel({
                 items: 1,
@@ -362,10 +367,14 @@ const ProductDetail = {
         if ($$('#btn-to-cart')) {
             $$('#btn-to-cart').onclick = async (e) => {
                 e.preventDefault();
+                var user;
+                if (isSetAuthen()) {
+                    user = isSetAuthen().email;
+                }
                 const carts = {
                     id: Math.round(Math.random() * 700000),
                     productId: id,
-                    user: isSetAuthen().email,
+                    // user: isSetAuthen().email,
                     name: result.name,
                     image: result.imageIntro,
                     price: result.price,

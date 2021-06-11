@@ -2,7 +2,8 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import {
     $$,
-    checkLogout
+    checkLogout,
+    search
 } from '../untils';
 import {
     informationAPI
@@ -16,7 +17,7 @@ const Contact = {
             data
         } = await informationAPI.listcontact();
         return /*html*/ `
-        ${Header.render()}
+        ${await Header.render()}
         <div class="container mx-auto md:px-16 pt-24">
                 <div>
                     <div class="my-8 ml-2 md:ml-0">
@@ -160,6 +161,7 @@ const Contact = {
     },
     afterRender() {
         checkLogout();
+        search();
         $$('#contact-submit').addEventListener('submit', (e) => {
             e.preventDefault();
             const contact = {

@@ -66,8 +66,8 @@ const ListUsersChild = {
     },
     async afterRender() {
         var btns = $$('.list-user-btn');
-        // console.log(btns);
-        btns.forEach(element => {
+
+        function deleteItem(element) {
             const id = element.dataset.id;
             element.addEventListener('click', async () => {
                 const question = confirm("Are you want to delete?");
@@ -83,7 +83,14 @@ const ListUsersChild = {
                 //     }
                 // }
             });
-        });
+        }
+        if (btns.length > 1) {
+            btns.forEach(element => {
+                deleteItem(element)
+            });
+        } else {
+            deleteItem(btns);
+        }
 
     }
 

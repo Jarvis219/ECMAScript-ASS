@@ -1,17 +1,8 @@
 import NavBarAdmin from "../../../components/navbaradmin";
-import {
-    $$,
-    reRender
-} from "../../../untils";
-import {
-    informationAPI
-} from "../../../api/informationAPI";
-import firebase from "firebase";
-import {
-    ListInformationChild
-} from "../../../components/listinformationsChild";
-const AddInformation = {
-    async render() {
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+const AddPost = {
+    render() {
         return /*html */ `
             ${NavBarAdmin.render()}
             <div class="main-panel">
@@ -19,7 +10,7 @@ const AddInformation = {
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand uppercase" href="javascript:;">information</a>
+                        <a class="navbar-brand uppercase" href="javascript:;">post</a>
                     </div>
                 </div>
             </nav>
@@ -31,7 +22,7 @@ const AddInformation = {
                     <div class="col-md-10">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title uppercase">Add information</h4>
+                                <h4 class="card-title uppercase">Add post</h4>
                             </div>
                             <div class="card-body">
                                 <form id="add-infor">
@@ -46,7 +37,7 @@ const AddInformation = {
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Number Phone</label>
                                                 <input type="tel" class="form-control" id="phone"
-                                                    name="information_phone" required>
+                                                    name="post_phone" required>
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +46,7 @@ const AddInformation = {
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Address</label>
                                                 <input type="text" class="form-control" id="address"
-                                                    name="information_address" required>
+                                                    name="post_address" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -66,30 +57,17 @@ const AddInformation = {
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Slogan</label>
-                                                <input type="text" class="form-control" id="slogan"
-                                                    name="information_slogan" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Email</label>
-                                                <input type="email" class="form-control" id="email"
-                                                    name="information_email" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-12">
-                                            <div class="">
-                                                <label class="bmd-label-floating">Logo</label>
-                                                <input type="file" class="form-control" id="logo" name="logo" required>
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Address</label>
+                                                <div  id="editor"><p></p></div
+                                                
+                                                
                                             </div>
                                         </div>
+                                        
                                     </div>
-                                    <button type="submit" class="btn btn-primary pull-left uppercase" name="submit">add information</button>
+                                    <button type="submit" class="btn btn-primary pull-left uppercase" name="submit">add post</button>
                                 </form>
                             </div>
                         </div>
@@ -110,37 +88,17 @@ const AddInformation = {
             </footer>
         </div>
         `;
+
     },
-    async afterRender() {
-        $$('#add-infor').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const img = $$('#logo').files[0];
-            // console.log(img);
-            let storageRef = firebase.storage().ref(`images/${img.name}`);
-            storageRef.put(img).then(() => {
-                storageRef.getDownloadURL().then((url => {
-                    console.log(url);
-                    const informatins = {
-                        id: Math.round(Math.random() * 700000),
-                        numberPhone: $$('#phone').value,
-                        address: $$('#address').value,
-                        linkMap: $$('#maps').value,
-                        slogan: $$('#slogan').value,
-                        logo: url,
-                        email: $$('#email').value
-                    }
-                    // console.log(informatins);
-                    if (informationAPI.add(informatins)) {
-                        alert("Add information success")
-                        reRender(ListInformationChild, '#table-informations');
-                        window.location.hash = `/listinformation`;
-
-                    }
-                }))
+    afterRender() {
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                window.editor = editor;
             })
-
-        })
+            .catch(error => {
+                console.error('There was a problem initializing the editor.', error);
+            });
     }
-
 }
-export default AddInformation;
+export default AddPost;

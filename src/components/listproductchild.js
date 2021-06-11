@@ -78,8 +78,15 @@ const ListProductchild = {
 
     async afterRender() {
         const btns = $$('.list-product-btn')
-        // console.log(btns);
-        btns.forEach(element => {
+        if (btns.length > 1) {
+            btns.forEach(element => {
+                deleteItem(element)
+            });
+        } else {
+            deleteItem(btns);
+        }
+
+        function deleteItem(element) {
             const id = element.dataset.id;
             element.addEventListener('click', async () => {
                 const question = confirm('Are you want to delete?');
@@ -88,7 +95,7 @@ const ListProductchild = {
                     await reRender(ListProductchild, '#table-product');
                 }
             });
-        });
+        }
     }
 }
 export default ListProductchild;

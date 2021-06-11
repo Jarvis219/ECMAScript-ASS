@@ -4,7 +4,8 @@ import 'owl.carousel';
 import {
     btnScoll,
     prices,
-    checkLogout
+    checkLogout,
+    search
 } from '../untils';
 const Home = {
     async render() {
@@ -76,7 +77,7 @@ const Home = {
         }
 
         return /*html*/ `
-        ${Header.render()}
+        ${ await  Header.render()}
         <div id="banner" class="">
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-3 mt-24">
                 <div class="banner relative wow fadeInLeftBig" data-wow-duration="1s">
@@ -656,6 +657,7 @@ const Home = {
 
         checkLogout();
         btnScoll();
+        search();
         // Set the date we're counting down to
         var countDownDate = new Date("november 21, 2021 23:59:00").getTime();
 

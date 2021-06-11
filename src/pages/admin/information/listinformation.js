@@ -32,7 +32,7 @@ const ListInformation = {
                                 <h4 class="card-title ">USER</h4>
                             </div>
                             <div class="card-body" >
-                                <div class="table-responsive" id="list-user">
+                                <div class="table-responsive" id="table-informations">
                                 ${await ListInformationChild.render()}
                             </table>
                          </div>

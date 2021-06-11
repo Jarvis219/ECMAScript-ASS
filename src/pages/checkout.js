@@ -7,7 +7,8 @@ import {
     $$,
     checkLogout,
     isSetAuthen,
-    prices
+    prices,
+    search
 } from '../untils';
 
 const CheckOut = {
@@ -35,7 +36,7 @@ const CheckOut = {
 
         // console.log(sumProduct); 
         return /* html*/ `
-            ${Header.render()}
+            ${await Header.render()}
             <div>
         <main class="container lg:mx-auto lg:px-16 lg:pt-24 lg:mb-12">
             <div>
@@ -138,6 +139,7 @@ const CheckOut = {
     },
     afterRender() {
         checkLogout();
+        search();
         var priceProduct = 0;
         $$('.priceProduct').forEach(element => {
             priceProduct += Number(element.innerHTML)

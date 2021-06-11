@@ -246,11 +246,16 @@ const AddProduct = {
                                 size: sizes,
                                 classify: sex.join(""),
                             }
-                            console.log(product);
-                            productAPI.add(product);
-                            alert("Add product success");
-                            window.location.hash = `/listproducts`;
-                            reRender(Adminproducts, '#list-product');
+                            // console.log(product);
+                            if (productAPI.add(product)) {
+                                // alert("Add product success");
+                                window.location.hash = `/listproducts`;
+                                reRender(Adminproducts, '#list-product');
+                            } else {
+                                alert("Add product failure");
+                            }
+
+
 
                         }
 

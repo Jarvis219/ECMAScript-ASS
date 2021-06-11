@@ -25,7 +25,8 @@ export const ListInformationChild = {
                 class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
                     href="#/editinformation/${element.id}"
                     class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td>
-                <td class="w-20"><button data-id="${element.id}"
+                <td class="w-20">
+                <button data-id="${element.id}"
                 class="list-infor-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                     <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button>
                 </td>
@@ -34,25 +35,25 @@ export const ListInformationChild = {
 
         }).join("");
         return /*html*/ `
-            <table class="table text-center" id="table-informations">
+            <table class="table text-center" >
                     <thead class=" text-primary">
                                 <th>
-                                Mã thông tin
+                                ID
                             </th>
                             <th>
                                 Logo
                             </th>
                             <th>
-                                Số điện thoại
+                                Number Phone
                             </th>
                             <th>
                                 Email
                             </th>
                             <th>
-                                Địa chỉ
+                               Address
                             </th>
-                            <th>Khẩu hiệu</th>
-                            <th>link bản đồ</th>
+                            <th>Slogan</th>
+                            <th>Link Google Map</th>
                             <th colspan="2">Other</th>
                     </thead>
                     <tbody>
@@ -63,7 +64,8 @@ export const ListInformationChild = {
     },
     async afterRender() {
         const btns = $$('.list-infor-btn');
-        btns.forEach(element => {
+
+        function deleteItem(element) {
             const id = element.dataset.id;
             element.addEventListener('click', async () => {
                 const question = confirm('Are you want to delete?');
@@ -78,8 +80,15 @@ export const ListInformationChild = {
                 // }
 
             })
-        });
+        }
 
+        if (btns.length > 1) {
+            btns.forEach(element => {
+                deleteItem(element)
+            });
+        } else {
+            deleteItem(btns);
+        }
     }
 
 }

@@ -7,13 +7,19 @@ import {
     $$,
     checkLogout,
     isSetAuthen,
-    reRender
+    search
 } from '../untils';
 const ShopCart = {
     async render() {
-        const {
-            data
-        } = await cartAPI.listUser(isSetAuthen().email);
+        if (isSetAuthen()) {
+            var {
+                data
+            } = await cartAPI.listUser(isSetAuthen().email);
+        } else {
+            var {
+                data
+            } = await cartAPI.list()
+        }
         // console.log(data);
         const showShopCarts = data.map(element => {
             const trashCart = () => {
@@ -41,7 +47,7 @@ const ShopCart = {
             </td>
             <td class="mx-28 w-56">
                 <div class="flex justify-center">
-                    <span class="cursor-pointer ">${element.amount}</span>
+                <input type="number" data-id="${element.id}" class="change-number w-16  pl-3" min="1" value="${element.amount}" id="">
                 </div>
             </td>
             <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
@@ -58,7 +64,7 @@ const ShopCart = {
 
 
         return /*html */ `
-        ${Header.render()}
+        ${await Header.render()}
         <div  id="scart">
         <main class="pt-24">
             <div>
@@ -76,8 +82,9 @@ const ShopCart = {
                                     <th class="">PRODUCT</th>
                                     <th class=" ">PRICE</th>
                                     <th class=" ">QUANTITY</th>
-                                    <th class=" ">STATUS</th>
+                                   
                                     <th  >TOTAL</th>
+                                    <th class=" ">STATUS</th>
                                 </tr>
                             </thead>
                             <tbody class="">
@@ -200,22 +207,51 @@ const ShopCart = {
     },
     async afterRender() {
         checkLogout();
+        search();
+        const changeNumber = $$('.change-number')
+        const total = $$('.quantityProduct');
+        const priceProduct = $$('.priceProduct');
 
-        function totals() {
-            var quantityProduct = $$('.quantityProduct');
-            var sum = 0;
-            quantityProduct.forEach(element => {
-                // console.log(element.innerHTML);
-                sum += Number(element.innerHTML);
-            });
-            $$('.totals').innerHTML = Number(sum) + Number($$('.subtotal').innerHTML);
-        }
-        totals();
+
+        // function sumTotal() {
+        //     changeNumber.forEach((element, index) => {
+        //         element.addEventListener('change', () => {
+        //             total[index].innerHTML = Number(priceProduct[index].innerHTML) * Number(changeNumber[index].value);
+        //         })
+        //     })
+        // }
+        // if (changeNumber.length > 1) {
+        //     sumTotal();
+        // } else {
+        //     total.innerHTML = Number(priceProduct.innerHTML) * Number(changeNumber.value);
+        // }
+
+        // function reloadTotal() {
+        //     changeNumber.forEach((element, index) => {
+        //         total[index].innerHTML = Number(priceProduct[index].innerHTML) * Number(changeNumber[index].value);
+        //     })
+        // }
+        // reloadTotal();
+        // for (let i = 0; i < changeNumber.length; i++) {
+        //     changeNumber[i].addEventListener('change', () => {
+        //         total[i].innerHTML = Number(priceProduct[i].innerHTML) * Number(changeNumber[i].value);
+        //     })
+        // }
+
+        // function totals() {
+        //     var quantityProduct = $$('.quantityProduct');
+        //     var sum = 0;
+        //     quantityProduct.forEach(element => {
+        //         // console.log(element.innerHTML);
+        //         sum += Number(element.innerHTML);
+        //     });
+        //     $$('.totals').innerHTML = Number(sum) + Number($$('.subtotal').innerHTML);
+        // }
+        // totals();
 
         const btns = $$('.list-cart-btn')
-        // console.log(btns);
 
-        btns.forEach(element => {
+        function deleteItem(element) {
             const id = element.dataset.id
             element.addEventListener('click', async () => {
                 const question = confirm('Are you want to delete?');
@@ -226,10 +262,16 @@ const ShopCart = {
                     if (removeItem) {
                         removeItem.remove();
                     }
-
                 }
             })
-        });
+        }
+        if (btns.length > 1) {
+            btns.forEach(element => {
+                deleteItem(element)
+            });
+        } else {
+            deleteItem(btns);
+        }
     }
 }
 export default ShopCart;

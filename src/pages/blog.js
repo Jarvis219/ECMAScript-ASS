@@ -1,12 +1,13 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
 import {
-    checkLogout
+    checkLogout,
+    search
 } from '../untils';
 const Blog = {
-    render() {
+    async render() {
         return /*html */ `
-        ${Header.render()}
+        ${ await Header.render()}
         <div>
         <div class="container mx-auto px-16 pt-24">
             <div class="my-8 ">
@@ -294,6 +295,7 @@ const Blog = {
     },
     afterRender() {
         checkLogout();
+        search();
     }
 }
 export default Blog;

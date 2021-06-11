@@ -4,12 +4,12 @@ import productAPI from '../api/productAPI';
 import {
     useParams,
     prices,
-    checkLogout
+    checkLogout,
+    search
 } from '../untils';
 
 
 const ProductCate = {
-
     async render() {
         // fetch("http://localhost:3001/products")
         //     .then(response => response.json())
@@ -19,9 +19,15 @@ const ProductCate = {
             const {
                 id
             } = useParams();
-            const {
-                data: products
-            } = await productAPI.listProductCate(id);
+            if (id == 'male' || id == 'female') {
+                var {
+                    data: products
+                } = await productAPI.listProductCate(id);
+            } else {
+                var {
+                    data: products
+                } = await productAPI.listSearch(id);
+            }
             // console.log(products);
             var result = products.map(element => {
                 // console.log(element);
@@ -87,7 +93,7 @@ const ProductCate = {
         }
 
         return /*html */ `
-        ${Header.render()}
+        ${await Header.render()}
         <div class="container mx-auto px-16 pt-24">
                 <div class="my-8">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
@@ -418,6 +424,7 @@ const ProductCate = {
     },
     afterRender() {
         checkLogout();
+        search();
     }
 }
 export default ProductCate;

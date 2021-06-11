@@ -3,7 +3,8 @@ import Footer from '../components/footer';
 import productAPI from '../api/productAPI';
 import {
     prices,
-    checkLogout
+    checkLogout,
+    search
 } from '../untils';
 
 const Product = {
@@ -13,10 +14,14 @@ const Product = {
         //     .then(response => response.json())
         //     .then(data => console.log(data))
 
+
+
         try {
-            const {
+            var {
                 data: products
             } = await productAPI.list();
+
+
             var result = products.map(element => {
                 // console.log(element);
                 // const search = element.filter((e) => {
@@ -83,7 +88,7 @@ const Product = {
             console.log(error);
         }
         return /*html */ `
-        ${Header.render()}
+        ${await Header.render()}
         <div class="container mx-auto px-16 pt-24">
                 <div class="my-8">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
@@ -414,6 +419,7 @@ const Product = {
     },
     afterRender() {
         checkLogout();
+        search();
     }
 }
 export default Product;

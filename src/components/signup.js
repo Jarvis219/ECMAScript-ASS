@@ -6,9 +6,9 @@ import {
 } from "../untils";
 import Header from "./header";
 const SignUp = {
-    render() {
+    async render() {
         return /*html */ `
-        ${Header.render()}
+        ${await Header.render()}
         <div class=" bg-pink-200 container mx-auto mt-20">
         <div class=" py-20">
             <div class="w-96 bg-white container mx-auto py-16  shadow-2xl">
@@ -73,7 +73,8 @@ const SignUp = {
                 const data = {
                     email: email,
                     name: name,
-                    password: password
+                    password: password,
+                    permission: "Customer"
                 }
                 console.log(data);
                 if (UserAPI.signup(data)) {

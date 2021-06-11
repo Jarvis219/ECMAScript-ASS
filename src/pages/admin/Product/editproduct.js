@@ -273,11 +273,12 @@ const EitProduct = {
                     }
 
                     // console.log(product);
-                    productAPI.update(id, product);
-                    alert("Update product success");
-                    window.location.hash = `/listproducts`;
-                    reRender(Adminproducts, '#list-product');
-
+                    if (productAPI.update(id, product)) {
+                        window.location.hash = `/listproducts`;
+                        reRender(Adminproducts, '#list-product');
+                    } else {
+                        alert("Update product failure");
+                    }
                 } else {
                     addImg();
                 }
@@ -290,7 +291,7 @@ const EitProduct = {
                         imgIntro = url;
                         console.log(imgIntro);
                         if (album.value == '') {
-                            console.log(3);
+                            // console.log(3);
                             const product = {
                                 id: id,
                                 name: $$('#name').value,
@@ -305,10 +306,12 @@ const EitProduct = {
                                 classify: sex.join(""),
                             }
                             // console.log(product);
-                            productAPI.update(id, product);
-                            alert("Update product success");
-                            window.location.hash = `/listproducts`;
-                            reRender(Adminproducts, '#list-product');
+                            if (productAPI.update(id, product)) {
+                                window.location.hash = `/listproducts`;
+                                reRender(Adminproducts, '#list-product');
+                            } else {
+                                alert("Update product failure");
+                            }
                         } else {
                             console.log(4);
                             addImg();
@@ -337,10 +340,12 @@ const EitProduct = {
                             classify: sex.join(""),
                         }
                         // console.log(id, product);
-                        productAPI.update(id, product);
-                        alert("Update product success");
-                        window.location.hash = `/listproducts`;
-                        reRender(Adminproducts, '#list-product');
+                        if (productAPI.update(id, product)) {
+                            window.location.hash = `/listproducts`;
+                            reRender(Adminproducts, '#list-product');
+                        } else {
+                            alert("Update product failure");
+                        }
                     }
                 }
             }

@@ -15,7 +15,7 @@ export const useParams = () => {
 
 export const $$ = selector => {
     let elements = document.querySelectorAll(selector);
-    return elements.length == 1 ? elements[0] : elements
+    return elements.length == 1 ? elements[0] : [...elements]
 }
 
 export const reRender = async (component, position = " ") => {
@@ -99,4 +99,13 @@ export const checkLogout = () => {
             window.location.hash = `/signin`;
         };
     }
+}
+
+export const search = () => {
+    // console.log($$('[name="search"]').value);
+    $$('#demo-search-lg').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = $$('[name="search"]').value
+        window.location.hash = `/productcate/${data}`;
+    })
 }

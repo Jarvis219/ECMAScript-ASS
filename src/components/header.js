@@ -1,66 +1,75 @@
 import {
-    isSetAuthen
+    isSetAuthen,
+    $$
 } from "../untils";
 import {
     informationAPI
 } from "../api/informationAPI";
+import {
+    UserAPI
+} from "../api/userAPI";
 const Header = {
-    render() {
-        // const {
-        //     data: logo
-        // } = await informationAPI.listcontact();
-        // const data = fetch("http://localhost:3001/informations?_limit=1")
-        // const logo = data.json();
+    async render() {
+        const {
+            data: logo
+        } = await informationAPI.listcontact();
+        const user = async () => {
+            if (isSetAuthen()) {
+                const {
+                    data: user
+                } = await UserAPI.listedit(isSetAuthen().sub)
+                if (user.permission == "Admin") {
+                    if (isSetAuthen() == false) {
+                        return ` <a href="#/signin">Login</a>
+                    <a href="#/signup">/ Register</a>`;
+                    } else {
+                        return /*html*/ `
+                    Hi ${ user.name}  
+                          </span>
+                            <a href="/#/listproducts">/ Admin</a>
+                          <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                    }
+                } else {
+                    if (isSetAuthen() == false) {
+                        return ` <a href="#/signin">Login</a>
+                        <a href="#/signup">/ Register</a>`;
+                    } else {
+                        return /*html*/ `
+                        <span>
+                        Hi ${ user.name}
+                        </span>
+                        <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                    }
 
-        // console.log(isSetAuthen());
-        const user = () => {
-            let checkAuthor = () => {
-                if (isSetAuthen().sub == 1) {
-                    return `Admin`
-                } else {
-                    return `Customer`
-                }
-            }
-            if (isSetAuthen().sub == 1) {
-                if (isSetAuthen() == false) {
-                    return ` <a href="#/signin">Login</a>
-                <a href="#/signup">/ Register</a>`;
-                } else {
-                    return /*html*/ `
-                <span>
-                Hi ${checkAuthor()}  
-                </span>
-                <a href="/#/listproducts">/ Admin</a>
-               <span class="cursor-pointer"  id="log-out">/ logout</span>`;
                 }
             } else {
                 if (isSetAuthen() == false) {
                     return ` <a href="#/signin">Login</a>
-                <a href="#/signup">/ Register</a>`;
+                    <a href="#/signup">/ Register</a>`;
                 } else {
                     return /*html*/ `
-                <span>
-                Hi ${checkAuthor()}
-                </span>
-                <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                    <span>
+                    Hi ${ user.name}
+                    </span>
+                    <span class="cursor-pointer"  id="log-out">/ logout</span>`;
                 }
             }
         }
-        const cartHeader = () => {
-            if (isSetAuthen() != false) {
-                return /*html*/ `
-                <a href="#/shopcart" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
-                `;
-            } else {
-                return ``;
-            }
-        }
+        // const cartHeader = () => {
+        //     if (isSetAuthen() != false) {
+        //         return /*html*/ `
+        //         <a href="#/shopcart" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
+        //         `;
+        //     } else {
+        //         return ``;
+        //     }
+        // }
         return /*html*/ `
         <header class="bg-gray-100 position fixed w-screen z-50 top-0  " id="heading">
             <div>
-                <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0 lg:gap-20 lg:py-8">
+                <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0 lg:gap-4 lg:py-8">
                     <div class="logo mx-auto md:mx-0">
-                        <a href="#/"><img src="./images/logo.png" alt="" class="w-full"></a>
+                        <a href="#/"><img src="${logo[0].logo}" alt="" class="w-full"></a>
                         <div class="md:hidden absolute right-0 top-0 ml-6 mt-8 mr-16 ">
                             <button id="btnMenu" class="border border-gray-700 px-2 py-1 ">
                                 <i class="fas fa-bars"></i>
@@ -102,23 +111,23 @@ const Header = {
                     </div>
                     <div class="md:flex hidden ">
                         <div class=" pt-3 md:mb-4 text-gray-700 text-xs">
-                            ${user()}
+                            ${await user()}
                         </div>
                         <div class="md:hidden lg:block mx-2 ">
-                            <form class="inline " id="demo-search">
-                                <input type="search" placeholder="search">
+                            <form class="inline demo-search" id="demo-search-lg">
+                                <input type="search" name="search" placeholder="search">
                             </form>
                             <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
-                            ${cartHeader()}
+                            <a href="#/shopcart" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="text-center hidden md:block lg:hidden mx-4">
-                    <form class="inline " id="demo-search">
-                        <input type="search" placeholder="search">
+                    <form  id="demo-search">
+                        <input type="search" value="as"  id="data-search"  placeholder="search">
                     </form>
                     <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
-                    ${cartHeader()}
+                    <a href="#/shopcart" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
                 </div>
                 <div id="menu">
                     <ul class="bg-gray-3 md:hidden  pb-2  z-auto ml-2">
@@ -146,12 +155,11 @@ const Header = {
                         <div class="grid grid-cols-1 md:flex justify-center">
                             <div class=" pl-6 pr-12 pt-3 text-gray-700 text-xs">
                                 <a href="#">Login</a>
-                                
                                 <a href="#">/ Register</a>
                             </div>
                             <div class=" mx-4">
                                 <form class="inline " id="demo-search">
-                                    <input type="search" placeholder="search">
+                                    <input type="search" value="" placeholder="search">
                                 </form>
                                 <a href="#" class="px-2 text-xl"><i class="far fa-heart"></i></a>
                                 <a href="#" class="px-2 text-xl"><i class="fas fa-shopping-cart"></i></a>
@@ -160,7 +168,9 @@ const Header = {
                     </div>
                 </div>
             </div>
+            
         </header>
+        
         <!-- end header -->
         `;
     },

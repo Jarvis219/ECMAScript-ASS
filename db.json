@@ -367,77 +367,53 @@
   "comments": [],
   "contacts": [
     {
-      "id": 766126,
+      "id": 570565,
       "name": "Mr Rin",
       "email": "songoku2192@gmail.com",
       "phone": "0968686686",
-      "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit dolorem magni, quibusdam nulla, hic esse mollitia eum tempore dolor eaque quidem debitis dignissimos excepturi deleniti quam delectus illum eos numquam.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit dolorem magni, quibusdam nulla, hic esse mollitia eum tempore dolor eaque quidem debitis dignissimos excepturi deleniti quam delectus illum eos numquam.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit dolorem magni, quibusdam nulla, hic esse mollitia eum tempore dolor eaque quidem debitis dignissimos excepturi deleniti quam delectus illum eos numquam.",
-      "status": "Approved"
+      "content": "kkk",
+      "status": "Not approved yet"
     },
     {
-      "id": 76116,
-      "name": "Mr Rin",
+      "id": 469383,
+      "name": "Mr Rinsa",
       "email": "songoku2192@gmail.com",
       "phone": "0968686686",
-      "content": "sasa",
-      "status": "Approved"
-    },
-    {
-      "id": 76626,
-      "name": "Mr Rin",
-      "email": "songoku2192@gmail.com",
-      "phone": "0968686686",
-      "content": "sasa",
+      "content": "kkksd",
       "status": "Approved"
     }
   ],
   "users": [
     {
-      "email": "y@gmail.com",
-      "password": "$2a$10$4uRVr1Qvl99LPpFt6T4Bx.zy95ak2ZetixXCSoGZsUjXhJAre/WC.",
-      "name": "Trần Quang",
+      "email": "kaio@gmail.com",
+      "password": "$2a$10$iMcDjjXJ6CsoiC5GgDKf8e3/I/Vzo.kyjOJh4WiyooBgPandS/Ie.",
+      "name": "kaio",
+      "permission": "Admin",
       "id": 1
     },
     {
-      "email": "q@gmail.com",
-      "password": "$2a$10$s4dD6SRq1S3rAedPm3xaYO8t2dy2ElpGT6Ubn8CnIeRJg71RYIoVC",
-      "name": "Trần Quang",
+      "email": "kh1@gmail.com",
+      "password": "$2a$10$9cSt0aXH2T43fM5MypfqP.p.5pXxXI1gdfuTZHSC2.Je2be4mwpRi",
+      "name": "kh",
+      "permission": "Customer",
       "id": 2
     },
     {
-      "id": 3,
-      "email": "y@gmail.com",
-      "password": "$2a$10$C..cUHRYDYTcPkvpcvgskuUkOwA6gVbvSb4pjFcM1wccQxmBE2Oum",
-      "name": "Trần Quang"
+      "email": "admin@gmail.com",
+      "password": "$2a$10$Z2JR2b9XWBvag6nAIkebWOnHBljdDTti0d3gUHP7suGAnlpKohVHK",
+      "name": "admin1",
+      "permission": "Admin",
+      "id": 3
     },
     {
-      "email": "songoku2192@gmail.com",
-      "password": "$2a$10$nFF952TDS4g2Caysod1W.uluQRiykiVay.rh/h9hR5D0d737UJmNC",
-      "name": "Mr Rin",
+      "email": "kh2@gmail.com",
+      "password": "$2a$10$Bw8zs.pGXz.0kI7hksodyOxTTArmWLe9yTACipOzB4u.HUwECjOWG",
+      "name": "kh2",
+      "permission": "Customer",
       "id": 4
-    },
-    {
-      "id": 5,
-      "email": "songoku2192sss@gmail.com",
-      "password": "$2a$10$x3kDT.bFAxX11B92djvjl.SQt8OzCzoyqRFsYcxxcgi76t3NVw.7y",
-      "name": "Mr Rin"
     }
   ],
   "carts": [
-    {
-      "id": 6753825,
-      "productId": 488371,
-      "user": "y@gmail.com",
-      "name": "Oversized Stripe MAN Signature",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
-      "price": "60",
-      "sale": "12",
-      "size": "M-L",
-      "totalmoney": 576,
-      "amount": "12",
-      "status": "not approved yet",
-      "days": "08-06-2021"
-    },
     {
       "id": 6751825,
       "productId": 488371,
@@ -481,20 +457,6 @@
       "days": "09-06-2021"
     },
     {
-      "id": 136306,
-      "productId": "625208",
-      "user": "q@gmail.com",
-      "name": " Arabesque Wrap Robe Gown Lagoon silk",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F52S006LL_navy_web_bd.jpeg?alt=media&token=0ee099fb-b12a-49dd-8e83-9c114dd77552",
-      "price": "90",
-      "sale": "0",
-      "size": "XS",
-      "totalmoney": 90,
-      "amount": "1",
-      "status": "not approved yet",
-      "days": "09-06-2021"
-    },
-    {
       "id": 238182,
       "productId": 504038,
       "user": "q@gmail.com",
@@ -506,20 +468,6 @@
       "totalmoney": 90,
       "amount": "1",
       "status": "approved",
-      "days": "09-06-2021"
-    },
-    {
-      "id": 471191,
-      "productId": "612672",
-      "user": "q@gmail.com",
-      "name": "Cotton Over the Knee Socks Purple",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-red-robe-matchplay-f5-web.jpeg?alt=media&token=32a96296-8e04-459c-9f6d-4889c595f113",
-      "price": "66",
-      "sale": "0",
-      "size": "XS",
-      "totalmoney": 66,
-      "amount": "1",
-      "status": "not approved yet",
       "days": "09-06-2021"
     },
     {
@@ -535,82 +483,18 @@
       "amount": "1",
       "status": "delivered",
       "days": "09-06-2021"
-    },
-    {
-      "id": 582687,
-      "productId": "612672",
-      "user": "y@gmail.com",
-      "name": "Cotton Over the Knee Socks Purple",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-red-robe-matchplay-f5-web.jpeg?alt=media&token=32a96296-8e04-459c-9f6d-4889c595f113",
-      "price": "66",
-      "sale": "0",
-      "size": "XS",
-      "totalmoney": 66,
-      "amount": "1",
-      "status": "not approved yet",
-      "days": "09-06-2021"
-    },
-    {
-      "id": 521514,
-      "productId": "612672",
-      "user": "y@gmail.com",
-      "name": "Cotton Over the Knee Socks Purple",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-red-robe-matchplay-f5-web.jpeg?alt=media&token=32a96296-8e04-459c-9f6d-4889c595f113",
-      "price": "66",
-      "sale": "0",
-      "size": "XS",
-      "totalmoney": 66,
-      "amount": "1",
-      "status": "not approved yet",
-      "days": "09-06-2021"
-    },
-    {
-      "id": 67814,
-      "productId": "416256",
-      "user": "songoku2192sss@gmail.com",
-      "name": "Official Yarn Dyed Oversized Stripe",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fyellow-official-yarn-dyed-oversized-stripe-t-shirt.jpeg?alt=media&token=3fc5ac87-69f8-4c7c-b0de-c1c37d39fa36",
-      "price": "90",
-      "sale": "6",
-      "size": "XS",
-      "totalmoney": 84,
-      "amount": "1",
-      "status": "not approved yet",
-      "days": "09-06-2021"
-    },
-    {
-      "id": 507216,
-      "productId": "488371",
-      "user": "songoku2192sss@gmail.com",
-      "name": "Oversized Stripe MAN Signature",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
-      "price": "59",
-      "sale": "12",
-      "size": "XS",
-      "totalmoney": 47,
-      "amount": "1",
-      "status": "not approved yet",
-      "days": "09-06-2021"
     }
   ],
+  "orders": [],
   "informations": [
     {
-      "id": 135051,
+      "id": 417748,
       "numberPhone": "125-711-811 | 125-668-886",
       "address": "160 Pennsylvania Ave NW, Washington, Castle, PA 16101-5161",
-      "linkMap": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.4552460252553!2d-77.01553708487788!3d38.890703654944154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b786fffd5359%3A0x3f23c9930d989ac2!2s160%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC%2020016%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1623267525649!5m2!1svi!2s\" width=\"600\" height=\"780\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>",
+      "linkMap": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.4552460252553!2d-77.01553708487788!3d38.890703654944154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b786fffd5359%3A0x3f23c9930d989ac2!2s160%20Pennsylvania%20Avenue%20NW%2C%20Washington%2C%20DC%2020016%2C%20USA!5e0!3m2!1sen!2s!4v1623328816647!5m2!1sen!2s\" width=\"600\" height=\"750\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>",
       "slogan": "website Ashion of kaio",
-      "logo": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Flogo.png?alt=media&token=93666645-195a-473f-b45a-ad1699782421",
+      "logo": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Flogo.png?alt=media&token=adabe281-9bba-44c4-b28b-a4fd43496bf6",
       "email": "Quangtaph12673@fpt.edu.vn"
-    },
-    {
-      "id": 697424,
-      "numberPhone": "0968686686sw",
-      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nộisw",
-      "linkMap": "125-711-811 | 125-668-886w",
-      "slogan": "slogansssw",
-      "logo": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fblog-2.jpg?alt=media&token=4e04a416-1bc5-45ba-b636-b0827f137322",
-      "email": "songoku2192@gmail.comssw"
     }
   ]
 }

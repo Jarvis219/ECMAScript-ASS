@@ -61,16 +61,27 @@ const AddUser = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Password </label>
                                                     <input type="password" minlength="8" class="form-control" id="password" name=""
-                                                    required >
+                                                    required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Password </label>
                                                     <input type="password" minlength="8" class="form-control" id="confirmPass" name=""
-                                                    required>
+                                                    required >
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Permission </label><br>
+                                                <label>Admin <input type="radio" class="permission" value="Admin"  name="permission"
+                                                 > </label>
+                                                 <label>Customer  <input type="radio" class="permission" value="Customer"  name="permission"
+                                                 checked> </label>
+                                            </div>
+                                        </div>
                                     </div>
                                         <button type="submit" class="btn btn-primary pull-left uppercase">Add
                                             user</button>
@@ -100,12 +111,20 @@ const AddUser = {
     async afterRender() {
         $$('#add-user').addEventListener('submit', async (e) => {
             e.preventDefault();
+            var permission = $$('input[name="permission"]');
+            permission.forEach(element => {
+                if (element.checked) {
+                    permission = element.value;
+                }
+            });
             if ($$('#password').value == $$('#confirmPass').value) {
                 const user = {
                     email: $$('#email').value,
                     password: $$('#password').value,
-                    name: $$('#name').value
+                    name: $$('#name').value,
+                    permission: permission
                 }
+                // console.log(user);
                 await UserAPI.signup(user)
                     .then(() => {
                         alert('Add user success');
