@@ -10,12 +10,22 @@ import {
     prices,
     search
 } from '../untils';
+import {
+    ordersAPI
+} from '../api/orders';
 
 const CheckOut = {
     async render() {
-        const {
-            data
-        } = await cartAPI.listUser(isSetAuthen().email);
+
+
+        if (isSetAuthen()) {
+            var {
+                data
+            } = await cartAPI.listUser(isSetAuthen().email);
+        } else {
+            var data = JSON.parse(localStorage.getItem('dataCart'))
+        }
+
         // console.log(data);
         const sumProduct =
             data.map((element, index) => {
@@ -28,7 +38,9 @@ const CheckOut = {
                                     ${index+1}   <span>. ${element.name}</span>
                                     </div>
                                     <div class="text-red-500">
-                                       $ <span class="priceProduct"> ${prices(element.price).replace('VND','')}</span>
+                                       $ <span class="priceProduct" data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" 
+                                       data-idsale = "${element.sale}" data-idsize ="${element.size}"  data-idimage="${element.image}" 
+                                        > ${prices(element.price).replace('VND','')}</span>
                                     </div>
                                 </div>
                 `;
@@ -55,34 +67,29 @@ const CheckOut = {
                         <div>
                             <div>
                                 <form id="check-out">
-                                    <div class="flex justify-between items-center gap-2 mb-3">
-                                        <div>
-                                            <label for="#">First Name <span class="text-red-400">*</span> </label><br>
-                                            <input type="text" name="" id="firstName"
-                                                class="border w-64 xl:w-80 py-2 rounded-sm pl-4" required>
-                                        </div>
-                                        <div>
-                                            <label for="#">Last Name <span class="text-red-400">*</span> </label><br>
-                                            <input type="text" name="" id="lastName"
-                                                class="border w-64 xl:w-80 py-2 rounded-sm  pl-4" required>
-                                        </div>
+                                    <div class=" mb-3">
+                                      
+                                            <label for="#"> Name <span class="text-red-400">*</span> </label><br>
+                                            <input type="text" name="name" id="name"
+                                                class="border w-full py-2 rounded-sm  pl-4" required>
+                                       
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Address <span class="text-red-400">*</span></label><br>
-                                        <input type="text" name="" id="address" class="border w-full py-2 rounded-sm  pl-4"
+                                        <input type="text" name="address" id="address" class="border w-full py-2 rounded-sm  pl-4"
                                             required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Phone <span class="text-red-400">*</span></label><br>
-                                        <input type="number" id="phone" class="border w-full py-2 rounded-sm  pl-4" required>
+                                        <input type="number" id="phone" name="phone" class="border w-full py-2 rounded-sm  pl-4" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Email </label><br>
-                                        <input type="email" id="email" class="border w-full py-2 rounded-sm  pl-4">
+                                        <input type="email" id="email" name ="email" class="border w-full py-2 rounded-sm  pl-4">
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Note </label><br>
-                                        <textarea name="" id="note" rows="9"
+                                        <textarea  id="note" rows="9"
                                             class="border rounded-sm w-full  p-4 "></textarea>
                                     </div>
                                     <div
@@ -137,7 +144,15 @@ const CheckOut = {
             ${Footer.render()}
         `;
     },
-    afterRender() {
+    async afterRender() {
+        if (isSetAuthen()) {
+            var {
+                data
+            } = await cartAPI.listUser(isSetAuthen().email);
+        } else {
+            var data = JSON.parse(localStorage.getItem('dataCart'))
+        }
+        // console.log(data);
         checkLogout();
         search();
         var priceProduct = 0;
@@ -148,13 +163,25 @@ const CheckOut = {
         var total = $$('#total');
         total.innerHTML = Number($$('#subTotal').innerHTML) + priceProduct;
 
-        $$('#check-out').addEventListener('click', (e) => {
+        $$('#check-out').addEventListener('submit', (e) => {
             e.preventDefault();
             const checkOut = {
-
-
+                id: Math.round(Math.random() * 700000),
+                name: $$('input[name="name"]').value,
+                email: $$('input[name="email"]').value,
+                phone: $$('input[name="phone"]').value,
+                address: $$('input[name="address"]').value,
+                note: $$('#note').value,
+                sumMoney: total.innerHTML,
+                product: data
             }
+            ordersAPI.add(checkOut);
         })
+
+        // data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" 
+        //                                data-idsale = "${element.sale}" data-idsize ="${element.size}"  data-idimage="${element.image}" 
+        //                                 "
+
 
 
     }

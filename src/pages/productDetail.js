@@ -12,9 +12,7 @@ import {
     $$,
     prices,
     checkLogout,
-    search
-} from '../untils';
-import {
+    search,
     useParams
 } from '../untils';
 import productAPI from '../api/productAPI';
@@ -364,17 +362,15 @@ const ProductDetail = {
             number.value = Number(number.value) + 1;
         }
         var day = moment(new Date()).format('DD-MM-YYYY');
-        if ($$('#btn-to-cart')) {
-            $$('#btn-to-cart').onclick = async (e) => {
-                e.preventDefault();
-                var user;
-                if (isSetAuthen()) {
-                    user = isSetAuthen().email;
-                }
+
+        $$('#btn-to-cart').onclick = async (e) => {
+            e.preventDefault();
+
+            if (isSetAuthen()) {
                 const carts = {
                     id: Math.round(Math.random() * 700000),
                     productId: id,
-                    // user: isSetAuthen().email,
+                    user: isSetAuthen().email,
                     name: result.name,
                     image: result.imageIntro,
                     price: result.price,
@@ -387,10 +383,51 @@ const ProductDetail = {
                 }
                 await cartAPI.add(carts);
                 alert(`Add product: ${result.name} success to cart`);
+            } else {
+                let cartStorage = localStorage.getItem('dataCart');
+                let screenCart = null;
+                if (cartStorage == null) {
+                    screenCart = [];
+                } else {
+                    screenCart = JSON.parse(cartStorage);
+                }
+                const data = {
+                    id: id,
+                    name: result.name,
+                    image: result.imageIntro,
+                    price: result.price,
+                    sale: result.sale,
+                    size: $$('#size').value,
+                    amount: Number($$('#number-cart').value),
+                    totalmoney: (Number(result.price) - Number(result.sale)) * Number($$('#number-cart').value),
+                    days: day
+                }
+                // var checkCart;
+                // if (screenCart.length < 1 || screenCart.length == undefined) {
+                //     if (screenCart.id == data.id) {
+                //         checkCart = 1;
+                //     } else {
+                //         checkCart = -1;
+                //     }
+                // } else {
+                //     checkCart = screenCart.findIndex(element => element.id == data.id);
+                // }
+
+                let checkCart = screenCart.findIndex(element => element.id == data.id);
+                console.log(checkCart);
+
+                if (checkCart == -1) { // không có id nào trùng với trên local thì số lượng sẽ tăng lên 1 và push thêm object data vào mảng screenCart
+                    ;
+                    data.amount = 1;
+                    screenCart.push(data);
+                } else {
+                    console.log(screenCart.checkCart);
+                    screenCart[checkCart].amount = screenCart[checkCart].amount + Number($$('#number-cart').value);
+                }
+                // console.log(data);
+                localStorage.setItem('dataCart', JSON.stringify(screenCart));
             }
         }
-
-
     }
 }
 export default ProductDetail;

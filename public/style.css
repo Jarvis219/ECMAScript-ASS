@@ -855,6 +855,9 @@ video {
 .w-10 {
 	width: 2.5rem;
 }
+.w-2 {
+	width: 0.5rem;
+}
 .border-collapse {
 	border-collapse: collapse;
 }
@@ -1064,6 +1067,9 @@ video {
 }
 .p-12 {
 	padding: 3rem;
+}
+.p-2 {
+	padding: 0.5rem;
 }
 .py-6 {
 	padding-top: 1.5rem;

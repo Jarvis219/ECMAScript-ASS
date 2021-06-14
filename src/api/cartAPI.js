@@ -30,5 +30,6 @@ export const cartAPI = {
     listCartSize(id) {
         const url = `products/${id}`;
         return axiosClient.get(url);
-    }
+    },
+
 }
