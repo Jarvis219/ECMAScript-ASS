@@ -5,13 +5,13 @@ import {
 } from "../untils";
 
 import {
-    cartAPI
-} from "../api/cartAPI";
+    ordersAPI
+} from "../api/ordersAPI";
 const ListCartChild = {
     async render() {
         const {
             data
-        } = await cartAPI.list();
+        } = await ordersAPI.list();
         const showListCart = data.map((element, index) => {
             var status;
             // console.log(element.status);
@@ -35,21 +35,16 @@ const ListCartChild = {
             return /*html*/ `
             <tr>
             <td>${index+1}</td>
-            <td>${element.user}</td>
             <td>${element.name}</td>
-            <td><img width="100" height="100" src="${element.image}"></td>
-            <td>${"$ "+prices(Number(element.price)).replace('VND','')}</td>
-            <td>${element.amount}</td>
-            <td>${"$ "+prices(Number(element.totalmoney)).replace('VND','')}</td>
-            <td>${element.size}</td>
+            <td>${element.phone}</td>
+            <td>${element.address}</td>
+            <td>${prices(element.sumMoney)}</td>
             <td>${element.days}</td>
             <td><select data-id="${element.id}" class="status border-2 border-green-400 border-opacity-100 rounded-lg text-green-700">
                 ${statusTable()}
             </select></td>
-            <td class="w-20"><button
-            class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
-                href="#/editcart/${element.id}"
-                class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td>
+            <td class="w-20"><button data-id="${element.id}"
+            class=" text-xl bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></td>
               <td class="w-20"><button data-id="${element.id}"
             class="list-cart-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                 <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button></td>
@@ -62,26 +57,19 @@ const ListCartChild = {
                                         <th>
                                             stt
                                         </th>
-                                        <th>User</th>
+                                        <th>Name</th>
                                         <th>
-                                           Name Product
+                                          Phone
                                         </th>
                                         <th >
-                                         Images
+                                         Address
                                        </th>
                                         <th>
-                                        Price
+                                        Total money
                                         </th>
                                         <th>
-                                        Amount
+                                        Created at
                                          </th>
-                                         <th>
-                                         Total
-                                         </th>
-                                         <th>
-                                         Size
-                                         </th>
-                                         <th>Booking date</th>
                                          <th>Status</th>
                                         <th colspan="2" class="w-32">Custom</th>
                                     </thead>
@@ -93,12 +81,7 @@ const ListCartChild = {
     },
     async afterRender() {
 
-
-
-        const btns = $$('.list-cart-btn')
-        // console.log(btns);
-
-        btns.forEach(element => {
+        function deleteItem(element) {
             const id = element.dataset.id
             element.addEventListener('click', async () => {
                 const question = confirm('Are you want to delete?');
@@ -107,39 +90,53 @@ const ListCartChild = {
                     await reRender(ListCartChild, '#list-cart');
                 }
             })
-        });
+        }
+
+        const btns = $$('.list-cart-btn')
+
+        if (btns.length > 1) {
+            btns.forEach(element => {
+                deleteItem(element)
+            });
+        } else {
+            deleteItem(btns);
+        }
 
         const stt = $$('.status');
-        stt.forEach(async (element) => {
+        // console.log(stt.length);
+        if (stt.length > 3) {
+            stt.forEach(element => {
+                statuss(element)
+            });
+        } else {
+            statuss(stt);
+        }
+
+        async function statuss(element) {
             const id = element.dataset.id
             const {
                 data
-            } = await cartAPI.read(id);
+            } = await ordersAPI.read(id);
             // console.log(data);
-            const {
-                data: sizes
-            } = await cartAPI.listCartSize(data.productId);
-            // console.log(sizes);
             element.addEventListener('change', async () => {
                 const editCart = {
-                    id: id,
-                    productId: sizes.id,
-                    user: data.user,
+                    id: Number(id),
+                    address: data.address,
+                    email: data.email,
                     name: data.name,
-                    image: data.image,
-                    price: data.price,
-                    sale: data.sale,
-                    size: data.size,
-                    totalmoney: data.totalmoney,
-                    amount: data.amount,
+                    note: data.note,
+                    phone: data.phone,
+                    product: data.product,
+                    sumMoney: data.sumMoney,
                     status: element.value,
                     days: data.days,
                 }
-                console.log(editCart);
-                await cartAPI.edit(id, editCart);
+                // console.log(editCart);
+                await ordersAPI.eidt(id, editCart);
                 await reRender(ListCartChild, '#list-cart');
             })
-        });
+        }
+
     }
 }
 export default ListCartChild;

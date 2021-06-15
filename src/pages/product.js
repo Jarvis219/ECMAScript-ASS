@@ -30,7 +30,7 @@ const Product = {
                 const saleProduct = () => {
                     if (element.sale > 0) {
                         return /*html*/ `
-                        <span class="text-gray-500 text-sm line-through font-medium ">${'$ '+prices(Number(element.price)).replace('VND',' ')}</span>
+                        <span class="text-gray-500 text-sm line-through font-medium ">${prices(Number(element.price))}</span>
                         `;
                     } else {
                         return /*html*/ `
@@ -78,7 +78,7 @@ const Product = {
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i></span>
-                                        <span class="font-medium text-xl">${'$ '+prices(Number(element.price-element.sale)).replace('VND',' ')}</span>
+                                        <span class="font-medium text-xl">${prices(Number(element.price-element.sale))}</span>
                                         ${saleProduct()}
                                     </div>
                                 </article>
@@ -274,28 +274,7 @@ const Product = {
                                 ${result}
                        
                         </div>
-                        <div>
-                            <nav>
-                                <ul class="flex justify-center mt-12">
-                                    <li
-                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400 hover:bg-gray-700 hover:text-white">
-                                        <a href="#"></a>1
-                                    </li>
-                                    <li
-                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400  hover:bg-gray-700 hover:text-white">
-                                        <a href="#"></a>2
-                                    </li>
-                                    <li
-                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400  hover:bg-gray-700 hover:text-white">
-                                        <a href="#"></a>3
-                                    </li>
-                                    <li
-                                        class="block px-4 py-2 mx-3 font-medium bg-gray-100 rounded-full border border-gray-400  hover:bg-gray-700 hover:text-white">
-                                        <a href="#"></a>>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                        
                     </section>
                     <!-- end content-right -->
                 </div>

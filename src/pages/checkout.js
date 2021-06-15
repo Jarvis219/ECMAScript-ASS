@@ -12,7 +12,7 @@ import {
 } from '../untils';
 import {
     ordersAPI
-} from '../api/orders';
+} from '../api/ordersAPI';
 
 const CheckOut = {
     async render() {
@@ -22,6 +22,7 @@ const CheckOut = {
             var {
                 data
             } = await cartAPI.listUser(isSetAuthen().email);
+
         } else {
             var data = JSON.parse(localStorage.getItem('dataCart'))
         }
@@ -29,18 +30,18 @@ const CheckOut = {
         // console.log(data);
         const sumProduct =
             data.map((element, index) => {
-                // console.log(element.name);
+                // console.log(element);
                 // console.log(index);
 
                 return /*html*/ `
                 <div class="flex justify-between items-center text-base py-2">
-                                    <div class="w-[200px] overflow-hidden">
+                                    <div class="w-[190px] overflow-hidden">
                                     ${index+1}   <span>. ${element.name}</span>
                                     </div>
                                     <div class="text-red-500">
-                                       $ <span class="priceProduct" data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" 
+                                        <span class="priceProduct" data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" 
                                        data-idsale = "${element.sale}" data-idsize ="${element.size}"  data-idimage="${element.image}" 
-                                        > ${prices(element.price).replace('VND','')}</span>
+                                        > ${prices(element.totalmoney)}</span>
                                     </div>
                                 </div>
                 `;
@@ -157,12 +158,13 @@ const CheckOut = {
         search();
         var priceProduct = 0;
         $$('.priceProduct').forEach(element => {
-            priceProduct += Number(element.innerHTML)
+            // console.log(Number(element.innerHTML.replace(/\D/g, '')));
+            priceProduct += Number(element.innerHTML.replace(/\D/g, ''))
         })
         // console.log(priceProduct);
         var total = $$('#total');
-        total.innerHTML = Number($$('#subTotal').innerHTML) + priceProduct;
-
+        total.innerHTML = prices(Number($$('#subTotal').innerHTML) + priceProduct);
+        var day = moment(new Date()).format('DD-MM-YYYY');
         $$('#check-out').addEventListener('submit', (e) => {
             e.preventDefault();
             const checkOut = {
@@ -173,16 +175,12 @@ const CheckOut = {
                 address: $$('input[name="address"]').value,
                 note: $$('#note').value,
                 sumMoney: total.innerHTML,
-                product: data
+                product: data,
+                days: day,
+                status: "not approved yet",
             }
             ordersAPI.add(checkOut);
         })
-
-        // data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" 
-        //                                data-idsale = "${element.sale}" data-idsize ="${element.size}"  data-idimage="${element.image}" 
-        //                                 "
-
-
 
     }
 }

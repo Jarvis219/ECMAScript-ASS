@@ -4,7 +4,6 @@ import {
 export const ordersAPI = {
     list() {
         const url = `orders`;
-        console.log(url);
         return axiosClient.get(url);
     },
     add(data) {
@@ -18,6 +17,10 @@ export const ordersAPI = {
     remove(id) {
         const url = `orders/${id}`;
         return axiosClient.delete(url)
+    },
+    read(id) {
+        const url = `orders/${id}`;
+        return axiosClient.get(url);
     }
 
 

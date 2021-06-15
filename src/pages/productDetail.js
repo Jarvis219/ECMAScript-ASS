@@ -362,27 +362,60 @@ const ProductDetail = {
             number.value = Number(number.value) + 1;
         }
         var day = moment(new Date()).format('DD-MM-YYYY');
-
+        // const {
+        //     data: products
+        // } = await cartAPI.list();
+        // console.log(products);
+        // var total = products.findIndex(element => element.productId == id);
+        // console.log(total);
         $$('#btn-to-cart').onclick = async (e) => {
             e.preventDefault();
-
             if (isSetAuthen()) {
-                const carts = {
-                    id: Math.round(Math.random() * 700000),
-                    productId: id,
-                    user: isSetAuthen().email,
-                    name: result.name,
-                    image: result.imageIntro,
-                    price: result.price,
-                    sale: result.sale,
-                    size: $$('#size').value,
-                    totalmoney: (Number(result.price) - Number(result.sale)) * $$('#number-cart').value,
-                    amount: $$('#number-cart').value,
-                    status: 'not approved yet',
-                    days: day
+                const {
+                    data: products
+                } = await cartAPI.list();
+                var total = products.findIndex(element => element.productId == id);
+                if (total != -1) {
+                    products.forEach(async (element) => {
+                        if (element.productId == id) {
+                            const carts = {
+                                id: element.id,
+                                productId: id,
+                                user: isSetAuthen().email,
+                                name: result.name,
+                                image: result.imageIntro,
+                                price: result.price,
+                                sale: result.sale,
+                                size: $$('#size').value,
+                                totalmoney: Number(element.totalmoney) + (Number(result.price) - Number(result.sale)) * $$('#number-cart').value,
+                                amount: Number(element.amount) + Number($$('#number-cart').value),
+                                status: 'not approved yet',
+                                days: day
+                            }
+                            // console.log(carts);
+                            await cartAPI.edit(element.id, carts);
+                            // alert(`Add product: ${result.name} success to cart`);
+                        }
+                    });
+                } else {
+                    const carts = {
+                        id: Math.round(Math.random() * 700000),
+                        productId: id,
+                        user: isSetAuthen().email,
+                        name: result.name,
+                        image: result.imageIntro,
+                        price: result.price,
+                        sale: result.sale,
+                        size: $$('#size').value,
+                        totalmoney: (Number(result.price) - Number(result.sale)) * $$('#number-cart').value,
+                        amount: $$('#number-cart').value,
+                        status: 'not approved yet',
+                        days: day
+                    }
+                    await cartAPI.add(carts);
+                    alert(`Add product: ${result.name} success to cart`);
                 }
-                await cartAPI.add(carts);
-                alert(`Add product: ${result.name} success to cart`);
+
             } else {
                 let cartStorage = localStorage.getItem('dataCart');
                 let screenCart = null;
@@ -421,8 +454,10 @@ const ProductDetail = {
                     data.amount = 1;
                     screenCart.push(data);
                 } else {
-                    console.log(screenCart.checkCart);
+                    // console.log(screenCart.checkCart);
                     screenCart[checkCart].amount = screenCart[checkCart].amount + Number($$('#number-cart').value);
+                    screenCart[checkCart].totalmoney = screenCart[checkCart].totalmoney + (Number(result.price) - Number(result.sale)) * Number($$('#number-cart').value);
+
                 }
                 // console.log(data);
                 localStorage.setItem('dataCart', JSON.stringify(screenCart));

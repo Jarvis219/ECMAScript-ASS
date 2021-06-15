@@ -15,33 +15,29 @@ const ListInformation = {
                 </div>
             </div>
         </nav>
-        <div  class="flex justify-center">
-            <div class=" absolute mt-20 lg:mt-15 z-50">
-            <a href="/#/addinformation"><button type="submit"
-                    class="btn btn-primary pull-left ml-4 uppercase">ADD information</button></a>
-            </div>
-            </div>
+        
          
         <!-- End Navbar -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
+        <div class="content flex justify-center">
+            <div class="">
+                <div class="">
                     <div class="col-md-12">
-                        <div class="card"  >
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title ">USER</h4>
-                            </div>
-                            <div class="card-body" >
-                                <div class="table-responsive" id="table-informations">
+                            <div class="card-body mt-32 z-50 flex justify-center" >
                                 ${await ListInformationChild.render()}
-                            </table>
-                         </div>
+                                <div  class="flex justify-center">
+           
                             </div>
-                            
-                        </div>
+                            </div>
+                            <div class="flex justify-center ">
+                    <a href="/#/addinformation"><button type="submit"
+                            class="btn btn-primary pull-left ml-4 uppercase">ADD information</button></a>
                     </div>
+                    
+                    </div>
+                    
                 </div>
             </div>
+            
         </div>
         <footer class="footer">
             <div class="container-fluid">

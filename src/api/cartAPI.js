@@ -17,6 +17,7 @@ export const cartAPI = {
     },
     edit(id, data) {
         const url = `carts/${id}`;
+        console.log(url);
         return axiosClient.put(url, data);
     },
     remove(id) {

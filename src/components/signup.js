@@ -74,7 +74,7 @@ const SignUp = {
                     email: email,
                     name: name,
                     password: password,
-                    permission: "Customer"
+                    permission: "Member"
                 }
                 console.log(data);
                 if (UserAPI.signup(data)) {

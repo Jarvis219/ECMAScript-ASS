@@ -18,7 +18,7 @@ const Home = {
                 const saleHome = () => {
                     if (element.sale > 0) {
                         return /*html*/ `
-                        <span class="text-gray-500 text-sm line-through font-medium ">${'$ '+prices(Number(element.price)).replace('VND',' ')}</span>
+                        <span class="text-gray-500 text-sm line-through font-medium ">${prices(Number(element.price))}</span>
                         `;
                     } else {
                         return /*html*/ `
@@ -66,7 +66,7 @@ const Home = {
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i></span>
-                        <span class="font-medium text-xl">${'$ '+prices(Number(element.price-element.sale)).replace('VND',' ')}</span>
+                        <span class="font-medium text-xl">${prices(Number(element.price-element.sale))}</span>
                         ${saleHome()}
                     </div>
                 </article>

@@ -29,7 +29,8 @@ export const productAPI = {
         return axiosClient.get(url);
     },
     listSearch(data) {
-        const url = `/products/?name_like=${data}`;
+        // const url = `/products/?name_like=${data}`;
+        const url = `/products?q=${data}`
         return axiosClient.get(url);
     }
 }

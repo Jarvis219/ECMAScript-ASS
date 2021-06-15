@@ -9,10 +9,6 @@
       "name": "Suit"
     },
     {
-      "id": 89280,
-      "name": "Sport clothes"
-    },
-    {
       "id": 346275,
       "name": "Dress"
     },
@@ -364,26 +360,28 @@
       "classify": "male"
     },
     {
-      "id": 380367,
-      "name": "Áo vest nam YODY 06saas",
-      "categoryId": "89280",
-      "content": "dasd",
-      "price": "22222",
-      "sale": "344",
-      "introduce": "sdad",
-      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=7fac834a-6655-43cb-ac23-eb3038118a10",
+      "id": 508798,
+      "name": "product12",
+      "categoryId": "381553",
+      "content": " dsffff",
+      "price": "2222255",
+      "sale": "67",
+      "introduce": " ds fff",
+      "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cartoon%20baby%20panda_4830499.png?alt=media&token=bc1ef8f2-5506-4898-8d9f-4361726ec205",
       "album": [
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cartoon%20baby%20panda_4830499.png?alt=media&token=ae54b866-8470-4d15-b7ab-c9f0965a27cb",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=69c9afbc-0c7f-497c-a391-5cb7eea7bccd",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=c36e9086-2459-4b28-a395-3937e41abece",
-        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F118801858_308868083752599_241551395955404619_o.jpg?alt=media&token=b356b7a2-025b-4c13-80b1-692233db7ccb"
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cartoon%20baby%20panda_4830499.png?alt=media&token=2b141994-c890-44da-bb0d-bc6411c6cf31",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F%E2%80%94Pngtree%E2%80%94cute%20little%20panda%20with%20butterflies_5053031.png?alt=media&token=41d4ad00-d99d-47b1-8272-94de64ac2f5a",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F84522630_178339513454699_243429782740533248_n.jpg?alt=media&token=86d2833d-23be-4ed8-aa12-323379a689ab",
+        "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F118801858_308868083752599_241551395955404619_o.jpg?alt=media&token=0831dbe4-1c3a-45cd-b8fd-a50d0106bf16"
       ],
       "size": [
         "XXS",
+        "XS",
         "XS-S",
-        "S"
+        "S",
+        "M"
       ],
-      "classify": "male"
+      "classify": "female"
     }
   ],
   "comments": [],
@@ -417,22 +415,15 @@
       "email": "kh1@gmail.com",
       "password": "$2a$10$9cSt0aXH2T43fM5MypfqP.p.5pXxXI1gdfuTZHSC2.Je2be4mwpRi",
       "name": "kh",
-      "permission": "Customer",
+      "permission": "Member",
       "id": 2
     },
     {
-      "email": "admin@gmail.com",
-      "password": "$2a$10$Z2JR2b9XWBvag6nAIkebWOnHBljdDTti0d3gUHP7suGAnlpKohVHK",
-      "name": "admin1",
-      "permission": "Admin",
-      "id": 3
-    },
-    {
+      "id": 4,
       "email": "kh2@gmail.com",
-      "password": "$2a$10$Bw8zs.pGXz.0kI7hksodyOxTTArmWLe9yTACipOzB4u.HUwECjOWG",
       "name": "kh2",
-      "permission": "Customer",
-      "id": 4
+      "password": "$2a$10$nd0XbsV70/arK/nlJ.iNF.CYfrS.V/p.Z4vsnJ/L6Hn7Y1cFrWu6S",
+      "permission": "Member"
     }
   ],
   "carts": [
@@ -447,7 +438,7 @@
       "size": "XS",
       "status": "not approved yet",
       "days": "13-06-2021",
-      "totalmoney": "3812",
+      "totalmoney": 3812,
       "amount": "4"
     },
     {
@@ -479,7 +470,35 @@
       "days": "13-06-2021"
     },
     {
-      "id": 87173,
+      "id": 658616,
+      "productId": "488371",
+      "user": "kaio@gmail.com",
+      "name": "Oversized Stripe MAN Signature",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
+      "price": "59",
+      "sale": "12",
+      "size": "XS",
+      "status": "not approved yet",
+      "days": "14-06-2021",
+      "totalmoney": 329,
+      "amount": "7"
+    },
+    {
+      "id": 38535,
+      "productId": "625208",
+      "user": "kaio@gmail.com",
+      "name": " Arabesque Wrap Robe Gown Lagoon silk",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F52S006LL_navy_web_bd.jpeg?alt=media&token=0ee099fb-b12a-49dd-8e83-9c114dd77552",
+      "price": "90",
+      "sale": "0",
+      "size": "M",
+      "totalmoney": 180,
+      "amount": "2",
+      "status": "not approved yet",
+      "days": "15-06-2021"
+    },
+    {
+      "id": 422937,
       "productId": "79652",
       "user": "kaio@gmail.com",
       "name": "FINAL SALE Curtain Call Crop Sweatshirt Pink",
@@ -487,21 +506,20 @@
       "price": "88",
       "sale": "0",
       "size": "XS",
+      "totalmoney": 176,
+      "amount": "2",
       "status": "not approved yet",
-      "days": "14-06-2021",
-      "totalmoney": "352",
-      "amount": "4"
+      "days": "15-06-2021"
     }
   ],
   "orders": [
     {
-      "id": 304537,
-      "name": "Mr Rin",
-      "email": "songoku2192@gmail.com",
-      "phone": "0968686686",
+      "id": 318533,
       "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "note": "s",
-      "sumMoney": "1041",
+      "email": "songoku2192@gmail.com",
+      "name": "Trần Quang",
+      "note": "sdaa",
+      "phone": "0968686686",
       "product": [
         {
           "id": 692101,
@@ -518,64 +536,78 @@
           "amount": "4"
         },
         {
-          "id": 87173,
-          "productId": "79652",
+          "id": 658616,
+          "productId": "488371",
           "user": "kaio@gmail.com",
-          "name": "FINAL SALE Curtain Call Crop Sweatshirt Pink",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F42T029BC-curtain-call-terry-crop-sweatshirt-pink-b.jpeg?alt=media&token=380d5937-26cc-4747-ad8b-0f3f2c619e4f",
-          "price": "88",
-          "sale": "0",
-          "size": "XS",
-          "status": "not approved yet",
-          "days": "14-06-2021",
-          "totalmoney": "352",
-          "amount": "4"
-        }
-      ]
-    },
-    {
-      "id": 414089,
-      "name": "Trần Quang",
-      "email": "songoku2192@gmail.com",
-      "phone": "0968686686",
-      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "note": "s",
-      "sumMoney": "254",
-      "product": [
-        {
-          "id": "529585",
-          "name": "Matchplay Long Robe Heather Grey",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-grey-robe-matchplay-still-life-web.jpeg?alt=media&token=98d8d774-5fc6-4e84-96b8-c11ec8c712a4",
-          "price": "95",
-          "sale": "0",
-          "size": "XS",
-          "amount": 1,
-          "totalmoney": 95,
-          "days": "14-06-2021"
-        },
-        {
-          "id": "504038",
-          "name": "Venus in Play Sleep Tee Peony",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F44J024BC-lilac-venus-in-play-tee-f-web.jpeg?alt=media&token=f4e2100d-d7ee-4827-a613-f0a9fdd51d3d",
-          "price": "100",
-          "sale": "10",
-          "size": "XXS",
-          "amount": 3,
-          "totalmoney": 90,
-          "days": "14-06-2021"
-        },
-        {
-          "id": "488371",
           "name": "Oversized Stripe MAN Signature",
           "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
           "price": "59",
           "sale": "12",
           "size": "XS",
-          "amount": 1,
-          "totalmoney": 47,
-          "days": "14-06-2021"
+          "status": "not approved yet",
+          "days": "14-06-2021",
+          "totalmoney": "329",
+          "amount": "7"
         }
-      ]
+      ],
+      "sumMoney": "4141",
+      "status": "approved",
+      "days": "14-06-2021"
+    },
+    {
+      "id": 623734,
+      "name": "Mr Rin",
+      "email": "taquang.hskx.2000@gmail.com",
+      "phone": "0968686686",
+      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
+      "note": "hhh",
+      "sumMoney": "NaN",
+      "product": [
+        {
+          "id": 692101,
+          "productId": "529585",
+          "user": "kaio@gmail.com",
+          "name": "Matchplay Long Robe Heather Grey",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-grey-robe-matchplay-still-life-web.jpeg?alt=media&token=98d8d774-5fc6-4e84-96b8-c11ec8c712a4",
+          "price": "953",
+          "sale": "0",
+          "size": "XS",
+          "status": "not approved yet",
+          "days": "13-06-2021",
+          "totalmoney": "3812",
+          "amount": "4"
+        },
+        {
+          "id": 658616,
+          "productId": "488371",
+          "user": "kaio@gmail.com",
+          "name": "Oversized Stripe MAN Signature",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fwhite-oversized-stripe-man-signature-t-shirt.jpeg?alt=media&token=20d6ec08-0e45-4322-bd73-7deeb8314d38",
+          "price": "59",
+          "sale": "12",
+          "size": "XS",
+          "status": "not approved yet",
+          "days": "14-06-2021",
+          "totalmoney": "329",
+          "amount": "7"
+        },
+        {
+          "id": 38535,
+          "productId": "625208",
+          "user": "kaio@gmail.com",
+          "name": " Arabesque Wrap Robe Gown Lagoon silk",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F52S006LL_navy_web_bd.jpeg?alt=media&token=0ee099fb-b12a-49dd-8e83-9c114dd77552",
+          "price": "90",
+          "sale": "0",
+          "size": "M",
+          "totalmoney": 180,
+          "amount": "2",
+          "status": "not approved yet",
+          "days": "15-06-2021"
+        }
+      ],
+      "days": "15-06-2021",
+      "status": "not approved yet"
     }
   ],
   "informations": [
