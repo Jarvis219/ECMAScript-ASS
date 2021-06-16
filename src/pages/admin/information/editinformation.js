@@ -22,7 +22,7 @@ const EditInformation = {
             data
         } = await informationAPI.listedit(id)
         return /*html */ `
-            ${NavBarAdmin.render()}
+            ${ NavBarAdmin.render()}
             <div class="main-panel">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">

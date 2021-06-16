@@ -3,6 +3,7 @@ import productAPI from "../../../api/productAPI";
 import firebase from "../../../firebase";
 import categoryAPI from "../../../api/categoryAPI";
 import Adminproducts from "./listproducts";
+import toast from "toast-me";
 import {
     $$,
     reRender
@@ -52,7 +53,7 @@ const AddProduct = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name product</label>
-                                                    <input type="text" class="form-control" id="name" name="name_product" required
+                                                    <input type="text" class="check-validate form-control" id="name" name="name_product" 
                                                      >
                                                 </div>
                                             </div>
@@ -61,14 +62,14 @@ const AddProduct = {
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Price ($)</label>
-                                                    <input type="number" name="price" class="form-control" id="price" required
+                                                    <input type="number" name="price" class="check-validate form-control" id="price" 
                                                      >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Promotional ($)</label>
-                                                    <input type="number" class="form-control" name="promotional" required
+                                                    <input type="number" class="check-validate form-control" name="promotional" 
                                                         id="promotional" >
                                                 </div>
                                             </div>
@@ -79,7 +80,7 @@ const AddProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Introduction</label>
                                                     <textarea name="introduction" cols="30" id="introduction" rows="10"
-                                                        class="form-control border  product"  required></textarea>
+                                                        class="check-validate form-control border  product"  ></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -88,7 +89,7 @@ const AddProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Content</label>
                                                     <textarea name="content" cols="30" rows="10" id="content"
-                                                        class="form-control border  product"required></textarea>
+                                                        class="check-validate form-control border  product"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,8 +97,8 @@ const AddProduct = {
                                             <div class="col-md-12">
                                                 <div class="">
                                                     <label class="bmd-label-floating">ImageIntro</label>
-                                                    <input type="file" class="form-control"  name="promotional"
-                                                    id="image" required>
+                                                    <input type="file" class="check-validate form-control"  name="promotional"
+                                                    id="image" >
                                                 </div>
                                             </div>
                                         </div>
@@ -106,8 +107,8 @@ const AddProduct = {
                                             <div class="col-md-12">
                                                 <div class="">
                                                     <label class="bmd-label-floating">Album</label>
-                                                    <input type="file" class="form-control album" multiple name="promotional"
-                                                    id="" required>
+                                                    <input type="file" class="check-validate form-control album" multiple name="promotional"
+                                                    id="" >
                                                 </div>
                                             </div>
                                         </div>
@@ -198,99 +199,141 @@ const AddProduct = {
     afterRender() {
         $$('#add-product').addEventListener('submit', (e) => {
             e.preventDefault();
-            const size = $$('[name="size"]');
-            const sizes = [];
-            const urls = [];
-            const albums = [];
-            size.forEach(element => {
-                if (element.checked) {
-
-                    sizes.push(element.value);
+            var sumCheck = 0;
+            $$('.check-validate').forEach(element => {
+                if (element.value.trim() == "" || element.value == null) {
+                    element.style.border = "2px solid #e84e4e"
+                    element.placeholder = "Fill in this field";
+                    sumCheck += sumCheck + 1;
+                    // console.log(element);
+                } else {
+                    element.style.border = "thick solid #FFFFFF"
                 }
             });
-            const classify = $$('[name="classify"]');
-            const sex = [];
-            classify.forEach(element => {
-                if (element.checked) {
-                    sex.push(element.value);
-                }
-            });
-            const album = $$('.album');
-            const img = $$('#image').files[0];
-            let storageRef = firebase.storage().ref(`images/${img.name}`);
-            storageRef.put(img).then(() => {
-                const albumsImg = [];
-                storageRef.getDownloadURL().then((url => {
-                    urls.push(url);
-                }))
+            if (sumCheck === 0) {
+                const size = $$('[name="size"]');
+                const sizes = [];
+                const urls = [];
+                const albums = [];
 
-                let index = 0;
 
-                async function addImg() {
-                    for (var i = 0; i < album.files.length; i++) {
-                        var imageFile = album.files[i];
-                        await uploadImageAsPromise(imageFile);
-                        index++;
-                        if (index == album.files.length) {
-                            const urlImg = urls.toString();
-                            const product = {
-                                id: Math.round(Math.random() * 700000),
-                                name: $$('#name').value,
-                                categoryId: $$('#category').value,
-                                content: $$('#content').value,
-                                price: $$('#price').value,
-                                sale: $$('#promotional').value,
-                                introduce: $$('#introduction').value,
-                                imageIntro: urlImg,
-                                album: albums,
-                                size: sizes,
-                                classify: sex.join(""),
+                size.forEach(element => {
+                    if (element.checked) {
+
+                        sizes.push(element.value);
+                    }
+                });
+                const classify = $$('[name="classify"]');
+                const sex = [];
+                classify.forEach(element => {
+                    if (element.checked) {
+                        sex.push(element.value);
+                    }
+                });
+                const album = $$('.album');
+                const img = $$('#image').files[0];
+                let storageRef = firebase.storage().ref(`images/${img.name}`);
+                storageRef.put(img).then(() => {
+                    const albumsImg = [];
+                    storageRef.getDownloadURL().then((url => {
+                        urls.push(url);
+                    }))
+
+                    let index = 0;
+
+                    async function addImg() {
+                        for (var i = 0; i < album.files.length; i++) {
+                            var imageFile = album.files[i];
+                            await uploadImageAsPromise(imageFile);
+                            index++;
+                            if (index == album.files.length) {
+                                const urlImg = urls.toString();
+                                const product = {
+                                    id: Math.round(Math.random() * 700000),
+                                    name: $$('#name').value,
+                                    categoryId: $$('#category').value,
+                                    content: $$('#content').value,
+                                    price: $$('#price').value,
+                                    sale: $$('#promotional').value,
+                                    introduce: $$('#introduction').value,
+                                    imageIntro: urlImg,
+                                    album: albums,
+                                    size: sizes,
+                                    classify: sex.join(""),
+                                }
+                                // console.log(product);
+                                if (productAPI.add(product)) {
+                                    toast(
+                                        'Add product success', {
+                                            duration: 3000
+                                        }, {
+                                            // label: 'Confirm',
+                                            action: () => alert('Fill in this field!'),
+                                            class: 'my-custom-class', // optional, CSS class name for action button
+                                        },
+                                    );
+                                    window.location.hash = `/listproducts`;
+                                    reRender(Adminproducts, '#list-product');
+                                } else {
+                                    toast(
+                                        'Add product failure', {
+                                            duration: 3000
+                                        }, {
+                                            // label: 'Confirm',
+                                            action: () => alert('Fill in this field!'),
+                                            class: 'my-custom-class', // optional, CSS class name for action button
+                                        },
+                                    );
+                                }
+
+
+
                             }
-                            // console.log(product);
-                            if (productAPI.add(product)) {
-                                // alert("Add product success");
-                                window.location.hash = `/listproducts`;
-                                reRender(Adminproducts, '#list-product');
-                            } else {
-                                alert("Add product failure");
-                            }
-
-
 
                         }
-
                     }
-                }
-                addImg();
-                // console.log(index);
-                function uploadImageAsPromise(imageFile) {
-                    // console.log(imageFile);
-                    return new Promise(function (resolve, reject) {
-                        var storageRef = firebase.storage().ref(`images/${imageFile.name}`);
-                        //Upload file
-                        var task = storageRef.put(imageFile);
-                        //Update progress bar
-                        task.on('state_changed',
-                            function progress(snapshot) {
-                                var percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-                                // uploader.value = percentage;
-                            },
-                            function error(err) {
+                    addImg();
+                    // console.log(index);
+                    function uploadImageAsPromise(imageFile) {
+                        // console.log(imageFile);
+                        return new Promise(function (resolve, reject) {
+                            var storageRef = firebase.storage().ref(`images/${imageFile.name}`);
+                            //Upload file
+                            var task = storageRef.put(imageFile);
+                            //Update progress bar
+                            task.on('state_changed',
+                                function progress(snapshot) {
+                                    var percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+                                    // uploader.value = percentage;
+                                },
+                                function error(err) {
 
-                            },
-                            async function complete() {
+                                },
+                                async function complete() {
 
-                                const imageURL = await task.snapshot.ref.getDownloadURL();
-                                albums.push(imageURL)
-                                resolve(imageURL)
-                            }
+                                    const imageURL = await task.snapshot.ref.getDownloadURL();
+                                    albums.push(imageURL)
+                                    resolve(imageURL)
+                                }
 
-                        );
+                            );
 
-                    })
-                }
+                        })
+                    }
 
-            })
+                })
+            } else {
+                toast(
+                    'Fill in this field!', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
+            }
+
         });
     }
 }

@@ -1,5 +1,6 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
+import toast from 'toast-me';
 import {
     cartAPI
 } from '../api/cartAPI';
@@ -16,8 +17,6 @@ import {
 
 const CheckOut = {
     async render() {
-
-
         if (isSetAuthen()) {
             var {
                 data
@@ -53,13 +52,14 @@ const CheckOut = {
             <div>
         <main class="container lg:mx-auto lg:px-16 lg:pt-24 lg:mb-12">
             <div>
-                <div class="my-8 ">
+                <div class="mt-12 ">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
                         <span style="font-family: FontAwesome;">Home > <span class="text-gray-600">Shopping
                                 cart</span></span>
                         </i></a>
                 </div>
             </div>
+            <div class="z-50 my-custom-class"></div>
             <div>
                 <div class=" grid lg:grid-cols-12  gap-2">
                     <div class="lg:col-span-8">
@@ -72,21 +72,21 @@ const CheckOut = {
                                       
                                             <label for="#"> Name <span class="text-red-400">*</span> </label><br>
                                             <input type="text" name="name" id="name"
-                                                class="border w-full py-2 rounded-sm  pl-4" required>
+                                                class="check-validate border w-full py-2 rounded-sm  pl-4" >
                                        
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Address <span class="text-red-400">*</span></label><br>
-                                        <input type="text" name="address" id="address" class="border w-full py-2 rounded-sm  pl-4"
-                                            required>
+                                        <input type="text" name="address" id="address" class=" check-validate border w-full py-2 rounded-sm  pl-4"
+                                            >
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Phone <span class="text-red-400">*</span></label><br>
-                                        <input type="number" id="phone" name="phone" class="border w-full py-2 rounded-sm  pl-4" required>
+                                        <input type="number" id="phone" name="phone" class="check-validate border w-full py-2 rounded-sm  pl-4" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Email </label><br>
-                                        <input type="email" id="email" name ="email" class="border w-full py-2 rounded-sm  pl-4">
+                                        <input type="email" id="email" name ="email" class=" border w-full py-2 rounded-sm  pl-4">
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Note </label><br>
@@ -146,6 +146,7 @@ const CheckOut = {
         `;
     },
     async afterRender() {
+
         if (isSetAuthen()) {
             var {
                 data
@@ -153,7 +154,7 @@ const CheckOut = {
         } else {
             var data = JSON.parse(localStorage.getItem('dataCart'))
         }
-        // console.log(data);
+
         checkLogout();
         search();
         var priceProduct = 0;
@@ -165,21 +166,69 @@ const CheckOut = {
         var total = $$('#total');
         total.innerHTML = prices(Number($$('#subTotal').innerHTML) + priceProduct);
         var day = moment(new Date()).format('DD-MM-YYYY');
+
+
+
         $$('#check-out').addEventListener('submit', (e) => {
             e.preventDefault();
-            const checkOut = {
-                id: Math.round(Math.random() * 700000),
-                name: $$('input[name="name"]').value,
-                email: $$('input[name="email"]').value,
-                phone: $$('input[name="phone"]').value,
-                address: $$('input[name="address"]').value,
-                note: $$('#note').value,
-                sumMoney: total.innerHTML,
-                product: data,
-                days: day,
-                status: "not approved yet",
+            var sumCheck = 0;
+            $$('.check-validate').forEach(element => {
+                if (element.value == "") {
+                    element.style.border = "2px solid #e84e4e"
+                    element.placeholder = "Fill in this field";
+                    sumCheck += sumCheck + 1;
+                } else {
+                    element.style.border = "thick solid #FFFFFF"
+                }
+            });
+            if (sumCheck === 0) {
+                const checkOut = {
+                    id: Math.round(Math.random() * 700000),
+                    name: $$('input[name="name"]').value,
+                    email: $$('input[name="email"]').value,
+                    phone: $$('input[name="phone"]').value,
+                    address: $$('input[name="address"]').value,
+                    note: $$('#note').value,
+                    sumMoney: total.innerHTML,
+                    product: data,
+                    days: day,
+                    status: "not approved yet",
+                }
+                if (ordersAPI.add(checkOut)) {
+                    if (isSetAuthen()) {
+                        data.forEach(async (element) => {
+                            if (element.user == isSetAuthen().email) {
+                                await cartAPI.remove(element.id);
+                            }
+                        })
+                    } else {
+                        localStorage.removeItem('dataCart')
+                    }
+
+                    toast(
+                        'Order success', {
+                            duration: 3000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
+                    window.location.hash = `/`;
+                }
+            } else {
+                toast(
+                    'Fill in this field!!!', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
             }
-            ordersAPI.add(checkOut);
+
+
         })
 
     }

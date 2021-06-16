@@ -1,4 +1,5 @@
 import NavBarAdmin from "../../../components/navbaradmin";
+import toast from "toast-me";
 import {
     $$,
     reRender
@@ -41,8 +42,8 @@ const AddCategory = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name Category</label>
-                                                    <input type="text" class="form-control" id="name" name="name_category"
-                                                    required >
+                                                    <input type="text" class="check-validate form-control" id="name" name="name_category"
+                                                     >
                                                 </div>
                                             </div>
                                         </div>
@@ -71,23 +72,84 @@ const AddCategory = {
     <!--   Core JS Files   -->
         `;
     },
-    afterRender() {
+    async afterRender() {
+        const {
+            data
+        } = await categoryAPI.list();
         $$('#add-category').addEventListener('submit', (e) => {
             e.preventDefault();
-            const nameCate = $$('[name="name_category"]').value;
-            const category = {
-                id: Math.round(Math.random() * 700000),
-                name: nameCate
+            var sumCheck = 0;
+            const check_validate = $$('.check-validate');
+            if (check_validate.value.trim() == "") {
+                check_validate.style.border = "2px solid #e84e4e"
+                check_validate.placeholder = "Fill in this field";
+                sumCheck = 1;
+            } else {
+                check_validate.style.border = "thick solid #FFFFFF"
             }
-            if (categoryAPI.add(category)) {
-                alert('Add category success');
-                window.location.hash = `/listcategory`;
-                reRender(ListCategory, '#table-category');
+            if (sumCheck === 0) {
+                const nameCate = $$('[name="name_category"]').value.trim();
+                let checkName = 0;
+                data.forEach(element => {
+                    if (element.name == nameCate) {
+                        checkName = 1;
+                    }
+                });
+                if (checkName === 0) {
+                    const category = {
+                        id: Math.round(Math.random() * 700000),
+                        name: nameCate
+                    }
+                    if (categoryAPI.add(category)) {
+                        toast(
+                            'Add category success', {
+                                duration: 3000
+                            }, {
+                                // label: 'Confirm',
+                                action: () => alert('Fill in this field!'),
+                                class: 'my-custom-class', // optional, CSS class name for action button
+                            },
+                        );
+                        window.location.hash = `/listcategory`;
+                        reRender(ListCategory, '#table-category');
 
+                    } else {
+                        toast(
+                            'Add category failures', {
+                                duration: 3000
+                            }, {
+                                // label: 'Confirm',
+                                action: () => alert('Fill in this field!'),
+                                class: 'my-custom-class', // optional, CSS class name for action button
+                            },
+                        );
+                        window.location.hash = `/listcategory`;
+                        reRender(ListCategory, '#table-category');
+                    }
+                } else {
+                    toast(
+                        'Name already exists!', {
+                            duration: 4000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
+                }
 
             } else {
-                alert('Add category failures')
+                toast(
+                    'Fill in this field!', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
             }
+
         })
     }
 

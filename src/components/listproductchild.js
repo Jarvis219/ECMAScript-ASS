@@ -20,10 +20,10 @@ const ListProductchild = {
             <td>${element.size}</td>
             <td>${element.classify}</td>
             <td ><img width="100" height="100" src="${element.imageIntro}"></td>
-            <td class="w-20"><button data-id="${element.id}"
-            class=" text-lg bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></td>
+            <td class="w-20"><a  href="http://localhost:8080/#/products/${element.id}" target="_blank"> <button data-id="${element.id}"
+            title="view" class=" text-lg bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></a></td>
             <td class="w-20"><button
-            class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
+            title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
                 href="#/editproduct/${element.id}"
                 class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td>
     <td class="w-20"><button data-id="${element.id}"

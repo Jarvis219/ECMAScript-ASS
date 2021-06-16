@@ -167,7 +167,7 @@ const BlogDetail = {
             ${Footer.render()}
         `;
     },
-    afterRender() {
+    async afterRender() {
         checkLogout();
         search();
     }

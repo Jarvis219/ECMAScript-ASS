@@ -1,4 +1,5 @@
 import NavBarAdmin from "../../../components/navbaradmin";
+import toast from "toast-me";
 import {
     useParams,
     $$,
@@ -67,7 +68,7 @@ const EitProduct = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name product</label>
-                                                    <input type="text" class="form-control"  value="${result.name}"  id="name" name="name_product"
+                                                    <input type="text" class="check-validate form-control"  value="${result.name}"  id="name" name="name_product"
                                                         >
                                                 </div>
                                             </div>
@@ -76,14 +77,14 @@ const EitProduct = {
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Price ($)</label>
-                                                    <input type="number"  value="${result.price}"  name="price" class="form-control" id="price"
+                                                    <input type="number"  value="${result.price}"  name="price" class="check-validate form-control" id="price"
                                                         >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Promotional ($)</label>
-                                                    <input type="number"  value="${result.sale}"  class="form-control" name="promotional"
+                                                    <input type="number"  value="${result.sale}"  class="check-validate form-control" name="promotional"
                                                         id="promotional">
                                                 </div>
                                             </div>
@@ -94,7 +95,7 @@ const EitProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Introduction</label>
                                                     <textarea name="introduction" cols="30" id="introduction" rows="10"
-                                                        class="form-control border  product" > ${result.introduce} </textarea>
+                                                        class="check-validate form-control border  product" > ${result.introduce} </textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -103,7 +104,7 @@ const EitProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Content</label>
                                                     <textarea name="content" cols="30" rows="10" id="content"
-                                                        class="form-control border  product" > ${result.content}</textarea>
+                                                        class="check-validate form-control border  product" > ${result.content}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -214,6 +215,9 @@ const EitProduct = {
         `;
     },
     async afterRender() {
+
+
+
         const {
             id
         } = useParams();
@@ -238,94 +242,38 @@ const EitProduct = {
 
         $$('#form-update-product').addEventListener('submit', (e) => {
             e.preventDefault();
-            const album = $$('.album');
-            const size = $$('[name="size"]');
-            const sizes = [];
-            var imgIntro = '';
-            var albums = [];
-            const classify = $$('[name="classify"]');
-            const sex = [];
-            classify.forEach(element => {
-                if (element.checked) {
-                    sex.push(element.value);
-                }
-            });
-            size.forEach(element => {
-                if (element.checked) {
-                    sizes.push(element.value);
-                }
-            });
-            if ($$('#image-new').value == '') {
-                imgIntro = $$('#image-old').src
-                if (album.value == '') {
-                    const product = {
-                        id: id,
-                        name: $$('#name').value,
-                        categoryId: $$('#category').value,
-                        content: $$('#content').value,
-                        price: $$('#price').value,
-                        sale: $$('#promotional').value,
-                        introduce: $$('#introduction').value,
-                        imageIntro: imgIntro,
-                        album: result.album,
-                        size: sizes,
-                        classify: sex.join(""),
-                    }
-
-                    // console.log(product);
-                    if (productAPI.update(id, product)) {
-                        window.location.hash = `/listproducts`;
-                        reRender(Adminproducts, '#list-product');
-                    } else {
-                        alert("Update product failure");
-                    }
+            var sumCheck = 0;
+            $$('.check-validate').forEach(element => {
+                if (element.value.trim() == "" || element.value == null) {
+                    element.style.border = "2px solid #e84e4e"
+                    element.placeholder = "Fill in this field";
+                    sumCheck += sumCheck + 1;
+                    // console.log(element);
                 } else {
-                    addImg();
+                    element.style.border = "thick solid #FFFFFF"
                 }
-            } else {
-                // console.log(2);
-                imgIntro = ($$('#image-new').files[0]);
-                let storageRef = firebase.storage().ref(`images/${imgIntro.name}`)
-                storageRef.put(imgIntro).then(() => {
-                    storageRef.getDownloadURL().then((url) => {
-                        imgIntro = url;
-                        console.log(imgIntro);
-                        if (album.value == '') {
-                            // console.log(3);
-                            const product = {
-                                id: id,
-                                name: $$('#name').value,
-                                categoryId: $$('#category').value,
-                                content: $$('#content').value,
-                                price: $$('#price').value,
-                                sale: $$('#promotional').value,
-                                introduce: $$('#introduction').value,
-                                imageIntro: imgIntro,
-                                album: result.album,
-                                size: sizes,
-                                classify: sex.join(""),
-                            }
-                            // console.log(product);
-                            if (productAPI.update(id, product)) {
-                                window.location.hash = `/listproducts`;
-                                reRender(Adminproducts, '#list-product');
-                            } else {
-                                alert("Update product failure");
-                            }
-                        } else {
-                            console.log(4);
-                            addImg();
-                        }
-                    })
-                })
-            }
-            let index = 0;
-            async function addImg() {
-                for (var i = 0; i < album.files.length; i++) {
-                    var imageFile = album.files[i];
-                    await uploadImageAsPromise(imageFile);
-                    index++;
-                    if (index == album.files.length) {
+            });
+            if (sumCheck === 0) {
+                const album = $$('.album');
+                const size = $$('[name="size"]');
+                const sizes = [];
+                var imgIntro = '';
+                var albums = [];
+                const classify = $$('[name="classify"]');
+                const sex = [];
+                classify.forEach(element => {
+                    if (element.checked) {
+                        sex.push(element.value);
+                    }
+                });
+                size.forEach(element => {
+                    if (element.checked) {
+                        sizes.push(element.value);
+                    }
+                });
+                if ($$('#image-new').value == '') {
+                    imgIntro = $$('#image-old').src
+                    if (album.value == '') {
                         const product = {
                             id: id,
                             name: $$('#name').value,
@@ -335,45 +283,176 @@ const EitProduct = {
                             sale: $$('#promotional').value,
                             introduce: $$('#introduction').value,
                             imageIntro: imgIntro,
-                            album: albums,
+                            album: result.album,
                             size: sizes,
                             classify: sex.join(""),
                         }
-                        // console.log(id, product);
+
+                        // console.log(product);
                         if (productAPI.update(id, product)) {
+                            toast(
+                                'Update product success', {
+                                    duration: 3000
+                                }, {
+                                    // label: 'Confirm',
+                                    action: () => alert('Fill in this field!'),
+                                    class: 'my-custom-class', // optional, CSS class name for action button
+                                },
+                            );
                             window.location.hash = `/listproducts`;
                             reRender(Adminproducts, '#list-product');
                         } else {
-                            alert("Update product failure");
+                            toast(
+                                'Update product failure', {
+                                    duration: 3000
+                                }, {
+                                    // label: 'Confirm',
+                                    action: () => alert('Fill in this field!'),
+                                    class: 'my-custom-class', // optional, CSS class name for action button
+                                },
+                            );
+                        }
+                    } else {
+                        addImg();
+                    }
+                } else {
+                    // console.log(2);
+                    imgIntro = ($$('#image-new').files[0]);
+                    let storageRef = firebase.storage().ref(`images/${imgIntro.name}`)
+                    storageRef.put(imgIntro).then(() => {
+                        storageRef.getDownloadURL().then((url) => {
+                            imgIntro = url;
+                            console.log(imgIntro);
+                            if (album.value == '') {
+                                // console.log(3);
+                                const product = {
+                                    id: id,
+                                    name: $$('#name').value,
+                                    categoryId: $$('#category').value,
+                                    content: $$('#content').value,
+                                    price: $$('#price').value,
+                                    sale: $$('#promotional').value,
+                                    introduce: $$('#introduction').value,
+                                    imageIntro: imgIntro,
+                                    album: result.album,
+                                    size: sizes,
+                                    classify: sex.join(""),
+                                }
+                                // console.log(product);
+                                if (productAPI.update(id, product)) {
+                                    toast(
+                                        'Update product success', {
+                                            duration: 3000
+                                        }, {
+                                            // label: 'Confirm',
+                                            action: () => alert('Fill in this field!'),
+                                            class: 'my-custom-class', // optional, CSS class name for action button
+                                        },
+                                    );
+                                    window.location.hash = `/listproducts`;
+                                    reRender(Adminproducts, '#list-product');
+                                } else {
+                                    toast(
+                                        'Update product failure', {
+                                            duration: 3000
+                                        }, {
+                                            // label: 'Confirm',
+                                            action: () => alert('Fill in this field!'),
+                                            class: 'my-custom-class', // optional, CSS class name for action button
+                                        },
+                                    );
+                                }
+                            } else {
+                                console.log(4);
+                                addImg();
+                            }
+                        })
+                    })
+                }
+                let index = 0;
+                async function addImg() {
+                    for (var i = 0; i < album.files.length; i++) {
+                        var imageFile = album.files[i];
+                        await uploadImageAsPromise(imageFile);
+                        index++;
+                        if (index == album.files.length) {
+                            const product = {
+                                id: id,
+                                name: $$('#name').value,
+                                categoryId: $$('#category').value,
+                                content: $$('#content').value,
+                                price: $$('#price').value,
+                                sale: $$('#promotional').value,
+                                introduce: $$('#introduction').value,
+                                imageIntro: imgIntro,
+                                album: albums,
+                                size: sizes,
+                                classify: sex.join(""),
+                            }
+                            // console.log(id, product);
+                            if (productAPI.update(id, product)) {
+                                toast(
+                                    'Update product success', {
+                                        duration: 3000
+                                    }, {
+                                        // label: 'Confirm',
+                                        action: () => alert('Fill in this field!'),
+                                        class: 'my-custom-class', // optional, CSS class name for action button
+                                    },
+                                );
+                                window.location.hash = `/listproducts`;
+                                reRender(Adminproducts, '#list-product');
+                            } else {
+                                toast(
+                                    'Update product failure', {
+                                        duration: 3000
+                                    }, {
+                                        // label: 'Confirm',
+                                        action: () => alert('Fill in this field!'),
+                                        class: 'my-custom-class', // optional, CSS class name for action button
+                                    },
+                                );
+                            }
                         }
                     }
                 }
+
+                function uploadImageAsPromise(imageFile) {
+                    // console.log(imageFile);
+                    return new Promise(function (resolve, reject) {
+                        var storageRef = firebase.storage().ref(`images/${imageFile.name}`);
+                        //Upload file
+                        var task = storageRef.put(imageFile);
+                        //Update progress bar
+                        task.on('state_changed',
+                            function progress(snapshot) {
+                                var percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+                                // uploader.value = percentage;
+                            },
+                            function error(err) {
+
+                            },
+                            async function complete() {
+
+                                const imageURL = await task.snapshot.ref.getDownloadURL();
+                                albums.push(imageURL)
+                                resolve(imageURL)
+                            }
+                        );
+                    })
+                }
+            } else {
+                toast(
+                    'Fill in this field!', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
             }
 
-            function uploadImageAsPromise(imageFile) {
-                // console.log(imageFile);
-                return new Promise(function (resolve, reject) {
-                    var storageRef = firebase.storage().ref(`images/${imageFile.name}`);
-                    //Upload file
-                    var task = storageRef.put(imageFile);
-                    //Update progress bar
-                    task.on('state_changed',
-                        function progress(snapshot) {
-                            var percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-                            // uploader.value = percentage;
-                        },
-                        function error(err) {
-
-                        },
-                        async function complete() {
-
-                            const imageURL = await task.snapshot.ref.getDownloadURL();
-                            albums.push(imageURL)
-                            resolve(imageURL)
-                        }
-                    );
-                })
-            }
         });
     }
 

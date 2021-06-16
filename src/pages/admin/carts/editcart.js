@@ -1,15 +1,14 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import ListCartChild from "../../../components/listcartsChild";
-import {
-    useParams
-} from "../../../untils";
-import {
-    cartAPI
-} from "../../../api/cartAPI";
+import toast from "toast-me";
 import {
     $$,
+    useParams,
     reRender
 } from "../../../untils";
+import {
+    ordersAPI
+} from "../../../api/ordersAPI";
 
 const EditCart = {
     async render() {
@@ -17,26 +16,72 @@ const EditCart = {
             id
         } = useParams();
         const {
-            data
-        } = await cartAPI.read(id);
-        const {
-            data: sizes
-        } = await cartAPI.listCartSize(data.productId);
-        // console.log(sizes);
-        var sizePro = data.size;
-        // console.log(sizePro);
-        const arrSize = [];
-        const sizeCart = sizes.size.forEach(element => {
-            if (element != sizePro) {
-                arrSize.push(element);
-            }
-        });
-        const totalSize = arrSize.map(element => {
+            data: order
+        } = await ordersAPI.read(id);
+        if (order.product.length === 0) {
+            await ordersAPI.remove(id);
+            window.location.hash = `/listcarts`;
+            await reRender(ListCartChild, '#list-cart');
+        }
+
+        // console.log(order.product);
+        const list_table_product = order.product.map((element, index) => {
             return /*html*/ `
-                <option value="${element}">${element}</option>
-                `;
-        }).join("");
+            <tr class="border-b-2 my-4 box-border cor-${element.id}">
+            <td class=" w-64">
+                <div class="flex justify-center" style="width: 150px ; height: 100px; object-fit: cover;" >
+                    <img src="${element.image}"
+                        style="width: 150px ; height: 100px; object-fit: cover;" alt="">
+                </div>
+            </td>
+            <td> <div class="text-xs md:text-base mr-24">
+            <h6 >${element.name}</h6>
+        </div></td>
+            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
+                <span class="priceProduct">${element.price}</span>
+            </td>
+            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
+            <span class="priceSale">${element.sale}</span>
+        </td>
+            <td class="mx-28 w-56">
+                <div class="flex justify-center">
+                <span class="minus cursor-pointer  px-2 bg-white shadow " data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" data-idsale = "${element.sale}" data-idsize ="${element.size}"  data-iddays="${element.days}" data-idimage="${element.image}"  data-id="${element.id}">-</span>
+                <input type="number" data-id="${element.id}" class="change-number w-16  pl-4" min="1" value="${element.amount}" id="" disabled>
+                <span class=" plus cursor-pointer px-2 bg-white shadow  "  data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" data-idsale = "${element.sale}" data-idsize ="${element.size}"  data-iddays="${element.days}" data-idimage="${element.image}"  data-id="${element.id}">+</span>
+                </div>
+            </td>
+            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
+                    class="quantityProduct">${element.totalmoney}</span> </td>
+            
+            <td>
+                                        <td><button data-id="${element.id}"
+                                    title = "delete" class="list-order-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
+                                            <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button></td>
+                                    </tr>
+            `;
+        }).join("")
+        // const {
+        //     data
+        // } = await cartAPI.read(id);
+        // const {
+        //     data: sizes
+        // } = await cartAPI.listCartSize(data.productId);
+        // // console.log(sizes);
+        // var sizePro = data.size;
+        // // console.log(sizePro);
+        // const arrSize = [];
+        // const sizeCart = sizes.size.forEach(element => {
+        //     if (element != sizePro) {
+        //         arrSize.push(element);
+        //     }
+        // });
+        // const totalSize = arrSize.map(element => {
+        //     return /*html*/ `
+        //         <option value="${element}">${element}</option>
+        //         `;
+        // }).join("");
         return /*html*/ `
+        <div id="edit-order-sum">
         ${NavBarAdmin.render()}
         <div class="main-panel">
             <!-- Navbar -->
@@ -57,63 +102,61 @@ const EditCart = {
                                     <h4 class="card-title">Edit Cart</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form id="edit-cart">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">ID Cart (disabled) </label>
-                                                    <input type="text" class="form-control" id="id-cart" value="${data.id}" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <form >
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name Cart</label>
-                                                    <input type="text" class="form-control" value="${data.name}" id="name-cart" name="name_cart"
-                                                    required >
+                                                    <input type="text" class="form-control" value="${order.name}" id="name-cart" name="name_order"
+                                                     >
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">User</label>
-                                                    <input type="text" class="form-control" value="${data.user}" id="user-cart" name=""
-                                                    required >
+                                                    <label class="bmd-label-floating">Address</label>
+                                                    <input type="text" class="form-control" value="${order.address}" id="user-cart" name="address_order"
+                                                     >
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Price</label>
-                                                    <input type="number"  min=1 class="form-control" value="${data.price}" id="price-cart" name=""
-                                                    required >
+                                                    <label class="bmd-label-floating">Email</label>
+                                                    <input type="text"  min=1 class="form-control" value="${order.email}" id="price-cart" name="email_order"
+                                                     >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Amount</label>
-                                                    <input type="number"  min=1 class="form-control" value="${data.amount}" id="amount-cart" name=""
-                                                    required >
+                                                    <label class="bmd-label-floating">Phone</label>
+                                                    <input type="number"  min=1 class="form-control" value="${order.phone}" id="amount-cart" name="phone_order"
+                                                     >
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                        <div class="col-md-12   ">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Category product</label>
-                                                <select name="category" id="size-cart" class="form-control" required>
-                                                <option value="${data.size}">${data.size}</option>
-                                                 ${totalSize}
-                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                        <button type="submit" class="btn btn-primary pull-left">Update
+                                        <button type="submit" id="edit-cart" class="btn btn-primary pull-left">Update
                                             Cart</button>
                                     </form>
+                                    <div class="text-center flex justify-center" id="list-cart">
+                            <table class="border-collapse w-full" >
+                                <thead class=" border-b-2 ">
+                                    <tr class="box-border  text-xs md:text-lg ">
+                                        <th class="" colspan="2">PRODUCT</th>
+                                        <th class=" ">PRICE</th>
+                                        <th class=" ">SALE</th>
+                                        <th class=" ">QUANTITY</th>
+                                        <th  >TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="">
+                                    ${list_table_product}
+                                </tbody>
+                            </table>
+                        </div>
                                 </div>
                             </div>
                         </div>
@@ -133,6 +176,7 @@ const EditCart = {
             </footer>
         </div>
     </div>
+    </div>
     <!--   Core JS Files   -->
 
 
@@ -142,39 +186,343 @@ const EditCart = {
 
     },
     async afterRender() {
-        const {
+        var {
             id
         } = useParams();
         const {
-            data
-        } = await cartAPI.read(id);
-        const {
-            data: sizes
-        } = await cartAPI.listCartSize(data.productId);
-        // console.log(data.image);
-        $$('#edit-cart').addEventListener('submit', async (e) => {
+            data: orders
+        } = await ordersAPI.read(id);
+        // if (orders.product.length == 0) {
+        //     await ordersAPI.remove(id);
+        //     window.location.hash = `/listcarts`;
+        //     await reRender(ListCartChild, '#list-cart');
+        // }
+
+        const changeNumber = $$('.change-number')
+        const total = $$('.quantityProduct');
+        const priceProduct = $$('.priceProduct');
+        const priceSale = $$('.priceSale');
+
+        $$('#edit-cart').addEventListener('click', async (e) => {
             e.preventDefault();
-            const editCart = {
-                id: id,
-                productId: sizes.id,
-                user: $$('#user-cart').value,
-                name: $$('#name-cart').value,
-                image: data.image,
-                price: $$('#price-cart').value,
-                sale: data.sale,
-                size: $$('#size-cart').value,
-                totalmoney: (Number($$('#price-cart').value) - Number(data.sale)) * $$('#amount-cart').value,
-                amount: $$('#amount-cart').value,
-                status: data.status,
-                days: data.days,
+            const dataUpdateOrder = {
+                id: Number(id),
+                address: $$('input[name="address_order"]').value,
+                name: $$('input[name="name_order"]').value,
+                email: $$('input[name="email_order"]').value,
+                note: orders.note,
+                phone: $$('input[name="phone_order"]').value,
+                status: orders.status,
+                days: orders.days,
+                product: orders.product,
+                sumMoney: orders.sumMoney
             }
-            // console.log(editCart);
-            await cartAPI.edit(id, editCart);
-            alert('Update cart success')
+            await ordersAPI.eidt(id, dataUpdateOrder);
+            toast(
+                'Update order success', {
+                    duration: 3000
+                }, {
+                    // label: 'Confirm',
+                    action: () => alert('Fill in this field!'),
+                    class: 'my-custom-class', // optional, CSS class name for action button
+                },
+            );
             window.location.hash = `/listcarts`;
-            await reRender(ListCartChild, '#list-cart');
+            reRender(ListCartChild, '#list-cart');
 
         })
+
+
+
+
+
+        function sumTotal() {
+            changeNumber.forEach((element, index) => {
+                element.addEventListener('change', () => {
+                    total[index].innerHTML = (Number(priceProduct[index].innerHTML) - Number(priceSale[index].innerHTML)) * Number(changeNumber[index].value);
+                })
+            })
+        }
+        if (changeNumber.length > 1) {
+            sumTotal();
+            reloadTotal();
+            totals();
+            changeNumberInput();
+            totalBtn();
+        } else {
+            total.innerHTML = (Number(priceProduct.innerHTML) - Number(priceSale.innerHTML)) * Number(changeNumber.value);
+
+            changeNumber.onchange = () => {
+                total.innerHTML = (Number(priceProduct.innerHTML) - Number(priceSale.innerHTML)) * Number(changeNumber.value);
+
+            }
+            $$('.minus').addEventListener('click', () => {
+                changeNumber.value = changeNumber.value - 1;
+                if (changeNumber.value <= 1) {
+                    changeNumber.value = 1;
+                }
+                total.innerHTML = (Number(priceProduct.innerHTML) - Number(priceSale.innerHTML)) * Number(changeNumber.value);
+
+            });
+            $$('.plus').addEventListener('click', () => {
+                changeNumber.value = Number(changeNumber.value) + 1;
+                total.innerHTML = (Number(priceProduct.innerHTML) - Number(priceSale.innerHTML)) * Number(changeNumber.value);
+
+            });
+        }
+
+        function reloadTotal() {
+            changeNumber.forEach((element, index) => {
+                total[index].innerHTML = (Number(priceProduct[index].innerHTML) - Number(priceSale[index].innerHTML)) * Number(changeNumber[index].value);
+            })
+        }
+
+        function changeNumberInput() {
+            for (let i = 0; i < changeNumber.length; i++) {
+                changeNumber[i].addEventListener('change', () => {
+                    total[i].innerHTML = (Number(priceProduct[index].innerHTML) - Number(priceSale[index].innerHTML)) * Number(changeNumber[i].value);
+                    totals();
+                })
+            }
+        }
+
+        function totals() {
+            var quantityProduct = $$('.quantityProduct');
+            var sum = 0;
+            quantityProduct.forEach(element => {
+                sum += Number(element.innerHTML);
+            });
+        }
+
+        function totalBtn() {
+            $$('.minus').forEach((element, index) => {
+                element.addEventListener('click', () => {
+                    // console.log(changeNumber[index].value);
+                    changeNumber[index].value = changeNumber[index].value - 1;
+                    if (changeNumber[index].value <= 1) {
+                        changeNumber[index].value = 1;
+                    }
+                    total[index].innerHTML = (Number(priceProduct[index].innerHTML) - Number(priceSale[index].innerHTML)) * Number(changeNumber[index].value);
+                    totals();
+                });
+            });
+            $$('.plus').forEach((element, index) => {
+                element.addEventListener('click', () => {
+                    // console.log(changeNumber[index].value);
+                    changeNumber[index].value = Number(changeNumber[index].value) + 1;
+                    total[index].innerHTML = (Number(priceProduct[index].innerHTML) - Number(priceSale[index].innerHTML)) * Number(changeNumber[index].value);
+                    totals();
+                });
+            })
+        }
+        var arrProduct;
+
+        function updateNumberChange() {
+
+            if ($$('.minus').length > 1) {
+                $$('.minus').forEach((element, index) => {
+                    checkMinus(element, index);
+                });
+            } else {
+                checkMinus($$('.minus'));
+            }
+            if ($$('.plus').length > 1) {
+                $$('.plus').forEach((element, index) => {
+                    checkPlus(element, index);
+                });
+            } else {
+                checkPlus($$('.plus'));
+            }
+
+        }
+
+        function checkMinus(element, index) {
+            const idp = element.dataset.id
+            element.addEventListener('click', async () => {
+                arrProduct = [];
+                const {
+                    data: orderProduct
+                } = await ordersAPI.read(id);
+                orderProduct.product.forEach(element => {
+                    if (element.id != idp) {
+                        arrProduct.push(element)
+                    }
+                })
+                const dataUpdate = {
+                    id: Number(idp),
+                    name: element.dataset.idname,
+                    image: element.dataset.idimage,
+                    price: element.dataset.idprice,
+                    sale: element.dataset.idsale,
+                    size: element.dataset.idsize,
+                    days: element.dataset.iddays,
+                    totalmoney: Number($$('.quantityProduct')[index].innerHTML),
+                    amount: Number($$('.change-number')[index].value)
+                }
+                arrProduct.push(dataUpdate);
+                // console.log(arrProduct);
+                let sumMoney = 0;
+                arrProduct.forEach(element => {
+                    sumMoney += Number(element.totalmoney)
+                })
+                // console.log(sumMoney);
+                const dataUpdateOrder = {
+                    id: Number(id),
+                    address: $$('input[name="address_order"]').value,
+                    name: $$('input[name="name_order"]').value,
+                    email: $$('input[name="email_order"]').value,
+                    note: orders.note,
+                    phone: $$('input[name="phone_order"]').value,
+                    status: orders.status,
+                    days: orders.days,
+                    product: arrProduct,
+                    sumMoney: sumMoney
+                }
+                await ordersAPI.eidt(id, dataUpdateOrder)
+                toast(
+                    'Update order success', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
+            });
+        }
+
+        function checkPlus(element, index) {
+            const idp = element.dataset.id
+            element.addEventListener('click', async () => {
+                arrProduct = [];
+                const {
+                    data: orderProduct
+                } = await ordersAPI.read(id);
+                orderProduct.product.forEach(element => {
+                    if (element.id != idp) {
+                        arrProduct.push(element)
+                    }
+                })
+                // console.log(element);
+                // console.log(index);
+                const dataUpdate = {
+                    id: Number(idp),
+                    name: element.dataset.idname,
+                    image: element.dataset.idimage,
+                    price: element.dataset.idprice,
+                    sale: element.dataset.idsale,
+                    size: element.dataset.idsize,
+                    days: element.dataset.iddays,
+                    totalmoney: Number($$('.quantityProduct')[index].innerHTML),
+                    amount: Number($$('.change-number')[index].value)
+                }
+                arrProduct.push(dataUpdate);
+                // console.log(arrProduct);
+                let sumMoney = 0;
+                arrProduct.forEach(element => {
+                    sumMoney += Number(element.totalmoney)
+                })
+                // console.log(sumMoney);
+                const dataUpdateOrder = {
+                    id: Number(id),
+                    address: $$('input[name="address_order"]').value,
+                    name: $$('input[name="name_order"]').value,
+                    email: $$('input[name="email_order"]').value,
+                    note: orders.note,
+                    phone: $$('input[name="phone_order"]').value,
+                    status: orders.status,
+                    days: orders.days,
+                    product: arrProduct,
+                    sumMoney: sumMoney
+
+                }
+                await ordersAPI.eidt(id, dataUpdateOrder)
+                toast(
+                    'Update order success', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
+            });
+        }
+        updateNumberChange();
+
+        async function deleteItemOder() {
+
+            const list_order_btn = $$('.list-order-btn');
+            // console.log(list_order_btn);
+            if (list_order_btn.length > 1) {
+                list_order_btn.forEach(element => {
+                    deleteItem(element)
+                });
+            } else {
+                deleteItem(list_order_btn);
+            }
+
+            function deleteItem(element) {
+
+                const idp = element.dataset.id
+                element.addEventListener('click', async () => {
+                    const removeItem = $$(`.cor-${idp}`)
+                    // const question = confirm('Are you want to delete?');
+                    // if (question) {
+
+                    element.addEventListener('click', async () => {
+                        arrProduct = [];
+                        const {
+                            data: orderProduct
+                        } = await ordersAPI.read(id);
+                        orderProduct.product.forEach(element => {
+                            if (element.id != idp) {
+                                arrProduct.push(element)
+                            }
+                        })
+
+                        // console.log(arrProduct);
+                        let sumMoney = 0;
+                        arrProduct.forEach(element => {
+                            sumMoney += Number(element.totalmoney)
+                        })
+                        console.log(sumMoney);
+                        const dataUpdateOrder = {
+                            id: Number(id),
+                            address: $$('input[name="address_order"]').value,
+                            name: $$('input[name="name_order"]').value,
+                            email: $$('input[name="email_order"]').value,
+                            note: orders.note,
+                            phone: $$('input[name="phone_order"]').value,
+                            status: orders.status,
+                            days: orders.days,
+                            product: arrProduct,
+                            sumMoney: sumMoney
+                        }
+                        await ordersAPI.eidt(id, dataUpdateOrder)
+                        removeItem.remove()
+                        reRender(EditCart, '#edit-order-sum')
+                        toast(
+                            'Delete item product success', {
+                                duration: 3000
+                            }, {
+                                // label: 'Confirm',
+                                action: () => alert('Fill in this field!'),
+                                class: 'my-custom-class', // optional, CSS class name for action button
+                            },
+                        );
+                    });
+
+                    // await ordersAPI.remove(id);
+
+                    // await reRender(ListCartChild, '#list-cart');
+                    // }
+                })
+            }
+        }
+        deleteItemOder();
+
+
     }
 }
 export default EditCart;

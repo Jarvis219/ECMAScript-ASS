@@ -1,4 +1,5 @@
 import NavBarAdmin from "../../../components/navbaradmin";
+import toast from "toast-me";
 import {
     $$,
     reRender
@@ -42,8 +43,8 @@ const AddUser = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name </label>
-                                                    <input type="text" class="form-control" id="name" name=""
-                                                    required>
+                                                    <input type="text" class="check-validate form-control" id="name" name=""
+                                                    >
                                                 </div>
                                             </div>
                                         </div>
@@ -51,8 +52,8 @@ const AddUser = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Email </label>
-                                                    <input type="email" class="form-control" id="email" name=""
-                                                    required >
+                                                    <input type="email" class="check-validate form-control" id="email" name=""
+                                                     >
                                                 </div>
                                             </div>
                                         </div>
@@ -60,15 +61,15 @@ const AddUser = {
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Password </label>
-                                                    <input type="password" minlength="8" class="form-control" id="password" name=""
-                                                    required>
+                                                    <input type="password" minlength="8" class="check-validate form-control" id="password" name=""
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Password </label>
-                                                    <input type="password" minlength="8" class="form-control" id="confirmPass" name=""
-                                                    required >
+                                                    <input type="password" minlength="8" class="check-validate form-control" id="confirmPass" name=""
+                                                     >
                                                 </div>
                                             </div>
                                         </div>
@@ -117,25 +118,59 @@ const AddUser = {
                     permission = element.value;
                 }
             });
-            if ($$('#password').value == $$('#confirmPass').value) {
-                const user = {
-                    email: $$('#email').value,
-                    password: $$('#password').value,
-                    name: $$('#name').value,
-                    permission: permission
-                }
-                // console.log(user);
-                await UserAPI.signup(user)
-                    .then(() => {
-                        alert('Add user success');
-                    })
-                    .catch(error => {
-                        alert(error.response.data);
-                    })
 
+            var sumCheck = 0;
+            $$('.check-validate').forEach(element => {
+                if (element.value.trim() == "") {
+                    element.style.border = "2px solid #e84e4e"
+                    element.placeholder = "Fill in this field";
+                    sumCheck += sumCheck + 1;
+                } else {
+                    element.style.border = "thick solid #FFFFFF"
+                }
+            });
+            if (sumCheck === 0) {
+                if ($$('#password').value == $$('#confirmPass').value) {
+                    const user = {
+                        email: $$('#email').value,
+                        password: $$('#password').value,
+                        name: $$('#name').value,
+                        permission: permission
+                    }
+                    // console.log(user);
+                    await UserAPI.signup(user)
+                        .then(() => {
+                            toast(
+                                'Update user success', {
+                                    duration: 3000
+                                }, {
+                                    // label: 'Confirm',
+                                    action: () => alert('Fill in this field!'),
+                                    class: 'my-custom-class', // optional, CSS class name for action button
+                                },
+                            );
+                            window.location.hash = `/listusers`;
+                            reRender(ListUsersChild, '#table-user');
+                        })
+                        .catch(error => {
+                            alert(error.response.data);
+                        })
+
+                } else {
+                    alert('Password does not match !!!')
+                }
             } else {
-                alert('Password does not match !!!')
+                toast(
+                    'Fill in this field!', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
             }
+
 
         });
     }

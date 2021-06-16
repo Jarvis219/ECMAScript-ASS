@@ -1,6 +1,7 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
 import categoryAPI from '../api/categoryAPI';
+import toast from 'toast-me';
 import {
     cartAPI
 } from '../api/cartAPI';
@@ -394,7 +395,15 @@ const ProductDetail = {
                             }
                             // console.log(carts);
                             await cartAPI.edit(element.id, carts);
-                            // alert(`Add product: ${result.name} success to cart`);
+                            toast(
+                                `Add product: ${result.name} success to cart`, {
+                                    duration: 3000
+                                }, {
+                                    // label: 'Confirm',
+                                    action: () => alert('Fill in this field!'),
+                                    class: 'my-custom-class', // optional, CSS class name for action button
+                                },
+                            );
                         }
                     });
                 } else {
@@ -413,7 +422,15 @@ const ProductDetail = {
                         days: day
                     }
                     await cartAPI.add(carts);
-                    alert(`Add product: ${result.name} success to cart`);
+                    toast(
+                        `Add product: ${result.name} success to cart`, {
+                            duration: 3000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
                 }
 
             } else {
@@ -453,6 +470,7 @@ const ProductDetail = {
                     ;
                     data.amount = 1;
                     screenCart.push(data);
+
                 } else {
                     // console.log(screenCart.checkCart);
                     screenCart[checkCart].amount = screenCart[checkCart].amount + Number($$('#number-cart').value);
@@ -461,6 +479,15 @@ const ProductDetail = {
                 }
                 // console.log(data);
                 localStorage.setItem('dataCart', JSON.stringify(screenCart));
+                toast(
+                    `Add product: ${result.name} success to cart`, {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
             }
         }
     }

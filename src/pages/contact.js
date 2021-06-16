@@ -1,5 +1,6 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
+import toast from 'toast-me';
 import {
     $$,
     checkLogout,
@@ -75,7 +76,7 @@ const Contact = {
                                             type="submit" name="" id="" value="SEND MESSAGE">
                                     </form>
                                 </div>
-                                <div class="text-center"id="feedback"></div>
+                                
                             </div>
                         </aside>
                         <!-- end contact -->
@@ -173,9 +174,26 @@ const Contact = {
                 status: "Not approved yet"
             }
             if (contactAPI.add(contact)) {
-                $$('#feedback').innerHTML = `<span class="text-green-400"> message sent successfully</span>`
+                toast(
+                    'Message sent successfully', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
             } else {
-                $$('#feedback').innerHTML = `<span class="text-red-400"> send message failed</span>`
+                toast(
+                    'send message failed', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
+
             }
             // feedback
         })

@@ -65,7 +65,7 @@ const Header = {
         //     }
         // }
         return /*html*/ `
-        <header class="bg-gray-100 position fixed w-screen z-50 top-0  " id="heading">
+        <header class="bg-gray-100 position fixed w-screen z-20 top-0  " id="heading">
             <div>
                 <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0 lg:gap-4 lg:py-8">
                     <div class="logo mx-auto md:mx-0">
@@ -93,7 +93,7 @@ const Header = {
                                             class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
                                             style="height: 2px;">
                                         </div></a></li>
-                                <li><a href="#/products" class="px-3 group block relative">SHOP <div
+                                <li><a href="#/products" class="px-3 group block relative" id="shopss">SHOP <div
                                             class="transition duration-300 ease-in-out h-1 bg-red-700 absolute left-0 w-full transform scale-x-0 group-hover:scale-x-100"
                                             style="height: 2px;">
                                         </div></a></li>

@@ -37,15 +37,9 @@ const NavBarAdmin = {
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./comment.html">
-                        <i class="far fa-comment"></i></i>
-                        <p>COMMENT</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
                     <a class="nav-link" href="/#/listcarts">
                         <i class="fas fa-shopping-cart"></i>
-                        <p>CART</p>
+                        <p>ORDER</p>
                     </a>
                 </li>
                 <li class="nav-item ">

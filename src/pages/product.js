@@ -92,7 +92,7 @@ const Product = {
         <div class="container mx-auto px-16 pt-24">
                 <div class="my-8">
                     <a href="./index.html"><span><i class="fas fa-home"></i></span>
-                        <span style="font-family: FontAwesome;">Home > <span class="text-gray-600">Shop</span></span>
+                        <span style="font-family: FontAwesome;">Home <span class="text-gray-500 text-sm">></span> <span class="text-gray-600">Shop</span></span>
                         </i></a>
                 </div>
                 <div class="grid grid-cols-12">

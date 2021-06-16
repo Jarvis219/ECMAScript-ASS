@@ -42,6 +42,10 @@ const ListUsersChild = {
                 <td><form>
                     ${Permission()}
             </form></td>
+            <td class="w-20"><button
+                class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
+                    href="#/edituser/${element.id}"
+                    class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td>
                 <td><button data-id="${element.id}"
                 class="list-user-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                     <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button>
@@ -62,7 +66,7 @@ const ListUsersChild = {
                                            Name 
                                         </th>
                                          <th>Permission</th>
-                                        <th colspan="" class="w-32">Custom</th>
+                                        <th colspan="2" class="w-32">Custom</th>
                                     </thead>
                                     <tbody>
                                       ${userTable}

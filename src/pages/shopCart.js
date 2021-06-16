@@ -24,21 +24,25 @@ const ShopCart = {
             }
         }
 
-
         var showShopCarts;
         if (showCartNotUser() || isSetAuthen()) {
-            var tables = () => {
-                return `
+
+            if (data.length === 0 && isSetAuthen()) {
+                var tables = () => {
+                    return `<h2 class="text-center"><button><a href="/#/products">BUY NOW</a></button><h2>`
+                }
+            } else {
+                var tables = () => {
+                    return `
                 <div class="text-center flex justify-center" id="list-cart">
                             <table class="border-collapse w-full" >
                                 <thead class=" border-b-2 ">
                                     <tr class="box-border  text-xs md:text-lg ">
-                                        <th class="">PRODUCT</th>
+                                        <th class="" colspan="2">PRODUCT</th>
                                         <th class=" ">PRICE</th>
                                         <th class=" ">SALE</th>
                                         <th class=" ">QUANTITY</th>
                                         <th  >TOTAL</th>
-                                        <th class=" ">STATUS</th>
                                     </tr>
                                 </thead>
                                 <tbody class="">
@@ -47,22 +51,19 @@ const ShopCart = {
                             </table>
                         </div>
                 `;
+                }
             }
             showShopCarts = data.map(element => {
                 // console.log(element.productId);
                 if (isSetAuthen()) {
-                    status = `${element.status}`;
                     var trashCart = () => {
-                        if (element.status == 'not approved yet') {
-                            return `<button data-id="${element.id}"
+
+                        return `<button data-id="${element.id}"
                     class="list-cart-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                         <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button>`;
-                        } else {
-                            return '';
-                        }
+
                     }
                 } else {
-                    status = ``;
                     trashCart = () => {
                         return `<button data-id="${element.id}"
                     class="list-cart-btn-local bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
@@ -70,34 +71,32 @@ const ShopCart = {
                     }
                 }
                 return /*html*/ `
-            <tr class="border-b-2 my-4 box-border cor-${element.id}">
-            <td class="md:flex md:justify-between items-center w-64">
-                <div class="flex justify-center">
-                    <img src="${element.image}"
-                        style="width: 150px;height: 100px; object-fit: cover;" alt="">
-                </div>
-                <div class="text-xs md:text-base mr-2">
+                    <tr class="border-b-2 my-4 box-border cor-${element.id}">
+                    <td class=" w-64">
+                        <div class="flex justify-center" style="width: 150px ; height: 100px; object-fit: cover;" >
+                            <img src="${element.image}"
+                                style="width: 150px ; height: 100px; object-fit: cover;" alt="">
+                        </div>
+                    </td>
+                    <td> <div class="text-xs md:text-base mr-24">
                     <h6 >${element.name}</h6>
-                </div>
-            </td>
-            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
-                <span class="priceProduct">${element.price}</span>
-            </td>
-            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
-            <span class="priceSale">${element.sale}</span>
-        </td>
-            <td class="mx-28 w-56">
-                <div class="flex justify-center">
-                <span class="minus cursor-pointer  px-2 bg-white shadow " data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" data-idsale = "${element.sale}" data-idsize ="${element.size}" data-idstatus="${element.status}" data-iddays="${element.days}" data-idimage="${element.image}"  data-id="${element.id}">-</span>
-                <input type="number" data-id="${element.id}" class="change-number w-16  pl-4" min="1" value="${element.amount}" id="" disabled>
-                <span class=" plus cursor-pointer px-2 bg-white shadow  "  data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" data-idsale = "${element.sale}" data-idsize ="${element.size}" data-idstatus="${element.status}" data-iddays="${element.days}" data-idimage="${element.image}"  data-id="${element.id}">+</span>
-                </div>
-            </td>
-            <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
+                </div></td>
+                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
+                        <span class="priceProduct">${element.price}</span>
+                    </td>
+                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$
+                    <span class="priceSale">${element.sale}</span>
+                </td>
+                    <td class="mx-28 w-56">
+                        <div class="flex justify-center">
+                        <span class="minus cursor-pointer  px-2 bg-white shadow " data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" data-idsale = "${element.sale}" data-idsize ="${element.size}" data-idstatus="${element.status}" data-iddays="${element.days}" data-idimage="${element.image}"  data-id="${element.id}">-</span>
+                        <input type="number" data-id="${element.id}" class="change-number w-16  pl-4" min="1" value="${element.amount}" id="" disabled>
+                        <span class=" plus cursor-pointer px-2 bg-white shadow  "  data-idp = "${element.productId}" data-idname ="${element.name}" data-idprice = "${element.price}" data-idsale = "${element.sale}" data-idsize ="${element.size}" data-idstatus="${element.status}" data-iddays="${element.days}" data-idimage="${element.image}"  data-id="${element.id}">+</span>
+                        </div>
+                    </td>
+                    <td class="mx-28 text-red-500 font-normal text-xs md:text-base">$ <span
                     class="quantityProduct">${element.totalmoney}</span> </td>
-             <td  class="mx-28 w-56">
-                    ${status}
-             </td>
+            
             <td>
             ${trashCart()}
             </td>

@@ -1,6 +1,7 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import categoryAPI from "../../../api/categoryAPI";
 import ListCategory from '../../../pages/admin/category/listcategory';
+import toast from "toast-me";
 import {
     $$,
     useParams,
@@ -49,8 +50,8 @@ const EditCategory = {
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name Category</label>
-                                                    <input type="text" class="form-control" value="${result.name}" id="name" name="name_category"
-                                                    required >
+                                                    <input type="text" class="check-validate form-control" value="${result.name}" id="name" name="name_category"
+                                                     >
                                                 </div>
                                             </div>
                                         </div>
@@ -86,18 +87,56 @@ const EditCategory = {
 
         $$('#edit-category').addEventListener('submit', (e) => {
             e.preventDefault();
-            const category = {
-                id: id,
-                name: $$('[name="name_category"]').value
-            }
-            if (categoryAPI.update(id, category)) {
-                alert("Update category success")
-                window.location.hash = `/listcategory`;
-                reRender(ListCategory, '#table-category');
-
+            var sumCheck = 0;
+            const check_validate = $$('.check-validate');
+            if (check_validate.value.trim() == "") {
+                check_validate.style.border = "2px solid #e84e4e"
+                check_validate.placeholder = "Fill in this field";
+                sumCheck = 1;
             } else {
-                alert('Update category failures')
+                check_validate.style.border = "thick solid #FFFFFF"
             }
+            if (sumCheck === 0) {
+                const category = {
+                    id: id,
+                    name: $$('[name="name_category"]').value
+                }
+                if (categoryAPI.update(id, category)) {
+                    toast(
+                        'Update category success', {
+                            duration: 3000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
+                    window.location.hash = `/listcategory`;
+                    reRender(ListCategory, '#table-category');
+
+                } else {
+                    toast(
+                        'Update category failures', {
+                            duration: 3000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
+                }
+            } else {
+                toast(
+                    'Fill in this field!', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
+            }
+
         })
     }
 }
