@@ -1,5 +1,8 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import {
+    $$
+} from "../../../untils";
+import {
     ListInformationChild
 } from "../../../components/listinformationsChild";
 const ListInformation = {
@@ -54,6 +57,7 @@ const ListInformation = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[1].classList.add("active");
         return `${await ListInformationChild.afterRender()}`;
     }
 

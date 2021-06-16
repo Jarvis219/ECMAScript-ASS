@@ -24,10 +24,21 @@ const Header = {
                     <a href="#/signup">/ Register</a>`;
                     } else {
                         return /*html*/ `
+                        <div class="group text-center">
                     Hi ${ user.name}  
-                          </span>
-                            <a href="/#/listproducts">/ Admin</a>
-                          <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                        <div class="hidden group-hover:block absolute z-20 bg-white rounded-md  border border-blue-600" >
+                        <a href="/#/dashboard"><div class="hover:bg-gray-200 rounded-t-md py-2  "><i class="fas fa-user-shield"></i>
+                        <button  class="text-sm font-semibold text-black hover:text-[#89229b]" >Admin </button>
+                        </div></a>
+                        <a href="/#/order"><div class="hover:bg-gray-200 rounded-t-md py-2  "><i class="fas fa-file-medical-alt"></i>
+                        <button  class="text-sm font-semibold text-black hover:text-[#89229b]" >Order </button>
+                        </div></a>
+                        <div class=" hover:bg-gray-200 ">
+                        <button class=" cursor-pointer  rounded-b-md px-10 text-sm py-2 font-semibold text-black hover:text-[#89229b]" id="log-out"><i class="fas fa-sign-out-alt"></i>logout</button>
+                        </div>
+                    </div>
+                        </div>
+                          `;
                     }
                 } else {
                     if (isSetAuthen() == false) {
@@ -35,12 +46,19 @@ const Header = {
                         <a href="#/signup">/ Register</a>`;
                     } else {
                         return /*html*/ `
-                        <span>
-                        Hi ${ user.name}
-                        </span>
-                        <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                        <div class="group text-center">
+                    Hi ${ user.name}  
+                        <div class="hidden group-hover:block absolute z-20 bg-white rounded-md  border border-blue-600" >
+                        <a href="/#/order"><div class="hover:bg-gray-200 rounded-t-md py-2  "><i class="fas fa-file-medical-alt"></i>
+                        <button  class="text-sm font-semibold text-black hover:text-[#89229b]" >Order </button>
+                        </div></a>
+                        <div class=" hover:bg-gray-200 ">
+                        <button class=" cursor-pointer  rounded-b-md px-10 text-sm py-2 font-semibold text-black hover:text-[#89229b]" id="log-out"><i class="fas fa-sign-out-alt"></i>logout</button>
+                        </div>
+                    </div>
+                        </div>
+                        `;
                     }
-
                 }
             } else {
                 if (isSetAuthen() == false) {
@@ -48,10 +66,17 @@ const Header = {
                     <a href="#/signup">/ Register</a>`;
                 } else {
                     return /*html*/ `
-                    <span>
-                    Hi ${ user.name}
-                    </span>
-                    <span class="cursor-pointer"  id="log-out">/ logout</span>`;
+                    <div class="group text-center">
+                    Hi ${ user.name}  
+                        <div class="hidden group-hover:block absolute z-20 bg-white rounded-md  border border-blue-600" >
+                        <a href="/#/order"><div class="hover:bg-gray-200 rounded-t-md py-2  "><i class="fas fa-file-medical-alt"></i>
+                        <button  class="text-sm font-semibold text-black hover:text-[#89229b]" >Order </button>
+                        </div></a>
+                        <div class=" hover:bg-gray-200 ">
+                        <button class=" cursor-pointer  rounded-b-md px-10 text-sm py-2 font-semibold text-black hover:text-[#89229b]" id="log-out"><i class="fas fa-sign-out-alt"></i>logout</button>
+                        </div>
+                    </div>
+                        </div>`;
                 }
             }
         }

@@ -158,10 +158,16 @@ const CheckOut = {
         checkLogout();
         search();
         var priceProduct = 0;
-        $$('.priceProduct').forEach(element => {
-            // console.log(Number(element.innerHTML.replace(/\D/g, '')));
-            priceProduct += Number(element.innerHTML.replace(/\D/g, ''))
-        })
+        if ($$('.priceProduct').length > 1) {
+            $$('.priceProduct').forEach(element => {
+                // console.log(Number(element.innerHTML.replace(/\D/g, '')));
+                priceProduct += Number(element.innerHTML.replace(/\D/g, ''))
+            })
+        } else {
+            priceProduct = Number($$('.priceProduct').innerHTML.replace(/\D/g, ''));
+        }
+
+
         // console.log(priceProduct);
         var total = $$('#total');
         total.innerHTML = prices(Number($$('#subTotal').innerHTML) + priceProduct);
@@ -184,6 +190,7 @@ const CheckOut = {
             if (sumCheck === 0) {
                 const checkOut = {
                     id: Math.round(Math.random() * 700000),
+                    user: isSetAuthen().email,
                     name: $$('input[name="name"]').value,
                     email: $$('input[name="email"]').value,
                     phone: $$('input[name="phone"]').value,
@@ -214,7 +221,11 @@ const CheckOut = {
                             class: 'my-custom-class', // optional, CSS class name for action button
                         },
                     );
-                    window.location.hash = `/`;
+                    setTimeout(() => {
+                        window.location.hash = `/order`;
+                    }, 3000)
+
+
                 }
             } else {
                 toast(

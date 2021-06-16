@@ -64,6 +64,9 @@ const ListContactChild = {
         `;
     },
     async afterRender() {
+        const {
+            data: contacts
+        } = await contactAPI.list()
         const btns = $$('.list-contact-btn');
 
         function deleteItem(element) {
@@ -88,7 +91,17 @@ const ListContactChild = {
             deleteItem(btns);
         }
 
-        $$('.status').forEach(element => {
+
+        if (contacts.length > 1) {
+            $$('.status').forEach(element => {
+                selectorSaveStatus(element)
+            });
+        } else {
+
+            selectorSaveStatus($$('.status'));
+        }
+
+        function selectorSaveStatus(element) {
             const id = element.dataset.id
             element.addEventListener('change', async () => {
                 // console.log(id);
@@ -107,7 +120,28 @@ const ListContactChild = {
                 await contactAPI.update(id, contact);
                 await reRender(ListContactChild, '#list-content');
             })
-        })
+        }
+
+        // $$('.status').forEach(element => {
+        //     const id = element.dataset.id
+        //     element.addEventListener('change', async () => {
+        //         // console.log(id);
+        //         const {
+        //             data: ct
+        //         } = await contactAPI.listCt(id)
+        //         // console.log(element.value);
+        //         const contact = {
+        //             id: id,
+        //             name: ct.name,
+        //             email: ct.email,
+        //             phone: ct.phone,
+        //             content: ct.content,
+        //             status: element.value
+        //         }
+        //         await contactAPI.update(id, contact);
+        //         await reRender(ListContactChild, '#list-content');
+        //     })
+        // })
     }
 }
 export default ListContactChild;

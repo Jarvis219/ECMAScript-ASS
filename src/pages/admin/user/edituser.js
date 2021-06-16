@@ -106,6 +106,7 @@ const EditUser = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[2].classList.add("active");
         const {
             id
         } = useParams();

@@ -186,6 +186,7 @@ const EditCart = {
 
     },
     async afterRender() {
+        $$('.nav li')[5].classList.add("active");
         var {
             id
         } = useParams();
@@ -205,17 +206,20 @@ const EditCart = {
 
         $$('#edit-cart').addEventListener('click', async (e) => {
             e.preventDefault();
+            const {
+                data: orderClick
+            } = await ordersAPI.read(id);
             const dataUpdateOrder = {
                 id: Number(id),
                 address: $$('input[name="address_order"]').value,
                 name: $$('input[name="name_order"]').value,
                 email: $$('input[name="email_order"]').value,
-                note: orders.note,
+                note: orderClick.note,
                 phone: $$('input[name="phone_order"]').value,
-                status: orders.status,
-                days: orders.days,
-                product: orders.product,
-                sumMoney: orders.sumMoney
+                status: orderClick.status,
+                days: orderClick.days,
+                product: orderClick.product,
+                sumMoney: orderClick.sumMoney
             }
             await ordersAPI.eidt(id, dataUpdateOrder);
             toast(
@@ -348,6 +352,15 @@ const EditCart = {
                         arrProduct.push(element)
                     }
                 })
+                let totalmoney = 0,
+                    amount = 0;
+                if ($$('.quantityProduct')[index] && $$('.change-number')[index]) {
+                    totalmoney = $$('.quantityProduct')[index].innerHTML;
+                    amount = $$('.change-number')[index].value;
+                } else {
+                    totalmoney = $$('.quantityProduct').innerHTML;
+                    amount = $$('.change-number').value;
+                }
                 const dataUpdate = {
                     id: Number(idp),
                     name: element.dataset.idname,
@@ -356,8 +369,8 @@ const EditCart = {
                     sale: element.dataset.idsale,
                     size: element.dataset.idsize,
                     days: element.dataset.iddays,
-                    totalmoney: Number($$('.quantityProduct')[index].innerHTML),
-                    amount: Number($$('.change-number')[index].value)
+                    totalmoney: Number(totalmoney),
+                    amount: Number(amount)
                 }
                 arrProduct.push(dataUpdate);
                 // console.log(arrProduct);
@@ -405,6 +418,15 @@ const EditCart = {
                 })
                 // console.log(element);
                 // console.log(index);
+                let totalmoney = 0,
+                    amount = 0;
+                if ($$('.quantityProduct')[index] && $$('.change-number')[index]) {
+                    totalmoney = $$('.quantityProduct')[index].innerHTML;
+                    amount = $$('.change-number')[index].value;
+                } else {
+                    totalmoney = $$('.quantityProduct').innerHTML;
+                    amount = $$('.change-number').value;
+                }
                 const dataUpdate = {
                     id: Number(idp),
                     name: element.dataset.idname,
@@ -413,8 +435,8 @@ const EditCart = {
                     sale: element.dataset.idsale,
                     size: element.dataset.idsize,
                     days: element.dataset.iddays,
-                    totalmoney: Number($$('.quantityProduct')[index].innerHTML),
-                    amount: Number($$('.change-number')[index].value)
+                    totalmoney: Number(totalmoney),
+                    amount: Number(amount)
                 }
                 arrProduct.push(dataUpdate);
                 // console.log(arrProduct);

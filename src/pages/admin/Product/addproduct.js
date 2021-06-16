@@ -197,6 +197,7 @@ const AddProduct = {
         `;
     },
     afterRender() {
+        $$('.nav li')[3].classList.add("active");
         $$('#add-product').addEventListener('submit', (e) => {
             e.preventDefault();
             var sumCheck = 0;

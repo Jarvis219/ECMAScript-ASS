@@ -1,5 +1,8 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import ListContactChild from "../../../components/listcontactChild";
+import {
+    $$
+} from "../../../untils";
 const ListContact = {
     async render() {
         return /*html */ `
@@ -23,7 +26,7 @@ const ListContact = {
                             <div class="card-header card-header-primary flex justify-between">
                                 <h4 class="card-title ">Contact</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body h-[600px] overflow-y-scroll">
                                 <div class="table-responsive">
                                     ${await ListContactChild.render()}
                                 </div>
@@ -51,6 +54,7 @@ const ListContact = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[6].classList.add("active");
         return `${await ListContactChild.afterRender()}`;
     }
 }

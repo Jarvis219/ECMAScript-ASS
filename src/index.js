@@ -30,6 +30,8 @@ import ListInformation from './pages/admin/information/listinformation';
 import AddInformation from './pages/admin/information/addinformation';
 import EditInformation from './pages/admin/information/editinformation';
 import AddPost from './pages/admin/posts/addpost';
+import Dashboard from './pages/admin/dashboard/dashboard';
+import Order from './pages/order';
 // import 'owl.carousel';
 
 
@@ -61,7 +63,9 @@ const routes = {
     '/listinformation': ListInformation,
     '/addinformation': AddInformation,
     '/editinformation/:id': EditInformation,
-    '/addpost': AddPost
+    '/addpost': AddPost,
+    '/dashboard': Dashboard,
+    '/order': Order
 
 }
 const router = async () => {

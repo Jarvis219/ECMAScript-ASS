@@ -81,6 +81,7 @@ const EditCategory = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[4].classList.add("active");
         const {
             id
         } = useParams();

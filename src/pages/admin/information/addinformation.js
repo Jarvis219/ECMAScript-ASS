@@ -112,6 +112,7 @@ const AddInformation = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[1].classList.add("active");
         $$('#add-infor').addEventListener('submit', (e) => {
             e.preventDefault();
             const img = $$('#logo').files[0];

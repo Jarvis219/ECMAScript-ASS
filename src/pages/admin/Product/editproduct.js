@@ -215,7 +215,7 @@ const EitProduct = {
         `;
     },
     async afterRender() {
-
+        $$('.nav li')[3].classList.add("active");
 
 
         const {

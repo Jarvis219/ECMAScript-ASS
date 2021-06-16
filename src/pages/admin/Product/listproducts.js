@@ -1,5 +1,8 @@
 import NavBarAdmin from '../../../components/navbaradmin';
 import ListProductchild from '../../../components/listproductchild';
+import {
+    $$
+} from '../../../untils';
 const Adminproducts = {
     async render() {
         // const {data:product} = await productAPI.list() ;
@@ -57,7 +60,7 @@ const Adminproducts = {
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title ">PRODUCTS</h4>
                                 </div>
-                                <div class="card-body" >
+                                <div class="card-body h-[600px] overflow-y-scroll" >
                                     <div class="table-responsive" id="list-product">
                                     ${await ListProductchild.render()}
                                 </table>
@@ -84,6 +87,7 @@ const Adminproducts = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[3].classList.add("active");
         return `
         ${await ListProductchild.afterRender()}
         `;

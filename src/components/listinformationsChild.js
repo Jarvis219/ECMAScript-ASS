@@ -15,10 +15,8 @@ export const ListInformationChild = {
             return /*html*/ `
             <div class="col-md-4">
             <div class="card card-profile">
-              <div class="card-avatar">
-                <a href="javascript:;">
+              <div class="flex justify-center mt-4">
                   <img class="img" src="${element.logo}" />
-                </a>
               </div>
               <div class="card-body">
                 <h3 class="card-category text-gray">${element.slogan}</h3>

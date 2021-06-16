@@ -110,6 +110,7 @@ const AddUser = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[2].classList.add("active");
         $$('#add-user').addEventListener('submit', async (e) => {
             e.preventDefault();
             var permission = $$('input[name="permission"]');

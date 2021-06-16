@@ -73,6 +73,7 @@ const AddCategory = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[4].classList.add("active");
         const {
             data
         } = await categoryAPI.list();

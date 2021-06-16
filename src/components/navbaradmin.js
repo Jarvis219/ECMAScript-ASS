@@ -12,6 +12,12 @@ const NavBarAdmin = {
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#/dashboard">
+                    <i class="fas fa-chart-line "></i>
+                        <p class="uppercase">dashboard</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#/listinformation">
                         <i class="material-icons">dashboard</i>

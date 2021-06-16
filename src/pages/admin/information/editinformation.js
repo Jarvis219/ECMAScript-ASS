@@ -130,6 +130,7 @@ const EditInformation = {
         `;
     },
     async afterRender() {
+        $$('.nav li')[1].classList.add("active");
         const {
             id
         } = useParams();

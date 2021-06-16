@@ -3,7 +3,9 @@ import {
     UserAPI
 } from "../../../api/userAPI";
 import NavBarAdmin from "../../../components/navbaradmin";
-
+import {
+    $$
+} from "../../../untils";
 const ListUser = {
     async render() {
         return /*html*/ `
@@ -33,7 +35,7 @@ const ListUser = {
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title ">USER</h4>
                             </div>
-                            <div class="card-body" >
+                            <div class="card-body h-[600px] overflow-y-scroll" >
                                 <div class="table-responsive" id="list-user">
 
                                ${await ListUsersChild.render()}
@@ -63,6 +65,7 @@ const ListUser = {
 
     },
     async afterRender() {
+        $$('.nav li')[2].classList.add("active");
         return `${await ListUsersChild.afterRender()}`;
     }
 }

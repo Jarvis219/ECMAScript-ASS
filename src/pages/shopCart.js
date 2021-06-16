@@ -329,52 +329,84 @@ const ShopCart = {
         }
 
         function updateNumberChange() {
-            // console.log(isSetAuthen().email); user
-            $$('.minus').forEach((element, index) => {
-                const id = element.dataset.id
-                element.addEventListener('click', async () => {
-                    const dataUpdate = {
-                        id: Number(id),
-                        productId: element.dataset.idp,
-                        user: isSetAuthen().email,
-                        name: element.dataset.idname,
-                        image: element.dataset.idimage,
-                        price: element.dataset.idprice,
-                        sale: element.dataset.idsale,
-                        size: element.dataset.idsize,
-                        status: element.dataset.idstatus,
-                        days: element.dataset.iddays,
-                        totalmoney: $$('.quantityProduct')[index].innerHTML,
-                        amount: $$('.change-number')[index].value
-                    }
-                    // console.log(dataUpdate);
-                    await cartAPI.edit(id, dataUpdate);
+            if ($$('.minus').length > 1) {
+                $$('.minus').forEach((element, index) => {
+                    checkMinus(element, index);
                 });
-            });
-            $$('.plus').forEach((element, index) => {
-                const id = element.dataset.id
-                element.addEventListener('click', async () => {
-                    const dataUpdate = {
-                        id: Number(id),
-                        productId: element.dataset.idp,
-                        user: isSetAuthen().email,
-                        name: element.dataset.idname,
-                        image: element.dataset.idimage,
-                        price: element.dataset.idprice,
-                        sale: element.dataset.idsale,
-                        size: element.dataset.idsize,
-                        status: element.dataset.idstatus,
-                        days: element.dataset.iddays,
-                        totalmoney: $$('.quantityProduct')[index].innerHTML,
-                        amount: $$('.change-number')[index].value
-                    }
-                    // console.log(dataUpdate);
-                    await cartAPI.edit(id, dataUpdate);
+            } else {
+                checkMinus($$('.minus'));
+            }
+            if ($$('.plus').length > 1) {
+                $$('.plus').forEach((element, index) => {
+                    checkPlus(element, index);
                 });
+            } else {
+                checkPlus($$('.plus'));
+            }
+        }
+
+        function checkMinus(element, index) {
+            const id = element.dataset.id
+            element.addEventListener('click', async () => {
+                let totalmoney = 0,
+                    amount = 0;
+                if ($$('.quantityProduct')[index] && $$('.change-number')[index]) {
+                    totalmoney = $$('.quantityProduct')[index].innerHTML;
+                    amount = $$('.change-number')[index].value;
+                } else {
+                    totalmoney = $$('.quantityProduct').innerHTML;
+                    amount = $$('.change-number').value;
+                }
+                const dataUpdate = {
+                    id: Number(id),
+                    productId: element.dataset.idp,
+                    user: isSetAuthen().email,
+                    name: element.dataset.idname,
+                    image: element.dataset.idimage,
+                    price: element.dataset.idprice,
+                    sale: element.dataset.idsale,
+                    size: element.dataset.idsize,
+                    status: element.dataset.idstatus,
+                    days: element.dataset.iddays,
+                    totalmoney: totalmoney,
+                    amount: amount
+                }
+                // console.log(dataUpdate);
+                await cartAPI.edit(id, dataUpdate);
             });
         }
 
 
+        function checkPlus(element, index) {
+            const id = element.dataset.id
+            element.addEventListener('click', async () => {
+                let totalmoney = 0,
+                    amount = 0;
+                if ($$('.quantityProduct')[index] && $$('.change-number')[index]) {
+                    totalmoney = $$('.quantityProduct')[index].innerHTML;
+                    amount = $$('.change-number')[index].value;
+                } else {
+                    totalmoney = $$('.quantityProduct').innerHTML;
+                    amount = $$('.change-number').value;
+                }
+                const dataUpdate = {
+                    id: Number(id),
+                    productId: element.dataset.idp,
+                    user: isSetAuthen().email,
+                    name: element.dataset.idname,
+                    image: element.dataset.idimage,
+                    price: element.dataset.idprice,
+                    sale: element.dataset.idsale,
+                    size: element.dataset.idsize,
+                    status: element.dataset.idstatus,
+                    days: element.dataset.iddays,
+                    totalmoney: totalmoney,
+                    amount: amount
+                }
+                // console.log(dataUpdate);
+                await cartAPI.edit(id, dataUpdate);
+            });
+        }
         // function unUserChangenumber() {
         //     const arr = JSON.parse(localStorage.getItem('dataCart'))
         //     const newArr = [];
