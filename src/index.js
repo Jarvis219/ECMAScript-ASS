@@ -11,8 +11,12 @@ import AddCategory from './pages/admin/category/addcategory';
 import AdminCategory from './pages/admin/category/listcategory';
 import {
     useParams,
+    isSetAuthen,
     $$
 } from './untils';
+import {
+    UserAPI
+} from './api/userAPI';
 import Adminproducts from './pages/admin/Product/listproducts';
 import EitProduct from './pages/admin/Product/editproduct';
 import AddProduct from './pages/admin/Product/addproduct';
@@ -32,49 +36,89 @@ import EditInformation from './pages/admin/information/editinformation';
 import AddPost from './pages/admin/posts/addpost';
 import Dashboard from './pages/admin/dashboard/dashboard';
 import Order from './pages/order';
-// import 'owl.carousel';
 
+let routes;
+async function checkUser() {
+    if (isSetAuthen() !== false) {
+        const {
+            data: user
+        } = await UserAPI.listedit(isSetAuthen().sub);
+        if (user.permission == "Admin") {
+            routes = {
+                '/': Home,
+                '/products': Product,
+                '/blog': Blog,
+                '/contact': Contact,
+                '/products/:id': ProductDetail,
+                '/shopcart': ShopCart,
+                '/checkout': CheckOut,
+                '/blogdetail': BlogDetail,
+                '/signup': SignUp,
+                '/signin': SignIn,
+                //Admin
+                '/listproducts': Adminproducts,
+                '/listcategory': AdminCategory,
+                '/editproduct/:id': EitProduct,
+                '/editcategory/:id': EditCategory,
+                '/addproduct': AddProduct,
+                '/addcategory': AddCategory,
+                '/listusers': ListUser,
+                '/adduser': AddUser,
+                '/edituser/:id': EditUser,
+                '/productcate/:id': ProductCate,
+                '/listcontact': ListContact,
+                '/listcarts': ListCarts,
+                '/editcart/:id': EditCart,
+                '/listinformation': ListInformation,
+                '/addinformation': AddInformation,
+                '/editinformation/:id': EditInformation,
+                '/addpost': AddPost,
+                '/dashboard': Dashboard,
+                '/order': Order
+            }
+        } else {
+            routes = {
+                '/': Home,
+                '/products': Product,
+                '/blog': Blog,
+                '/contact': Contact,
+                '/products/:id': ProductDetail,
+                '/shopcart': ShopCart,
+                '/checkout': CheckOut,
+                '/blogdetail': BlogDetail,
+                '/productcate/:id': ProductCate,
+                '/signup': SignUp,
+                '/signin': SignIn,
+                '/order': Order
 
+            }
+        }
+    } else {
+        routes = {
+            '/': Home,
+            '/products': Product,
+            '/blog': Blog,
+            '/contact': Contact,
+            '/products/:id': ProductDetail,
+            '/shopcart': ShopCart,
+            '/checkout': CheckOut,
+            '/blogdetail': BlogDetail,
+            '/productcate/:id': ProductCate,
+            '/signup': SignUp,
+            '/signin': SignIn,
+            '/order': Order
 
-const routes = {
-    '/': Home,
-    '/products': Product,
-    '/blog': Blog,
-    '/contact': Contact,
-    '/products/:id': ProductDetail,
-    '/shopcart': ShopCart,
-    '/checkout': CheckOut,
-    '/blogdetail': BlogDetail,
-    '/listproducts': Adminproducts,
-    '/listcategory': AdminCategory,
-    '/editproduct/:id': EitProduct,
-    '/editcategory/:id': EditCategory,
-    '/addproduct': AddProduct,
-    '/addcategory': AddCategory,
-    '/listusers': ListUser,
-    '/adduser': AddUser,
-    '/edituser/:id': EditUser,
-    '/signup': SignUp,
-    '/signin': SignIn,
-    '/productcate/:id': ProductCate,
-    '/listcontact': ListContact,
-    '/listcarts': ListCarts,
-    '/editcart/:id': EditCart,
-    '/listinformation': ListInformation,
-    '/addinformation': AddInformation,
-    '/editinformation/:id': EditInformation,
-    '/addpost': AddPost,
-    '/dashboard': Dashboard,
-    '/order': Order
-
+        }
+    }
 }
+
 const router = async () => {
     const {
         resource,
         id,
         action
     } = useParams();
-    // console.log(action);
+    await checkUser();
     const parseUrl = (resource ? `/${resource}` : '/') + (id ? `/:id` : '') + (action ? `/action` : '');
     // console.log("par :" + parseUrl);
     const page = routes[parseUrl] ? routes[parseUrl] : Error404;
@@ -85,7 +129,6 @@ const router = async () => {
     } else {
         console.log('not afterRender');
     }
-
 }
 
 //

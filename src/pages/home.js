@@ -39,6 +39,7 @@ const Home = {
                 }
                 return /*html*/ `
                 <article class="text-center group py-8 md:py-0 md:mx-auto md:pb-6 lg:pb-0">
+                <a href="#/products/${element.id}">
                     <div class=" relative  overflow-hidden">
                         <div class="flex justify-center">
                             <img src="${element.imageIntro}" style="Width:270px; height:360px" alt="" class="w-full object-cover md:w-auto">
@@ -59,6 +60,7 @@ const Home = {
                             </div>
                         </div>
                     </div>
+                    </a>
                     <div class="pt-4">
                         <a href="#/products/${element.id}" class="block hover:text-red-500">${element.name}</a>
                         <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>

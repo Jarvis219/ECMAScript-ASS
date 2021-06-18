@@ -362,79 +362,89 @@
   ],
   "contacts": [
     {
-      "id": 681316,
-      "name": "Trần Quang",
+      "id": 522147,
+      "name": "Mr Rin",
       "email": "songoku2192@gmail.com",
-      "phone": "0968686686s",
-      "content": "asa",
+      "phone": "0968686686",
+      "content": "sda",
       "status": "Approved"
+    },
+    {
+      "id": 501622,
+      "name": "Mr Rin",
+      "email": "songoku2192@gmail.com",
+      "phone": "0968686686",
+      "content": "asd",
+      "status": "Not approved yet"
+    },
+    {
+      "id": 107949,
+      "name": "Mr Rin",
+      "email": "songoku2192@gmail.com",
+      "phone": "0968686686",
+      "content": "sd",
+      "status": "Not approved yet"
     }
   ],
   "users": [
     {
-      "id": 1,
       "email": "kaio@gmail.com",
-      "password": "$2a$10$5xmhTn1Y36i8Z7aIHb6ZhOdawtFrN1yyft8CO51jzvThFnWOyztE6",
+      "password": "$2a$10$CbTm5y2MaqASQDD0BNMll.BsA8uhdFJM6NqLJDisLU5iSB8njm/a.",
       "name": "kaio",
-      "permission": "Admin"
+      "permission": "Admin",
+      "id": 1
     },
     {
-      "id": 2,
       "email": "kh1@gmail.com",
-      "password": "$2a$10$nMOjOCRshLoPGwvBh0oBeuOi4XkbOBrJCSYakfag8HCtqn4gh8mIi",
-      "name": "kh22",
-      "permission": "Member"
+      "password": "$2a$10$1LsKkkI/oVxNr1q0eTrNXeJZww3lgA7VPOnt3kL58epHkVSp4bJ/y",
+      "name": "Mr Rin",
+      "permission": "Customer",
+      "id": 2
     },
     {
-      "id": 4,
-      "email": "kh0000@gmail.com",
-      "password": "$2a$10$j3RZZbsBG7uItBF4Cv1pouPdRjVkc1raLq5Fydw4x.C2EoM27c65q",
-      "name": "kh2",
-      "permission": "Member"
+      "email": "admin@gmail.com",
+      "password": "$2a$10$OLq785kW..a8FwQQLJs.DO7m0ATNZGjg52z1bihyQ.qBjR12TF2aG",
+      "name": "Trần Quang",
+      "permission": "Admin",
+      "id": 3
     }
   ],
   "carts": [],
   "orders": [
     {
-      "id": 108929,
-      "user": "kaio@gmail.com",
-      "name": "Mr Rin",
-      "email": "kaio@gmail.com",
-      "phone": "0968686686",
+      "id": 481996,
       "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "note": "sad",
-      "sumMoney": "87.300,00&nbsp;USD",
+      "name": "Trần Quang",
+      "email": "songoku2192@gmail.com",
+      "note": "sa",
+      "phone": "0968686686",
+      "status": "cancelled",
+      "days": "17-06-2021",
       "product": [
         {
-          "id": 466992,
-          "productId": "413354",
-          "user": "kaio@gmail.com",
-          "name": "Oversized MAN Signature ",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fblack-oversized-man-signature-t-shirt%20(3).jpeg?alt=media&token=a58ada92-7a86-4be6-ad78-6424f45397cb",
-          "price": "88",
-          "sale": "20",
-          "size": "XXS",
-          "totalmoney": 408,
-          "amount": 6,
-          "status": "not approved yet",
-          "days": "16-06-2021"
-        },
-        {
-          "id": 81910,
-          "productId": "529585",
-          "user": "kaio@gmail.com",
-          "name": "Matchplay Long Robe Heather Grey",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-grey-robe-matchplay-still-life-web.jpeg?alt=media&token=98d8d774-5fc6-4e84-96b8-c11ec8c712a4",
-          "price": "95",
-          "sale": "0",
+          "id": 103910,
+          "name": "Official Yarn Dyed Oversized Stripe",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fyellow-official-yarn-dyed-oversized-stripe-t-shirt.jpeg?alt=media&token=3fc5ac87-69f8-4c7c-b0de-c1c37d39fa36",
+          "price": "90",
+          "sale": "6",
           "size": "XS",
-          "totalmoney": 285,
-          "amount": "3",
-          "status": "not approved yet",
-          "days": "16-06-2021"
-        },
+          "days": "17-06-2021",
+          "totalmoney": 252,
+          "amount": 3
+        }
+      ],
+      "sumMoney": 252
+    },
+    {
+      "id": 251005,
+      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
+      "email": "songoku2192@gmail.com",
+      "name": "Mr Rin",
+      "note": "",
+      "phone": "0968686686",
+      "product": [
         {
-          "id": 430726,
+          "id": 297729,
           "productId": "504038",
           "user": "kaio@gmail.com",
           "name": "Venus in Play Sleep Tee Peony",
@@ -442,70 +452,63 @@
           "price": "100",
           "sale": "10",
           "size": "XXS",
-          "totalmoney": 180,
-          "amount": "2",
           "status": "not approved yet",
-          "days": "16-06-2021"
+          "days": "18-06-2021",
+          "totalmoney": "360",
+          "amount": "4"
         }
       ],
-      "days": "16-06-2021",
-      "status": "not approved yet"
+      "sumMoney": 360,
+      "status": "delivered",
+      "days": "18-06-2021"
     },
     {
-      "id": 386671,
-      "user": "kh1@gmail.com",
-      "name": "Trần Quang",
-      "email": "kaio@gmail.com",
-      "phone": "0968686686",
+      "id": 518020,
       "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "note": "dasd",
-      "sumMoney": "8.400,00&nbsp;USD",
+      "email": "taquang.hskx.2000@gmail.com",
+      "name": "Trần Quang",
+      "note": "sad",
+      "phone": "0968686686",
       "product": [
         {
-          "id": 427485,
-          "productId": "416256",
-          "user": "kh1@gmail.com",
-          "name": "Official Yarn Dyed Oversized Stripe",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fyellow-official-yarn-dyed-oversized-stripe-t-shirt.jpeg?alt=media&token=3fc5ac87-69f8-4c7c-b0de-c1c37d39fa36",
-          "price": "90",
-          "sale": "6",
-          "size": "XS",
-          "totalmoney": 84,
-          "amount": "1",
-          "status": "not approved yet",
-          "days": "16-06-2021"
+          "id": "504038",
+          "name": "Venus in Play Sleep Tee Peony",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F44J024BC-lilac-venus-in-play-tee-f-web.jpeg?alt=media&token=f4e2100d-d7ee-4827-a613-f0a9fdd51d3d",
+          "price": "100",
+          "sale": "10",
+          "size": "XXS",
+          "amount": 1,
+          "totalmoney": 90,
+          "days": "18-06-2021"
         }
       ],
-      "days": "16-06-2021",
-      "status": "not approved yet"
+      "sumMoney": 90,
+      "status": "approved",
+      "days": "18-06-2021"
     },
     {
-      "id": 472733,
-      "user": "kh1@gmail.com",
-      "name": "Trần Quang",
-      "email": "songoku2192@gmail.com",
-      "phone": "0968686686",
+      "id": 510200,
       "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "note": "asd",
-      "sumMoney": "9.500,00&nbsp;USD",
+      "name": "Mr Rin",
+      "email": "rintl260700@gmail.com",
+      "note": "sa",
+      "phone": "0968686686",
+      "status": "not approved yet",
+      "days": "18-06-2021",
       "product": [
         {
-          "id": 154731,
-          "productId": "529585",
-          "user": "kh1@gmail.com",
+          "id": 529585,
           "name": "Matchplay Long Robe Heather Grey",
           "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-grey-robe-matchplay-still-life-web.jpeg?alt=media&token=98d8d774-5fc6-4e84-96b8-c11ec8c712a4",
           "price": "95",
           "sale": "0",
           "size": "XS",
-          "totalmoney": 95,
-          "amount": "1",
-          "status": "not approved yet",
-          "days": "17-06-2021"
+          "days": "18-06-2021",
+          "totalmoney": 190,
+          "amount": 2
         }
       ],
-      "days": "17-06-2021",
-      "status": "not approved yet"
+      "sumMoney": 190
     }
   ],
   "informations": [
@@ -518,5 +521,6 @@
       "logo": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Flogo.png?alt=media&token=adabe281-9bba-44c4-b28b-a4fd43496bf6",
       "email": "Quangtaph12673@fpt.edu.vn"
     }
-  ]
+  ],
+  "posts": []
 }

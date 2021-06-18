@@ -33,5 +33,6 @@ export const productAPI = {
         const url = `/products?q=${data}`
         return axiosClient.get(url);
     }
+
 }
 export default productAPI;

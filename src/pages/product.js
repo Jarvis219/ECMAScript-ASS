@@ -51,6 +51,7 @@ const Product = {
                 }
                 return /*html*/ `
                 <article class="col-span-12 gap-3 md:col-span-1 group my-4 md:my-0 text-center">
+                <a href="#/products/${element.id}">
                          <div class=" relative  overflow-hidden">
                                     <div class="flex justify-center">
                                         <img src="${element.imageIntro}" style="Width:270px; height:360px" alt="" class="w-full object-cover md:w-auto">
@@ -71,6 +72,7 @@ const Product = {
                                         </div>
                                     </div>
                              </div>  
+                             </a>
                                     <div class=" pt-4  md:text-xs lg:text-sm xl:text-base">
                                         <a href="#/products/${element.id}" class="block  hover:text-red-500">${element.name}</a>
                                         <span class="block py-2 text-sm text-yellow-400"><i class="fas fa-star"></i>

@@ -19,7 +19,21 @@ const EditCart = {
             data: order
         } = await ordersAPI.read(id);
         if (order.product.length === 0) {
-            await ordersAPI.remove(id);
+
+            const dataUpdateOrder = {
+                id: Number(id),
+                address: order.address,
+                name: order.name,
+                email: order.email,
+                note: order.note,
+                phone: order.phone,
+                status: 'cancelled',
+                days: order.days,
+                product: order.product,
+                sumMoney: order.sumMoney
+            }
+            // console.log(dataUpdateOrder);
+            await ordersAPI.eidt(id, dataUpdateOrder);
             window.location.hash = `/listcarts`;
             await reRender(ListCartChild, '#list-cart');
         }
@@ -193,11 +207,6 @@ const EditCart = {
         const {
             data: orders
         } = await ordersAPI.read(id);
-        // if (orders.product.length == 0) {
-        //     await ordersAPI.remove(id);
-        //     window.location.hash = `/listcarts`;
-        //     await reRender(ListCartChild, '#list-cart');
-        // }
 
         const changeNumber = $$('.change-number')
         const total = $$('.quantityProduct');

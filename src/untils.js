@@ -1,6 +1,4 @@
 import jwt_decode from 'jwt-decode';
-import Header from './components/header';
-import Home from './pages/home';
 export const useParams = () => {
     const url = window.location.hash.toLocaleLowerCase();
     // console.log(url);
@@ -24,7 +22,7 @@ export const reRender = async (component, position = " ") => {
         $$(position).innerHTML = await component.render();
         // console.log(0);
     } else {
-        console.log(1);
+        // console.log(1);
         $$('#main-content').innerHTML = await component.render();
     }
     await component.afterRender();
@@ -102,7 +100,6 @@ export const checkLogout = () => {
 }
 
 export const search = () => {
-    // console.log($$('[name="search"]').value);
     $$('#demo-search-lg').addEventListener('submit', (e) => {
         e.preventDefault();
         const data = $$('[name="search"]').value

@@ -19,7 +19,42 @@ const ListCarts = {
                 </div>
             </nav>
             <!-- End Navbar -->
+           
             <div class="content">
+            <div class="mb-12">
+            <form id="search-order">
+            <div class="flex  justify-center gap-8">
+            <div >
+                        <label for="">Name/phone/address/times</label><br>
+                    <input type="text" id="searchAll" class="px-2 rounded " >
+                    </div >
+                    <div>
+                        <label for="">Status</label><br>
+                        <select name="" id="status" class="px-6 rounded ">
+                        <option value="#">status</option>
+                        <option value="not approved yet">not approved yet</option>
+                        <option value="approved">approved</option>
+                        <option value="delivered">delivered</option>
+                        <option value="cancelled">cancelled</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="">Short price</label> <br>
+                    <select name="" id="sort" class="px-6 rounded ">
+                    <option value="#">Short price</option>
+                        <option value="asc">expensive</option>
+                        <option value="desc">low</option>
+                    </select>
+                    </div>
+                    <div >
+                        <label for="">Days</label><br>
+                    <input type="date" id="days" class="px-6 rounded ">
+                    </div>
+            </div>
+            <div class="absolute right-0 mr-[150px]"><button type="submit"
+            class=" btn btn-primary pull-left ml-4 uppercase">Search</button></div>
+            </form>
+            </div>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
@@ -83,19 +118,6 @@ const ListCarts = {
                      </tr>
                  </thead>
                  <tbody id="tbody-list" class="h-64 overflow-y-scroll">
-                     <tr>
-                         <td>1</td>
-                         <td>product</td>
-                         <td>image</td>
-                         <td>price</td>
-                         <td>sale</td>
-                         <td>amount</td>
-                         <td>total</td>
-                     </tr>
-                     <tr>
-                         <td colspan="5" >SUM</td>
-                         <td colspan="2" id="sumproduct">total</td>
-                     </tr>
                  </tbody>
              </table>
              </div>
@@ -128,7 +150,7 @@ const ListCarts = {
     },
     async afterRender() {
         $$('.nav li')[5].classList.add("active");
-        return `${await ListCartChild.afterRender()}`
+        return `${await ListCartChild.afterRender()}}`
     }
 
 }

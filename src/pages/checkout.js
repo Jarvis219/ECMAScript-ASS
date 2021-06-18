@@ -69,11 +69,9 @@ const CheckOut = {
                             <div>
                                 <form id="check-out">
                                     <div class=" mb-3">
-                                      
                                             <label for="#"> Name <span class="text-red-400">*</span> </label><br>
                                             <input type="text" name="name" id="name"
                                                 class="check-validate border w-full py-2 rounded-sm  pl-4" >
-                                       
                                     </div>
                                     <div class="mb-3">
                                         <label for="#">Address <span class="text-red-400">*</span></label><br>
@@ -170,7 +168,21 @@ const CheckOut = {
 
         // console.log(priceProduct);
         var total = $$('#total');
-        total.innerHTML = prices(Number($$('#subTotal').innerHTML) + priceProduct);
+        let monney = (Number($$('#subTotal').innerHTML) + Number(priceProduct));
+        // console.log(`${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.length);
+        if (`${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.length == 4) {
+            monney = `${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.substr(0, 2)
+        } else if (`${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.length == 5) {
+            monney = `${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.substr(0, 3)
+        } else if (`${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.length == 6) {
+            monney = `${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.substr(0, 4)
+        } else if (`${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.length == 7) {
+            monney = `${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.substr(0, 5)
+        } else if (`${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.length == 8) {
+            monney = `${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.substr(0, 6)
+        }
+
+        total.innerHTML = prices(Number(monney));
         var day = moment(new Date()).format('DD-MM-YYYY');
 
 
@@ -187,49 +199,11 @@ const CheckOut = {
                     element.style.border = "thick solid #FFFFFF"
                 }
             });
-            if (sumCheck === 0) {
-                const checkOut = {
-                    id: Math.round(Math.random() * 700000),
-                    user: isSetAuthen().email,
-                    name: $$('input[name="name"]').value,
-                    email: $$('input[name="email"]').value,
-                    phone: $$('input[name="phone"]').value,
-                    address: $$('input[name="address"]').value,
-                    note: $$('#note').value,
-                    sumMoney: total.innerHTML,
-                    product: data,
-                    days: day,
-                    status: "not approved yet",
-                }
-                if (ordersAPI.add(checkOut)) {
-                    if (isSetAuthen()) {
-                        data.forEach(async (element) => {
-                            if (element.user == isSetAuthen().email) {
-                                await cartAPI.remove(element.id);
-                            }
-                        })
-                    } else {
-                        localStorage.removeItem('dataCart')
-                    }
-
-                    toast(
-                        'Order success', {
-                            duration: 3000
-                        }, {
-                            // label: 'Confirm',
-                            action: () => alert('Fill in this field!'),
-                            class: 'my-custom-class', // optional, CSS class name for action button
-                        },
-                    );
-                    setTimeout(() => {
-                        window.location.hash = `/order`;
-                    }, 3000)
-
-
-                }
-            } else {
+            let checkEmail = /^\b.{5,32}\w{2,}(\.\w{2,4}){1,2}$/g.test($$('#email').value);
+            let checkPhone = /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test($$('#phone').value);
+            if (!checkEmail) {
                 toast(
-                    'Fill in this field!!!', {
+                    'wrong email format!!!', {
                         duration: 3000
                     }, {
                         // label: 'Confirm',
@@ -237,8 +211,69 @@ const CheckOut = {
                         class: 'my-custom-class', // optional, CSS class name for action button
                     },
                 );
-            }
+            } else if (!checkPhone) {
+                toast(
+                    'wrong phone format!!!', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
+            } else {
+                if (sumCheck === 0) {
+                    const checkOut = {
+                        id: Math.round(Math.random() * 700000),
+                        user: isSetAuthen().email,
+                        name: $$('input[name="name"]').value,
+                        email: $$('input[name="email"]').value,
+                        phone: $$('input[name="phone"]').value,
+                        address: $$('input[name="address"]').value,
+                        note: $$('#note').value,
+                        sumMoney: Number(monney),
+                        product: data,
+                        days: day,
+                        status: "not approved yet",
+                    }
+                    if (ordersAPI.add(checkOut)) {
+                        if (isSetAuthen()) {
+                            data.forEach(async (element) => {
+                                if (element.user == isSetAuthen().email) {
+                                    await cartAPI.remove(element.id);
+                                }
+                            })
+                        } else {
+                            localStorage.removeItem('dataCart')
+                        }
 
+                        toast(
+                            'Order success', {
+                                duration: 3000
+                            }, {
+                                // label: 'Confirm',
+                                action: () => alert('Fill in this field!'),
+                                class: 'my-custom-class', // optional, CSS class name for action button
+                            },
+                        );
+                        setTimeout(() => {
+                            window.location.hash = `/order`;
+                        }, 3000)
+
+
+                    }
+                } else {
+                    toast(
+                        'Fill in this field!!!', {
+                            duration: 3000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
+                }
+            }
 
         })
 

@@ -93,7 +93,7 @@ const Header = {
         <header class="bg-gray-100 position fixed w-screen z-20 top-0  " id="heading">
             <div>
                 <div class="container mx-auto flex justify-between items-center pt-8 pb-6 md:pb-0 lg:gap-4 lg:py-8">
-                    <div class="logo mx-auto md:mx-0">
+                    <div class="logo  md:mx-0">
                         <a href="#/"><img src="${logo[0].logo}" alt="" class="w-full"></a>
                         <div class="md:hidden absolute right-0 top-0 ml-6 mt-8 mr-16 ">
                             <button id="btnMenu" class="border border-gray-700 px-2 py-1 ">

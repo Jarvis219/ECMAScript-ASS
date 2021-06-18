@@ -1,6 +1,9 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import toast from "toast-me";
+import {
+    $$
+} from "../../../untils";
 const AddPost = {
     render() {
         return /*html */ `
@@ -14,7 +17,6 @@ const AddPost = {
                     </div>
                 </div>
             </nav>
-            
             <!-- End Navbar -->
             <div class="content">
             <div class="container-fluid">
@@ -25,47 +27,49 @@ const AddPost = {
                                 <h4 class="card-title uppercase">Add post</h4>
                             </div>
                             <div class="card-body">
-                                <form id="add-infor">
+                                <form id="add-post">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">ID (disabled)</label>
-                                                <input type="text" class="form-control" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Number Phone</label>
-                                                <input type="tel" class="form-control" id="phone"
-                                                    name="post_phone" required>
+                                                <label class="bmd-label-floating">Title</label>
+                                                <input type="text" class="check-validate form-control" id="phone"
+                                                    name="post_title" >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Address</label>
-                                                <input type="text" class="form-control" id="address"
-                                                    name="post_address" required>
+                                        <div class="col-md-12">
+                                            <div class="">
+                                                <label class="bmd-label-floating">Image</label>
+                                                <input type="file" class="check-validate  form-control" id="address"
+                                                    name="post_image" >
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Link google map</label>
-                                                <input type="text" class="form-control" id="maps" name="link_map" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="">
+                                                <label class="bmd-label-floating">Author</label>
+                                                <input type="text" class="check-validate form-control" id="address"
+                                                    name="post_author" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="">
+                                                <label class="bmd-label-floating">Introduce</label>
+                                                    <textarea name="post_introduce" id="" class="check-validate form-control"  rows="5"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Address</label>
-                                                <div  id="editor"><p></p></div
-                                                
-                                                
+                                                <label class="bmd-label-floating">Content</label>
+                                                <div  id="editor"></div
                                             </div>
                                         </div>
-                                        
                                     </div>
                                     <button type="submit" class="btn btn-primary pull-left uppercase" name="submit">add post</button>
                                 </form>
@@ -99,6 +103,58 @@ const AddPost = {
             .catch(error => {
                 console.error('There was a problem initializing the editor.', error);
             });
+
+
+
+        // toast(
+        //     'Fill in this field!', {
+        //         duration: 300000000
+        //     }, {
+        //         // label: 'Confirm',
+        //         action: () => alert('Fill in this field!'),
+        //         class: 'my-custom-class', // optional, CSS class name for action button
+        //     },
+        // );
+
+        $$('#add-post').addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log(editor.getData());
+            var sumCheck = 0;
+            // $$('.check-validate').forEach(element => {
+            //     if (element.value.trim() == "") {
+            //         element.style.border = "2px solid #e84e4e"
+            //         element.placeholder = "Fill in this field";
+            //         sumCheck += sumCheck + 1;
+            //     } else {
+            //         element.style.border = "thick solid #FFFFFF"
+            //     }
+            // });
+            // if (sumCheck === 0) {
+            //     const dataPost = {
+            //         id: Math.round(Math.random() * 700000),
+            //         title:
+
+            //     }
+
+            // } else {
+            //     toast(
+            //         'Fill in this field!', {
+            //             duration: 3000
+            //         }, {
+            //             // label: 'Confirm',
+            //             action: () => alert('Fill in this field!'),
+            //             class: 'my-custom-class', // optional, CSS class name for action button
+            //         },
+            //     );
+            // }
+
+
+
+
+        })
+
+
+
     }
 }
 export default AddPost;

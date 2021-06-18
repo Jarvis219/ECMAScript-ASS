@@ -59,14 +59,6 @@ const EitProduct = {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">ID product (disabled) </label>
-                                                    <input type="text" value="${result.id}" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
                                                     <label class="bmd-label-floating">Name product</label>
                                                     <input type="text" class="check-validate form-control"  value="${result.name}"  id="name" name="name_product"
                                                         >

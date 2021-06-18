@@ -21,6 +21,18 @@ export const ordersAPI = {
     read(id) {
         const url = `orders/${id}`;
         return axiosClient.get(url);
+    },
+    listSort() {
+        const url = `orders?_sort=sumMoney&_order=asc`;
+        return axiosClient.get(url);
+    },
+    listSortDesc() {
+        const url = `orders?_sort=sumMoney&_order=desc`;
+        return axiosClient.get(url);
+    },
+    listSearchAll(data) {
+        const url = `orders?q=${data}`;
+        return axiosClient.get(url);
     }
 
 

@@ -7,8 +7,8 @@ import {
 const BlogDetail = {
     async render() {
         return /*html */ `
-            ${await Header.render()}
-            <div class="mb-12">
+       ${await Header.render()}
+        <div class="mb-12">
         <main class="container mx-auto lg:px-16 lg:pt-24">
             <div>
                 <div class="my-8 ">

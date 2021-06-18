@@ -33,14 +33,6 @@ const AddCategory = {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">ID Category (disabled) </label>
-                                                    <input type="text" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
                                                     <label class="bmd-label-floating">Name Category</label>
                                                     <input type="text" class="check-validate form-control" id="name" name="name_category"
                                                      >
@@ -81,6 +73,7 @@ const AddCategory = {
             e.preventDefault();
             var sumCheck = 0;
             const check_validate = $$('.check-validate');
+            // console.log(check_validate.value.trim().toLocaleLowerCase());
             if (check_validate.value.trim() == "") {
                 check_validate.style.border = "2px solid #e84e4e"
                 check_validate.placeholder = "Fill in this field";
@@ -89,10 +82,10 @@ const AddCategory = {
                 check_validate.style.border = "thick solid #FFFFFF"
             }
             if (sumCheck === 0) {
-                const nameCate = $$('[name="name_category"]').value.trim();
+                const nameCate = $$('[name="name_category"]').value.trim().toLocaleLowerCase();
                 let checkName = 0;
                 data.forEach(element => {
-                    if (element.name == nameCate) {
+                    if (element.name.toLocaleLowerCase() == nameCate) {
                         checkName = 1;
                     }
                 });

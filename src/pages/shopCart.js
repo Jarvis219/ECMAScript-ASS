@@ -8,7 +8,8 @@ import {
     showCartNotUser,
     checkLogout,
     isSetAuthen,
-    search
+    search,
+    reRender
 } from '../untils';
 const ShopCart = {
     async render() {
@@ -50,11 +51,43 @@ const ShopCart = {
                                 </tbody>
                             </table>
                         </div>
+
+                        <div class="flex justify-center lg:justify-end">
+                        <div class="mt-14 bg-gray-100 w-80">
+                            <div class="p-12">
+                                <h2 class="text-sm lg:text-lg font-bold">CART TOTAL</h2>
+                                <div class="my-4">
+                                    <div class="flex justify-between items-center">
+                                        <div class="font-medium text-sm md:text-lg">
+                                            <span>Subtotal</span>
+                                        </div>
+                                        <div class="text-red-500 font-normal text-xs md:text-base">
+                                            $ <span class="subtotal">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-2">
+                                        <div class=" font-medium  text-sm md:text-lg">
+                                            <span>Total</span>
+                                        </div>
+                                        <div class="text-red-500 font-normal text-xs md:text-base">
+                                            $<span class="totals">750</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="text-center font-bold text-white rounded-lg bg-red-500 hover:text-green-300 ">
+                                    <a href="#/checkout"><button class="py-1 px-3 text-xs md:text-base" id="check-Btn">
+                                    PROCEED TO CHECKOUT
+                                </button></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 `;
                 }
             }
             showShopCarts = data.map(element => {
-                // console.log(element.productId);
                 if (isSetAuthen()) {
                     var trashCart = () => {
 
@@ -105,7 +138,7 @@ const ShopCart = {
             }).join("");
         } else {
             tables = () => {
-                return `<h2 class="text-center"><button><a href="/#/products">BUY NOW</a></button><h2>`
+                return `<h2 class="text-center"><button><a href="/#/products">BUY NOW</a></button><h2>`;
             }
         }
 
@@ -125,38 +158,7 @@ const ShopCart = {
 
                     ${tables()}
 
-                    <div class="flex justify-center lg:justify-end">
-                        <div class="mt-14 bg-gray-100 w-80">
-                            <div class="p-12">
-                                <h2 class="text-sm lg:text-lg font-bold">CART TOTAL</h2>
-                                <div class="my-4">
-                                    <div class="flex justify-between items-center">
-                                        <div class="font-medium text-sm md:text-lg">
-                                            <span>Subtotal</span>
-                                        </div>
-                                        <div class="text-red-500 font-normal text-xs md:text-base">
-                                            $ <span class="subtotal">0</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-between items-center mt-2">
-                                        <div class=" font-medium  text-sm md:text-lg">
-                                            <span>Total</span>
-                                        </div>
-                                        <div class="text-red-500 font-normal text-xs md:text-base">
-                                            $<span class="totals">750</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="text-center font-bold text-white rounded-lg bg-red-500 hover:text-green-300 ">
-                                    <a href="#/checkout"><button class="py-1 px-3 text-xs md:text-base" id="check-Btn">
-                                    PROCEED TO CHECKOUT
-                                </button></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
@@ -456,6 +458,12 @@ const ShopCart = {
                         var removeItem = $$(`.cor-${id}`);
                         if (removeItem) {
                             removeItem.remove();
+                            const {
+                                data
+                            } = await cartAPI.list();
+                            if (data.length === 0) {
+                                window.location.hash = `/products`;
+                            }
                         }
                     }
                 })
@@ -479,6 +487,7 @@ const ShopCart = {
                 element.addEventListener('click', async () => {
                     const question = confirm('Are you want to delete?');
                     var removeItem = $$(`.cor-${id}`);
+                    console.log(arr.length);
                     if (arr.length > 1) {
                         if (question) {
                             // console.log(localStorage.getItem('dataCart'));
@@ -487,15 +496,19 @@ const ShopCart = {
                                 arr.forEach(ele => {
                                     newArr.push(ele);
                                 })
-                                removeItem.remove();
                                 localStorage.removeItem('dataCart')
                                 localStorage.setItem('dataCart', JSON.stringify(newArr));
+                                removeItem.remove();
                             }
                         }
                     } else {
+                        // console.log(removeItem);
                         if (removeItem) {
-                            localStorage.removeItem('dataCart')
-                            removeItem.remove()
+                            localStorage.removeItem('dataCart');
+                            removeItem.remove();
+                            if (!localStorage.getItem("dataCart")) {
+                                window.location.hash = `/products`;
+                            }
                         }
                     }
                 })

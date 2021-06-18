@@ -1,4 +1,5 @@
 import NavBarAdmin from "../../../components/navbaradmin";
+import ListUsersChild from '../../../components/listusersChild';
 import toast from 'toast-me';
 import {
     UserAPI
@@ -15,11 +16,11 @@ const EditUser = {
     async render() {
         const {
             id
-        } = await useParams()
+        } = useParams()
         const {
             data: user
         } = await UserAPI.listedit(id);
-
+        // console.log(user.password);
 
         return /*html*/ `
         ${NavBarAdmin.render()}
@@ -44,42 +45,15 @@ const EditUser = {
                                 <div class="card-body">
                                 <form id="edit-user">
                                 <div class="my-custom-class"></div>
-                                <div class="row ">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Email </label>
-                                            <input type="email" value="${user.email}" class="check-validate form-control" id="email" name=""
-                                            disabled >
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Name </label>
                                             <input type="text" value="${user.name}" class="check-validate form-control" id="name" name=""
-                                            >
+                                            ><span class="error-input text-red-500 text-xs "><span>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Password </label>
-                                            <input type="password" value="" minlength="8" class="check-validate form-control" id="password" name=""
-                                             >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Password </label>
-                                            <input type="password" value="" minlength="8" class="check-validate form-control" id="confirmPass" name=""
-                                            >
-                                        </div>
-                                    </div>
-                                    <div class="hidden" id="permis">${user.permission}</div>
-                            </div>
                                 <button type="submit" class="btn btn-primary pull-left uppercase">edit
                                     user</button>
                             </form>
@@ -110,29 +84,28 @@ const EditUser = {
         const {
             id
         } = useParams();
+        const {
+            data: user
+        } = await UserAPI.listedit(id);
         $$('#edit-user').addEventListener('submit', async (e) => {
             e.preventDefault();
-
             var sumCheck = 0;
-            $$('.check-validate').forEach(element => {
-                if (element.value.trim() == "") {
-                    element.style.border = "2px solid #e84e4e"
-                    element.placeholder = "Fill in this field";
-                    sumCheck += sumCheck + 1;
-                } else {
-                    element.style.border = "thick solid #FFFFFF"
-                }
-            });
+            if ($$('.check-validate').value.trim() == "" || $$('.check-validate').value == null) {
+                $$('.error-input').innerHTML = "Fill in this field!!!";
+                sumCheck = 1;
+            } else {
+                $$('.error-input').innerHTML = "";
+            }
             if (sumCheck === 0) {
                 if ($$('#password').value == $$('#confirmPass').value) {
                     const editUser = {
                         id: id,
-                        email: $$('#email').value,
-                        password: $$('#password').value,
+                        email: user.email,
+                        password: user.password,
                         name: $$('#name').value,
-                        permission: $$('#permis').innerHTML
+                        permission: user.permission
                     }
-                    console.log(editUser);
+                    console.log(editUser.password);
                     await UserAPI.update(id, editUser);
                     toast(
                         'Update user success', {

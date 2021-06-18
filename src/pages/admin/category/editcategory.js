@@ -41,14 +41,6 @@ const EditCategory = {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">ID Category (disabled) </label>
-                                                    <input type="text" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
                                                     <label class="bmd-label-floating">Name Category</label>
                                                     <input type="text" class="check-validate form-control" value="${result.name}" id="name" name="name_category"
                                                      >

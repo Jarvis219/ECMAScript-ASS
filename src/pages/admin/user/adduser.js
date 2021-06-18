@@ -34,14 +34,6 @@ const AddUser = {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">ID user (disabled) </label>
-                                                    <input type="text" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
                                                     <label class="bmd-label-floating">Name </label>
                                                     <input type="text" class="check-validate form-control" id="name" name=""
                                                     >

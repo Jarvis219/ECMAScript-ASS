@@ -44,17 +44,10 @@ const AddProduct = {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">ID product (disabled) </label>
-                                                    <input type="text" class="form-control" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
                                                     <label class="bmd-label-floating">Name product</label>
                                                     <input type="text" class="check-validate form-control" id="name" name="name_product" 
                                                      >
+                                                     <span  class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,6 +57,7 @@ const AddProduct = {
                                                     <label class="bmd-label-floating">Price ($)</label>
                                                     <input type="number" name="price" class="check-validate form-control" id="price" 
                                                      >
+                                                     <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -71,6 +65,7 @@ const AddProduct = {
                                                     <label class="bmd-label-floating">Promotional ($)</label>
                                                     <input type="number" class="check-validate form-control" name="promotional" 
                                                         id="promotional" >
+                                                        <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,6 +76,7 @@ const AddProduct = {
                                                     <label class="bmd-label-floating">Introduction</label>
                                                     <textarea name="introduction" cols="30" id="introduction" rows="10"
                                                         class="check-validate form-control border  product"  ></textarea>
+                                                        <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,6 +86,7 @@ const AddProduct = {
                                                     <label class="bmd-label-floating">Content</label>
                                                     <textarea name="content" cols="30" rows="10" id="content"
                                                         class="check-validate form-control border  product"></textarea>
+                                                        <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,6 +96,7 @@ const AddProduct = {
                                                     <label class="bmd-label-floating">ImageIntro</label>
                                                     <input type="file" class="check-validate form-control"  name="promotional"
                                                     id="image" >
+                                                    <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,6 +107,7 @@ const AddProduct = {
                                                     <label class="bmd-label-floating">Album</label>
                                                     <input type="file" class="check-validate form-control album" multiple name="promotional"
                                                     id="" >
+                                                    <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -198,20 +197,30 @@ const AddProduct = {
     },
     afterRender() {
         $$('.nav li')[3].classList.add("active");
-        $$('#add-product').addEventListener('submit', (e) => {
+        $$('#add-product').addEventListener('submit', async (e) => {
             e.preventDefault();
             var sumCheck = 0;
-            $$('.check-validate').forEach(element => {
+            $$('.check-validate').forEach((element, index) => {
                 if (element.value.trim() == "" || element.value == null) {
-                    element.style.border = "2px solid #e84e4e"
-                    element.placeholder = "Fill in this field";
+                    $$('.error-input')[index].innerHTML = "Fill in this field!!!";
+                    // if(element)
                     sumCheck += sumCheck + 1;
-                    // console.log(element);
                 } else {
-                    element.style.border = "thick solid #FFFFFF"
+                    $$('.error-input')[index].innerHTML = "";
                 }
             });
-            if (sumCheck === 0) {
+            var checkName;
+            const {
+                data: checkProducts
+            } = await productAPI.list();
+            checkProducts.forEach(ele => {
+                // console.log($$('#name').value.toLocaleLowerCase());
+                if (ele.name.toLocaleLowerCase() == $$('#name').value.toLocaleLowerCase()) {
+                    checkName = true;
+                }
+            })
+            console.log(checkName);
+            if (sumCheck === 0 && checkName !== true) {
                 const size = $$('[name="size"]');
                 const sizes = [];
                 const urls = [];
@@ -220,7 +229,6 @@ const AddProduct = {
 
                 size.forEach(element => {
                     if (element.checked) {
-
                         sizes.push(element.value);
                     }
                 });
@@ -323,16 +331,30 @@ const AddProduct = {
                     }
 
                 })
+
             } else {
-                toast(
-                    'Fill in this field!', {
-                        duration: 3000
-                    }, {
-                        // label: 'Confirm',
-                        action: () => alert('Fill in this field!'),
-                        class: 'my-custom-class', // optional, CSS class name for action button
-                    },
-                );
+                if (checkName == true) {
+                    $$('.error-input')[0].innerHTML = "Name already exist!!!";
+                    toast(
+                        'Name already exist', {
+                            duration: 5000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
+                } else {
+                    toast(
+                        'Fill in this field!', {
+                            duration: 3000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
+                }
             }
 
         });
