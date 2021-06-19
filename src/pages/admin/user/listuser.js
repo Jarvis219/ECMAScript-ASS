@@ -20,14 +20,14 @@ const ListUser = {
             </div>
         </nav>
         <div  class="flex justify-center">
-            <div class=" absolute mt-20 lg:mt-15 z-50">
+            <div class=" absolute mt-12 lg:mt-15 z-30">
             <a href="/#/adduser"><button type="submit"
                     class="btn btn-primary pull-left ml-4 uppercase">ADD user</button></a>
             </div>
             </div>
          
         <!-- End Navbar -->
-        <div class="content">
+        <div class="mt-12 mx-4">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">

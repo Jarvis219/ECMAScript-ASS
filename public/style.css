@@ -640,6 +640,9 @@ video {
 .z-10 {
 	z-index: 10;
 }
+.z-30 {
+	z-index: 30;
+}
 .col-span-8 {
 	grid-column: span 8 / span 8;
 }
@@ -654,6 +657,9 @@ video {
 }
 .col-span-12 {
 	grid-column: span 12 / span 12;
+}
+.m-12 {
+	margin: 3rem;
 }
 .mx-auto {
 	margin-left: auto;
@@ -801,6 +807,9 @@ video {
 }
 .ml-12 {
 	margin-left: 3rem;
+}
+.mt-11 {
+	margin-top: 2.75rem;
 }
 .box-border {
 	box-sizing: border-box;

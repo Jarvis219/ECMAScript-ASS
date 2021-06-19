@@ -30,10 +30,10 @@
       "id": 504038,
       "name": "Venus in Play Sleep Tee Peony",
       "categoryId": "381553",
-      "content": "    *All colors feature some degree of heathering: meaning two or more colors/variations of yarn are knitted together, the effect is more pronounced in the grey because, however there are slight variations in the ambrosia, rose, and olympian blue. <br>\n\n\nWash and Dry on delicate cycle with like colors, Hang or Line Dry recommended - tumble dry low heat. Light Iron ok (avoid lace and drawstring)<br>\n\n \nbody: 87% polyester, 10% rayon, 3% spandex (lace trim nylon/spandex)<br>\n\nMade in the USA<br>\n\nBetween the Sheets Collection<br>",
-      "price": "100",
+      "content": "       *All colors feature some degree of heathering: meaning two or more colors/variations of yarn are knitted together, the effect is more pronounced in the grey because, however there are slight variations in the ambrosia, rose, and olympian blue. <br>\n\n\nWash and Dry on delicate cycle with like colors, Hang or Line Dry recommended - tumble dry low heat. Light Iron ok (avoid lace and drawstring)<br>\n\n \nbody: 87% polyester, 10% rayon, 3% spandex (lace trim nylon/spandex)<br>\n\nMade in the USA<br>\n\nBetween the Sheets Collection<br>",
+      "price": "120",
       "sale": "10",
-      "introduce": "    Lounge like a goddess in our Venus in Play dolman tee. Intentionally oversized and uber-comfortable, you'll want to lounge for days in this U-neck tee. A double layer of whisper soft raw edge lace trims the sleeve and neck.<br>\nPair it with our Venus in Play Pant or Shortie for a truly divine lounge ensemble<br>\n\nMade in the USA<br>\n\nBetween the Sheets Collection<br>    ",
+      "introduce": "       Lounge like a goddess in our Venus in Play dolman tee. Intentionally oversized and uber-comfortable, you'll want to lounge for days in this U-neck tee. A double layer of whisper soft raw edge lace trims the sleeve and neck.<br>\nPair it with our Venus in Play Pant or Shortie for a truly divine lounge ensemble<br>\n\nMade in the USA<br>\n\nBetween the Sheets Collection<br>       ",
       "imageIntro": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F44J024BC-lilac-venus-in-play-tee-f-web.jpeg?alt=media&token=f4e2100d-d7ee-4827-a613-f0a9fdd51d3d",
       "album": [
         "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F33J024BC-peony-pink-venus-in-play-short-f2-web.jpeg?alt=media&token=fdcd1f85-96d2-4167-8504-fa04860e3752",
@@ -375,7 +375,7 @@
       "email": "songoku2192@gmail.com",
       "phone": "0968686686",
       "content": "asd",
-      "status": "Not approved yet"
+      "status": "Approved"
     },
     {
       "id": 107949,
@@ -388,18 +388,18 @@
   ],
   "users": [
     {
+      "id": 1,
       "email": "kaio@gmail.com",
-      "password": "$2a$10$CbTm5y2MaqASQDD0BNMll.BsA8uhdFJM6NqLJDisLU5iSB8njm/a.",
       "name": "kaio",
-      "permission": "Admin",
-      "id": 1
+      "password": "$2a$10$T8LpzZ3omtGZzGLn5sftN.7rTGjHWw7c6iKYCOAjjuMSLexugEyXW",
+      "permission": "Admin"
     },
     {
+      "id": 2,
       "email": "kh1@gmail.com",
-      "password": "$2a$10$1LsKkkI/oVxNr1q0eTrNXeJZww3lgA7VPOnt3kL58epHkVSp4bJ/y",
       "name": "Mr Rin",
-      "permission": "Customer",
-      "id": 2
+      "password": "$2a$10$jfKj5xJqg2Ooxw3.9SeZUuzOhaDiEEmRcJfshknXw.g.OkEgwOjtK",
+      "permission": "Member"
     },
     {
       "email": "admin@gmail.com",
@@ -412,103 +412,74 @@
   "carts": [],
   "orders": [
     {
-      "id": 481996,
+      "id": 158346,
       "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "name": "Trần Quang",
+      "name": "Trần Quang Anh",
       "email": "songoku2192@gmail.com",
-      "note": "sa",
+      "note": "dasda",
       "phone": "0968686686",
       "status": "cancelled",
-      "days": "17-06-2021",
-      "product": [
-        {
-          "id": 103910,
-          "name": "Official Yarn Dyed Oversized Stripe",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2Fyellow-official-yarn-dyed-oversized-stripe-t-shirt.jpeg?alt=media&token=3fc5ac87-69f8-4c7c-b0de-c1c37d39fa36",
-          "price": "90",
-          "sale": "6",
-          "size": "XS",
-          "days": "17-06-2021",
-          "totalmoney": 252,
-          "amount": 3
-        }
-      ],
-      "sumMoney": 252
+      "days": "19-06-2021",
+      "pay": "Direct money transfer",
+      "product": [],
+      "sumMoney": 0
     },
     {
-      "id": 251005,
-      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "email": "songoku2192@gmail.com",
-      "name": "Mr Rin",
-      "note": "",
-      "phone": "0968686686",
-      "product": [
-        {
-          "id": 297729,
-          "productId": "504038",
-          "user": "kaio@gmail.com",
-          "name": "Venus in Play Sleep Tee Peony",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F44J024BC-lilac-venus-in-play-tee-f-web.jpeg?alt=media&token=f4e2100d-d7ee-4827-a613-f0a9fdd51d3d",
-          "price": "100",
-          "sale": "10",
-          "size": "XXS",
-          "status": "not approved yet",
-          "days": "18-06-2021",
-          "totalmoney": "360",
-          "amount": "4"
-        }
-      ],
-      "sumMoney": 360,
-      "status": "delivered",
-      "days": "18-06-2021"
-    },
-    {
-      "id": 518020,
+      "id": 192766,
       "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
       "email": "taquang.hskx.2000@gmail.com",
       "name": "Trần Quang",
-      "note": "sad",
-      "phone": "0968686686",
-      "product": [
-        {
-          "id": "504038",
-          "name": "Venus in Play Sleep Tee Peony",
-          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F44J024BC-lilac-venus-in-play-tee-f-web.jpeg?alt=media&token=f4e2100d-d7ee-4827-a613-f0a9fdd51d3d",
-          "price": "100",
-          "sale": "10",
-          "size": "XXS",
-          "amount": 1,
-          "totalmoney": 90,
-          "days": "18-06-2021"
-        }
-      ],
-      "sumMoney": 90,
-      "status": "approved",
-      "days": "18-06-2021"
-    },
-    {
-      "id": 510200,
-      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
-      "name": "Mr Rin",
-      "email": "rintl260700@gmail.com",
       "note": "sa",
       "phone": "0968686686",
-      "status": "not approved yet",
-      "days": "18-06-2021",
       "product": [
         {
-          "id": 529585,
+          "id": 546774,
+          "productId": "529585",
+          "user": "admin@gmail.com",
           "name": "Matchplay Long Robe Heather Grey",
           "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F51J025BC-grey-robe-matchplay-still-life-web.jpeg?alt=media&token=98d8d774-5fc6-4e84-96b8-c11ec8c712a4",
           "price": "95",
           "sale": "0",
           "size": "XS",
-          "days": "18-06-2021",
-          "totalmoney": 190,
-          "amount": 2
+          "totalmoney": 95,
+          "amount": "1",
+          "status": "not approved yet",
+          "days": "19-06-2021"
         }
       ],
-      "sumMoney": 190
+      "sumMoney": 95,
+      "pay": "Payment on delivery",
+      "status": "approved",
+      "days": "19-06-2021"
+    },
+    {
+      "id": 55168,
+      "user": "admin@gmail.com",
+      "name": "Trần Quang",
+      "email": "taquang.hskx.2000@gmail.com",
+      "phone": "0968686686",
+      "address": "Trịnh Văn Bô - Nam Từ Liêm - Hà Nội",
+      "note": "as",
+      "sumMoney": 90,
+      "product": [
+        {
+          "id": 113445,
+          "productId": "504038",
+          "user": "admin@gmail.com",
+          "name": "Venus in Play Sleep Tee Peony",
+          "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2F44J024BC-lilac-venus-in-play-tee-f-web.jpeg?alt=media&token=f4e2100d-d7ee-4827-a613-f0a9fdd51d3d",
+          "price": "100",
+          "sale": "10",
+          "size": "XXS",
+          "totalmoney": 90,
+          "amount": "1",
+          "status": "not approved yet",
+          "days": "19-06-2021"
+        }
+      ],
+      "days": "19-06-2021",
+      "pay": "Direct transfer",
+      "status": "not approved yet"
     }
   ],
   "informations": [
@@ -522,5 +493,24 @@
       "email": "Quangtaph12673@fpt.edu.vn"
     }
   ],
-  "posts": []
+  "posts": [
+    {
+      "id": 363382,
+      "title": "asda",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2FScreen%20Shot%202021-06-15%20at%2008.48.38.png?alt=media&token=186f4253-8ae3-40e8-88c5-777020a3def3",
+      "author": "asd",
+      "introduce": "dasd",
+      "content": "<p>sad</p>",
+      "day": "19-06-2021"
+    },
+    {
+      "id": 671387,
+      "title": "post",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ahsion.appspot.com/o/images%2FScreen%20Shot%202021-06-15%20at%2008.48.38.png?alt=media&token=7a47f630-4720-4882-92f6-85f417615aa4",
+      "author": "das",
+      "introduce": "dasd",
+      "content": "<p>dasdasd</p>",
+      "day": "19-06-2021"
+    }
+  ]
 }

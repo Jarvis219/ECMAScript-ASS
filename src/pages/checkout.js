@@ -91,6 +91,26 @@ const CheckOut = {
                                         <textarea  id="note" rows="9"
                                             class="border rounded-sm w-full  p-4 "></textarea>
                                     </div>
+                                    <div>
+                                    <label for="#">Payment methods </label><br>
+                                    <div class="pay-card">
+                                    <ul>
+                                        <li class="li-one">
+                                            <input type="radio" name="pay" id="one" value ="Payment on delivery" checked />
+                                            <label for="one">Payment on delivery</label>
+                                            
+                                            <div class="check"></div>
+                                        </li>
+                                        
+                                        <li>
+                                            <input type="radio" name="pay" id="two" value="Direct transfer" />
+                                            <label for="two">Direct transfer</label>
+                                            
+                                            <div class="check"></div>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                    </div>
                                     <div
                                         class="bg-red-400 text-white hover:text-green-400 rounded-md text-center mt-4 ">
                                         <button  class="my-3 uppercase  font-semibold">PLACE ODER</button>
@@ -223,6 +243,13 @@ const CheckOut = {
                 );
             } else {
                 if (sumCheck === 0) {
+                    var pay;
+                    $$('[name="pay"]').forEach(element => {
+                        if (element.checked) {
+                            pay = element.value;
+                        }
+                    })
+                    console.log(pay);
                     const checkOut = {
                         id: Math.round(Math.random() * 700000),
                         user: isSetAuthen().email,
@@ -234,6 +261,7 @@ const CheckOut = {
                         sumMoney: Number(monney),
                         product: data,
                         days: day,
+                        pay: pay,
                         status: "not approved yet",
                     }
                     if (ordersAPI.add(checkOut)) {

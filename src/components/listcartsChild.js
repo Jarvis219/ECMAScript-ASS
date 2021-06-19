@@ -38,6 +38,16 @@ const ListCartChild = {
                     return ` <option value="cancelled">cancelled</option>`;
                 }
             }
+            var checkEdit;
+            if (element.status == "cancelled" || element.status == "delivered") {
+                checkEdit = ``;
+            } else {
+                checkEdit = `<button
+                title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
+                    href="#/editcart/${element.id}"
+                    class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button>`;
+            }
+
             let monney = element.sumMoney;
             // console.log(`${element.sumMoney}`.length);
             if (`${element.sumMoney}`.length == 4) {
@@ -65,10 +75,7 @@ const ListCartChild = {
             </select></div></td>
             <td class="w-20"> <button data-id="${element.id}"
             class="list-eye-btn text-xl bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></td>
-            <td class="w-20"><button
-            title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
-                href="#/editcart/${element.id}"
-                class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td> 
+            <td class="w-20">${checkEdit}</td> 
             <td class="w-20"><button data-id="${element.id}"
             class="list-cart-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                 <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button></td>
@@ -136,6 +143,16 @@ const ListCartChild = {
                         return ` <option value="cancelled">cancelled</option>`;
                     }
                 }
+                let checkEdit;
+                if (element.status == "cancelled" || element.status == "delivered") {
+                    checkEdit = ``;
+                } else {
+                    checkEdit = `<button
+                    title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
+                        href="#/editcart/${element.id}"
+                        class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button>`;
+                }
+
                 let monney = element.sumMoney;
                 // console.log(`${element.sumMoney}`.length);
                 if (`${element.sumMoney}`.length == 4) {
@@ -163,10 +180,7 @@ const ListCartChild = {
             </select></div></td>
             <td class="w-20"> <button data-id="${element.id}"
             class="list-eye-btn text-xl bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></td>
-            <td class="w-20"><button
-            title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
-                href="#/editcart/${element.id}"
-                class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td> 
+            <td class="w-20">${checkEdit}</td> 
             <td class="w-20"><button data-id="${element.id}"
             class="list-cart-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                 <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button></td>
@@ -218,6 +232,17 @@ const ListCartChild = {
                         return ` <option value="cancelled">cancelled</option>`;
                     }
                 }
+
+                let checkEdit;
+                if (element.status == "cancelled" || element.status == "delivered") {
+                    checkEdit = ``;
+                } else {
+                    checkEdit = `<button
+                    title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
+                        href="#/editcart/${element.id}"
+                        class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button>`;
+                }
+
                 let monney = element.sumMoney;
                 // console.log(`${element.sumMoney}`.length);
                 if (`${element.sumMoney}`.length == 4) {
@@ -244,10 +269,7 @@ const ListCartChild = {
             </select></div></td>
             <td class="w-20"> <button data-id="${element.id}"
             class="list-eye-btn text-xl bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></td>
-            <td class="w-20"><button
-            title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
-                href="#/editcart/${element.id}"
-                class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td> 
+            <td class="w-20">${checkEdit}</td> 
             <td class="w-20"><button data-id="${element.id}"
             class="list-cart-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                 <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button></td>
@@ -304,6 +326,15 @@ const ListCartChild = {
                                 return ` <option value="cancelled">cancelled</option>`;
                             }
                         }
+                        let checkEdit;
+                        if (element.status == "cancelled" || element.status == "delivered") {
+                            checkEdit = ``;
+                        } else {
+                            checkEdit = `<button
+                    title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
+                        href="#/editcart/${element.id}"
+                        class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button>`;
+                        }
                         let monney = element.sumMoney;
                         // console.log(`${element.sumMoney}`.length);
                         if (`${element.sumMoney}`.length == 4) {
@@ -330,10 +361,7 @@ const ListCartChild = {
                     </select></div></td>
                     <td class="w-20"> <button data-id="${element.id}"
                     class="list-eye-btn text-xl bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></td>
-                    <td class="w-20"><button
-                    title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a
-                        href="#/editcart/${element.id}"
-                        class="inline-block py-2 px-3"><i class="far fa-edit"></i></a></button></td> 
+                    <td class="w-20">${checkEdit}</td> 
                     <td class="w-20"><button data-id="${element.id}"
                     class="list-cart-btn bg-gradient-to-r from-purple-200 via-pink-500 to-red-500 text-white rounded-lg  transition duration-300 ease-in-out transform hover:scale-105">
                         <i class="far fa-trash-alt inline-block px-3 py-[13px]"></i></button></td>
@@ -386,6 +414,7 @@ const ListCartChild = {
                 $$('#address').innerHTML = data.address;
                 $$('#phone').innerHTML = data.phone;
                 $$('#note').innerHTML = data.note;
+                $$('#pay').innerHTML = data.pay;
                 $$('#total').innerHTML = prices(Number(data.sumMoney));
                 $$('#times').innerHTML = data.days;
 
@@ -447,6 +476,7 @@ const ListCartChild = {
                     phone: data.phone,
                     product: data.product,
                     sumMoney: data.sumMoney,
+                    pay: data.pay,
                     status: element.value,
                     days: data.days,
                 }

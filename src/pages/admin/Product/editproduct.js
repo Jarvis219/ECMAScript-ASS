@@ -46,7 +46,7 @@ const EitProduct = {
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div class="content">
+            <div class="mt-12 mx-4">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-10">
@@ -61,7 +61,7 @@ const EitProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name product</label>
                                                     <input type="text" class="check-validate form-control"  value="${result.name}"  id="name" name="name_product"
-                                                        >
+                                                        > <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,14 +70,14 @@ const EitProduct = {
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Price ($)</label>
                                                     <input type="number"  value="${result.price}"  name="price" class="check-validate form-control" id="price"
-                                                        >
+                                                        > <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Promotional ($)</label>
                                                     <input type="number"  value="${result.sale}"  class="check-validate form-control" name="promotional"
-                                                        id="promotional">
+                                                        id="promotional"> <span class="error-input text-red-500 text-xs "><span>
                                                 </div>
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@ const EitProduct = {
                                                     <label class="bmd-label-floating">Introduction</label>
                                                     <textarea name="introduction" cols="30" id="introduction" rows="10"
                                                         class="check-validate form-control border  product" > ${result.introduce} </textarea>
-                                                </div>
+                                                </div> <span class="error-input text-red-500 text-xs "><span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -97,7 +97,7 @@ const EitProduct = {
                                                     <label class="bmd-label-floating">Content</label>
                                                     <textarea name="content" cols="30" rows="10" id="content"
                                                         class="check-validate form-control border  product" > ${result.content}</textarea>
-                                                </div>
+                                                </div> <span class="error-input text-red-500 text-xs "><span>
                                             </div>
                                         </div>
                                              <div class="row">
@@ -235,14 +235,13 @@ const EitProduct = {
         $$('#form-update-product').addEventListener('submit', (e) => {
             e.preventDefault();
             var sumCheck = 0;
-            $$('.check-validate').forEach(element => {
+            $$('.check-validate').forEach((element, index) => {
                 if (element.value.trim() == "" || element.value == null) {
-                    element.style.border = "2px solid #e84e4e"
-                    element.placeholder = "Fill in this field";
+                    $$('.error-input')[index].innerHTML = "Fill in this field!!!";
                     sumCheck += sumCheck + 1;
                     // console.log(element);
                 } else {
-                    element.style.border = "thick solid #FFFFFF"
+                    $$('.error-input')[index].innerHTML = "";
                 }
             });
             if (sumCheck === 0) {

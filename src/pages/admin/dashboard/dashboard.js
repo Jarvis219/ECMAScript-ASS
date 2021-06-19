@@ -12,6 +12,9 @@ import {
 import {
   contactAPI
 } from "../../../api/contactAPI";
+import {
+  productAPI
+} from "../../../api/productAPI";
 const Dashboard = {
   async render() {
     const {
@@ -23,6 +26,9 @@ const Dashboard = {
     const {
       data: order
     } = await ordersAPI.list()
+    const {
+      data: products
+    } = await productAPI.list()
     let total = 0;
     order.forEach(element => {
       // console.log(element.sumMoney);
@@ -83,7 +89,7 @@ const Dashboard = {
             <div class="content">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card card-stats">
                       <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
@@ -99,7 +105,7 @@ const Dashboard = {
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card card-stats">
                       <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
@@ -115,7 +121,7 @@ const Dashboard = {
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="card card-stats">
                       <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
@@ -131,25 +137,43 @@ const Dashboard = {
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                      <div class="card-header card-header-info card-header-icon">
-                        <div class="card-icon">
-                          <i class="fa fa-twitter"></i>
-                        </div>
-                        <p class="card-category uppercase">Contact</p>
-                        <h3 class="card-title">${contact.length}</h3>
+                  
+                </div>
+                <div  >
+                <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                      <div class="card-icon">
+                        <i class="fa fa-twitter"></i>
                       </div>
-                      <div class="card-footer">
-                        <div class="stats">
-                          
-                        </div>
+                      <p class="card-category uppercase">Contact</p>
+                      <h3 class="card-title">${contact.length}</h3>
+                    </div>
+                    <div class="card-footer">
+                      <div class="stats">
+                        
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="flex justify-center" >
-                
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                      <div class="card-icon">
+                      <i class="fab fa-product-hunt"></i>
+                      </div>
+                      <p class="card-category uppercase">Product</p>
+                      <h3 class="card-title">${products.length}</h3>
+                    </div>
+                    <div class="card-footer">
+                      <div class="stats">
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 
 
     

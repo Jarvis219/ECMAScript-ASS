@@ -29,6 +29,7 @@ const EditCart = {
                 phone: order.phone,
                 status: 'cancelled',
                 days: order.days,
+                pay: order.pay,
                 product: order.product,
                 sumMoney: order.sumMoney
             }
@@ -227,6 +228,7 @@ const EditCart = {
                 phone: $$('input[name="phone_order"]').value,
                 status: orderClick.status,
                 days: orderClick.days,
+                pay: orderClick.pay,
                 product: orderClick.product,
                 sumMoney: orderClick.sumMoney
             }
@@ -398,6 +400,7 @@ const EditCart = {
                     status: orders.status,
                     days: orders.days,
                     product: arrProduct,
+                    pay: orders.pay,
                     sumMoney: sumMoney
                 }
                 await ordersAPI.eidt(id, dataUpdateOrder)
@@ -464,6 +467,7 @@ const EditCart = {
                     status: orders.status,
                     days: orders.days,
                     product: arrProduct,
+                    pay: orders.pay,
                     sumMoney: sumMoney
 
                 }
@@ -528,6 +532,7 @@ const EditCart = {
                             status: orders.status,
                             days: orders.days,
                             product: arrProduct,
+                            pay: orders.pay,
                             sumMoney: sumMoney
                         }
                         await ordersAPI.eidt(id, dataUpdateOrder)

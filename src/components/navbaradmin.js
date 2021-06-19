@@ -55,7 +55,7 @@ const NavBarAdmin = {
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="./postnews.html">
+                    <a class="nav-link" href="#/listpost">
                         <i class="far fa-newspaper"></i>
                         <p>BLOG</p>
                     </a>

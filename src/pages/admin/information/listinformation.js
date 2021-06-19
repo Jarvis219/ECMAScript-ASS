@@ -25,7 +25,7 @@ const ListInformation = {
             <div class="">
                 <div class="">
                     <div class="col-md-12">
-                            <div class="card-body mt-32 z-50 flex justify-center" >
+                            <div class="card-body  z-50 flex justify-center" >
                                 ${await ListInformationChild.render()}
                                 <div  class="flex justify-center">
            

@@ -23,6 +23,4 @@ export const postAPI = {
         return axiosClient.put(url, data);
     }
 
-
-
 }

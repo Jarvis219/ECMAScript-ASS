@@ -20,6 +20,7 @@ const ListContactChild = {
                 statuss = `<option value="${element.status}" >${element.status}</option>
                 <option value="Approved">Approved</option>`
             }
+
             // console.log(statuss);
             return /*html*/ `
             <tr>
@@ -80,7 +81,6 @@ const ListContactChild = {
                     await reRender(ListContactChild, '#list-content');
                 }
             })
-
         }
 
         if (btns.length > 1) {

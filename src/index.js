@@ -36,7 +36,8 @@ import EditInformation from './pages/admin/information/editinformation';
 import AddPost from './pages/admin/posts/addpost';
 import Dashboard from './pages/admin/dashboard/dashboard';
 import Order from './pages/order';
-
+import ListPost from './pages/admin/posts/listpost';
+import EditPost from './pages/admin/posts/editpost';
 let routes;
 async function checkUser() {
     if (isSetAuthen() !== false) {
@@ -74,7 +75,9 @@ async function checkUser() {
                 '/editinformation/:id': EditInformation,
                 '/addpost': AddPost,
                 '/dashboard': Dashboard,
-                '/order': Order
+                '/order': Order,
+                '/listpost': ListPost,
+                '/editpost/:id': EditPost
             }
         } else {
             routes = {

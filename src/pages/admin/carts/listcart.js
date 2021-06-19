@@ -20,8 +20,8 @@ const ListCarts = {
             </nav>
             <!-- End Navbar -->
            
-            <div class="content">
-            <div class="mb-12">
+            <div class="mt-12">
+            <div class="mb-4">
             <form id="search-order">
             <div class="flex  justify-center gap-8">
             <div >
@@ -39,9 +39,9 @@ const ListCarts = {
                         </select>
                     </div>
                     <div>
-                        <label for="">Short price</label> <br>
+                        <label for="">Sort price</label> <br>
                     <select name="" id="sort" class="px-6 rounded ">
-                    <option value="#">Short price</option>
+                    <option value="#">Sort price</option>
                         <option value="asc">expensive</option>
                         <option value="desc">low</option>
                     </select>
@@ -50,10 +50,10 @@ const ListCarts = {
                         <label for="">Days</label><br>
                     <input type="date" id="days" class="px-6 rounded ">
                     </div>
-            </div>
-            <div class="absolute right-0 mr-[150px]"><button type="submit"
+                    <div class="mt-3"><button type="submit"
             class=" btn btn-primary pull-left ml-4 uppercase">Search</button></div>
             </form>
+            </div>
             </div>
                 <div class="container-fluid">
                     <div class="row">
@@ -89,16 +89,18 @@ const ListCarts = {
                      <span>Address :</span><br>
                      <span>Note :</span><br>
                      <span>Total :</span><br>
+                     <span>Payment  :</span><br>
                      <span>Created at :</span>
                  </div>
                  <div class="w-64 ">
                  <div class="w-64 "> <span id="name"> </span></div>
-                     <span  id="email">Email</span><br>
-                     <span  id="phone">Phone</span><br>
-                     <span  id="address">Address</span><br>
-                     <span  id="note">Note</span><br>
-                     <span  id="total">Total</span><br>
-                     <span  id="times">Created at</span>
+                     <span  id="email"></span><br>
+                     <span  id="phone"></span><br>
+                     <span  id="address"></span><br>
+                     <span  id="note"></span><br>
+                     <span  id="total"></span><br>
+                     <span  id="pay"></span><br>
+                     <span  id="times"></span>
                  </div> 
              </div>
          </div>

@@ -31,7 +31,7 @@ const AddProduct = {
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div class="content">
+            <div class="mt-12 mx-4">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-10">
