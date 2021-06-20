@@ -53,7 +53,7 @@ async function checkUser() {
                 '/products/:id': ProductDetail,
                 '/shopcart': ShopCart,
                 '/checkout': CheckOut,
-                '/blogdetail': BlogDetail,
+                '/blogdetail/:id': BlogDetail,
                 '/signup': SignUp,
                 '/signin': SignIn,
                 //Admin

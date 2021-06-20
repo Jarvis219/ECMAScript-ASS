@@ -144,7 +144,7 @@ const AddPost = {
                         window.location.hash = `/listpost`;
                         reRender(ListPost, '#table-post');
                         toast(
-                            'Add product success', {
+                            'Add post success', {
                                 duration: 3000
                             }, {
                                 // label: 'Confirm',

@@ -21,6 +21,10 @@ export const postAPI = {
     edit(id, data) {
         const url = `posts/${id}`;
         return axiosClient.put(url, data);
+    },
+    readCate(id) {
+        const url = `posts?&id_ne=${id}&_limit=7`;
+        return axiosClient.get(url);
     }
 
 }

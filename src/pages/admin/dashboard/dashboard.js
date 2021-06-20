@@ -15,6 +15,9 @@ import {
 import {
   productAPI
 } from "../../../api/productAPI";
+import {
+  postAPI
+} from "../../../api/postAPI";
 const Dashboard = {
   async render() {
     const {
@@ -29,6 +32,9 @@ const Dashboard = {
     const {
       data: products
     } = await productAPI.list()
+    const {
+      data: post
+    } = await postAPI.list()
     let total = 0;
     order.forEach(element => {
       // console.log(element.sumMoney);
@@ -165,6 +171,22 @@ const Dashboard = {
                       </div>
                       <p class="card-category uppercase">Product</p>
                       <h3 class="card-title">${products.length}</h3>
+                    </div>
+                    <div class="card-footer">
+                      <div class="stats">
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                      <div class="card-icon">
+                      <i class="fas fa-blog"></i>
+                      </div>
+                      <p class="card-category uppercase">Post</p>
+                      <h3 class="card-title">${post.length}</h3>
                     </div>
                     <div class="card-footer">
                       <div class="stats">

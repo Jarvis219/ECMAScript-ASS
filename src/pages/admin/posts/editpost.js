@@ -1,8 +1,12 @@
 import NavBarAdmin from "../../../components/navbaradmin";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ListPost from "./listpost";
+import firebase from "firebase";
+import toast from "toast-me";
 import {
     $$,
-    useParams
+    useParams,
+    reRender
 } from "../../../untils";
 import {
     postAPI
@@ -54,7 +58,7 @@ const EditPost = {
                                         <div class="">
                                             <label class="bmd-label-floating">Image</label>
                                             <img src="${post.image}" alt="" class=" h-40"  id="image-old">
-                                            <input type="file" class=" form-control" id="address"
+                                            <input type="file" class=" form-control" id="post_image"
                                                 name="post_image" >
                                                 <span class="error-input text-red-500 text-xs "><span>
                                         </div>
@@ -111,6 +115,9 @@ const EditPost = {
 
     },
     async afterRender() {
+        const {
+            id
+        } = useParams();
         $$('.nav li')[7].classList.add("active");
         ClassicEditor
             .create(document.querySelector('#editor'))
@@ -131,7 +138,50 @@ const EditPost = {
                     $$('.error-input')[index].innerHTML = "";
                 }
             });
-        })
+            if ($$('#post_image').value == "") {
+                const url = $$('#image-old').src
+                updatePost(url);
+            } else {
+                const img = $$('#post_image').files[0];
+                let storageRef = firebase.storage().ref(`images/${img.name}`)
+                storageRef.getDownloadURL().then(async (url) => {
+                    updatePost(url);
+                });
+            }
+
+
+            async function updatePost(url) {
+                const updatePost = {
+                    id: id,
+                    title: $$('[name="post_title"]').value,
+                    image: url,
+                    author: $$('[name="post_author"]').value,
+                    introduce: $$('[name="post_introduce"]').value,
+                    content: editor.getData(),
+                    day: moment(new Date()).format('DD-MM-YYYY')
+                }
+                // console.log(updatePost);
+                await postAPI.edit(id, updatePost);
+                window.location.hash = `/listpost`;
+                reRender(ListPost, '#table-post');
+                toast(
+                    'Update post success', {
+                        duration: 3000
+                    }, {
+                        // label: 'Confirm',
+                        action: () => alert('Fill in this field!'),
+                        class: 'my-custom-class', // optional, CSS class name for action button
+                    },
+                );
+
+            }
+
+
+
+
+        });
+
+
     }
 }
 export default EditPost;

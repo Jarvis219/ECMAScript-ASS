@@ -4,8 +4,32 @@ import {
     checkLogout,
     search
 } from '../untils';
+import {
+    postAPI
+} from '../api/postAPI';
 const Blog = {
     async render() {
+        const {
+            data: posts
+        } = await postAPI.list();
+        const result = posts.map(element => {
+            return /*html*/ `
+            <div class="my-24 md:my-0 shadow p-10 bg-gray-200">
+                        <article class="relative overflow-hidden">
+                            <img src="${element.image}" alt="" style="height: 240px; width:228px"
+                                class="w-full object-cover  transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
+                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
+                                <a href="/#/blogdetail/${element.id}" class="font-semibold text-xs lg:text-sm">${element.title}</a>
+                            </div>
+                        </article>
+                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> ${element.author}
+                            <span class="text-gray-500 "> ${element.day}</span>
+                        </p>
+                    </div>
+            `;
+        }).join("");
+
+
         return /*html */ `
         ${ await Header.render()}
         <div>
@@ -37,179 +61,9 @@ const Blog = {
                         underperforming website.</p>
                 </div>
             </div>
-            <div class="md:flex justify-between mb-20 md:mb-0">
-                <section class="wow bounceInLeft" data-wow-duration=" 2s">
-                    <div>
-                        <article class="relative overflow-hidden">
-                            <img src=" ./images/blog/blog-1.jpg" alt="" style="height: 540px;"
-                                class="w-full object-cover transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 left-0 bg-white pr-12 pt-3  ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">No Bad Blood! The Reason Why
-                                    Tamr<br> Judge
-                                    Finally
-                                    Made
-                                    Up With...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema
-                            Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                    <div class="my-24 md:my-12 ">
-                        <article class=" relative overflow-hidden">
-                            <img src=" ./images/blog/blog-7.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover  transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 left-0 bg-white pr-12 pt-3  ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">Pot Party! See Farrah
-                                    Abraham<br>
-                                    Flaunt Smoking Body
-                                    At...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema
-                            Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                    <div>
-                        <article class="relative overflow-hidden">
-                            <img src="./images/blog/blog-9.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover  transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">CMT Awards 2019 Red Carpet
-                                    Arrivals<br> Carrie
-                                    Underwood,
-                                    Sheryl...</a>
-
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                </section>
-                <!-- end col1 -->
-                <section class="md:mx-3 xl:mx-0 wow bounceInUp" data-wow-duration=" 1s">
-                    <div class="my-24 md:my-0">
-                        <article class="relative overflow-hidden">
-                            <img src="./images/blog/blog-2.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover  transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">Amf Cannes Red Carpet
-                                    Celebrities<br> Kendall Jenner,
-                                    Pamela...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                    <div class="my-12">
-                        <article class=" relative overflow-hidden">
-                            <img src="./images/blog/blog-4.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">Ireland Baldwin Shows Off
-                                    Trendy<br> Ilse Valfre
-                                    Tattoo At Stagecoach...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                    <div class="my-24 md:my-0">
-                        <article class="relative overflow-hidden">
-                            <img src="./images/blog/blog-8.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">Kim Kardashian Steps Out In
-                                    Paris<br> Wearing
-                                    Shocking Sparkly...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                    <div class="my-12">
-                        <article class=" relative overflow-hidden">
-                            <img src="./images/blog/blog-10.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">A-list Battle! Angelina
-                                    Jolie &
-                                    Lady<br> Gaga
-                                    Fighting Over Who...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-
-                </section>
-                <!-- end col2 -->
-                <section class=" wow slideInRight" data-wow-duration=" 2s">
-                    <div class="my-24 md:my-0">
-                        <article class="relative overflow-hidden">
-                            <img src="./images/blog/blog-3.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">Gigi Hadid, Rita Ora, Serena
-                                    &
-                                    Other<br> Hot Celebs
-                                    Stun At 2019...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                    <div class="my-12">
-                        <article class="  relative overflow-hidden">
-                            <img src="./images/blog/blog-5.jpg" alt="" style="height: 240px;"
-                                class="w-full object-cover transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                <a href="" class="font-semibold text-xs lg:text-sm">Billboard Music Awards:
-                                    Best,
-                                    Worst<br> & Wackiest
-                                    Dresses On The...</a>
-                            </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                    <div class="mt-24 md:mt-0">
-                        <article class="relative overflow-hidden">
-                            <img src="./images/blog/blog-6.jpg" alt="" style="height: 540px;"
-                                class="w-full object-cover transition delay-300 duration-500 ease-in-out transform scale-100 hover:scale-110">
-                            <div>
-                                <div class="absolute bottom-0 bg-white pr-12 pt-3 ">
-                                    <a href="" class="font-semibold text-xs lg:text-sm">Stephanie Pratt Busts
-                                        Out Of
-                                        Teeny<br> Black Bikini
-                                        During Hawaii...</a>
-                                </div>
-                        </article>
-                        <p class="text-xs absolute pt-3"><span class="text-gray-500">by</span> Ema Timahe
-                            <span class="text-gray-500 "> | Seb 17,
-                                2019</span>
-                        </p>
-                    </div>
-                </section>
-                <!-- end col3 -->
+            <div class="md:grid grid-cols-3 mb-20 md:mb-0 gap-5">
+                    ${result}
+                    
             </div>
             <div
                 class=" text-center my-12 transform hover:-translate-y-1 hover:scale-110 transition duration-500 ease-in-out">
