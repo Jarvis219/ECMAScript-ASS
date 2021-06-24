@@ -5,11 +5,13 @@ import {
     $$
 } from "../untils";
 import Header from "./header";
+import Footer from "./footer";
+import toast from "toast-me";
 const SignUp = {
     async render() {
         return /*html */ `
         ${await Header.render()}
-        <div class=" bg-pink-200 container mx-auto mt-20">
+        <div class="  mx-auto mt-20">
         <div class=" py-20">
             <div class="w-96 bg-white container mx-auto py-16  shadow-2xl">
                 <div class="flex justify-center pt-6">
@@ -60,6 +62,7 @@ const SignUp = {
             </div>
         </div>
     </div>
+    ${Footer.render()}
         `;
     },
     afterRender() {
@@ -76,9 +79,17 @@ const SignUp = {
                     password: password,
                     permission: "Member"
                 }
-                console.log(data);
+                // console.log(data);
                 if (UserAPI.signup(data)) {
-                    alert('Register success')
+                    toast(
+                        `Register success `, {
+                            duration: 3000
+                        }, {
+                            // label: 'Confirm',
+                            action: () => alert('Fill in this field!'),
+                            class: 'my-custom-class', // optional, CSS class name for action button
+                        },
+                    );
                     $$('#error').innerHTML = '';
                 } else {
                     alert('Register failure')

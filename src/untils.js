@@ -107,8 +107,6 @@ export const search = () => {
     })
 }
 
-
-
 export const showCartNotUser = () => {
     let carts = JSON.parse(localStorage.getItem('dataCart')); // chuyển từ string => object
     return carts

@@ -864,6 +864,9 @@ video {
 .w-24 {
 	width: 6rem;
 }
+.w-72 {
+	width: 18rem;
+}
 .w-\[190px\] {
 	width: 190px;
 }
@@ -893,9 +896,6 @@ video {
 }
 .w-56 {
 	width: 14rem;
-}
-.w-72 {
-	width: 18rem;
 }
 .border-collapse {
 	border-collapse: collapse;
@@ -963,14 +963,14 @@ video {
 .gap-2 {
 	gap: 0.5rem;
 }
+.gap-4 {
+	gap: 1rem;
+}
 .gap-10 {
 	gap: 2.5rem;
 }
 .gap-8 {
 	gap: 2rem;
-}
-.gap-4 {
-	gap: 1rem;
 }
 .overflow-y-scroll {
 	overflow-y: scroll;
@@ -1129,6 +1129,9 @@ video {
 .p-10 {
 	padding: 2.5rem;
 }
+.p-2 {
+	padding: 0.5rem;
+}
 .p-4 {
 	padding: 1rem;
 }
@@ -1140,9 +1143,6 @@ video {
 }
 .p-12 {
 	padding: 3rem;
-}
-.p-2 {
-	padding: 0.5rem;
 }
 .py-6 {
 	padding-top: 1.5rem;

@@ -6,11 +6,12 @@ import {
     setAuthen
 } from "../untils";
 import Header from "./header";
+import Footer from "./footer";
 const SignIn = {
     async render() {
         return /*html */ `
         ${await Header.render()}
-        <div class=" bg-pink-200 container mx-auto mt-20">
+        <div class=" mx-auto mt-20">
         <div class=" py-20">
             <div class="w-96 bg-white container mx-auto py-16  shadow-2xl">
                 <div class="flex justify-center pt-6">
@@ -48,6 +49,7 @@ const SignIn = {
             </div>
         </div>
     </div>
+    ${Footer.render()}
    
         `;
     },

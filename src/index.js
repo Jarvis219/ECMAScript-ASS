@@ -92,7 +92,8 @@ async function checkUser() {
                 '/productcate/:id': ProductCate,
                 '/signup': SignUp,
                 '/signin': SignIn,
-                '/order': Order
+                '/order': Order,
+                '/blogdetail/:id': BlogDetail,
 
             }
         }
@@ -109,7 +110,8 @@ async function checkUser() {
             '/productcate/:id': ProductCate,
             '/signup': SignUp,
             '/signin': SignIn,
-            '/order': Order
+            '/order': Order,
+            '/blogdetail/:id': BlogDetail,
 
         }
     }

@@ -19,7 +19,7 @@ const ListPostChild = {
             <td ><img width="100" height="100" src="${element.image}"></td>
             <td>${element.author}</td>
             <td class="overflow-y-scroll "><div style="height: 200px;" class="flex justify-center items-center">${element.introduce}</div></td>
-            <td class="w-20"><a  href="http://localhost:8080/#/products/${element.id}" target="_blank"> <button data-id="${element.id}"
+            <td class="w-20"><a  href="http://localhost:8080/#/blogdetail/${element.id}" target="_blank"> <button data-id="${element.id}"
             title="view" class=" text-lg bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><i class="far fa-eye"></i></button></a></td>
             <td class="w-20"><button
             title="edit"    class=" bg-gradient-to-r from-green-400 to-blue-500  text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center"><a

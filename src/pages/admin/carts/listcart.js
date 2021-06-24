@@ -46,10 +46,6 @@ const ListCarts = {
                         <option value="desc">low</option>
                     </select>
                     </div>
-                    <div >
-                        <label for="">Days</label><br>
-                    <input type="date" id="days" class="px-6 rounded ">
-                    </div>
                     <div class="mt-3"><button type="submit"
             class=" btn btn-primary pull-left ml-4 uppercase">Search</button></div>
             </form>

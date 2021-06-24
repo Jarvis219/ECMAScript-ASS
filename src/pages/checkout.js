@@ -178,13 +178,14 @@ const CheckOut = {
         var priceProduct = 0;
         if ($$('.priceProduct').length > 1) {
             $$('.priceProduct').forEach(element => {
-                // console.log(Number(element.innerHTML.replace(/\D/g, '')));
+                // console.log(element);
+
                 priceProduct += Number(element.innerHTML.replace(/\D/g, ''))
             })
         } else {
             priceProduct = Number($$('.priceProduct').innerHTML.replace(/\D/g, ''));
         }
-
+        // console.log(priceProduct);
 
         // console.log(priceProduct);
         var total = $$('#total');
@@ -201,7 +202,7 @@ const CheckOut = {
         } else if (`${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.length == 8) {
             monney = `${(Number($$('#subTotal').innerHTML) + Number(priceProduct))}`.substr(0, 6)
         }
-
+        console.log(monney);
         total.innerHTML = prices(Number(monney));
         var day = moment(new Date()).format('DD-MM-YYYY');
 

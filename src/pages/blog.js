@@ -13,7 +13,7 @@ const Blog = {
             data: posts
         } = await postAPI.list();
         const result = posts.map(element => {
-            return /*html*/ `
+            return `
             <div class="my-24 md:my-0 shadow p-10 bg-gray-200">
                         <article class="relative overflow-hidden">
                             <img src="${element.image}" alt="" style="height: 240px; width:228px"

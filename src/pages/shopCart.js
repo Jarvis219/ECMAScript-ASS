@@ -8,8 +8,7 @@ import {
     showCartNotUser,
     checkLogout,
     isSetAuthen,
-    search,
-    reRender
+    search
 } from '../untils';
 const ShopCart = {
     async render() {
@@ -305,6 +304,7 @@ const ShopCart = {
             quantityProduct.forEach(element => {
                 sum += Number(element.innerHTML);
             });
+            // console.log(sum);
             $$('.totals').innerHTML = Number(sum) + Number($$('.subtotal').innerHTML);
         }
 
@@ -370,7 +370,7 @@ const ShopCart = {
                     size: element.dataset.idsize,
                     status: element.dataset.idstatus,
                     days: element.dataset.iddays,
-                    totalmoney: totalmoney,
+                    totalmoney: Number(totalmoney),
                     amount: amount
                 }
                 // console.log(dataUpdate);
@@ -402,7 +402,7 @@ const ShopCart = {
                     size: element.dataset.idsize,
                     status: element.dataset.idstatus,
                     days: element.dataset.iddays,
-                    totalmoney: totalmoney,
+                    totalmoney: Number(totalmoney),
                     amount: amount
                 }
                 // console.log(dataUpdate);
@@ -455,9 +455,16 @@ const ShopCart = {
                     if (question) {
                         // console.log(id);
                         await cartAPI.remove(id);
+
                         var removeItem = $$(`.cor-${id}`);
                         if (removeItem) {
-                            removeItem.remove();
+                            await removeItem.remove();
+                            if (btns.length > 2) {
+                                console.log(btns.length);
+                                totals();
+                            } else {
+                                $$('.totals').innerHTML = Number($$('.quantityProduct').innerHTML) + Number($$('.subtotal').innerHTML);
+                            }
                             const {
                                 data
                             } = await cartAPI.list();
@@ -469,7 +476,7 @@ const ShopCart = {
                 })
             }
             if (btns.length > 1) {
-                btns.forEach(element => {
+                btns.forEach((element) => {
                     deleteItem(element)
                 });
             } else {
@@ -499,6 +506,12 @@ const ShopCart = {
                                 localStorage.removeItem('dataCart')
                                 localStorage.setItem('dataCart', JSON.stringify(newArr));
                                 removeItem.remove();
+                                if (btns_local.length > 2) {
+                                    totals();
+                                } else {
+                                    $$('.totals').innerHTML = Number($$('.quantityProduct').innerHTML) + Number($$('.subtotal').innerHTML);
+                                }
+
                             }
                         }
                     } else {
@@ -506,6 +519,11 @@ const ShopCart = {
                         if (removeItem) {
                             localStorage.removeItem('dataCart');
                             removeItem.remove();
+                            if (btns_local.length > 2) {
+                                totals();
+                            } else {
+                                $$('.totals').innerHTML = Number($$('.quantityProduct').innerHTML) + Number($$('.subtotal').innerHTML);
+                            }
                             if (!localStorage.getItem("dataCart")) {
                                 window.location.hash = `/products`;
                             }
@@ -516,11 +534,13 @@ const ShopCart = {
             if (btns_local.length > 1) {
                 btns_local.forEach((element, index) => {
                     deleteItem(element, index)
+
                 });
             } else {
+                console.log(2);
                 deleteItem(btns_local);
-            }
 
+            }
         }
     }
 }
